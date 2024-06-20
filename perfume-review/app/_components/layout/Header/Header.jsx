@@ -29,6 +29,7 @@ import {
 } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import logo from "../../../_assets/Images/Plogo.png";
+import Link from "next/link";
 const products = [
   {
     name: "Analytics",
@@ -163,9 +164,12 @@ export default function Example() {
           <a href="#" className="text-xl font-serif leading-6 text-black">
             NEWS
           </a>
-          <a href="#" className="text-xl font-serif leading-6 text-black">
+          <Link
+            href="/about"
+            className="text-xl font-serif leading-6 text-black"
+          >
             ABOUT US
-          </a>
+          </Link>
           <a href="#" className="text-xl font-serif leading-6 text-black">
             Contact US
           </a>
