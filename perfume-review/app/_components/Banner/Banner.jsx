@@ -45,9 +45,9 @@ const banners = [
   },
 ];
 
-const Banner = () => {
-  return (
-    <>
+const Banner = () => (
+  <>
+    <div className="p-10">
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -60,27 +60,27 @@ const Banner = () => {
         {banners.map((banner, index) => (
           <SwiperSlide key={index}>
             <div
-              className="relative rounded-lg shadow-lg flex items-center justify-center h-[50vh] md:h-[70vh] lg:h-[80vh] p-10 md:p-20 lg:p-32 text-white bg-cover bg-center"
+              className="relative container  max-w-xs sm:max-w-sm md:max-w-6xl lg:max-w-6xl mx-auto rounded-lg shadow-lg flex items-center justify-center h-[45vh] sm:h-[50vh] md:h-[55vh] lg:h-[60vh] p-6 sm:p-8 md:p-16 lg:p-20 text-white bg-cover bg-center"
               style={{ backgroundImage: `url(${banner.imageUrl})` }}
             >
               <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
-              <div className="relative z-10 text-center">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-                  {banner.title}
+              <div className="relative z-10 text-center max-w-xs sm:max-w-sm md:max-w-6xl lg:max-w-6xl mx-auto">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-4">
+                  {/* {banner.title} */}
                 </h1>
-                <p className="text-lg md:text-xl lg:text-2xl mb-6">
-                  {banner.description}
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-4 sm:mb-6">
+                  {/* {banner.description} */}
                 </p>
-                <button className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300">
-                  {banner.buttonText}
-                </button>
+                {/* <button className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300">
+                {banner.buttonText}
+              </button> */}
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
-  );
-};
+    </div>
+  </>
+);
 
 export default Banner;
