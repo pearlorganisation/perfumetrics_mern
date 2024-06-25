@@ -11,44 +11,37 @@ const page = ({ params }) => {
   console.log(params, "params");
   const perfumeReviews = [
     {
-      imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-13-10.png",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
       name: "al haraman",
       brand: null,
     },
     {
-      imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
-      imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
-      imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
-      imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
-      imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
-      imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
