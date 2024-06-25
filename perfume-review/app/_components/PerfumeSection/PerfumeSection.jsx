@@ -5,28 +5,28 @@ function PerfumeSection() {
   const topPerfumes = [
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-13-10.png",
+        "https://fimgs.net/mdimg/perfume/375x500.75909.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+        "https://fimgs.net/mdimg/perfume/375x500.63832.jpg",
       title: "Delina La Rosée Parfums de Marly for women",
       rating: 5,
       reviewLink: "",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-13-10.png",
+        "https://fimgs.net/mdimg/perfume/375x500.6458.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-13-10.png",
+        "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
@@ -34,35 +34,35 @@ function PerfumeSection() {
 
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-13-10.png",
+        "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-13-10.png",
+        "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-13-10.png",
+        "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-13-10.png",
+        "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-13-10.png",
+        "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
@@ -71,44 +71,45 @@ function PerfumeSection() {
 
   const perfumeReviews = [
     {
+
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-13-10.png",
+        "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
       name: "al haraman",
       brand: null,
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+        "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+        "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+        "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+        "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+        "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
       imgUrl:
-        "https://perfumetrics.com/wp-content/uploads/2024/05/image-8-2.png",
+        "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
