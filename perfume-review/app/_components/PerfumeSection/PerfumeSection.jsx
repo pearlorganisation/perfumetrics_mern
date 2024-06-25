@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { IoIosArrowRoundForward, IoMdStar, IoMdStarHalf } from "react-icons/io";
 
 function PerfumeSection() {
@@ -125,7 +126,8 @@ function PerfumeSection() {
           <div className="flex gap-4 flex-wrap ">
             {topPerfumes &&
               topPerfumes.map((e) => (
-                <div className="w-full md:w-[30%] flex flex-col gap-2 rounded-md shadow-[0_2px_30px_2px#cccccc] hover:shadow-[0_0_0_2px#c90061]  transition duration-300">
+
+                <Link href='/product/3243242' className="w-full md:w-[30%] flex flex-col gap-2 rounded-md shadow-[0_2px_30px_2px#cccccc] hover:shadow-[0_0_0_2px#c90061]  transition duration-300">
                   <img src={e.imgUrl} width={"100%"} height={"300px"} />
                   <div className="flex flex-col h-full gap-2 items-center px-4 pb-4">
                     <div className="w-full text-sm text-center font-semibold h-1/2">
@@ -146,7 +148,8 @@ function PerfumeSection() {
                       <span>Read review</span>
                     </div>
                   </div>
-                </div>
+                </Link>
+
               ))}
           </div>
         </div>
