@@ -259,7 +259,25 @@ const page = ({ params }) => {
               {Array(3)
                 .fill()
                 ?.map((item) => {
-                  return <div className=" border border-red-500 "></div>;
+                  return (
+                    <div className=" flex justify-around items-center gap-3 ">
+                      <img
+                        className="h-32"
+                        src="https://s3-alpha-sig.figma.com/img/3f61/62b0/a6e0dc42cce537e25895057cb3621ef0?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRSbzVKhZ4GLPEmDP~XCyt6O9F5dNgRkKZgrTq3imHl0JtfAUzB15BuLBykH0PSn0NhP2MKLSPPsiE9wdVaERvfjqUpgBX11aRkQ1DnxzgahdPjMjC3f9M~KaCuYzgfdrh9Ah-ainDUWsrVL3jpUHJAxXX2TbhImugWRcq2N0N~gNktv4-AfF35hfdmCT06iQDYwXYB7bxylRGO-f2uPzftckAmR8HZqMsMEVmeB8tjQKwUHwOpqKcX7YELoxn5xxfdpSJ9JNBDZpw9gUGnRddNIRs1uyJZBew4HVOLEyf1oWWG80HILZEdrDqEG1ynNfsFQ~OCA53jxgl~OZXeHuw__"
+                        alt=""
+                      />
+                      <img
+                        className="h-32"
+                        src="https://s3-alpha-sig.figma.com/img/3f61/62b0/a6e0dc42cce537e25895057cb3621ef0?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRSbzVKhZ4GLPEmDP~XCyt6O9F5dNgRkKZgrTq3imHl0JtfAUzB15BuLBykH0PSn0NhP2MKLSPPsiE9wdVaERvfjqUpgBX11aRkQ1DnxzgahdPjMjC3f9M~KaCuYzgfdrh9Ah-ainDUWsrVL3jpUHJAxXX2TbhImugWRcq2N0N~gNktv4-AfF35hfdmCT06iQDYwXYB7bxylRGO-f2uPzftckAmR8HZqMsMEVmeB8tjQKwUHwOpqKcX7YELoxn5xxfdpSJ9JNBDZpw9gUGnRddNIRs1uyJZBew4HVOLEyf1oWWG80HILZEdrDqEG1ynNfsFQ~OCA53jxgl~OZXeHuw__"
+                        alt=""
+                      />
+                      <img
+                        className="h-32"
+                        src="https://s3-alpha-sig.figma.com/img/3f61/62b0/a6e0dc42cce537e25895057cb3621ef0?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRSbzVKhZ4GLPEmDP~XCyt6O9F5dNgRkKZgrTq3imHl0JtfAUzB15BuLBykH0PSn0NhP2MKLSPPsiE9wdVaERvfjqUpgBX11aRkQ1DnxzgahdPjMjC3f9M~KaCuYzgfdrh9Ah-ainDUWsrVL3jpUHJAxXX2TbhImugWRcq2N0N~gNktv4-AfF35hfdmCT06iQDYwXYB7bxylRGO-f2uPzftckAmR8HZqMsMEVmeB8tjQKwUHwOpqKcX7YELoxn5xxfdpSJ9JNBDZpw9gUGnRddNIRs1uyJZBew4HVOLEyf1oWWG80HILZEdrDqEG1ynNfsFQ~OCA53jxgl~OZXeHuw__"
+                        alt=""
+                      />
+                    </div>
+                  );
                 })}
             </div>
           </div>
