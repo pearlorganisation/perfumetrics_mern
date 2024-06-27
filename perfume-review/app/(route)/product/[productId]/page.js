@@ -6,6 +6,7 @@ import ProsCons from "../_ProsCons";
 import Pyramid from "@/public/Pyramid.png";
 import Image from "next/image";
 import DoughnutGraph from "@/app/_components/DoughnutGraph/DoughnutGraph";
+import Review from "./Review";
 
 const page = ({ params }) => {
   console.log(params, "params");
@@ -216,6 +217,8 @@ const page = ({ params }) => {
             transports us to a dreamy getaway. A captivating, feminine vessel
             adorned with the iconic GUESS triangular logo on a golden plaque.
           </div>
+
+          <ProsCons />
 
           <div className="space-y-2">
             <p className="text-3xl font-medium">Perfume Photos</p>
@@ -440,6 +443,8 @@ const page = ({ params }) => {
               ))}
           </div>
         </div>
+
+        <Review />
       </div>
     </div>
   );
