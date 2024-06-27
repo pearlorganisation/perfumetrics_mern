@@ -67,11 +67,11 @@ const ProsCons = () => {
                 <div>
                   <li key={index} className="flex items-center space-x-3  my-2">
                     <div className="flex gap-5">
-                      <span className="border flex flex-col justify-center items-center">
+                      <span className=" flex flex-col justify-center items-center">
                         <FaThumbsUp className="text-[#a5e0dd]" />
                         <span className="">{item.likes}</span>
                       </span>
-                      <span className="border flex flex-col justify-center items-center">
+                      <span className=" flex flex-col justify-center items-center">
                         <FaThumbsDown className="text-[#a5e0dd]" />
                         <span className="">{item.dislikes}</span>
                       </span>
@@ -83,17 +83,21 @@ const ProsCons = () => {
             </div>
           </div>
 
-          <div className="w-1/2 p-4 border-r border-gray-300 grid  place-items-center">
+          <div className="w-1/2 p-4  border-gray-300 grid  place-items-center">
             <div className="mt-4">
               <h1 className="text-[#e23f5f] text-center text-xl">Cons</h1>
-              {data.cons.map((item, index) => (
+              {data.pros.map((item, index) => (
                 <div>
-                  <li key={index} className="flex items-center  my-2">
-                    <div className="flex items-center mr- w-24 justify-between">
-                      <FaThumbsUp className="text-[#a5e0dd]" />
-                      <span>{item.likes}</span>
-                      <FaThumbsDown className="text-[#a5e0dd]" />
-                      <span>{item.dislikes}</span>
+                  <li key={index} className="flex items-center space-x-3  my-2">
+                    <div className="flex gap-5">
+                      <span className=" flex flex-col justify-center items-center">
+                        <FaThumbsUp className="text-[#a5e0dd]" />
+                        <span className="">{item.likes}</span>
+                      </span>
+                      <span className=" flex flex-col justify-center items-center">
+                        <FaThumbsDown className="text-[#a5e0dd]" />
+                        <span className="">{item.dislikes}</span>
+                      </span>
                     </div>
                     <span className="text-center ">{item.text}</span>
                   </li>

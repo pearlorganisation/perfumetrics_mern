@@ -1,186 +1,120 @@
-import React from "react";
+"use client"
 import logo from "../../../_assets/Images/Plogo.png";
 import Image from "next/image";
-
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { MdOutlineAttachEmail } from "react-icons/md";
+import { IoCall } from "react-icons/io5";
+import { FaFacebookF } from "react-icons/fa";
+import { RiInstagramFill } from "react-icons/ri";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaPinterest } from "react-icons/fa";
 const Footer = () => {
+
+
+
   return (
-    <div>
-      <footer className="relative    ">
-        <div
-          className="absolute inset-0 bg-white opacity-20  z-0 bg-center  bg-cover   bg-no-repeat"
-          style={{ backgroundImage: `url('footer.jpg') ` }}
-        ></div>
-        <div className="mx-auto z-20 w-full max-w-screen-xl p-4 py-6 lg:py-8">
-          <div className="md:flex md:justify-between">
-            <div className="mb-6 md:mb-0">
-              <a href="#" className="flex items-center">
-                <Image
-                  src={logo}
-                  className="h-8 me-3"
-                  width={100}
-                  height={40}
-                  alt="FlowBite Logo"
-                />
-              </a>
+    <footer className="text-[#CFD3D7] bg-[#333333] px-4 py-16 w-full mx-auto md:px-8">
+      <div className="container mx-auto">
+        <div className="gap-6 justify-between md:flex">
+          <div className="flex-1">
+            <div className="max-w-xs">
+              <img className="h-12" src="https://s3-alpha-sig.figma.com/img/a608/3f61/6cbb83492bbe58fd207bb633a3a57c88?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OpuONs8BLSl-DNnY3nG-5hwJcodTwnUb2idbTF3MLN3w76Olk78Oad4bHbw9d4oIxW~-4z3wGUVrAdVak6-dvx5LoRR74sGWYQW2yPz~BQ6iZtGpqZwEs5~IuLHwxV8kaQdPJEvB0yqvcxy71eJX4m19Ypm4UwmFdEFWcUCq4QVsg-LP0CYF-KLEa3AWEVlk4Fy5aNpAfV-wkJZDTgRMhBDbzhXe7e~6IenxXuVzz3HtTRa2y09n~LtSnxIw~9gqPmdXKyhkLTdhMk45ikJkmKA~~Vjknm5d5utLYOssjSrBcrFefdTNXXL3qEsRBnZXcNombOiGzjHdrgkqSUCj7Q__" alt="" />
+              {/* <Image
+                src={logo}
+                className="h-8 me-3"
+                width={100}
+                height={40}
+                alt="FlowBite Logo"
+              /> */}
+              <p className="leading-relaxed mt-2 text-[15px]">
+                Our passion for exquisite fragrances led us to curate a collection that captures the essence of diverse personalities, bringing you an unparalleled olfactory experience.
+              </p>
             </div>
-            <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-              <div>
-                <h2 className="mb-6 text-xl font-semibold  uppercase ">
-                  Resources
-                </h2>
-                <ul className="text-white text-xl dark:text-black  font-medium">
-                  <li className="mb-4">
-                    <a href="#" className="hover:underline">
-                      Flowbite
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:underline">
-                      Tailwind CSS
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h2 className="mb-6 text-xl font-semibold  uppercase ">
-                  Follow us
-                </h2>
-                <ul className="text-black text-xl dark:text-black  font-medium">
-                  <li className="mb-4">
-                    <a href="#" className="hover:underline ">
-                      Github
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:underline">
-                      Discord
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h2 className="mb-6  font-semibold uppercase text-xl">Legal</h2>
-                <ul className="text-black  dark:text-black text-xl font-medium">
-                  <li className="mb-4">
-                    <a href="#" className="hover:underline">
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:underline">
-                      Terms &amp; Conditions
-                    </a>
-                  </li>
-                </ul>
-              </div>
+
+          </div>
+
+          <div className="space-y-3">
+            <span className="text-lg font-medium text-white">Get In Touch</span>
+            <div className="flex justify-start items-center gap-2"> <FaMapMarkerAlt /><p className=" md:w-[70%] ">Delhi, ABC Road Pincode, 110015. ABC, New Delhi</p> </div>
+            <div className="flex justify-start items-center gap-2">
+              <MdOutlineAttachEmail /> info@gmail.com
+            </div>
+            <div className="flex justify-start items-center gap-2">
+              <IoCall /> +91-1234567890
             </div>
           </div>
-          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-black lg:my-8" />
-          <div className="sm:flex sm:items-center sm:justify-between ">
-            <span className=" text-black sm:text-center text-xl">
-              © 2024{" "}
-              <a href="#" className="hover:underline">
-                PERFMETRICS™
-              </a>
-              . All Rights Reserved.
-            </span>
-            <div className="flex mt-4 sm:justify-center sm:mt-0">
-              <a
-                href="#"
-                className="text-black text-xl hover:text-black  dark:hover:text-white"
-              >
-                <svg
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 8 19"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="sr-only">Facebook page</span>
-              </a>
-              <a
-                href="#"
-                className="text-black text-xl hover:text-black  dark:hover:text-white ms-5"
-              >
-                <svg
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 21 16"
-                >
-                  <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z" />
-                </svg>
-                <span className="sr-only">Discord community</span>
-              </a>
-              <a
-                href="#"
-                className="text-black text-xl hover:text-black  dark:hover:text-white ms-5"
-              >
-                <svg
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 17"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="sr-only">Twitter page</span>
-              </a>
-              <a
-                href="#"
-                className="text-black text-xl hover:text-black dark:hover:text-white ms-5"
-              >
-                <svg
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="sr-only">GitHub account</span>
-              </a>
-              <a
-                href="#"
-                className="text-black text-xl hover:text-black  dark:hover:text-white ms-5"
-              >
-                <svg
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </a>
+
+          <div className="space-y-3">
+            <div className="flex justify-start items-center gap-3">
+              <div className="size-10 rounded-full grid place-items-center bg-white">  <FaFacebookF className="text-[#333333]" size={25} /> </div>
+              <div className="size-10 rounded-full grid place-items-center bg-white">  <RiInstagramFill className="text-[#333333]" size={25} /> </div>
+              <div className="size-10 rounded-full grid place-items-center bg-white">   <FaLinkedinIn className="text-[#333333]" size={25} /> </div>
+              <div className="size-10 rounded-full grid place-items-center bg-white">  <FaPinterest className="text-[#333333]" size={25} /> </div>
+
+
+
             </div>
+            <p className="w-[70%]">Follow us on social media platforms and stay updated</p>
+          </div>
+
+          <div className="grid gap-3">
+            <span>Join Our Newslater</span>
+            <span>Your Email</span>
+            <input placeholder="Enter Your Email" className="bg-white px-5 py-3 rounded outline-none" type="text" name="" id="" />
+            <button className="bg-white text-black w-full py-3 rounded">Send</button>
           </div>
         </div>
-      </footer>
-    </div>
-  );
-};
+        {/* <div className="mt-8 py-6 border-t items-center justify-between sm:flex">
+          <div className="mt-4 sm:mt-0">
+            &copy; 2022 Float UI All rights reserved.
+          </div>
+          <div className="mt-6 sm:mt-0">
+            <ul className="flex items-center space-x-4">
+              <li className="w-10 h-10 border rounded-full flex items-center justify-center">
+                <a href="javascript:void()">
+                  <svg class="svg-icon w-6 h-6 text-blue-400" viewBox="0 0 20 20">
+                    <path fill="none" d="M18.258,3.266c-0.693,0.405-1.46,0.698-2.277,0.857c-0.653-0.686-1.586-1.115-2.618-1.115c-1.98,0-3.586,1.581-3.586,3.53c0,0.276,0.031,0.545,0.092,0.805C6.888,7.195,4.245,5.79,2.476,3.654C2.167,4.176,1.99,4.781,1.99,5.429c0,1.224,0.633,2.305,1.596,2.938C2.999,8.349,2.445,8.19,1.961,7.925C1.96,7.94,1.96,7.954,1.96,7.97c0,1.71,1.237,3.138,2.877,3.462c-0.301,0.08-0.617,0.123-0.945,0.123c-0.23,0-0.456-0.021-0.674-0.062c0.456,1.402,1.781,2.422,3.35,2.451c-1.228,0.947-2.773,1.512-4.454,1.512c-0.291,0-0.575-0.016-0.855-0.049c1.588,1,3.473,1.586,5.498,1.586c6.598,0,10.205-5.379,10.205-10.045c0-0.153-0.003-0.305-0.01-0.456c0.7-0.499,1.308-1.12,1.789-1.827c-0.644,0.28-1.334,0.469-2.06,0.555C17.422,4.782,17.99,4.091,18.258,3.266"></path>
+                  </svg>
+                </a>
+              </li>
+
+              <li className="w-10 h-10 border rounded-full flex items-center justify-center">
+                <a href="javascript:void()">
+                  <svg class="svg-icon w-6 h-6 text-blue-700" viewBox="0 0 20 20">
+                    <path fill="none" d="M11.344,5.71c0-0.73,0.074-1.122,1.199-1.122h1.502V1.871h-2.404c-2.886,0-3.903,1.36-3.903,3.646v1.765h-1.8V10h1.8v8.128h3.601V10h2.403l0.32-2.718h-2.724L11.344,5.71z"></path>
+                  </svg>
+                </a>
+              </li>
+
+              <li className="w-10 h-10 border rounded-full flex items-center justify-center">
+                <a href="javascript:void()">
+                  <svg class="svg-icon w-6 h-6 text-blue-500" viewBox="0 0 20 20">
+                    <path fill="none" d="M10,2.531c-4.125,0-7.469,3.344-7.469,7.469c0,4.125,3.344,7.469,7.469,7.469c4.125,0,7.469-3.344,7.469-7.469C17.469,5.875,14.125,2.531,10,2.531 M10,3.776c1.48,0,2.84,0.519,3.908,1.384c-1.009,0.811-2.111,1.512-3.298,2.066C9.914,6.072,9.077,5.017,8.14,4.059C8.728,3.876,9.352,3.776,10,3.776 M6.903,4.606c0.962,0.93,1.82,1.969,2.53,3.112C7.707,8.364,5.849,8.734,3.902,8.75C4.264,6.976,5.382,5.481,6.903,4.606 M3.776,10c2.219,0,4.338-0.418,6.29-1.175c0.209,0.404,0.405,0.813,0.579,1.236c-2.147,0.805-3.953,2.294-5.177,4.195C4.421,13.143,3.776,11.648,3.776,10 M10,16.224c-1.337,0-2.572-0.426-3.586-1.143c1.079-1.748,2.709-3.119,4.659-3.853c0.483,1.488,0.755,3.071,0.784,4.714C11.271,16.125,10.646,16.224,10,16.224 M13.075,15.407c-0.072-1.577-0.342-3.103-0.806-4.542c0.673-0.154,1.369-0.243,2.087-0.243c0.621,0,1.22,0.085,1.807,0.203C15.902,12.791,14.728,14.465,13.075,15.407 M14.356,9.378c-0.868,0-1.708,0.116-2.515,0.313c-0.188-0.464-0.396-0.917-0.621-1.359c1.294-0.612,2.492-1.387,3.587-2.284c0.798,0.97,1.302,2.187,1.395,3.517C15.602,9.455,14.99,9.378,14.356,9.378"></path>
+                  </svg>
+                </a>
+              </li>
+
+              <li className="w-10 h-10 border rounded-full flex items-center justify-center">
+                <a href="javascript:void()">
+                  <svg class="svg-icon w-6 h-6 text-red-600" viewBox="0 0 20 20">
+                    <path fill="none" d="M9.797,2.214C9.466,2.256,9.134,2.297,8.802,2.338C8.178,2.493,7.498,2.64,6.993,2.935C5.646,3.723,4.712,4.643,4.087,6.139C3.985,6.381,3.982,6.615,3.909,6.884c-0.48,1.744,0.37,3.548,1.402,4.173c0.198,0.119,0.649,0.332,0.815,0.049c0.092-0.156,0.071-0.364,0.128-0.546c0.037-0.12,0.154-0.347,0.127-0.496c-0.046-0.255-0.319-0.416-0.434-0.62C5.715,9.027,5.703,8.658,5.59,8.101c0.009-0.075,0.017-0.149,0.026-0.224C5.65,7.254,5.755,6.805,5.948,6.362c0.564-1.301,1.47-2.025,2.931-2.458c0.327-0.097,1.25-0.252,1.734-0.149c0.289,0.05,0.577,0.099,0.866,0.149c1.048,0.33,1.811,0.938,2.218,1.888c0.256,0.591,0.33,1.725,0.154,2.483c-0.085,0.36-0.072,0.667-0.179,0.993c-0.397,1.206-0.979,2.323-2.295,2.633c-0.868,0.205-1.519-0.324-1.733-0.869c-0.06-0.151-0.161-0.418-0.101-0.671c0.229-0.978,0.56-1.854,0.815-2.831c0.243-0.931-0.218-1.665-0.943-1.837C8.513,5.478,7.816,6.312,7.579,6.858C7.39,7.292,7.276,8.093,7.426,8.672c0.047,0.183,0.269,0.674,0.23,0.844c-0.174,0.755-0.372,1.568-0.587,2.31c-0.223,0.771-0.344,1.562-0.56,2.311c-0.1,0.342-0.096,0.709-0.179,1.066v0.521c-0.075,0.33-0.019,0.916,0.051,1.242c0.045,0.209-0.027,0.467,0.076,0.621c0.002,0.111,0.017,0.135,0.052,0.199c0.319-0.01,0.758-0.848,0.917-1.094c0.304-0.467,0.584-0.967,0.816-1.514c0.208-0.494,0.241-1.039,0.408-1.566c0.12-0.379,0.292-0.824,0.331-1.24h0.025c0.066,0.229,0.306,0.395,0.485,0.52c0.56,0.4,1.525,0.77,2.573,0.523c1.188-0.281,2.133-0.838,2.755-1.664c0.457-0.609,0.804-1.313,1.07-2.112c0.131-0.392,0.158-0.826,0.256-1.241c0.241-1.043-0.082-2.298-0.384-2.981C14.847,3.35,12.902,2.17,9.797,2.214"></path>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div> */}
+        <style jsx>{`
+              .svg-icon path,
+              .svg-icon polygon,
+              .svg-icon rect {
+                  fill: currentColor;
+              }
+          `}</style>
+      </div>
+    </footer>
+  )
+}
+
 
 export default Footer;
