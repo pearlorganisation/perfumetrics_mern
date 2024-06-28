@@ -5,7 +5,12 @@ import { MdShare } from "react-icons/md";
 const Review = () => {
   return (
     <div className="grid gap-3">
-      <div className="text-3xl font-medium pl-1">All Reviews By Date</div>
+      <div className="text-3xl font-medium pl-1 relative grid place-items-center">
+        {" "}
+        <div className="absolute w-full border "></div>{" "}
+        <div className="z-20 bg-white px-3 py-2">All Reviews By Date</div>
+      </div>
+
       <div class="max-w-5xl  mx-auto ">
         <div class="bg-[#fafaf6] shadow rounded-lg p-6 mb-4 border border-[#83a6c4]">
           <div class="flex items-start space-x-5">
