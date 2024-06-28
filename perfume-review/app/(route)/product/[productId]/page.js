@@ -1,15 +1,18 @@
 "use client";
 import CircularProgress from "@/app/_components/CircularProgress/CircularProgress";
-import React from "react";
+import React, {  useRef, useState } from "react";
 import { GiFruitBowl } from "react-icons/gi";
 import ProsCons from "../_ProsCons";
 import Pyramid from "@/public/Pyramid.png";
 import Image from "next/image";
 import DoughnutGraph from "@/app/_components/DoughnutGraph/DoughnutGraph";
 import Review from "./Review";
+import CustomerFeedbackModal from "@/app/_components/Modals/FeedBackModal/CustomerFeedbackModal";
 
 const page = ({ params }) => {
   console.log(params, "params");
+
+  const modalRef = useRef();
   const perfumeReviews = [
     {
       imgUrl: "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
@@ -47,8 +50,27 @@ const page = ({ params }) => {
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
   ];
+
+
+   function handleOpeningModal()
+   {
+    console.log("handling open modal ")
+    // setIsOpen((prevState)=> !prevState);
+    modalRef.current.open();
+   }
+
+
   return (
+
+    <>
+
+    {/* feedback form  */}
+
+   <CustomerFeedbackModal  ref={modalRef}/>
+   
+
     <div className="min-h-screen container mx-auto py-20">
+
       <div className="grid gap-5 grid-cols-[auto_30rem]">
         <div className=" space-y-6">
           <div className="grid grid-cols-2">
@@ -185,10 +207,10 @@ const page = ({ params }) => {
               },
             ]?.map((item) => {
               return (
-                <div className="cursor-pointer font-medium text-[#105955] relative">
+                <div onClick={handleOpeningModal} className="cursor-pointer font-medium text-[#105955] relative">
                   <div className="absolute w-full h-full bg-transparent hover:backdrop-grayscale-0 backdrop-grayscale"></div>
                   <img className="h-10" src={item?.icons} alt="" />
-                  {item?.name}
+                  {item?.name} <div className="text-5xl">😂</div>
                 </div>
               );
             })}
@@ -447,6 +469,8 @@ const page = ({ params }) => {
         <Review />
       </div>
     </div>
+    </>
+    
   );
 };
 
