@@ -1,15 +1,16 @@
 "use client";
-import CircularProgress from "@/app/_components/CircularProgress/CircularProgress";
+// import CircularProgress from "@/app/_components/CircularProgress/CircularProgress";
 import React, { useRef, useState } from "react";
 import { GiFruitBowl } from "react-icons/gi";
 import ProsCons from "../_ProsCons";
-import Pyramid from "@/public/Pyramid.png";
 import Image from "next/image";
 import DoughnutGraph from "@/app/_components/DoughnutGraph/DoughnutGraph";
 import Review from "./Review";
 import "./style.css";
 import RatingResult from "@/app/_components/RatingResult/RatingResult";
 import CustomerFeedbackModal from "@/app/_components/Modals/FeedBackModal/CustomerFeedbackModal";
+import Link from "next/link";
+import CardsList from "@/app/_components/CardsList/CardsList";
 
 const page = ({ params }) => {
   console.log(params, "params");
@@ -421,74 +422,7 @@ const page = ({ params }) => {
 
             <div className="space-y-8 py-4">
               <p className="text-4xl font-medium">Top Perfumes</p>
-              <div className="grid md:grid-cols-3 gap -y-4 gap-x-4">
-                {[
-                  `https://s3-alpha-sig.figma.com/img/5882/19bb/8e9028504e49b8db8b3f7633b6982321?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=VzSr~f1UpJ8i0diXAfxCFC0ga42fg2qeRYV-GCKWOcNxb~2R16131RLqxDYIdoIrd9wYdojRp4XbYZNpipuRewbrPLMG28AEqqXkW3v7miWRdX8aBp8~I4KlZbADQWJXyqvY2eHc~zJoJD9pyS2VC5fXcWGrz8BSYCmSBa6Yh9eEE44WfQ2ZbNMUKz1eoAVyz9fcshRuHg9syazi28GnObgOykJKqs6vTzk~ieAgbtuMfsEnpk2suD5Q0w3xP3WQ3BTDzP5YM4ovJkyorV7GfiykJUovMcEnzjyV64WravjVrHNYEB24k0ZLt~lEAKCgyrQYj~78AUqosjdeIyFRkg__`,
-                  `https://s3-alpha-sig.figma.com/img/07f0/e054/a6a5a9efdd7a0d21df27661192799b66?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lbewvUU2-0LGtSWXQOU3Ll-6x2OEAyu6K5U6uk~WvgStgKjm6qCIBc7zrHadNqCofyvcqb-SqD435REnx8hvGD-W6owLoWwe3AEm8EhL9YwpyuwCKIBXqp9aU8vrTkJuKLjY0D3fn7QMAPYw1pJiwmdIGFI30jQcJxZ54kDGSP0rne7TXCjj5~KTgB3~Xyjquev024GXQdauH9jRtoXOyyy0gN61h4RZ4vsslSywqJ~hQhqd45SKeX6a3HTblJnct-pfbaYMkfSbXGlvRV8CtfzBPxp32FataSODnJUZoIWjdJRS-GNMe8I19Nt~g7U-vgMHD87gTt7H0OMM5DXp2g__`,
-                  `https://s3-alpha-sig.figma.com/img/94a7/5ff4/33baf269481586deb947c3d02cda1880?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TXPV5eA7dohzpY3sbGLiiz0F22oWSOM2OYro7Lff9XTs4O7scVrqCWqTfmKApNb6aiZlt7n1zhpVmBT9ncGS3PurDxg9E6kvsrmRBZz3PyK5lfNx2SEDbJraZAAXpaXsz~ShuRCvC9o5QktKsIpeOAPsckSQdWyFzMTxkhcQwO4uvwWxiMsMLEzHWuvMndqJ0gr0Jah0SmF23sMaBaWi86twp3YzKlE7UfDkULGSi8nKHLj5QN1o8WMTxPEe-rr6pa4x8KwwP-wNjuk94Vzd5KnOM8eh-ZyNnQhMQDFuP6uGZ5MZTltx2IhG35k0-aOgdox2ZWJvPlFUznqRjyxBIQ__`,
-                  `https://s3-alpha-sig.figma.com/img/8432/4764/8487715070fa0f5574bb73a463d76a0d?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mO5c8twtXJo8r~EouRTa12kamSX7QznFv7vESkP6bnVlpjtrAx-noI76KJ26VRX62RywhhFqtoZ8-YIwIIeDUfJaMcrLo7nCgXuP~yQR-qYd4msus4J1o1J1TzJ34MVCe~g5MaARqG5~1~mLkxWuYgSXicZ2KuiSyor9nVnvFK4jNcLhkI-1iz1zWoMePmvjXDbtugTJXC7ybyJReT2yo9M7ozIKeGeTQcdvxGVp3OuxpvkNwLKt~t46eoMh5VzsxfEXZ8W98TC70XjO8gr0k7Y4l44kDsC7ZZMJOuzwoGBDG5OJxdt2OIX6kZk~oDpsS52JgIpCxQK3V9yWm57yvg__`,
-                  `https://s3-alpha-sig.figma.com/img/70cd/218e/9988c1991f805c8b9738a31f15ada265?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mAFhjARjQtw5qX84g27S1a7cU4TB1YNwCjmkpUuQHzki1205uwtTFPltuKitIkyAKVVCjrRZDZNEKLgUBHyAhLSxRR-J4fFoPg4zIsWf0ROTMwqZMe~iaWuvwa9DWF5VodhIEv6Jr2~PBJKCpbO9QNIbSMbIcPgP491KEuSHViqO2ttyqpPh2oym00~~D3T5tbRHuy-OwqxvWvJ3W6ya4SBjJOAfe0AJ5fjaOVHY73XL01KynQ3GCyE4L2p2Mbu9vBftF8Mks~FWWtWBxEsLKwf5mZocvIFfUiB3xC6Ptdr8n2GMk1gSiwH5fGjy3CWyFolV-kR85aTiPhYyWvd7Wg__`,
-                  `https://s3-alpha-sig.figma.com/img/dd8e/cfa7/10ea7829d38d72287b660eae3058fb1f?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=C0w6gEjbEt~sVCdasWnUoi2tsJjHh5lPvHuYt2eScFzDKqbxhkCKbAjB5IVZSUHVmWZfX6jl7swxnTH4CRsyfM1zxVf0nLy9hhUGOKO2ROFFFGp1k9ZIQ6J6MaiaCEYt0Xcze9-z8Gh9s5CYclrY8TAIahWJ7RU5WhaOkGRVVfYmhiMtvCEliMy0RndtWkmLvwulRLq3rIvJAVmpsLr0ZqcGzrgNEcnjzRb~fbh2i3HbUW3Zvsn~gNrpoVw2Ad8NrjUPon5SVtep8oEFaoakgQHYbc3kPtZecbX4eX0Go8fQxK2QhteeAE3tJWENAK2S1fqxpex6TTgNp6PIlFNB3g__`,
-                ].map((item) => {
-                  return (
-                    <div className="space-y-1 p-2 shadow-md hover:cursor-pointer border-4 border-transparent hover:border-gray-400/30">
-                      <img
-                        className="h-[25rem] w-full mb-2"
-                        src={item}
-                        alt=""
-                      />
-                      <span className="font-medium text-xl">
-                        Giorgio Armani{" "}
-                      </span>
-                      <div class="text-yellow-500 flex justify-start items-center gap-2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 inline-block"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.691h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.958c.3.921-.755 1.688-1.54 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.838-.197-1.54-1.118l1.287-3.958a1 1 0 00-.364-1.118L2.535 9.386c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.691l1.286-3.958z" />
-                        </svg>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 inline-block"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.691h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.958c.3.921-.755 1.688-1.54 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.838-.197-1.54-1.118l1.287-3.958a1 1 0 00-.364-1.118L2.535 9.386c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.691l1.286-3.958z" />
-                        </svg>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 inline-block"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.691h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.958c.3.921-.755 1.688-1.54 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.838-.197-1.54-1.118l1.287-3.958a1 1 0 00-.364-1.118L2.535 9.386c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.691l1.286-3.958z" />
-                        </svg>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 inline-block"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.691h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.958c.3.921-.755 1.688-1.54 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.838-.197-1.54-1.118l1.287-3.958a1 1 0 00-.364-1.118L2.535 9.386c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.691l1.286-3.958z" />
-                        </svg>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 inline-block"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.691h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.958c.3.921-.755 1.688-1.54 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.838-.197-1.54-1.118l1.287-3.958a1 1 0 00-.364-1.118L2.535 9.386c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.691l1.286-3.958z" />
-                        </svg>
-                        <span className="text-black translate-y-[0.10rem]">
-                          4.7
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+              {/* perfume grid here */}
               <div className="grid place-items-center">
                 <button className="px-8 py-2 font-medium border rounded-md">
                   SHOP MORE
@@ -498,74 +432,7 @@ const page = ({ params }) => {
 
             <div className="space-y-8 py-4">
               <p className="text-4xl font-medium">Similar Perfumes</p>
-              <div className="grid md:grid-cols-3 gap-y-4 gap-x-4 ">
-                {[
-                  `https://s3-alpha-sig.figma.com/img/8ef0/74d9/4afe0d6e8ba95cb7ba8558ee0cbce045?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Gw1j2DYqvyvN83pTaunDMVSQp5nMZmuTKP-Ta3yF5YG-HFP9CTFYXAkuTrmyHpY15fZu0v2vAyHpLhSt9S62BiJpav4gATeomPu~jRuovvmiINpNaDjXJGD-8RvccQcZLp9WybNHuNbFN7rhP4tfJkPQ8db~PioezS0cSmz8OoRDbrhuz1PstqSlA~dLInmKknjpeLIHFax2WN7gcy7~HEsLMN9rG8bwKONQ3YJPdS8GPrR7StHWmGDCo2~SAbf~29an6cOVSO24qaYj7LzDZwgDLlipP-AlJNQtpf3yYKZFMm4SxmIYY3D4CNOKpQunUSMDDtVQARkJkVoCAslgjg__`,
-                  `https://s3-alpha-sig.figma.com/img/0265/7dcf/2f6a3e2164524c1553a3168ca91bd205?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=klC7leClHwlDuhpiKy~STmhf3OqtiCqh6GGjPEI2bKvfxZ8oM6GpZkb4EXKDFMLeeR8KzfAiDE3TTM1rjEydCFEjmxPz~fBSgFOLUTKIN4705g5Ryc21nsTjlV2L4kLzjIdL6ozvlSlKk~FAU-aYsolg9zdv5ZO5N2Wid35lXqVz1C0Ka3mHQbZTx~k~wz2JvoA4osj4oIXaexID2Cme6JIpZsXZRUEX4djXZT-pJH2SFYqI-H3smGMF8xI2bbfjv5DlFtPIQnoDDJbEDrgu7Mxu964FzoKk0nzBZeWXwbQR4pK4OqcUalmAlpIM9rPxcBEkaMJH5z4lkX6KaZKcfw__`,
-                  `https://s3-alpha-sig.figma.com/img/c1c7/136e/70fc5ae7943eb82ac75af7ed4acd2761?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DBOCL9hnIw5~c4sld516IdvaH8ulOiUhy8CbwkBZDdU87bxJdOJdHJioQOiWtFWj91nE8hKnNvFQ7WCwsA85NyU~20VXKozDw3VTp3~PXbrRrK0fdckxIduRdUvXgrynuvw~h0AUwjES7GBqr605NHKvpHOhFXJ6R7fqKdz-oTUtc-ZKP~vqc7YaWmV03oN41zpMsRlOpXqDFPjsI4xbYGTt-yfTENXanbgQkS3O8UZBTcSPJpf933bKKEFArrhqSWdVAWjOkaCZEXCgC7LaMJgew1I7~7VKPesaDdiPglRLzplCTmgzJdnONtoA2zt6CFllAIDZOJIWIBL55lm0qA__`,
-                  `https://s3-alpha-sig.figma.com/img/6886/d215/1dac7fa238426ef77befbd86b2a33b0e?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hvRfXLMPTOHX~R2TOypiUfltBE-CXfotBfRFZTm9uoyo0lt2arBN1w-3b7ezdd6BYnQ0a8i7WounEkvsMfYkVeEbnixiv9bIknkv~KhY7cxCpRsrajnsz-4dhAsHqX0gqEwPBosAQ-Idtg6OyJdVIRuHa78xc-PC~SimX0n3cjXdheFucFniekCBYiEJlAseY7hNuW8g3UAxgbIg5AByZVdh0SsIyv6S3qNGbX2ddeUNZwXVLSx-lxLFItJ4f6Alwgqkc7oKtBPSa-WcUO1XmYfKdhb1r6nALpfioz1~KO4cNmGpUNMw9uFrW90uV-s5dpIki3nRfZ7b24w2Mdx4cg__`,
-                  `https://s3-alpha-sig.figma.com/img/1f7f/b724/948b044e16e6cae7ea7ca7f193ae33c1?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ffTiFZpCxo~7sXu5cWzzfZaZsTuHH1D3kqW8zqz9Do-VmN9pPDbnQi9DbewNGzxgTG1wA7C0UBETmfmWvuutQT6b~OxeZ6T9Jl99TCT8t2pX4Ijr5Pcj~-mRJ5oWuoj7MVpEAirMWks70aL14aka2jXiq9unUUzzWgycjcDVpQtCi3cUE7clxEOvDTEE7LXJrTJz6l1S~517Fhn7loyQi0wZiVO5em3KNnQZ5cf5BQt3CSsq7CbWr9wF-QpwZc0Ozic3G26a6aOayNHNK0nRevmKKFVgJOaDaTzpIJv7iWM9iaKnLIcPvP0Vor0gyv82WZgSpFyXFPvxaECZwp1avw__`,
-                  `https://s3-alpha-sig.figma.com/img/9bc8/06b6/3efb054f334fb5f151c692fb907c19cc?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=apfZssbvPRgXuxnAuxZhxBWRMSspX4L7MuDoRKOwsKzrs0tHjTrjBrhV5Kf1bAqOpf9xBqkqJbhzLlzfLM~w8Vt9RU85nygE6vwYZ5iwRc~B~VfoGEg7AYh8xz3HavXs06RvicgRmldYh9SNbeq7QhBJbPU7EI6S-loRA6rbZwGg4ivIaD~fjj4zyIe29Na7gnYO81--o8uiqhWUBQaL7h~ACoo1yjs4OeWvsm4qaGKcLd4oDaRHdeR6Eo42bQylKyHB7UG1I56kfv2Reej~hxUFk02PsRdjcI7v2h3Vr3J1sn-B68ZidxgoLOj7sQgUkInIc52I1ZPND8padMcYkA__`,
-                ].map((item) => {
-                  return (
-                    <div className="space-y-1 p-2 shadow-md hover:cursor-pointer border-4 border-transparent hover:border-gray-400/30">
-                      <img
-                        className="h-[25rem] w-full mb-2"
-                        src={item}
-                        alt=""
-                      />
-                      <span className="font-medium text-xl">
-                        Giorgio Armani{" "}
-                      </span>
-                      <div class="text-yellow-500 flex justify-start items-center gap-2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 inline-block"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.691h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.958c.3.921-.755 1.688-1.54 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.838-.197-1.54-1.118l1.287-3.958a1 1 0 00-.364-1.118L2.535 9.386c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.691l1.286-3.958z" />
-                        </svg>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 inline-block"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.691h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.958c.3.921-.755 1.688-1.54 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.838-.197-1.54-1.118l1.287-3.958a1 1 0 00-.364-1.118L2.535 9.386c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.691l1.286-3.958z" />
-                        </svg>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 inline-block"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.691h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.958c.3.921-.755 1.688-1.54 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.838-.197-1.54-1.118l1.287-3.958a1 1 0 00-.364-1.118L2.535 9.386c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.691l1.286-3.958z" />
-                        </svg>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 inline-block"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.691h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.958c.3.921-.755 1.688-1.54 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.838-.197-1.54-1.118l1.287-3.958a1 1 0 00-.364-1.118L2.535 9.386c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.691l1.286-3.958z" />
-                        </svg>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 inline-block"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.691h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.958c.3.921-.755 1.688-1.54 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.838-.197-1.54-1.118l1.287-3.958a1 1 0 00-.364-1.118L2.535 9.386c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.691l1.286-3.958z" />
-                        </svg>
-                        <span className="text-black translate-y-[0.10rem]">
-                          4.7
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+              {/* perfume grid here */}
               <div className="grid place-items-center">
                 <button className="px-8 py-2 font-medium border rounded-md">
                   SHOP MORE
@@ -579,61 +446,27 @@ const page = ({ params }) => {
               <RatingResult />
             </div>
           </div>
-          <div className="border-">
-            <div>
-              <div className="flex justify-between items-center py-4">
+          <div className="col-span-1">
+            {/* right side section for perfume review listing */}
+            <div className="px-4">
+              <div className="flex justify-between items-center py-4 ">
                 <span className="text-2xl font-semibold ">Perfume Reviews</span>{" "}
-                <span className="text-pink-400 font-medium">
+                <Link
+                  href={`/write-a-review`}
+                  className="text-pink-400 font-medium"
+                >
                   Write a review
-                </span>
+                </Link>
               </div>
-              <div className="w-full flex flex-col gap-2 rounded-md">
-                {perfumeReviews &&
-                  perfumeReviews?.map((item) => (
-                    <div className="bg-[#F5F5F5] flex justify-start items-center gap-3 cursor-pointer p-4">
-                      <div className="bg-white w-fit p-2">
-                        <img class="size-20 rounded" src={item.imgUrl} alt="" />
-                      </div>
-                      <span class="text-lg font-medium">{item?.name}</span>
-                    </div>
-                  ))}
-                <div className="grid place-items-center">
-                  <button
-                    type="button"
-                    className="text-pink-500 font-medium px-6 py-3"
-                  >
-                    More
-                  </button>
-                </div>
-              </div>
+
+              <CardsList data={perfumeReviews} />
             </div>
-            <div>
+            <div className="px-4">
               <div className="flex justify-between items-center py-4">
                 <span className="text-2xl font-semibold ">Trending News</span>{" "}
               </div>
-              <div className="w-full flex flex-col gap-2 rounded-md">
-                {topNews &&
-                  topNews?.map((item) => (
-                    <div className="bg-[#F5F5F5] flex justify-start items-center gap-3 cursor-pointer p-4">
-                      <div className="bg-white p-2">
-                        <img
-                          class="h-16 w-32 rounded"
-                          src={item.imgUrl}
-                          alt=""
-                        />
-                      </div>
-                      <span class="text-lg font-medium">{item?.name}</span>
-                    </div>
-                  ))}
-                <div className="grid place-items-center">
-                  <button
-                    type="button"
-                    className="text-pink-500 font-medium px-6 py-3"
-                  >
-                    More
-                  </button>
-                </div>
-              </div>
+              <CardsList data={topNews} />
+
             </div>
           </div>
 
