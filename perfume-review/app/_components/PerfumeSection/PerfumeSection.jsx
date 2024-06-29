@@ -4,65 +4,56 @@ import { IoIosArrowRoundForward, IoMdStar, IoMdStarHalf } from "react-icons/io";
 function PerfumeSection() {
   const topPerfumes = [
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.75909.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.75909.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.63832.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.63832.jpg",
       title: "Delina La Rosée Parfums de Marly for women",
       rating: 5,
       reviewLink: "",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.6458.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.6458.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
 
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
       title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
       rating: 5,
       reviewLink: "",
@@ -71,45 +62,37 @@ function PerfumeSection() {
 
   const perfumeReviews = [
     {
-
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
       name: "al haraman",
       brand: null,
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
     {
-      imgUrl:
-        "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
       name: "Denver",
       brand: "Cereria Terenzi Evelino S.R.L.",
     },
@@ -124,33 +107,39 @@ function PerfumeSection() {
               Top Perfume
             </span>
           </div>
-          <div className="flex gap-4 flex-wrap ">
+          <div className="flex gap-3 flex-wrap ">
             {topPerfumes &&
               topPerfumes.map((e) => (
-
-                <Link href='/product/3243242' className="w-full md:w-[30%] flex flex-col gap-2 rounded-md shadow-[0_2px_30px_2px#cccccc] hover:shadow-[0_0_0_2px#c90061]  transition duration-300">
-                  <img src={e.imgUrl} width={"100%"} height={"300px"} />
-                  <div className="flex flex-col h-full gap-2 items-center px-4 pb-4">
-                    <div className="w-full text-sm text-center font-semibold h-1/2">
+                <Link
+                  href="/product/3243242"
+                  className="w-full md:w-[30%] flex flex-col gap-2 rounded-md transition duration-300"
+                >
+                  
+                  <img
+                    src={e.imgUrl}
+                    width={"100%"}
+                    height={"200px"}
+                    className="shadow-[0_2px_30px_2px#cccccc] hover:shadow-[0_2px_10px_2px#f193c4]"
+                  />
+                  <div className="flex flex-col h-full gap-1 items-start pb-4">
+                    <div className="w-full text-sm text-left font-bold h-full">
                       {e.title}
                     </div>
-                    <div className="flex text-pink-500 h-[50px]">
-                      <IoMdStar size={28} />
-                      <IoMdStar size={28} />
-                      <IoMdStar size={28} />
-                      <IoMdStar size={28} />
-                      <IoMdStarHalf size={28} />
+                    <div className="flex gap-2">
+                      <div className="flex text-yellow-400 h-[20px]">
+                        <IoMdStar size={20} />
+                        <IoMdStar size={20} />
+                        <IoMdStar size={20} />
+                        <IoMdStar size={20} />
+                        <IoMdStarHalf size={20} />
+                      </div>
+                      <div className="font-semibold text-sm">
+                        4.5
+                      </div>
                     </div>
-                    {/* put links below in read review currently it's a div */}
-                    <div className="flex text-center text-pink-500 cursor-pointer">
-                      <span className="flex flex-col justify-center">
-                        <IoIosArrowRoundForward size={28} />
-                      </span>
-                      <span>Read review</span>
-                    </div>
+                  
                   </div>
                 </Link>
-
               ))}
           </div>
         </div>
