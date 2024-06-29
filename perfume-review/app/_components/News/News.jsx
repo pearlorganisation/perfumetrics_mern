@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
+import CardsList from '../CardsList/CardsList';
 
 const News = () => {
     const perfumeReviews = [
@@ -51,7 +52,7 @@ const News = () => {
     return (
         <div className='max-w-7x container py-12  grid grid-cols-[auto_25rem] gap-10 mx-auto max:w-8xl'>
             <div className='space-y-4'>
-                <div className='flex justify-between items-center text-4xl font-medium'>News <button className='border rounded-md font-medium px-4 py-2 text-base'>View All</button></div>
+                <div className='flex justify-between items-center text-lg md:text-3xl font-medium'>News <button className='border rounded-md font-medium px-4 py-2 text-base'>View All</button></div>
                 <div className='grid grid-cols-2 gap-6'>
                     {
                         Array(2).fill(true).map(item => {
@@ -72,29 +73,8 @@ const News = () => {
                 </div>
             </div>
             <div className='border-'>
-                <div className='font-medium text-lg py-4'>Latest Reviews</div>
-                <div className="w-full flex flex-col gap-2 shadow-[0_2px_50px_2px#cccccc] rounded-md">
-                    {perfumeReviews &&
-                        perfumeReviews?.map((e) => (
-                            <div className="w-full flex p-5 shadow-sm group hover:bg-pink-500 cursor-pointer tranistion duration-300">
-                                <div className="flex flex-col justify-center w-1/4">
-                                    <img src={e.imgUrl} width={"100%"} />
-                                </div>
-                                <div className="w-full flex flex-col justify-center items-center">
-                                    {e?.name && (
-                                        <div className="text-base font-semibold group-hover:text-white">
-                                            {e?.name}
-                                        </div>
-                                    )}
-                                    {e?.brand && (
-                                        <div className="text-sm font-semibold text-pink-500 group-hover:text-white">
-                                            {e?.brand}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        ))}
-                </div>
+                <div className='font-medium text-lg md:text-3xl py-4'>Latest Reviews</div>
+                <CardsList data={perfumeReviews} />
             </div>
         </div>
     )
