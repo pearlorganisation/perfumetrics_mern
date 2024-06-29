@@ -1,18 +1,17 @@
 "use client";
-import CircularProgress from "@/app/_components/CircularProgress/CircularProgress";
+// import CircularProgress from "@/app/_components/CircularProgress/CircularProgress";
 import React, { useRef, useState } from "react";
 import { GiFruitBowl } from "react-icons/gi";
 import ProsCons from "../_ProsCons";
-import Pyramid from "@/public/Pyramid.png";
 import Image from "next/image";
 import DoughnutGraph from "@/app/_components/DoughnutGraph/DoughnutGraph";
 import Review from "./Review";
 import "./style.css";
 import RatingResult from "@/app/_components/RatingResult/RatingResult";
 import CustomerFeedbackModal from "@/app/_components/Modals/FeedBackModal/CustomerFeedbackModal";
-import { LiaSnowflakeSolid } from "react-icons/lia";
-import TopPerfumes from "./_TopPerfumes";
-import SimilarPerfumes from "./_SimilarPerfumes";
+import Link from "next/link";
+import CardsList from "@/app/_components/CardsList/CardsList";
+import ProductCards from "@/app/_components/ProductCards/ProductCards";
 
 const page = ({ params }) => {
   console.log(params, "params");
@@ -22,6 +21,64 @@ const page = ({ params }) => {
   function handleOpeningModal() {
     modalRef.current.open();
   }
+
+  const topPerfumes = [
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.75909.jpg",
+      title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
+      rating: 5,
+      reviewLink: "",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.63832.jpg",
+      title: "Delina La Rosée Parfums de Marly for women",
+      rating: 5,
+      reviewLink: "",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.6458.jpg",
+      title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
+      rating: 5,
+      reviewLink: "",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
+      title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
+      rating: 5,
+      reviewLink: "",
+    },
+
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
+      title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
+      rating: 5,
+      reviewLink: "",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
+      title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
+      rating: 5,
+      reviewLink: "",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
+      title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
+      rating: 5,
+      reviewLink: "",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
+      title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
+      rating: 5,
+      reviewLink: "",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
+      title: "Pacific Rock Moss Goldfield & Banks Australia for women and men",
+      rating: 5,
+      reviewLink: "",
+    },
+  ];
   const perfumeReviews = [
     {
       imgUrl: "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
@@ -454,9 +511,25 @@ const page = ({ params }) => {
               </div>
             </div>
 
-            <TopPerfumes />
+            <div className="space-y-8 py-4">
+              <p className="text-4xl font-medium">Top Perfumes</p>
+              <ProductCards data={topPerfumes} />
+              <div className="grid place-items-center">
+                <button className="px-8 py-2 font-medium border rounded-md">
+                  SHOP MORE
+                </button>
+              </div>
+            </div>
 
-            <SimilarPerfumes />
+            <div className="space-y-8 py-4">
+              <p className="text-4xl font-medium">Similar Perfumes</p>
+              <ProductCards data={topPerfumes} />
+              <div className="grid place-items-center">
+                <button className="px-8 py-2 font-medium border rounded-md">
+                  SHOP MORE
+                </button>
+              </div>
+            </div>
 
             <div className="grid gap-5 container ">
               <span className="font-medium text-3xl py-4">Rating/Results</span>
@@ -464,61 +537,26 @@ const page = ({ params }) => {
               <RatingResult />
             </div>
           </div>
-          <div className="border-">
-            <div>
-              <div className="flex justify-between items-center py-4">
+          <div className="col-span-1">
+            {/* right side section for perfume review listing */}
+            <div className="px-4">
+              <div className="flex justify-between items-center py-4 ">
                 <span className="text-2xl font-semibold ">Perfume Reviews</span>{" "}
-                <span className="text-pink-400 font-medium">
+                <Link
+                  href={`/write-a-review`}
+                  className="text-pink-400 font-medium"
+                >
                   Write a review
-                </span>
+                </Link>
               </div>
-              <div className="w-full flex flex-col gap-2 rounded-md">
-                {perfumeReviews &&
-                  perfumeReviews?.map((item) => (
-                    <div className="bg-[#F5F5F5] flex justify-start items-center gap-3 cursor-pointer p-4">
-                      <div className="bg-white w-fit p-2">
-                        <img class="size-20 rounded" src={item.imgUrl} alt="" />
-                      </div>
-                      <span class="text-lg font-medium">{item?.name}</span>
-                    </div>
-                  ))}
-                <div className="grid place-items-center">
-                  <button
-                    type="button"
-                    className="text-pink-500 font-medium px-6 py-3"
-                  >
-                    More
-                  </button>
-                </div>
-              </div>
+
+              <CardsList data={perfumeReviews} />
             </div>
-            <div>
+            <div className="px-2">
               <div className="flex justify-between items-center py-4">
                 <span className="text-2xl font-semibold ">Trending News</span>{" "}
               </div>
-              <div className="w-full flex flex-col gap-2 rounded-md">
-                {topNews &&
-                  topNews?.map((item) => (
-                    <div className="bg-[#F5F5F5] flex justify-start items-center gap-3 cursor-pointer p-4">
-                      <div className="bg-white p-2">
-                        <img
-                          class="h-16 w-32 rounded"
-                          src={item.imgUrl}
-                          alt=""
-                        />
-                      </div>
-                      <span class="text-lg font-medium">{item?.name}</span>
-                    </div>
-                  ))}
-                <div className="grid place-items-center">
-                  <button
-                    type="button"
-                    className="text-pink-500 font-medium px-6 py-3"
-                  >
-                    More
-                  </button>
-                </div>
-              </div>
+              <CardsList data={topNews} />
             </div>
           </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,7 +10,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // import required modules
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+import banner1 from "../../_assets/Images/1.png";
+import banner2 from "../../_assets/Images/2.png";
+
+import { GoChevronRight } from "react-icons/go";
+import { GoChevronLeft } from "react-icons/go";
+
+
+console.log("banner1", banner1);
 
 const banners = [
   {
@@ -18,16 +27,14 @@ const banners = [
     description:
       "Perfumer is the place where you can get high-quality fragrances from certified consultants who are not just professionals but also talented masters.",
     buttonText: "Click here",
-    imageUrl:
-      "https://media.theperfumeshop.com/api/v2/tpsgb/wp/blog/wp-content/uploads/2022/03/woman-spraying-body-mist-onto-wrist.jpg",
+    imageUrl: banner1.src,
   },
   {
     title: "Exquisite Scents",
     description:
       "Discover a range of exquisite scents that captivate and enchant.",
     buttonText: "Explore now",
-    imageUrl:
-      "https://img.freepik.com/premium-photo/beautiful-girl-using-perfume-woman-with-bottle-perfume-woman-presents-perfumes-fragrance-perfume-bottle-woman-spray-aroma_293990-493.jpg",
+    imageUrl: banner2.src,
   },
   {
     title: "Luxury Perfumes",
@@ -45,42 +52,67 @@ const banners = [
   },
 ];
 
-const Banner = () => (
-  <>
-    <div className="p-10">
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Navigation, Pagination]}
-        navigation
-      >
-        {banners.map((banner, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className="relative container  max-w-xs sm:max-w-sm md:max-w-6xl lg:max-w-6xl mx-auto rounded-lg shadow-lg flex items-center justify-center h-[45vh] sm:h-[50vh] md:h-[55vh] lg:h-[60vh] p-6 sm:p-8 md:p-16 lg:p-20 text-white bg-cover bg-center"
-              style={{ backgroundImage: `url(${banner.imageUrl})` }}
-            >
-              <div className="absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
-              <div className="relative z-10 text-center max-w-xs sm:max-w-sm md:max-w-6xl lg:max-w-6xl mx-auto">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-4">
-                  {/* {banner.title} */}
-                </h1>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-4 sm:mb-6">
-                  {/* {banner.description} */}
-                </p>
-                {/* <button className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300">
-                {banner.buttonText}
-              </button> */}
+const Banner = () => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  return (
+    <>
+      <div className="py-10 px-5 lg:px-40 xl:px-60 flex justify-center h-[380px]">
+        <div className="flex flex-col h-[90%] justify-center">
+          <div >
+          <GoChevronLeft ref={prevRef} size={32} className="text-gray-800 z-10 cursor-pointer" />
+          </div>
+        </div>
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Navigation, Pagination, Autoplay]}
+          autoplay={{ delay: 5000 }}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          onSwiper={(swiper) => {
+            // Make sure Swiper knows about the custom navigation elements
+            setTimeout(() => {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+
+              // Re-initialize navigation
+              swiper.navigation.destroy();
+              swiper.navigation.init();
+              swiper.navigation.update();
+            });
+          }}
+        >
+          {banners.map((banner, index) => (
+            <SwiperSlide key={index}>
+              <div className="flex justify-center w-full h-[320px] rounded-lg text-white bg-cover bg-center shadow-lg">
+                <div className=" w-[100%] h-[260px] shadow-[2px_0_10px#000000] ">
+                  <img
+                    src={banner.imageUrl}
+                    className="rounded-sm w-full h-full"
+                  />
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
-  </>
-);
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <div className="flex flex-col h-[90%] justify-center">
+          <div ref={nextRef} className="z-10 cursor-pointer">
+          <GoChevronRight ref={nextRef} size={32} className="text-gray-800 z-10 cursor-pointer"/>
+
+          </div>
+        </div>
+
+        {/* Custom navigation buttons */}
+      </div>
+    </>
+  );
+};
 
 export default Banner;
