@@ -7,14 +7,13 @@ const EmojiComponent = ({ res }) => {
     <div className='flex  flex-col justify-between '>
       <div className='flex gap-6 mx-2 '>
         {res.map((item, idx) => (
-          <div key={idx} className="cursor-pointer place-items-center font-medium text-[#105955] relative">
+          <div key={idx} className="cursor-pointer grid place-items-center font-medium text-[#105955] relative">
             <div
-              className={`absolute w-full h-full bg-transparent ${
-                idx + 1 === Number(emoji) ? "backdrop-grayscale-0" : "backdrop-grayscale"
-              }`}
+              className={`absolute w-full h-full bg-transparent ${idx + 1 === Number(emoji) ? "backdrop-grayscale-0" : "backdrop-grayscale"
+                }`}
             ></div>
-            <div className="text-3xl">{item.img}</div>
-            <div>{item.text}</div>
+            <div className="text-2xl text-center">{item.img}</div>
+            <div className='text-sm text-center'>{item.text}</div>
           </div>
         ))}
       </div>

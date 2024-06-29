@@ -9,6 +9,8 @@ import Image from 'next/image';
 const CustomerFeedbackModal = forwardRef((props, ref) => {
   const modalRef = useRef();
   const [emoji, setEmoji] = useState(1);
+  const [selected, setSelected] = useState(1)
+  const [selectedIcon, setSelectedIcon] = useState(1)
 
   useImperativeHandle(ref, () => ({
     open: () => {
@@ -21,25 +23,25 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
 
   const emojiData = [
     {
-      img: "😂",
+      img: "😖",
       text: "Worst"
     },
     {
       img: "😐",
-      text: "Okay"
+      text: "Not Good"
     },
     {
       img: "😊",
-      text: "Good"
+      text: "Fine"
     },
     {
-      img: "😍",
-      text: "Best"
+      img: "😀",
+      text: "Good"
     },
     ,
     {
       img: "😍",
-      text: "Best"
+      text: "Very Good"
     }
   ];
 
@@ -49,7 +51,7 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
         id="default-modal"
         tabIndex="-1"
         aria-hidden="true"
-        className="overflow-y-auto flex overflow-x-hidden fixed top-0 right-0 left-0 z-80 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+        className="overflow-y-auto  flex overflow-x-hidden fixed top-0 right-0 left-0 z-80 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
       >
         <div className="relative p-4 w-full max-w-4xl max-h-full">
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -81,33 +83,32 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
               </button>
             </div>
 
-            <form action="#" className='p-10'>
+            <form action="#" className='p-10  grid place-items-center'>
               <div className='w-89  flex items-center justify-center'>
                 <div className='checkBoxes flex gap-8 p-4 justify-between '>
 
-                  <div className="flex items-center mb-4">
-                    <input checked id="checkbox-1" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                    <label htmlFor="checkbox-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I have it</label>
-                  </div>
-                  <div className="flex items-center mb-4">
-                    <input checked id="checkbox-2" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                    <label htmlFor="checkbox-2" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I had it</label>
-                  </div>
-                  <div className="flex items-center mb-4">
-                    <input checked id="checkbox-3" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                    <label htmlFor="checkbox-3" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I want it</label>
-                  </div>
+                  {
+                    [`I have it`, `I had it`, `I want it`].map((item, ind) => {
+                      return <div
+                        onClick={() => {
+                          setSelected(ind + 1)
+                        }}
+                        className='flex justify-start items-center gap-5 cursor-pointer'>
+                        <div className={`size-4  ${ind + 1 === selected ? 'bg-[#105955]' : 'bg-[#7B7A7A]'}   rounded-full`}></div> <span>{item}</span>
+                      </div>
+                    })
+                  }
                 </div>
               </div>
 
               <div className='grid grid-cols-2'>
                 <div>
-                  <legend className='text-left text-blue-600 m-4 text-md font-bold'>Longitivity</legend>
+                  <legend className='text-left text-[#2071B2] m-4 text-md font-bold'>Longitivity</legend>
                   <EmojiComponent res={emojiData} />
                 </div>
 
                 <div>
-                  <legend className='text-left text-blue-600 m-4 text-md font-bold'>Sillage</legend>
+                  <legend className='text-left text-[#2071B2] m-4 text-md font-bold'>Sillage</legend>
                   <EmojiComponent res={emojiData} />
                 </div>
 
@@ -116,80 +117,72 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
 
               <div className='grid grid-cols-2'>
                 <div>
-                  <legend className='text-left text-blue-600 m-4 text-md font-bold'>PRICE VALUE</legend>
+                  <legend className='text-left text-[#2071B2] m-4 text-md font-bold'>PRICE VALUE</legend>
                   <EmojiComponent res={emojiData} />
                 </div>
 
                 <div>
-                  <legend className='text-left text-blue-600 m-4 text-md font-bold'>GENDER</legend>
+                  <legend className='text-left text-[#2071B2] m-4 text-md font-bold'>GENDER</legend>
                   <EmojiComponent res={emojiData} />
                 </div>
               </div>
 
-             
 
-              <div className=' my-4 items-center justify-center gap-20 flex '>
-                <p>
-                <Image
-                className='hover:text-blue-400'
-                src="/snow.png"
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-                alt="img"
-              />
-                </p>
-                 <p>
-                <Image
-                src="/spring.png"
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-                alt="img"
-              />
-                </p>
-                 <p>
-                <Image
-                src="/summer.png"
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-                alt="img"
-              />
-                </p>
-                <p>
-                <Image
-                src="/fall.png"
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-                alt="img"
-              />
-                </p>
-                <p>
-                <Image
-                src="/night.png"
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-                alt="img"
-              />
-                </p>
-                <p>
-                <Image
-                src="/summer.png"
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-                alt="img"
-              />
-                </p>
+
+              <div className="grid grid-cols-6 gap-5">
+                {[
+                  {
+                    name: "Winter",
+                    icons: "/snow.svg",
+                    indi: 30,
+                  },
+                  {
+                    name: "Spring",
+                    icons: "/spring.svg",
+                    indi: 20,
+                  },
+                  {
+                    name: "Summer",
+                    icons: "/summer.svg",
+                    indi: 60,
+                  },
+                  {
+                    name: "Fall",
+                    icons: "/fall.svg",
+                    indi: 55,
+                  },
+                  {
+                    name: "Day",
+                    icons: "/day.svg",
+                    indi: 45,
+                  },
+                  {
+                    name: "Night",
+                    icons: "/night.svg",
+                    indi: 45,
+                  },
+                ]?.map((item, idx) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        setSelectedIcon(idx + 1)
+                      }}
+                      className="cursor-pointer font-medium text-[#105955] relative grid place-items-center"
+                    >
+                      <div className={`absolute w-full h-full bg-transparent ${selectedIcon === idx + 1 ? 'backdrop-grayscale-0' : 'backdrop-grayscale'}  `}></div>
+                      <Image
+                        src={item?.icons}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        style={{ width: "60%", height: "auto" }}
+                        alt="img"
+                      />
+                      <div className="text-sm font-medium"> {item?.name}</div>
+
+                    </div>
+                  );
+                })}
               </div>
             </form>
 
