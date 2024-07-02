@@ -1,8 +1,14 @@
+async function getPerfumes() {
+  const response = await fetch(`https://perfume-backend-1.onrender.com/api/v1/perfume`)
+  const data = await response.json()
+  return data
+}
+
 
 import CardsList from "../CardsList/CardsList";
 import ProductCards from "../ProductCards/ProductCards";
 
-function PerfumeSection() {
+async function PerfumeSection() {
   const topPerfumes = [
     {
       imgUrl: "https://fimgs.net/mdimg/perfume/375x500.75909.jpg",
@@ -99,6 +105,9 @@ function PerfumeSection() {
     },
   ];
 
+  const data = await getPerfumes()
+  console.log(Array.isArray(data.data))
+
   return (
     <>
       <div className="w-full flex flex-wrap justify-between px-20 py-10">
@@ -108,7 +117,7 @@ function PerfumeSection() {
               Top Perfume
             </span>
           </div>
-         <ProductCards data={topPerfumes} /> 
+          <ProductCards data={data?.data} />
         </div>
         <div className="w-full md:w-[30%] flex flex-col gap-10">
           <div className="shadow-[0_2px#ff1269] w-fit py-4">

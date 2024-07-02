@@ -1,6 +1,24 @@
-"use client";
+async function getPerfumeById(perfumeId) {
+  const response = await fetch(
+    `https://perfume-backend-1.onrender.com/api/v1/perfume/${perfumeId}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const data = await response.json();
+  return data;
+}
+
+async function getPerfumes() {
+  const response = await fetch(
+    `https://perfume-backend-1.onrender.com/api/v1/perfume`
+  );
+  const data = await response.json();
+  return data;
+}
+
 // import CircularProgress from "@/app/_components/CircularProgress/CircularProgress";
-import React, { useRef, useState } from "react";
+
 import { GiFruitBowl } from "react-icons/gi";
 import ProsCons from "../_ProsCons";
 import Image from "next/image";
@@ -8,19 +26,14 @@ import DoughnutGraph from "@/app/_components/DoughnutGraph/DoughnutGraph";
 import Review from "./Review";
 import "./style.css";
 import RatingResult from "@/app/_components/RatingResult/RatingResult";
-import CustomerFeedbackModal from "@/app/_components/Modals/FeedBackModal/CustomerFeedbackModal";
+
 import Link from "next/link";
 import CardsList from "@/app/_components/CardsList/CardsList";
 import ProductCards from "@/app/_components/ProductCards/ProductCards";
+import Feedback from "@/app/_components/Feedback/Feedback";
 
-const page = ({ params }) => {
-  console.log(params, "params");
-  const modalRef = useRef();
-  const [emoji, setEmoji] = useState(1);
-
-  function handleOpeningModal() {
-    modalRef.current.open();
-  }
+const page = async ({ params }) => {
+  const { productId } = params;
 
   const topPerfumes = [
     {
@@ -178,11 +191,13 @@ const page = ({ params }) => {
       name: `Pashmina Roshan was 'enamoured' by Shahid Kapoor's dance in 'Ishq Vishk'`,
     },
   ];
+
+  const data = await getPerfumeById(productId);
+  const perfumeData = await getPerfumes();
+  console.log(data?.data, "data");
   return (
     <>
       {/* feedback form  */}
-
-      <CustomerFeedbackModal ref={modalRef} />
 
       <div className="min-h-screen container mx-auto py-20">
         <div className="grid gap-5 grid-cols-[auto_28rem]">
@@ -190,14 +205,10 @@ const page = ({ params }) => {
             <div className="grid grid-cols-2">
               <div>
                 <p className="text-3xl font-medium">
-                  Seductive Blue Guess{" "}
-                  <span className="text-2xl text-[#5899CA]">for women</span>
+                  {data?.data?.perfume}{" "}
+                  {/* <span className="text-2xl text-[#5899CA]">for women</span> */}
                 </p>
-                <img
-                  src="https://s3-alpha-sig.figma.com/img/bf88/421d/7615fcf2be9240299895d960bf349076?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Vw6gbYm7xhC-digwWvF6VLcp-VGE-RDl1nUS1gkW09A22VNriwszpQa8O4BMFY2SdOvge8akhxTop1oFqjOA5V6l~KrmczQhnRacD55H~O4FEbbBCe-iclE5xeseePktraRQ2sqnJTKma6E8ASAZYaIlWua8TQdaEva3-NHx1ABPWNKIiE14UsSCSojCXpHNgZ2Frpl35N2jrt83fmqv12An~biK9cbhm1o4lyWNzTDGxQfr4Apf8QcGFCix6sAv2ejFVdGuQ9icUkwD-D6CrilqR5swloZjvAXdCmF3l19dB7BDHOs~ywFSmfDv3KGOi3mRgY6g8zxsIgelrCqm6A__"
-                  alt=""
-                  srcset=""
-                />
+                <img src={data?.data?.banner} alt="img" srcset="" />
               </div>
               <div className="flex flex-col justify-center  items-center gap-4">
                 <div className="rounded-full overflow-hidden border w-fit">
@@ -208,7 +219,7 @@ const page = ({ params }) => {
                   />
                 </div>
                 <div className="flex flex-wrap">
-                  <DoughnutGraph />
+                  <DoughnutGraph mainAccords={data?.data?.mainAccords} />
                 </div>
               </div>
             </div>
@@ -244,7 +255,7 @@ const page = ({ params }) => {
               Guess Mens Seductive Blue Body Mist ...{" "}
               <span className="font-medium ">(10.99 USD)</span>
             </p>
-            <div className="">
+            <div className="space-y-3">
               {[
                 {
                   title: "Buy From",
@@ -263,138 +274,11 @@ const page = ({ params }) => {
                 );
               })}
             </div>
-            <div className="grid grid-cols-2">
-              <div className="grid grid-cols-6 gap-5">
-                {[
-                  {
-                    name: "Wrost",
-                    icons: "😖",
-                    indi: 30,
-                  },
-                  {
-                    name: "Not Good",
-                    icons: "🙁",
-                    indi: 20,
-                  },
-                  {
-                    name: "Fine",
-                    icons: "😐",
-                    indi: 60,
-                  },
-                  {
-                    name: "Good",
-                    icons: "😀",
-                    indi: 55,
-                  },
-                  {
-                    name: "Very Good",
-                    icons: "😍",
-                    indi: 45,
-                  },
-                ]?.map((item) => {
-                  return (
-                    <div
-                      onClick={handleOpeningModal}
-                      className="cursor-pointer font-medium text-[#105955] relative grid place-items-center"
-                    >
-                      <div className="absolute w-full h-full bg-transparent hover:backdrop-grayscale-0 backdrop-grayscale"></div>
-                      <div className="text-3xl">{item?.icons}</div>
-                      <div className="text-sm font-medium"> {item?.name}</div>
-                      <div className="h-3 border overflow-hidden rounded-lg w-full bg-slate-300">
-                        {" "}
-                        <div
-                          style={{
-                            width: `${item.indi}%`,
-                          }}
-                          className={`h-full  bg-pink-500 grayscale-0`}
-                        ></div>{" "}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="grid grid-cols-6 gap-5">
-                {[
-                  {
-                    name: "Winter",
-                    icons: "/snow.svg",
-                    indi: 30,
-                  },
-                  {
-                    name: "Spring",
-                    icons: "/spring.svg",
-                    indi: 20,
-                  },
-                  {
-                    name: "Summer",
-                    icons: "/summer.svg",
-                    indi: 60,
-                  },
-                  {
-                    name: "Fall",
-                    icons: "/fall.svg",
-                    indi: 55,
-                  },
-                  {
-                    name: "Day",
-                    icons: "/day.svg",
-                    indi: 45,
-                  },
-                  {
-                    name: "Night",
-                    icons: "/night.svg",
-                    indi: 45,
-                  },
-                ]?.map((item) => {
-                  return (
-                    <div
-                      onClick={handleOpeningModal}
-                      className="cursor-pointer font-medium text-[#105955] relative grid place-items-center"
-                    >
-                      <div className="absolute w-full h-full bg-transparent hover:backdrop-grayscale-0 backdrop-grayscale"></div>
-                      <Image
-                        src={item?.icons}
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        style={{ width: "60%", height: "auto" }}
-                        alt="img"
-                      />
-                      <div className="text-sm font-medium"> {item?.name}</div>
-                      <div className="h-3 border overflow-hidden rounded-lg w-full bg-slate-300">
-                        {" "}
-                        <div
-                          className={`h-full w-[50%] bg-pink-500 grayscale-0`}
-                        ></div>{" "}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+            <Feedback />
             <div>
-              Seductive Blue by Guess is a Floral Fruity fragrance for women.
-              This is a new fragrance. Seductive Blue was launched in 2023. Top
-              notes are Pear and Bergamot; middle notes are Peony, Freesia, Rose
-              Water and Cyclamen; base notes are Plum, Musk, Amber and
-              Patchouli.A fresh and addictive fruity floral fragrance with notes
-              of crisp Pear, Rosewater, and Patchouli.
+              {data?.data.details}
               <br />
-              INSPIRATION A bold perfume, an irresistible temptation, an allure
-              of seduction... The confidence and charm of the GUESS woman
-              inspires Seductive Blue.
-              <br />
-              FRAGRANCE Fresh and addictive, Seductive Blue perfume takes you on
-              a journey to a haven of tranquility. Crisp Pear and Italian
-              Bergamot open the fragrance before revealing a floral heart of
-              dew-covered Peony Petals, Rosewater, and Blue Freesia. Base notes
-              of Plum, Silky Musk, Amber, and Patchouli emphasize the fruity and
-              floral trail. This perfume evokes sun-kissed seaside memories and
-              invites you to escape to a bright paradise.
-              <br />
-              BOTTLE In a refreshing blue hue, the Seductive Blue bottle
-              transports us to a dreamy getaway. A captivating, feminine vessel
-              adorned with the iconic GUESS triangular logo on a golden plaque.
+              {data?.data?.description}
             </div>
 
             <ProsCons />
@@ -432,88 +316,38 @@ const page = ({ params }) => {
             /> */}
               <div className="grid grid-rows-3 h-full">
                 <div className=" flex justify-start items-center gap-3 ">
-                  <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                    <img
-                      className="h-24"
-                      src="https://s3-alpha-sig.figma.com/img/429d/2016/8589e3e474bcc5e5b5150d0c5828750c?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bpCdD7mgrfSwyDmgu5AMBCmAECUyQbHhMf6486si0bLfIxmIWB59fADCcjKG0N8Qo9P7lTMx0gkDfDWNQLIm5QsY6xLpYjYiU~TL6YljD3cvPC2K7BJ1UtqvfdegOAYnrqjT5Gq6UwyP6Rbq15cOuH55wUjhJFIP47xswiw1Bx4h90dw3FDcbKzzNuT9pO5DSq1UCrGzkYr-qr3fzBuU13AIMnBYm~QX1sYZVcTvWyLchG8ZHf0YeDnpPNoHv2NA7AFgqPlBO7MhVkvPUj7ttPS6Bx5YLLKPqgn0waxYR3VtLYqr7s6T22JIHxEC2eMD8dlhR3C52EISVD3Hv1yZ5g__"
-                      alt=""
-                    />
-                  </div>
-                  <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                    <img
-                      className="h-24"
-                      src="https://s3-alpha-sig.figma.com/img/956c/ab95/a0f548182b7e2e6dd966510c8c2c789a?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GM~lZPAvkwxXg3wHVcecHjs8-~LuXWK~1Q58mxUKdpUEMjr9Rw7agc-SdvkFxDyAqeOJge-gGUkPqQpnTX6h7~PIpNeKUWx1AWhhCP56YE-AcjYwWur1MLRkkz2thAKMmcwpcpoEUq6~fGVUKKwsE-Zyt5xL8JMdAGgOAMHtJXdlpSAWYkamgZ0RZpY69lZYGFTtv7L7iVMTrF-NbAS6xbwwV0frWoARCcf2p6wUksitxy5WuGWaqKdktABz0apsHfoNn2jBBRwHq9nZDy0C4Vx0ra8hbgnHnR7J0Vf~tTEdJ~OF~3Hs6fIhI84cYuftOfxfeOZFOkSdiO089MiW-Q__"
-                      alt=""
-                    />
-                  </div>
+                  {data?.data?.topNote?.map((item) => {
+                    return (
+                      <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
+                        <img className="h-24" src={item?.image} alt="" />
+                      </div>
+                    );
+                  })}
                 </div>
                 <div className=" flex justify-start items-center gap-3 ">
-                  <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                    <img
-                      className="h-24"
-                      src="https://s3-alpha-sig.figma.com/img/3f61/62b0/a6e0dc42cce537e25895057cb3621ef0?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRSbzVKhZ4GLPEmDP~XCyt6O9F5dNgRkKZgrTq3imHl0JtfAUzB15BuLBykH0PSn0NhP2MKLSPPsiE9wdVaERvfjqUpgBX11aRkQ1DnxzgahdPjMjC3f9M~KaCuYzgfdrh9Ah-ainDUWsrVL3jpUHJAxXX2TbhImugWRcq2N0N~gNktv4-AfF35hfdmCT06iQDYwXYB7bxylRGO-f2uPzftckAmR8HZqMsMEVmeB8tjQKwUHwOpqKcX7YELoxn5xxfdpSJ9JNBDZpw9gUGnRddNIRs1uyJZBew4HVOLEyf1oWWG80HILZEdrDqEG1ynNfsFQ~OCA53jxgl~OZXeHuw__"
-                      alt=""
-                    />
-                  </div>
-                  <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                    <img
-                      className="h-24"
-                      src="https://s3-alpha-sig.figma.com/img/983b/728b/af36e70f427aaac27b29a9d2aaf6391f?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=l1xf11Z1WX6EQhxK~gqZcW~wEe5Eu~4M~v2nCZMBvJAb0TPf0pBtRbV6W~swJpjgJ~cqRzogEBj1yAOSUX3e9-UtvXCBJxy-W~h4I6-~0YhBUFuzvFsr1fNXfsWqGEj3~-d~KQyBMP3brVt5dQGhAAhw1LtFRlsnw1OHAw~FJJ8bLp5v~MpKz142GlL9LOx0B-rkDDhCuMmZlzMSlbnLhJ54VN1ROtM196VvXEHw2U-0uZHCg1Rm3zfvAFw1td2t1gsU5PB74jX1aUsel9zq3uhRlZ~X8IKNg9BYmtyDR5ZCAt3i81IcJkcoiCAVPgMB6jb5y~kouBQSTreowOm-Ig__"
-                      alt=""
-                    />
-                  </div>
-                  <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                    <img
-                      className="h-24"
-                      src="https://s3-alpha-sig.figma.com/img/9262/019e/8fd075ac0e9953cda71ab7fef12461d8?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=J53fBgmMcwF-usE1jLlDCuYQUIfHZJ82WG5QCseppeme44T5pEjlQycElNa9Jo~yUxbUMp7V-PzJgCy~ZYGqeBlHJajEoXBgNQo27Gt6fDDJC4USxgup0xptMUBYej4iD~jEOVq0WV5xRXWtPa85wZ-ay29E2NnWviUeaRdF4ub2I6bWNpxMtS0j7aXe1bfkPiem~rL~OPUCnbzJAqsTLj1auCbWqRNYVZZUzPcdrS3fXaE4NgQFiZWN~VXjb~DVgfQBBRbLr352tE9NuzZmoRfyT9HiayBLcF-XcHaaMdGjVsx3xc4GjFGAeFWMVZ8qMSL1ookK5IHSnIy0~JFBfw__"
-                      alt=""
-                    />
-                  </div>
-                  <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                    <img
-                      className="h-24"
-                      src="https://s3-alpha-sig.figma.com/img/ee39/5edb/f6c5b80024f71b927e161b7f9c557fda?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=BUcU8UvldPeU7syMWJsSI8oJu3B7FfgAgZMu1rl0vqp0BcBqartl8rsQxLgmROcDhdELjjUuF3zObjWqxUxH4D8-gDbpGoqMLG8PVNQyIcFvEUqFvwh5CHL~jFYXjD1dvOOkJILVU-oSL4m1Up5TmV2qsfm6hzt6YNq2-8-kfXzIPUSfgY-otnUndflKpXCnCX4CjUOzEFsvX0iYFVhGCBIiZynuwXTlR5c7xySq-CmCql5W-fuX7Y6dROE7~wOFS0ELSJ-fqDOn6uda6arT--Gb3MZq6U75Brjm4ij~ii6EjH2EVxGMAx5khUwo8E~UmXPinam5uTWxIYCrhpizcg__"
-                      alt=""
-                    />
-                  </div>
+                  {data?.data?.middleNote?.map((item) => {
+                    return (
+                      <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
+                        <img className="h-24" src={item?.image} alt="" />
+                      </div>
+                    );
+                  })}
                 </div>
                 <div className=" flex justify-start items-center gap-3 ">
-                  <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                    <img
-                      className="h-24"
-                      src="https://s3-alpha-sig.figma.com/img/c3f5/6f77/e11ff0bff3247d489e8be84be038a788?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=oimSBz46Byx4cq3RJSmT3f63J-U-KGS0VLJbfcxPVtXsgvpq2izrt201Pmxr~rKdac7v0fWRV36kb19LSr~zTpw1DO2~yRkEqrRKySFvKY-l~n91EmAr700ikhVYn3ORBVLc973ukJP15iEv39nZzYLvOqg9nAy6yYqPS1lzy-0EdvF1-W-CoMfzoLs0AwUaqunkSz6N4WFiAiOrvxOlyb3c3mokK0CFPW2gIkhu6MdBVXhtmTSGq0EG3m0~q70yM2ZDnzIh1kkFQmhS7-8PPaipWiAsYSeOsv~zyw6tt~hE1KYEHOAcoBp6idGqLJFsY3Y0fhsP5FIocEO--BMNkg__"
-                      alt=""
-                    />
-                  </div>
-                  <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                    <img
-                      className="h-24"
-                      src="https://s3-alpha-sig.figma.com/img/30cb/6aa9/c4c82dd4ce1b2413369af4f0a2e86566?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H5lDT8541ztBTCmNugvJ1MriGA6Vhrr6TGomWpyEdtZriWXNq13X6KECTN7l8NZr9Upoy9R49ckn6TomjaXMvzeVB12eF1bwEsnRD~pY69gPJdt1sDDD2CbGzzyweWQnPRDuGL1hKwQFnTer617BaCZugGaGyM21UacrLxfhHfjMBNf4wesmezJF-hyTHZSKD2CurBwiuxLHxlRjN3ho90LIeasQ6KAsY7iAOj5AjWnZ3wzJkQxKJYAvngUrSVZqnCsDujZdWvt9oe5BXvLTvBR3-kqalYlHZVGNNg8sLFWkQ3~p--izP9gWdLarh96AYFYlNO0UwMBftibq24XBRA__"
-                      alt=""
-                    />
-                  </div>
-
-                  <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                    <img
-                      className="h-24"
-                      src="https://s3-alpha-sig.figma.com/img/fb06/e7fa/8a69271a0658568dacc24bea2b266d77?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YIVHq2oIPOorGJsT-yTBhXe2lIMiKkzdMyA7Zeu4KXojuVN-5KoYZbVUXIpukZQdlJbcw6HzAaV5V~9JtaqNbwolrnWiqpftLtVeUsf7IMR5kgBXBranvyv08rKZzFFVYv9RN~gVCyCKix~7YLJ2OPS~YKPYJkq7rR0WGfOfAUjl6Clr5T0D2UEB1xOvUVdw0C3nPc~lenxKe07wcFJ-fsovxwwKFYyHEp1aMDDTK~-p1Xf9UEI8~ar9Qc0FG2HbjtLSBVEVfHtQgPyigEIKuYCZCLCk1TEfk6qGgryIZ-dTOUtA2NkKaTCh6qhpuPOXlMXinTR7uF8QOSNKEsjQVQ__"
-                      alt=""
-                    />
-                  </div>
-                  <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                    <img
-                      className="h-24"
-                      src="https://s3-alpha-sig.figma.com/img/5717/9106/ca17d446183af350a4245aeb5d75418d?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=INwHfDPVsL0YM335ySIdsCGmQIAjDFLDTEOLEmwCn8n-AnWj4kG-h3QJDxWnpDCn7MmHSG4db5zbTJmyBdFu~rI~hVXesrRqIXYZUxVA4I-YCOEIF-kC2Vk4q8ZsuqBGdyhhG0Mi969E40Nb-kwsgSkrg-6fc~vq0w~hLDHeA-z1BGP~u36IuE0c4k~mskt7CuN0myo~LX3K4BgMmLl1QuUFqCwtfYqDHTHLm5w5Qx~O8OsjCW5LSl7K6UzMsqGVe~G2nXyOLRlhUC6lS3zP6jxdJZLDi7X8qYOUHZ9kCJxPGs6BjHSElnP7XqacqiZe0TPAHYEUfENiJ2qgf0vBMA__"
-                      alt=""
-                    />
-                  </div>
+                  {data?.data?.baseNote?.map((item) => {
+                    return (
+                      <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
+                        <img className="h-24" src={item?.image} alt="" />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
 
             <div className="space-y-8 py-4">
               <p className="text-4xl font-medium">Top Perfumes</p>
-              <ProductCards data={topPerfumes} />
+              <ProductCards data={perfumeData?.data} />
               <div className="grid place-items-center">
                 <button className="px-8 py-2 font-medium border rounded-md">
                   SHOP MORE
@@ -523,7 +357,7 @@ const page = ({ params }) => {
 
             <div className="space-y-8 py-4">
               <p className="text-4xl font-medium">Similar Perfumes</p>
-              <ProductCards data={topPerfumes} />
+              <ProductCards data={perfumeData?.data} />
               <div className="grid place-items-center">
                 <button className="px-8 py-2 font-medium border rounded-md">
                   SHOP MORE
