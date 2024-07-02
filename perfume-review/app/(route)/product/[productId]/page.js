@@ -31,6 +31,9 @@ import Link from "next/link";
 import CardsList from "@/app/_components/CardsList/CardsList";
 import ProductCards from "@/app/_components/ProductCards/ProductCards";
 import Feedback from "@/app/_components/Feedback/Feedback";
+import PerfumePhotos from "@/app/_components/PerfumePhotos/PerfumePhotos";
+import { FaQuoteLeft } from "react-icons/fa";
+import { IoMdAdd } from "react-icons/io";
 
 const page = async ({ params }) => {
   const { productId } = params;
@@ -201,177 +204,30 @@ const page = async ({ params }) => {
 
       <div className="min-h-screen container mx-auto py-20">
         <div className="grid gap-5 grid-cols-[auto_28rem]">
-          <div className=" space-y-6">
-            <div className="grid grid-cols-2">
-              <div>
-                <p className="text-3xl font-medium">
-                  {data?.data?.perfume}{" "}
-                  {/* <span className="text-2xl text-[#5899CA]">for women</span> */}
-                </p>
-                <img src={data?.data?.banner} alt="img" srcset="" />
-              </div>
-              <div className="flex flex-col justify-center  items-center gap-4">
-                <div className="rounded-full overflow-hidden border w-fit">
-                  <img
-                    className="h-40"
-                    src={`https://static.vecteezy.com/system/resources/previews/009/003/747/non_2x/luxury-perfume-bottle-logo-design-illustration-for-cosmetics-beauty-salon-company-products-free-vector.jpg`}
-                    alt=""
-                  />
-                </div>
-                <div className="flex flex-wrap">
-                  <DoughnutGraph mainAccords={data?.data?.mainAccords} />
-                </div>
-              </div>
-            </div>
-            <div className=" flex gap-x-5 gap-y-4 flex-wrap max-w-2xl">
-              {[
-                `Fruity`,
-                `Fresh`,
-                `Sweet`,
-                `Powdery`,
-                `Floral`,
-                `Mens`,
-                `Women's`,
-                `Citrus`,
-              ]?.map((item) => {
-                return (
-                  <div className="flex  justify-start items-center gap-2 font-medium text-lg">
-                    <GiFruitBowl className="text-gray-500" />
-                    {item}
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex gap-3">
-              {[`I have it`, `I had it`, `I want it`].map((item) => {
-                return (
-                  <div className="bg-[#FCF1F5] cursor-pointer rounded-3xl px-6 py-3 font-medium">
-                    {item}
-                  </div>
-                );
-              })}
-            </div>
-            <p className="text-lg">
-              Guess Mens Seductive Blue Body Mist ...{" "}
-              <span className="font-medium ">(10.99 USD)</span>
-            </p>
-            <div className="space-y-3">
-              {[
-                {
-                  title: "Buy From",
-                  img: "https://s3-alpha-sig.figma.com/img/3659/5e0f/7eef1817ec204989391c3be6ac3d5499?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Eez7RfvpVZaxP9V0eylwnnNzYiYt4TuntkPLYpOMc0S3YUIp8RIPE1xyjmzLAeRViSPvm-dPRCl3pfPNUSbLg7UV9hZ6qxDkyDOSdWchcLteNA9xCOhEri4RASZMQ0JObY2y~xNBZ~qq4e7dc3j58MxFGfkmTVMm0l0d~MzVt1x5ehYN3f6WqCD~KszzZYs0nRBoQaMQhVUrUbcrXw8WcW6fCMnHy0hEB86zzzGtbWBul1O7ThN2dmXiw6DhMRNSZkb0vyZhghFpItn5nKNHvkg-yQg~NPfh2mBUsJccqMKx9tjkcYifrGRQHtFine3LLUEDPTxaDLDIbc1jExIapg__",
-                },
-                {
-                  title: "Buy From",
-                  img: "https://s3-alpha-sig.figma.com/img/87cb/8e80/a974a28100d68d7f00b0634e69ff2269?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JMzwB1wBCMjHQF6cykxZ6EXQK8o8OEAhMpHNZ-5eCnRVr8QBz4A0vYZiMHSpLVm7-BAIlTf7tMemYQEkVu6sxqhEY-4NaEx-lR0Z0Po3Ev~FPQoN4P5UxUOI-dr-3IB1fOLYTeLm3Bs4ylcJedIN-w8B7i6S39INHu6dvie~4FMLZ0tqpM2krtvmZWGxohKjNUpuhZQTJTI3Yq9rkIgDd2c48--xWj7Fo9PyXJDlYlTvKIkO82P6myuikCHJXt9L2ds2qsT6oV1LVXTfSMN1mY6Ya1SvFTF-Vb1mwqATm8drsiKsDzdqtYBapIJJDHJ~5n86Eg84khZ6miAAVf~cDA__",
-                },
-              ].map((item) => {
-                return (
-                  <div className="flex gap-4 text-xl font-semibold justify-start items-center bg-[#FAF6FF] w-[20rem] px-6 py-2 rounded-xl">
-                    <span>{item?.title}</span>
-                    <img src={item?.img} alt="" />
-                  </div>
-                );
-              })}
-            </div>
-            <Feedback />
+          <div className="grid grid-cols-2">
             <div>
-              {data?.data.details}
-              <br />
-              {data?.data?.description}
+              <p className="text-3xl font-medium">
+                {data?.data?.perfume}{" "}
+                {/* <span className="text-2xl text-[#5899CA]">for women</span> */}
+              </p>
+              <img src={data?.data?.banner} alt="img" srcset="" />
             </div>
 
-            <ProsCons />
-
-            <div className="space-y-2">
-              <p className="text-3xl font-medium">Perfume Photos</p>
-              <div className="flex gap-4">
-                {[
-                  `https://images.unsplash.com/photo-1595425959632-34f2822322ce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
-                  `https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
-                  `https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
-                  `https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
-                ]?.map((item) => {
-                  return (
-                    <img className="size-52 object-cover" src={item} alt="" />
-                  );
-                })}
-              </div>
-            </div>
-            <div className="grid grid-cols-2 ">
-              <div>
-                <Image
-                  src="/Pyramid.png"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  style={{ width: "100%", height: "auto" }}
-                  alt="img"
+            <div className="flex flex-col justify-center  items-center gap-4">
+              <div className="rounded-full overflow-hidden border w-fit">
+                <img
+                  className="h-40"
+                  src={`https://static.vecteezy.com/system/resources/previews/009/003/747/non_2x/luxury-perfume-bottle-logo-design-illustration-for-cosmetics-beauty-salon-company-products-free-vector.jpg`}
+                  alt=""
                 />
               </div>
-              {/* <img
-              className="border-2 border-red-500"
-              src="./Pyramid.png"
-              alt=""
-            /> */}
-              <div className="grid grid-rows-3 h-full">
-                <div className=" flex justify-start items-center gap-3 ">
-                  {data?.data?.topNote?.map((item) => {
-                    return (
-                      <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                        <img className="h-24" src={item?.image} alt="" />
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className=" flex justify-start items-center gap-3 ">
-                  {data?.data?.middleNote?.map((item) => {
-                    return (
-                      <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                        <img className="h-24" src={item?.image} alt="" />
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className=" flex justify-start items-center gap-3 ">
-                  {data?.data?.baseNote?.map((item) => {
-                    return (
-                      <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                        <img className="h-24" src={item?.image} alt="" />
-                      </div>
-                    );
-                  })}
-                </div>
+              <div className="flex flex-wrap">
+                <DoughnutGraph mainAccords={data?.data?.mainAccords} />
               </div>
-            </div>
-
-            <div className="space-y-8 py-4">
-              <p className="text-4xl font-medium">Top Perfumes</p>
-              <ProductCards data={perfumeData?.data} />
-              <div className="grid place-items-center">
-                <button className="px-8 py-2 font-medium border rounded-md">
-                  SHOP MORE
-                </button>
-              </div>
-            </div>
-
-            <div className="space-y-8 py-4">
-              <p className="text-4xl font-medium">Similar Perfumes</p>
-              <ProductCards data={perfumeData?.data} />
-              <div className="grid place-items-center">
-                <button className="px-8 py-2 font-medium border rounded-md">
-                  SHOP MORE
-                </button>
-              </div>
-            </div>
-
-            <div className="grid gap-5 container ">
-              <span className="font-medium text-3xl py-4">Rating/Results</span>
-
-              <RatingResult />
             </div>
           </div>
-          <div className="col-span-1">
+          {/* right side section for perfume review listing starts here */}
+          <div className="row-span-9">
             {/* right side section for perfume review listing */}
             <div className="px-4">
               <div className="flex justify-between items-center py-4 ">
@@ -386,15 +242,206 @@ const page = async ({ params }) => {
 
               <CardsList data={perfumeReviews} />
             </div>
-            <div className="px-2">
-              <div className="flex justify-between items-center py-4">
-                <span className="text-2xl font-semibold ">Trending News</span>{" "}
+          </div>
+          <div className=" flex gap-x-5 gap-y-4 flex-wrap max-w-2xl">
+            {[
+              `Fruity`,
+              `Fresh`,
+              `Sweet`,
+              `Powdery`,
+              `Floral`,
+              `Mens`,
+              `Women's`,
+              `Citrus`,
+            ]?.map((item) => {
+              return (
+                <div className="flex  justify-start items-center gap-2 font-medium text-lg">
+                  <GiFruitBowl className="text-gray-500" />
+                  {item}
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex gap-3">
+            {[`I have it`, `I had it`, `I want it`].map((item) => {
+              return (
+                <div className="bg-[#FCF1F5] cursor-pointer rounded-3xl px-6 py-3 font-medium">
+                  {item}
+                </div>
+              );
+            })}
+          </div>
+          <p className="text-lg">
+            Guess Mens Seductive Blue Body Mist ...{" "}
+            <span className="font-medium ">(10.99 USD)</span>
+          </p>
+          <div className="space-y-3">
+            {[
+              {
+                title: "Buy From",
+                img: "https://s3-alpha-sig.figma.com/img/3659/5e0f/7eef1817ec204989391c3be6ac3d5499?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Eez7RfvpVZaxP9V0eylwnnNzYiYt4TuntkPLYpOMc0S3YUIp8RIPE1xyjmzLAeRViSPvm-dPRCl3pfPNUSbLg7UV9hZ6qxDkyDOSdWchcLteNA9xCOhEri4RASZMQ0JObY2y~xNBZ~qq4e7dc3j58MxFGfkmTVMm0l0d~MzVt1x5ehYN3f6WqCD~KszzZYs0nRBoQaMQhVUrUbcrXw8WcW6fCMnHy0hEB86zzzGtbWBul1O7ThN2dmXiw6DhMRNSZkb0vyZhghFpItn5nKNHvkg-yQg~NPfh2mBUsJccqMKx9tjkcYifrGRQHtFine3LLUEDPTxaDLDIbc1jExIapg__",
+              },
+              {
+                title: "Buy From",
+                img: "https://s3-alpha-sig.figma.com/img/87cb/8e80/a974a28100d68d7f00b0634e69ff2269?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JMzwB1wBCMjHQF6cykxZ6EXQK8o8OEAhMpHNZ-5eCnRVr8QBz4A0vYZiMHSpLVm7-BAIlTf7tMemYQEkVu6sxqhEY-4NaEx-lR0Z0Po3Ev~FPQoN4P5UxUOI-dr-3IB1fOLYTeLm3Bs4ylcJedIN-w8B7i6S39INHu6dvie~4FMLZ0tqpM2krtvmZWGxohKjNUpuhZQTJTI3Yq9rkIgDd2c48--xWj7Fo9PyXJDlYlTvKIkO82P6myuikCHJXt9L2ds2qsT6oV1LVXTfSMN1mY6Ya1SvFTF-Vb1mwqATm8drsiKsDzdqtYBapIJJDHJ~5n86Eg84khZ6miAAVf~cDA__",
+              },
+            ].map((item) => {
+              return (
+                <div className="flex gap-4 text-xl font-semibold justify-start items-center bg-[#FAF6FF] w-[20rem] px-6 py-2 rounded-xl">
+                  <span>{item?.title}</span>
+                  <img src={item?.img} alt="" />
+                </div>
+              );
+            })}
+          </div>
+          <Feedback />
+          <div className="space-y-3">
+            <div className="font-medium">{data?.data.details}</div>
+
+            <div className="relative border-y-2 py-4">
+              <div className="p-2 absolute -top-5 left-[50%] bg-white">
+                <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
               </div>
-              <CardsList data={topNews} />
+              {data?.data?.description}
+            </div>
+            <div className="relative border-b-2 py-4 text-[#138B92]">
+              <span className="text-[#A2ADC4]">
+                {" "}
+                Read about this perfume in other languages:
+              </span>{" "}
+              Deutsch, Español, Français, Čeština, Italiano, Русский, Polski,
+              Português, Ελληνικά, 汉语, Nederlands, Srpski, Română, العربية,
+              Українська, Монгол, עברית.
             </div>
           </div>
 
-          <Review />
+          <ProsCons />
+
+          <div className="grid grid-cols-2 ">
+            <div>
+              <Image
+                src="/Pyramid.png"
+                width={0}
+                height={0}
+                sizes="100vw"
+                style={{ width: "100%", height: "auto" }}
+                alt="img"
+              />
+            </div>
+            {/* <img
+              className="border-2 border-red-500"
+              src="./Pyramid.png"
+              alt=""
+            /> */}
+            <div className="grid grid-rows-3 h-full">
+              <div className=" flex justify-start items-center gap-3 ">
+                {data?.data?.topNote?.map((item) => {
+                  return (
+                    <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
+                      <img className="h-24" src={item?.image} alt="" />
+                    </div>
+                  );
+                })}
+              </div>
+              <div className=" flex justify-start items-center gap-3 ">
+                {data?.data?.middleNote?.map((item) => {
+                  return (
+                    <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
+                      <img className="h-24" src={item?.image} alt="" />
+                    </div>
+                  );
+                })}
+              </div>
+              <div className=" flex justify-start items-center gap-3 ">
+                {data?.data?.baseNote?.map((item) => {
+                  return (
+                    <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
+                      <img className="h-24" src={item?.image} alt="" />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full col-span-2">
+            <p className="text-3xl font-medium">Perfume Photos</p>
+          </div>
+          <PerfumePhotos data={data?.data?.gallery} />
+
+          <div className="space-y-8 py-4">
+            <p className="text-4xl font-medium">Top Perfumes</p>
+            <ProductCards data={perfumeData?.data} />
+            <div className="grid place-items-center">
+              <button className="px-8 py-2 font-medium border rounded-md">
+                SHOP MORE
+              </button>
+            </div>
+          </div>
+
+          {/* right side section for perfume review listing starts here */}
+          <div className="row-span-9 ">
+            {/* right side section for perfume review listing */}
+            <div className="px-4">
+              <div className="flex justify-between items-center py-4 ">
+                <span className="text-2xl font-semibold ">Perfume Reviews</span>{" "}
+                <Link
+                  href={`/write-a-review`}
+                  className="text-pink-400 font-medium"
+                >
+                  Write a review
+                </Link>
+              </div>
+
+              <CardsList data={perfumeReviews} />
+            </div>
+          </div>
+
+          <div className="space-y-8 py-4">
+            <p className="text-4xl font-medium">Similar Perfumes</p>
+            <ProductCards data={perfumeData?.data} />
+            <div className="grid place-items-center">
+              <button className="px-8 py-2 font-medium border rounded-md">
+                SHOP MORE
+              </button>
+            </div>
+          </div>
+
+          <div className="grid gap-5 container ">
+            <span className="font-medium text-3xl py-4">Rating/Results</span>
+
+            <RatingResult />
+          </div>
+
+          <div className="space-y-5">
+            <div className="grid gap-2">
+              <span className="text-3xl font-medium">Add Your Review</span>
+              <textarea
+                className="resize-none border-2 px-3 py-2 outline-none rounded-md border-gray-400"
+                name=""
+                placeholder="Add Your Review..."
+                id=""
+                cols="30"
+                rows="10"
+              ></textarea>
+              <div>
+                <label
+                  className="flex px-6 font-medium py-3 bg-gray-300 w-fit rounded-md justify-center items-center gap-3"
+                  htmlFor="image"
+                >
+                  Upload Images <IoMdAdd size={25} />
+                </label>
+                <input
+                  multiple
+                  className="hidden"
+                  type="file"
+                  name="image"
+                  id="image"
+                />
+              </div>
+            </div>
+            <Review />
+          </div>
         </div>
       </div>
     </>

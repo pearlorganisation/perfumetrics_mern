@@ -56,13 +56,15 @@ const data = {
 
 const ProsCons = () => {
   return (
-    <>
-      <p className="text-4xl font-medium">Pros and Cons</p>
+    <div>
+      <p className="text-4xl font-medium py-2">Pros and Cons</p>
       <div className="flex flex-col  items-center bg-white p-6 border border-gray-200 rounded-lg shadow-md">
         <div className="flex justify-center w-full">
           <div className="w-1/2 p-4 border-r border-gray-300 grid place-items-center">
             <div className="mt-4">
-              <h1 className="text-[#2e6e6a] text-center text-xl">Pros</h1>
+              <h1 className="text-[#2e6e6a] font-semibold text-center text-xl">
+                Pros
+              </h1>
               {data.pros.map((item, index) => (
                 <div>
                   <li key={index} className="flex items-center space-x-3  my-2">
@@ -85,7 +87,9 @@ const ProsCons = () => {
 
           <div className="w-1/2 p-4  border-gray-300 grid  place-items-center">
             <div className="mt-4">
-              <h1 className="text-[#e23f5f] text-center text-xl">Cons</h1>
+              <h1 className="text-[#e23f5f] font-semibold text-center text-xl">
+                Cons
+              </h1>
               {data.pros.map((item, index) => (
                 <div>
                   <li key={index} className="flex items-center space-x-3  my-2">
@@ -106,23 +110,22 @@ const ProsCons = () => {
             </div>
           </div>
         </div>
-
-        <p className="text-center text-gray-500 text-sm  mt-4">
-          Note: The pros and cons listed on this page have been generated using
-          the artificial intelligence system, which analyzes product reviews
-          submitted by our members. While we strive to provide accurate and
-          helpful information, we cannot guarantee the complete accuracy or
-          reliability of the AI-generated pros and cons. Please read the full
-          reviews and consider your own needs and preferences before making a
-          purchasing decision.
-        </p>
       </div>
+      <p className="text-center text-gray-500 text-sm  mt-4">
+        Note: The pros and cons listed on this page have been generated using
+        the artificial intelligence system, which analyzes product reviews
+        submitted by our members. While we strive to provide accurate and
+        helpful information, we cannot guarantee the complete accuracy or
+        reliability of the AI-generated pros and cons. Please read the full
+        reviews and consider your own needs and preferences before making a
+        purchasing decision.
+      </p>
 
       {/* <div className=" bg-white p-6 border border-gray-200 rounded-lg shadow-md ">
     
     
 </div> */}
-    </>
+    </div>
   );
 };
 
