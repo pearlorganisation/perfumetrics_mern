@@ -12,12 +12,11 @@ const ProductCards = ({ data }) => {
           >
             <img
               src={e.banner}
-              width={"100%"}
-
-              className="shadow-[0_2px_30px_2px#cccccc] h-[350px] hover:shadow-[0_2px_10px_2px#f193c4]"
+              // width={"100%"}
+              className="shadow-[0_2px_30px_2px#cccccc] h-[200px]  hover:shadow-[0_2px_10px_2px#f193c4] "
             />
             <div className="flex flex-col h-full gap-1 items-start pb-4">
-              <div className="w-full text-sm text-left font-bold h-full">
+              <div className="w-full text-sm text-left font-bold ">
                 {e.perfume}
               </div>
               <div className="flex gap-2">
@@ -34,7 +33,7 @@ const ProductCards = ({ data }) => {
           </Link>
         ))}
     </div>
-  )
-}
+  );
+};
 
-export default ProductCards
+export default ProductCards;
