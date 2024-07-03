@@ -1,5 +1,9 @@
 async function getPerfumes() {
-  const response = await fetch(`https://perfume-backend-1.onrender.com/api/v1/perfume`)
+  const response = await fetch(`https://perfume-backend-1.onrender.com/api/v1/perfume`,
+    {
+      cache: 'no-store'
+    }
+  )
   const data = await response.json()
   return data
 }
