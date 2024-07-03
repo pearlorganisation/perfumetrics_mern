@@ -9,13 +9,19 @@ import logo from "../../../_assets/Images/Plogo.png";
 import Link from "next/link";
 
 export default function Example() {
-  const [uesrData, setUesrData] = useState({})
+  const isUser = typeof window !== "undefined" ? JSON.parse(localStorage.getItem('perfumeUD')) : {}
+  console.log(isUser, "isUser")
+  const [uesrData, setUesrData] = useState(isUser)
   useEffect(() => {
-    const isUserExist = localStorage.getItem('perfumeUD') || null
+    const isUserExist = JSON.parse(localStorage.getItem('perfumeUD')) || null
     if (isUserExist) {
       setUesrData(isUserExist)
     }
   }, [])
+  useEffect(() => {
+    console.log(uesrData, "userData")
+  }, [uesrData])
+
 
   return (
     <header className="bg-white shadow-[0_1px_2px#d1d1d1]">
@@ -34,20 +40,22 @@ export default function Example() {
             </Link>
           </div>
           <div className="flex flex-col justify-center items-end w-1/3">
-            <div className="flex gap-6 justify-center">
-              <Link
-                href="/login"
-                className="text-[d1d1d1] font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                Login
-              </Link>
-              <Link
-                href="/signUp"
-                className="text-[d1d1d1] font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                Register
-              </Link>
-            </div>
+            {
+              uesrData?.isUserLoggedIn ? <button className="bg-pink-500 px-6 py-2 rou">Logout</button> : <div className="flex gap-6 justify-center">
+                <Link
+                  href="/login"
+                  className="text-[d1d1d1] font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/signUp"
+                  className="text-[d1d1d1] font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
+                >
+                  Register
+                </Link>
+              </div>
+            }
           </div>
         </div>
         <div className="w-full flex justify-center">

@@ -22,7 +22,7 @@ const Login = () => {
         const data = await response.json()
         if (data.status) {
             toast.success(data.message)
-            const userData = {}
+            const userData = { isUserLoggedIn: true }
             localStorage.setItem('perfumeUD', JSON.stringify(userData))
             router.push('/')
         }
