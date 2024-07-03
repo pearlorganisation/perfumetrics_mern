@@ -8,7 +8,6 @@ async function getPerfumes() {
   return data
 }
 
-
 import CardsList from "../CardsList/CardsList";
 import ProductCards from "../ProductCards/ProductCards";
 
@@ -109,8 +108,8 @@ async function PerfumeSection() {
     },
   ];
 
-  const data = await getPerfumes()
-  console.log(Array.isArray(data.data))
+  const data = await getPerfumes();
+  console.log(Array.isArray(data.data));
 
   return (
     <>

@@ -10,12 +10,16 @@ export default function Home() {
   return (
     <div className="py-1 px-0">
       <Banner />
-      <PopularBrands />
-      <PerfumeSection />
-      <Gallery />
-      <Reviews />
-      <News />
-      <BestPerfumes />
+      <div className="flex justify-center ">
+        <div className="md:w-[82vw] ">
+          <PopularBrands />
+          <PerfumeSection />
+          <Gallery />
+          <Reviews />
+          <News />
+          <BestPerfumes />
+        </div>
+      </div>
     </div>
   );
 }

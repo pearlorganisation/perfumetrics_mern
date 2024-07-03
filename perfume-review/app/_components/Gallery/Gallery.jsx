@@ -41,14 +41,12 @@ const galleryData = [
     src: "https://s3-alpha-sig.figma.com/img/db30/d82e/dbd7c3f934bb55b4c6c9a206297c1ba8?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OEAKxN0iI9DqMI0zyIvKuEIDUx4FOnn1ut1HAxXLtA-ZlXWgAmJHWkqJD26JRecoYOCN5CwBKSQljbHllfRiwd44r~IHVs4IITIpS59eXPjqNliL5AufkGb0GZpV8kASH3htIu1iI2XpGrcWQGpMwHawFndxjdxORvu9jqbZrwdRuZv8sU2CfvztAG5e4zB9SNb0TXHRepupls4kZlqWLDaM68C9POCFgOsywLZkvpCbKoHpCONO~sa3vOHu2ejjhEWd6CYrvpq1wbB0h-Am4B-87l0d1pxg18g4iyfDww20dlDVh5pmPAN88LbBwqm-HVbpth~iR70OOxoaNIPOOQ__",
     alt: "Image 10",
   },
-  
-  
 ];
 
 const Gallery = () => {
   return (
     <>
-      <div className="container mx-auto max:w-8xl">
+      <div className="px-20 ">
         <div className="p-5">
           <div>
             <h1 className="text-[#F8306C] text-center text-3xl font-medium">
@@ -68,7 +66,7 @@ const Gallery = () => {
           {galleryData.map((image, index) => (
             <li
               key={index}
-              className="h-[40vh] flex-grow portrait-height short-screen-height"
+              className=" h-[100px] sm:h-[25vh] xl:h-[200px]  flex-grow portrait-height short-screen-height"
             >
               <img
                 src={image.src}
