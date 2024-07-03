@@ -8,7 +8,7 @@ const ProductCards = ({ data }) => {
         data.map((e) => (
           <Link
             href={`/product/${e?._id}`}
-            className="w-full md:w-[30%] flex flex-col gap-2 rounded-md transition duration-300"
+            className="w-full md:w-[30%] min-h-[350px] flex flex-col gap-2 rounded-md transition duration-300"
           >
             <img
               src={e.banner}

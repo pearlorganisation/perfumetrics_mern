@@ -22,7 +22,6 @@ async function getPerfumes() {
 import { GiFruitBowl } from "react-icons/gi";
 import ProsCons from "../_ProsCons";
 import Image from "next/image";
-import DoughnutGraph from "@/app/_components/DoughnutGraph/DoughnutGraph";
 import Review from "./Review";
 import "./style.css";
 import RatingResult from "@/app/_components/RatingResult/RatingResult";
@@ -34,6 +33,8 @@ import Feedback from "@/app/_components/Feedback/Feedback";
 import PerfumePhotos from "@/app/_components/PerfumePhotos/PerfumePhotos";
 import { FaQuoteLeft } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
+import ToggleButton from "@/app/_components/ToggleButton/ToggleButton";
+import PieChart from "@/app/_components/DoughnutGraph/DoughnutGraph";
 
 const page = async ({ params }) => {
   const { productId } = params;
@@ -222,7 +223,7 @@ const page = async ({ params }) => {
                 />
               </div>
               <div className="flex flex-wrap">
-                <DoughnutGraph mainAccords={data?.data?.mainAccords} />
+                <PieChart mainAccords={data?.data?.mainAccords} />
               </div>
             </div>
           </div>
@@ -243,7 +244,7 @@ const page = async ({ params }) => {
               <CardsList data={perfumeReviews} />
             </div>
           </div>
-          <div className=" flex gap-x-5 gap-y-4 flex-wrap max-w-2xl">
+          {/* <div className=" flex gap-x-5 gap-y-4 flex-wrap max-w-2xl">
             {[
               `Fruity`,
               `Fresh`,
@@ -261,20 +262,13 @@ const page = async ({ params }) => {
                 </div>
               );
             })}
-          </div>
-          <div className="flex gap-3">
-            {[`I have it`, `I had it`, `I want it`].map((item) => {
-              return (
-                <div className="bg-[#FCF1F5] cursor-pointer rounded-3xl px-6 py-3 font-medium">
-                  {item}
-                </div>
-              );
-            })}
-          </div>
-          <p className="text-lg">
+          </div> */}
+
+          <ToggleButton />
+          {/* <p className="text-lg">
             Guess Mens Seductive Blue Body Mist ...{" "}
             <span className="font-medium ">(10.99 USD)</span>
-          </p>
+          </p> */}
           <div className="space-y-3">
             {[
               {
