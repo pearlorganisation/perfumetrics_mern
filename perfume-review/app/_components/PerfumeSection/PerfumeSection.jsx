@@ -1,9 +1,12 @@
 async function getPerfumes() {
-  const response = await fetch(`https://perfume-backend-1.onrender.com/api/v1/perfume`)
+  const response = await fetch(`https://perfume-backend-1.onrender.com/api/v1/perfume`,
+    {
+      cache: 'no-store'
+    }
+  )
   const data = await response.json()
   return data
 }
-
 
 import CardsList from "../CardsList/CardsList";
 import ProductCards from "../ProductCards/ProductCards";
@@ -105,8 +108,8 @@ async function PerfumeSection() {
     },
   ];
 
-  const data = await getPerfumes()
-  console.log(Array.isArray(data.data))
+  const data = await getPerfumes();
+  console.log(Array.isArray(data.data));
 
   return (
     <>

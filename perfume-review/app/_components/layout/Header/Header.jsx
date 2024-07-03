@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import {
 //   ChevronDownIcon,
 // } from "@heroicons/react/20/solid";
@@ -9,6 +9,20 @@ import logo from "../../../_assets/Images/Plogo.png";
 import Link from "next/link";
 
 export default function Example() {
+  const isUser = typeof window !== "undefined" ? JSON.parse(localStorage.getItem('perfumeUD')) : {}
+  console.log(isUser, "isUser")
+  const [uesrData, setUesrData] = useState(isUser)
+  useEffect(() => {
+    const isUserExist = JSON.parse(localStorage.getItem('perfumeUD')) || null
+    if (isUserExist) {
+      setUesrData(isUserExist)
+    }
+  }, [])
+  useEffect(() => {
+    console.log(uesrData, "userData")
+  }, [uesrData])
+
+
   return (
     <header className="bg-white shadow-[0_1px_2px#d1d1d1]">
       <nav className="w-full py-4 px-2 flex flex-col gap-4">
@@ -21,25 +35,27 @@ export default function Example() {
             />
           </div>
           <div className="flex flex-col justify-center items-center w-1/3">
-          <Link href={'/'}>
-            <Image src={logo} width={180} />
-          </Link>
+            <Link href={'/'}>
+              <Image src={logo} width={180} />
+            </Link>
           </div>
           <div className="flex flex-col justify-center items-end w-1/3">
-            <div className="flex gap-6 justify-center">
-              <Link
-                href="/login"
-                className="text-[d1d1d1] font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                Login
-              </Link>
-              <Link
-                href="/register"
-                className="text-[d1d1d1] font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                Register
-              </Link>
-            </div>
+            {
+              uesrData?.isUserLoggedIn ? <button type="button" className="bg-pink-500 px-6 py-2 rounded-md text-white">Logout</button> : <div className="flex gap-6 justify-center">
+                <Link
+                  href="/login"
+                  className="text-[d1d1d1] font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/signUp"
+                  className="text-[d1d1d1] font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
+                >
+                  Register
+                </Link>
+              </div>
+            }
           </div>
         </div>
         <div className="w-full flex justify-center">
