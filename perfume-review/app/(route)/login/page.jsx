@@ -1,38 +1,35 @@
 "use client"
 
+import { userStore } from "@/store/userStore"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
+import { useEffect } from "react"
 import { toast } from "sonner"
 
 const Login = () => {
+    const { user, error, loading, login, isUserLoggedIn } = userStore();
     const router = useRouter()
+    const searchParams = useSearchParams()
+
+    const search = searchParams.get('returnUrl')
     async function userLogin(formData) {
         const userName = formData.get('name')
         const pin = formData.get('password')
-        console.log(userName, 'user')
-        const response = await fetch(
-            `https://perfume-backend-1.onrender.com/api/v1/auth/signin`, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-            method: 'POST',
-            body: JSON.stringify({ userName, pin })
-        }
-        );
-        const data = await response.json()
-        if (data.status) {
-            toast.success(data.message)
-            const userData = { isUserLoggedIn: true }
-            localStorage.setItem('perfumeUD', JSON.stringify(userData))
-            router.push('/')
-        }
-        else {
-            toast.error(data.message)
+        login({ userName, pin })
 
-        }
 
-        console.log(data, ":::data")
     }
+    useEffect(() => {
+        if (isUserLoggedIn) {
+            if (search === 'pd') {
+                router.back()
+            }
+            else {
+                router.push('/')
+            }
+        }
+    }, [isUserLoggedIn])
+
     return (
         <main className="w-full h-[90vh] flex flex-col items-center justify-center px-4">
             <div className="max-w-sm w-full text-gray-600 space-y-5">
@@ -80,11 +77,20 @@ const Login = () => {
                         </div>
                         <a href="javascript:void(0)" className="text-center text-indigo-600 hover:text-indigo-500">Forgot password?</a>
                     </div>
-                    <button
-                        className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
-                    >
-                        Sign In
-                    </button>
+                    {
+                        loading ? <button
+                            type="button"
+                            disabled={loading}
+                            className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
+                        >
+                            Loading..
+                        </button> : <button
+                            className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
+                        >
+                            Sign In
+                        </button>
+                    }
+
                 </form>
 
                 <p className="text-center">Don't have an account? <Link href="/singUp" className="font-medium text-indigo-600 hover:text-indigo-500">Sign up</Link></p>

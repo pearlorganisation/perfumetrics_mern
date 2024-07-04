@@ -204,7 +204,7 @@ const page = async ({ params }) => {
       {/* feedback form  */}
 
       <div className="min-h-screen container mx-auto py-20">
-        <div className="grid gap-5 grid-cols-[auto_28rem]">
+        <div className="grid gap-x-10 gap-y-14 grid-cols-[auto_28rem]">
           <div className="grid grid-cols-2">
             <div>
               <p className="text-3xl font-medium">
@@ -216,11 +216,7 @@ const page = async ({ params }) => {
 
             <div className="flex flex-col justify-center  items-center gap-4">
               <div className="rounded-full overflow-hidden border w-fit">
-                <img
-                  className="h-40"
-                  src={`https://static.vecteezy.com/system/resources/previews/009/003/747/non_2x/luxury-perfume-bottle-logo-design-illustration-for-cosmetics-beauty-salon-company-products-free-vector.jpg`}
-                  alt=""
-                />
+                <img className="h-40" src={data?.data?.logo} alt="" />
               </div>
               <div className="flex flex-wrap">
                 <PieChart mainAccords={data?.data?.mainAccords} />
