@@ -58,7 +58,7 @@ const News = () => {
                 <div className="space-y-4 w-full">
                   <img
                     className="w-full h-[30rem] object-cover"
-                    src="https://s3-alpha-sig.figma.com/img/ed5e/cc4f/7ea3051d8812c9e6bcb0a141806c7328?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=BUnY81YdvsItxwlRUlea0kwtalUGRlO0V6M20PTEdAK9q-BizcHlXiCZR2pgdtbGgNlXR0Wd~vOInqD2zTJstVHwRf5o2aoxzvCKdv8fklSTj4yiyrbfgPUF0TudtI6E-dDeASk8nWa0~PiB4HMpqFu8BzPqY9nl646u4ppCZjC5aXwBtGI9iAE~jaysYJ~POWUeXD0LNsWYlUTXozJ4crPD84s48x~mOEjlnoSsF39YoPjsVthMqgdB48z5Fl1ROPnHc4ANLxfoQI6wh~Mysh-X3-OBSCiX1hIeL7agJGzwfMms2j7SRVEfrCon9ReHzkf64LHbOe2ej6JHvScDLA__"
+                    src="https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww"
                     alt=""
                   />
                   <div className="flex text-[#747474] justify-start items-center gap-3">
@@ -89,7 +89,7 @@ const News = () => {
                     blame of environmental damage on consumers and not the
                     companies drilling for fossil fuel. blame of environmental
                     damage on consumers and not the companies drilling for
-                    fossil fuel. 
+                    fossil fuel.
                   </p>
                   <div className="flex justify-between items-center border-t-2 py-3">
                     <div className="flex justify-start items-center gap-3">
