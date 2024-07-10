@@ -3,19 +3,21 @@ import { IoIosArrowRoundForward, IoMdStar, IoMdStarHalf } from "react-icons/io";
 
 const ProductCards = ({ data }) => {
   return (
-    <div className="flex gap-3 flex-wrap ">
+    <div className="grid grid-cols-2 gap-x-8 gap-y-14  ">
       {data &&
         data.map((e) => (
           <Link
             href={`/product/${e?._id}`}
-            className="w-full md:w-[30%] min-h-[350px] flex flex-col gap-2 rounded-md transition duration-300"
+            className="w-full  shadow-[0_2px_30px_2px#cccccc]  h-[500px] bg-[#FFFFFF]  border-2 border-pink-500 grid place-items-center  gap-2 rounded-md transition duration-300"
           >
             <img
-              src={e.banner}
+              // src={e.banner}
+              src={e.imgUrl}
+
               // width={"100%"}
-              className="shadow-[0_2px_30px_2px#cccccc] h-[200px]  hover:shadow-[0_2px_10px_2px#f193c4] "
+              className=" h-[280px] w-full   "
             />
-            <div className="flex flex-col h-full gap-1 items-start pb-4">
+            {/* <div className="flex flex-col h-full gap-1 items-start pb-4">
               <div className="w-full text-sm text-left font-bold ">
                 {e.perfume}
               </div>
@@ -29,7 +31,7 @@ const ProductCards = ({ data }) => {
                 </div>
                 <div className="font-semibold text-sm">4.5</div>
               </div>
-            </div>
+            </div> */}
           </Link>
         ))}
     </div>

@@ -1,16 +1,24 @@
 "use client";
 
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { GiFrozenOrb } from "react-icons/gi";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import EmojiComponent from './EmojiComponent';
 import Image from 'next/image';
+import { userStore } from '@/store/userStore';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 const CustomerFeedbackModal = forwardRef((props, ref) => {
+
   const modalRef = useRef();
   const [emoji, setEmoji] = useState(1);
   const [selected, setSelected] = useState(1)
   const [selectedIcon, setSelectedIcon] = useState(1)
+
+
+
+
 
   useImperativeHandle(ref, () => ({
     open: () => {

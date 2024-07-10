@@ -2,10 +2,20 @@
 import Image from 'next/image';
 import React, { useRef } from 'react'
 import CustomerFeedbackModal from '../Modals/FeedBackModal/CustomerFeedbackModal';
+import { userStore } from '@/store/userStore';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 const Feedback = () => {
+    const { isUserLoggedIn } = userStore();
+    const router = useRouter()
+
     function handleOpeningModal() {
-        modalRef.current.open();
+        if (!isUserLoggedIn) {
+            toast.info('Please Login First...')
+            router.push(`/login?returnUrl=pd`);
+        }
+        else modalRef.current.open();
     }
 
     const modalRef = useRef();
