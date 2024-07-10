@@ -17,7 +17,7 @@ export default function Home() {
           <Gallery />
           <Reviews />
           {/* <News /> */}
-          <BestPerfumes />
+          {/* <BestPerfumes /> */}
         </div>
       </div>
     </div>
