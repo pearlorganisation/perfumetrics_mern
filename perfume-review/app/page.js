@@ -16,7 +16,7 @@ export default function Home() {
           <PerfumeSection />
           <Gallery />
           <Reviews />
-          <News />
+          {/* <News /> */}
           <BestPerfumes />
         </div>
       </div>

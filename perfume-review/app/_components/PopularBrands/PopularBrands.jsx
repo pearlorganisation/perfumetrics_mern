@@ -36,6 +36,18 @@ const popularPerfumeData = [
     name: "",
     imgUrl: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGjXw2yGO0rbbMxzuVaksO0rP6B3psR2MhVg&s`,
   },
+  {
+    name: "",
+    imgUrl: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5CyFDvVUd65LTAvzKrEka6VYN7Xz2ppKVrA&s`,
+  },
+  {
+    name: "",
+    imgUrl: `https://m.media-amazon.com/images/I/61TYei9ZnlL._AC_UF350,350_QL80_.jpg`,
+  },
+  {
+    name: "",
+    imgUrl: `https://m.media-amazon.com/images/I/61TYei9ZnlL._AC_UF350,350_QL80_.jpg`,
+  },
 ];
 
 const PopularBrands = () => {
@@ -74,7 +86,7 @@ const PopularBrands = () => {
                       key={index}
                       className="grid place-items-center p-2"
                     >
-                      <div className="w-[120px] h-[120px] rounded-full overflow-hidden shadow-[0_0_0_5px#f193c4]">
+                      <div className="w-[150px] h-[150px] rounded-full overflow-hidden shadow-[0_0_0_5px#f193c4]">
                         <img
                           src={item.imgUrl}
                           className="w-full h-full object-cover"
