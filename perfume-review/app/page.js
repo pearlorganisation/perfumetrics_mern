@@ -11,7 +11,7 @@ export default function Home() {
     <div className="py-1 px-0">
       <Banner />
       <div className="flex justify-center ">
-        <div className="md:w-[82vw] ">
+        <div className="container mx-auto ">
           <PopularBrands />
           <PerfumeSection />
           <Gallery />

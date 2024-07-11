@@ -50,16 +50,18 @@ const popularPerfumeData = [
   },
 ];
 
-const PopularBrands = () => {
+const NewPerfumes = () => {
   return (
     <>
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto pb-12">
         <div className="p-5">
           <div className="text-center">
-            {/* <div className="inline-block relative pb-5">
-              <h1 className="text-3xl font-medium">Popular Brands</h1>
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-[#F8306C]"></div>
-            </div> */}
+            <div className="grid place-items-center relative">
+              <h1 className="text-3xl font-medium px-8 py-3 bg-white z-40">
+                New Perfumes
+              </h1>
+              <div className="absolute   w-full h-[2px] bg-slate-500 "></div>
+            </div>
             <div className="p-10">
               <Swiper
                 slidesPerView={2}
@@ -86,11 +88,15 @@ const PopularBrands = () => {
                       key={index}
                       className="grid place-items-center p-2"
                     >
-                      <div className="xl:w-[150px] xl:h-[150px] lg:w-[130px] lg:h-[120px] rounded-full overflow-hidden shadow-[0_0_0_5px#f193c4]">
+                      <div className="xl:w-[150px] xl:h-[150px] lg:w-[130px] lg:h-[120px]  overflow-hidden ">
                         <img
                           src={item.imgUrl}
                           className="w-full h-full object-cover"
                         />
+                      </div>
+                      <div className="flex flex-col justify-center items-center font-medium py-2">
+                        <span>Crazypills</span>
+                        <span className="text-teal-500">Incolonge</span>
                       </div>
                     </SwiperSlide>
                   );
@@ -99,9 +105,43 @@ const PopularBrands = () => {
             </div>
           </div>
         </div>
+        <div className="space-y-3">
+          <div className="text-3xl md:text-5xl font-bold">
+            Celebrity Perfumes
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {Array(4)
+              .fill(true)
+              .map((item) => {
+                return (
+                  <div class="max-w-md bg-white rounded-lg overflow-hidden shadow-lg">
+                    <img
+                      src="https://images.unsplash.com/photo-1623742310401-d8057c3c43c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyZnVtZXxlbnwwfHwwfHx8MA%3D%3D"
+                      alt="Luxury Fashion"
+                      class="w-full h-[20rem]"
+                    />
+                    <div class="p-6">
+                      <h2 class="text-xl font-bold mb-4">
+                        Come summer, luxury brands are turning to experiential
+                        partnerships and collaborations
+                      </h2>
+                      <p class="text-gray-700 line-clamp-5">
+                        Luxury fashion houses are increasingly venturing beyond
+                        traditional retail, embracing pop-up stores and Luxury
+                        fashion houses are increasingly venturing beyond
+                        traditional retail, embracing pop-up stores and Luxury
+                        fashion houses are increasingly venturing beyond
+                        traditional retail, embracing pop-up stores and
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
       </div>
     </>
   );
 };
 
-export default PopularBrands;
+export default NewPerfumes;
