@@ -3,7 +3,7 @@ import { IoIosArrowRoundForward, IoMdStar, IoMdStarHalf } from "react-icons/io";
 
 const ProductCards = ({ data }) => {
   return (
-    <div className="grid grid-cols-2 gap-x-8 gap-y-14  ">
+    <div className="grid md:grid-cols-2 gap-x-8 gap-y-14  ">
       {data &&
         data.map((e) => (
           <Link

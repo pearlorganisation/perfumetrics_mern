@@ -90,17 +90,17 @@ const galleryData = [
 const Gallery = () => {
   return (
     <>
-      <div className="px-20 ">
+      <div className="px-8 md:px-20 ">
         <div className="p-5">
           <div>
-            <h1 className="text-[#F8306C] text-center text-3xl font-medium">
+            <h1 className="text-[#F8306C] text-center text-xl sm:text-2xl md:text-3xl font-medium">
               Gallery
             </h1>
           </div>
 
           <div className="text-center">
             <div className="inline-block relative">
-              <h1 className="text-3xl font-medium pb-5">Perfumetrics Photo</h1>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-medium pb-5">Perfumetrics Photo</h1>
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-[#F8306C] "></div>
             </div>
           </div>

@@ -1,8 +1,6 @@
-"use client";
-
-import Loader from "@/app/_components/Loader/Loader";
+import Loader from "./_components/Loader/Loader";
 
 export default function Loading() {
-  // Or a custom loading skeleton component
+  // You can add any UI inside Loading, including a Skeleton.
   return <Loader />;
 }

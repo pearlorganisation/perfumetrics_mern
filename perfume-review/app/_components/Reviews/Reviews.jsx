@@ -1,6 +1,7 @@
 import React from "react";
 import CardsList from "../CardsList/CardsList";
 import News from "./News";
+import NewPerfumes from "../NewPerfumes/NewPerfumes";
 
 const Reviews = () => {
   const perfumeReviews = [
@@ -81,12 +82,16 @@ const Reviews = () => {
 
             {/* news */}
             <News />
+
           </div>
+
         </div>
         <div>
           <CardsList data={perfumeReviews} />
         </div>
+
       </div>
+      <NewPerfumes />
     </div>
   );
 };
