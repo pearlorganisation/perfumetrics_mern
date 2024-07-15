@@ -286,7 +286,7 @@ const page = async ({ params }) => {
           </div>
           <Feedback />
           <div className="space-y-3">
-            <div className="font-medium">{data?.data.details}</div>
+            <div className="font-medium">{data?.data?.details}</div>
 
             <div className="relative border-y-2 py-4">
               <div className="p-2 absolute -top-5 left-[50%] bg-white">

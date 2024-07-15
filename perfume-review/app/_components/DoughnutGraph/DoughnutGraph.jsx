@@ -8,11 +8,11 @@ const PieChart = ({ mainAccords }) => {
     const chartInstance = useRef(null);
 
     const data = {
-        labels: mainAccords.map(accord => accord.name),
+        labels: mainAccords?.map(accord => accord.name),
         datasets: [{
             label: 'Main Accords',
-            data: mainAccords.map(accord => accord.percentage),
-            backgroundColor: mainAccords.map(accord => accord.color),
+            data: mainAccords?.map(accord => accord.percentage),
+            backgroundColor: mainAccords?.map(accord => accord.color),
         }]
     };
 

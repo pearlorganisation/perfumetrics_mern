@@ -24,7 +24,7 @@ export default function Example() {
 
 
   return (
-    <header className="bg-white shadow-[0_1px_2px#d1d1d1]">
+    <header className="md:block hidden bg-white shadow-[0_1px_2px#d1d1d1]">
       <nav className="w-full py-4  flex flex-col gap-4">
         <div className="flex flex-col justify-end items-end px-6">
           {
@@ -65,7 +65,7 @@ export default function Example() {
 
         </div>
         <div className="w-full flex justify-center ">
-          <div className=" flex justify-center gap-14 font-semibold text-2xl">
+          <div className=" flex justify-center gap-14 font-semibold md:text-2xl">
             <Link
               href="/types"
               className="  hover:text-pink-500 cursor-pointer transition duration-300"

@@ -6,8 +6,8 @@ const CardsList = ({ data }) => {
     <div className="w-full bg-gray-100 p-2 flex flex-col gap-2 rounded-md bg">
       {data &&
         data?.map((item) => (
-          <div className="bg-white  flex justify-start items-center gap-3 cursor-pointer p-4">
-            <img class="h-24 rounded" src={item.imgUrl} alt="" />
+          <div className="bg-white  flex justify-start items-center gap-3 cursor-pointer p-3">
+            <img class="h-16 rounded" src={item.imgUrl} alt="" />
             <div className="">
               <span className="text-xl font-semibold">I Want Choo</span>
               <p className="text-xs line-clamp-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error voluptatem officia totam voluptas, facilis molestias mollitia cumque. Labore, fugit cum. Dicta fuga itaque </p>

@@ -115,7 +115,7 @@ async function PerfumeSection() {
 
   return (
     <>
-      <div className="w-full border grid lg:grid-cols-[65%_auto] lg:gap-y-0 gap-8 gap-x-12 px-8 md:px-20 py-10">
+      <div className="w-full  grid lg:grid-cols-[auto_25rem] lg:gap-y-0 gap-8 gap-x-12 px-8 md:px-20 py-10">
         <div className="w-full  flex flex-col gap-4">
           <div className=" w-fit py-1">
             <span className="text-2xl md:text-3xl font-semibold ">
