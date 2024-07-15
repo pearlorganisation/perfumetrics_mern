@@ -1,5 +1,6 @@
 import Banner from "./_components/Banner/Banner";
 import BestPerfumes from "./_components/BestPerfumes/BestPerfumes";
+import BestSale from "./_components/BestSale/BestSale";
 import Gallery from "./_components/Gallery/Gallery";
 import News from "./_components/News/News";
 import PerfumeSection from "./_components/PerfumeSection/PerfumeSection";
@@ -16,6 +17,7 @@ export default function Home() {
           <PerfumeSection />
           <Gallery />
           <Reviews />
+          <BestSale />
           {/* <News /> */}
           {/* <BestPerfumes /> */}
         </div>

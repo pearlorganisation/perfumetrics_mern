@@ -25,7 +25,7 @@ const PerfumePhotos = ({ data }) => {
             navigation={true}
 
             modules={[Navigation]}
-            className="col-span-2 w-[100%] relative"
+            className="col-span-2 w-[100%] relative border-2"
         >
 
             <div className="flex gap-4 relative">

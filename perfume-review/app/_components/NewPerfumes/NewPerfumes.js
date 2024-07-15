@@ -106,10 +106,10 @@ const NewPerfumes = () => {
           </div>
         </div>
         <div className="space-y-3">
-          <div className="text-3xl md:text-5xl font-bold">
+          <div className="text-3xl text-center md:text-left md:text-5xl font-bold">
             Celebrity Perfumes
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 place-items-center palice gap-8">
             {Array(4)
               .fill(true)
               .map((item) => {
@@ -121,11 +121,11 @@ const NewPerfumes = () => {
                       class="w-full h-[20rem]"
                     />
                     <div class="p-6">
-                      <h2 class="text-xl font-bold mb-4">
+                      <h2 class="text-base md:text-lg lg:text-xl font-bold mb-4 line-clamp-3">
                         Come summer, luxury brands are turning to experiential
                         partnerships and collaborations
                       </h2>
-                      <p class="text-gray-700 line-clamp-5">
+                      <p class="text-gray-700 text-sm md:text-base line-clamp-5">
                         Luxury fashion houses are increasingly venturing beyond
                         traditional retail, embracing pop-up stores and Luxury
                         fashion houses are increasingly venturing beyond

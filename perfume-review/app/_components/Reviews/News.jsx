@@ -45,7 +45,7 @@ const News = () => {
                         );
                     })}
             </div>
-            <div className='grid gap-6 grid-cols-[18rem_auto] py-6'>
+            <div className='grid gap-6 md:grid-cols-[18rem_auto] py-6 '>
                 <div>
                     <div>
                         <img className='rounded-md' src="https://images.unsplash.com/photo-1624613533305-28d421d70875?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D" alt="" />
@@ -64,7 +64,7 @@ const News = () => {
 
                 </div>
             </div>
-            <div className='grid grid-cols-[40%_auto] gap-3 border-y-2 py-8 border-gray-400'>
+            <div className='grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8 border-gray-400'>
                 <div>
                     <span className='font-semibold text-lg'>This is Perfume News.</span>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint voluptate blanditiis quasi illo numquam. Maiores libero quos consequatur amet accusamus voluptatum vel, minus magni voluptatibus deserunt facere repellat ipsa ullam?</p>

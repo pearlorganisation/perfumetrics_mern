@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 
 // Import required modules
 import { Navigation, Pagination } from "swiper/modules";
+import style from './style.module.css'
 
 const popularPerfumeData = [
   {
@@ -53,49 +54,27 @@ const popularPerfumeData = [
 const PopularBrands = () => {
   return (
     <>
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-6xl ">
         <div className="p-5">
           <div className="text-center">
             {/* <div className="inline-block relative pb-5">
               <h1 className="text-3xl font-medium">Popular Brands</h1>
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-[#F8306C]"></div>
             </div> */}
-            <div className="p-10">
-              <Swiper
-                slidesPerView={2}
-                breakpoints={{
-                  640: {
-                    slidesPerView: 4,
-                    spaceBetween: 20,
-                  },
-                  768: {
-                    slidesPerView: 5,
-                    spaceBetween: 40,
-                  },
-                  1024: {
-                    slidesPerView: 6,
-                    spaceBetween: 50,
-                  },
-                }}
-                modules={[Pagination]}
-                className="mySwiper"
-              >
-                {popularPerfumeData.map((item, index) => {
-                  return (
-                    <SwiperSlide
-                      key={index}
-                      className="grid place-items-center p-2"
-                    >
-                      <div className="xl:w-[150px] xl:h-[150px] lg:w-[130px] lg:h-[120px] rounded-full overflow-hidden shadow-[0_0_0_5px#f193c4]">
-                        <img
-                          src={item.imgUrl}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
+            <div className={`flex space-x-4 overflow-x-auto py-4 px-2 w-full ${style.custom_scrollbar}`}>
+
+              {popularPerfumeData.map((item, index) => {
+                return (
+
+                  <section className=" h-[80px] w-[80px] md:h-[100px] md:w-[100px] xl:w-[150px] xl:h-[150px] lg:w-[130px] lg:h-[120px] rounded-full overflow-hidden shadow-[0_0_0_5px#f193c4] flex-shrink-0">
+                    <img
+                      src={item.imgUrl}
+                      className="w-full h-full object-cover"
+                    />
+                  </section>
+                );
+              })}
+
             </div>
           </div>
         </div>
