@@ -14,7 +14,7 @@ const Footer = () => {
 
 
   return (
-    <footer className="text-[#CFD3D7]">
+    <footer className="text-[#CFD3D7] py-4">
       <FollowUs />
     </footer>
   )
