@@ -105,11 +105,11 @@ const NewPerfumes = () => {
             </div>
           </div>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-3 px-3 ">
           <div className="text-3xl text-center md:text-left md:text-5xl font-bold">
             Celebrity Perfumes
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 place-items-center palice gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 place-items-center gap-8">
             {Array(4)
               .fill(true)
               .map((item) => {

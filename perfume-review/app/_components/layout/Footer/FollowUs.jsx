@@ -17,13 +17,13 @@ const FollowUs = () => {
 
     return (
 
-        <div>
-            <div>
+        <div className=''>
+            <div className='px-3'>
                 <div className='text-black grid place-items-center relative max-w-6xl mx-auto'>
-                    <div className='text-lg sm:text-xl md:text-3xl font-semibold z-50 bg-white px-6 py-4'>FOLLOW US ON INSTAGRAM</div>
+                    <div className='text-sm sm:text-xl md:text-3xl font-semibold z-50 bg-white px-6 py-4'>FOLLOW US ON INSTAGRAM</div>
                     <div className='absolute w-full h-[2px] bg-slate-400'></div>
                 </div>
-                <div className='grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-1'>
+                <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-1'>
 
                     {
                         [
@@ -44,30 +44,30 @@ const FollowUs = () => {
                 </div>
             </div>
             <div>
-                <div className='grid sm:grid-cols-3 md:grid-cols-6 place-items-center gap-3 container mx-auto md:divide-x-2 py-12'>
-                    <div className='flex gap-2 px-8'><FaTruckMoving className='text-gray-400 ' size={50} />
-                        <div className='font-semibold flex flex-col text-gray-800'>FREE DELIVERY <span>From 275 AED</span></div>
+                <div className='grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 place-items-center gap-4 md:gap-6 container mx-auto md:divide-x-2 py-12'>
+                    <div className='flex w-full md:w-auto  justify-center gap-[3rem]  md:gap-2 px-8'><FaTruckMoving className='text-gray-400 ' size={40} />
+                        <div className='font-semibold flex flex-col text-gray-800 text-xs lg:text-sm'>FREE DELIVERY <span>From 275 AED</span></div>
                     </div>
-                    <div className='flex gap-2 px-8'> <BsCashCoin className='text-gray-400' size={50} />
-                        <div className='font-semibold flex flex-col text-gray-800'>FREE DELIVERY <span>From 275 AED</span></div>
+                    <div className='flex w-full md:w-auto  justify-center gap-[3rem]  md:gap-2 px-8'> <BsCashCoin className='text-gray-400' size={40} />
+                        <div className='font-semibold flex flex-col text-gray-800 text-xs lg:text-sm'>FREE DELIVERY <span>From 275 AED</span></div>
                     </div>
-                    <div className='flex gap-2 px-8'><FaMedal className='text-gray-400' size={50} />
-                        <div className='font-semibold flex flex-col text-gray-800'>FREE DELIVERY <span>From 275 AED</span></div>
+                    <div className='flex w-full md:w-auto  justify-center gap-[3rem]  md:gap-2 px-8'><FaMedal className='text-gray-400' size={40} />
+                        <div className='font-semibold flex flex-col text-gray-800 text-xs lg:text-sm'>FREE DELIVERY <span>From 275 AED</span></div>
                     </div>
-                    <div className='flex gap-2 px-8'><FaGift className='text-gray-400' size={50} />
-                        <div className='font-semibold flex flex-col text-gray-800'>FREE DELIVERY <span>From 275 AED</span></div>
+                    <div className='flex w-full md:w-auto  justify-center gap-[3rem]  md:gap-2 px-8'><FaGift className='text-gray-400' size={40} />
+                        <div className='font-semibold flex flex-col text-gray-800 text-xs lg:text-sm'>FREE DELIVERY <span>From 275 AED</span></div>
                     </div>
-                    <div className='flex gap-2 px-8'>
-                        <BsShieldFillCheck className='text-gray-400' size={50} />
-                        <div className='font-semibold flex flex-col text-gray-800'>FREE DELIVERY <span>From 275 AED</span></div>
+                    <div className='flex w-full md:w-auto  justify-center gap-[3rem]  md:gap-2 px-8'>
+                        <BsShieldFillCheck className='text-gray-400' size={40} />
+                        <div className='font-semibold flex flex-col text-gray-800 text-xs lg:text-sm'>FREE DELIVERY <span>From 275 AED</span></div>
                     </div>
-                    <div className='flex gap-2 px-8'><BsFillTelephoneFill className='text-gray-400' size={50} />
-                        <div className='font-semibold flex flex-col text-gray-800'>FREE DELIVERY <span>From 275 AED</span></div></div>
+                    <div className='flex w-full md:w-auto  justify-center gap-[3rem]  md:gap-2 px-8'><BsFillTelephoneFill className='text-gray-400' size={40} />
+                        <div className='font-semibold flex flex-col text-gray-800 text-xs lg:text-sm'>FREE DELIVERY <span>From 275 AED</span></div></div>
                 </div>
             </div>
 
 
-            <div className='grid md:grid-cols-3 gap-6 container mx-auto text-black'>
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6  text-black'>
                 <div className='bg-pink-200 space-y-3 py-5 px-6'>
                     <div className='flex gap-1'><FaLocationDot className='text-pink-500' size={22} /> <span className='text-xl font-semibold'>FIND YOUR NEAREST STORE</span></div>
                     <p>A contemporary grooming collection intused
@@ -87,7 +87,7 @@ const FollowUs = () => {
                         <div className='w-full grid grid-cols-[auto_5rem]'><input className='px-4 py-3 w-full' placeholder='Enter Your Email Address ' type="text" name="" id="" /><button className='bg-pink-500 px-5 py-3 text-white' type="button">GO</button></div>
                     </div>
                 </div>
-                <div className='bg-pink-300 space-y-3 py-5 px-6'>
+                <div className='bg-pink-300 md:col-span-2 lg:col-span-1 space-y-3 py-5 px-6'>
                     <div className='text-center text-xl font-semibold'>FOLLOWS US</div>
                     <div className='flex w-full justify-around'>
                         <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaFacebookF size={26} /></div>
