@@ -115,14 +115,18 @@ async function PerfumeSection() {
 
   return (
     <>
-      <div className="w-full  grid lg:grid-cols-[auto_25rem] lg:gap-y-0 gap-8 gap-x-12 px-8 md:px-20 py-10">
+      <div className="w-full  grid lg:grid-cols-[auto_20rem] lg:gap-y-0 gap-8 gap-x-12 px-8 md:px-20 py-10">
         <div className="w-full  flex flex-col gap-4">
           <div className=" w-fit py-1">
             <span className="text-2xl md:text-3xl font-semibold ">
               Top Rated Fragrance
             </span>
           </div>
-          <ProductCards data={topPerfumes} />
+          <ProductCards
+
+            // data={data?.data}
+            data={topPerfumes}
+          />
         </div>
         <div className="space-y-10">
           <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-8">

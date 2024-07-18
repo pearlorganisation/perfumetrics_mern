@@ -17,8 +17,8 @@ const FollowUs = () => {
 
     return (
 
-        <div className=''>
-            <div className='px-3'>
+        <div className='space-y-8'>
+            <div className='px-3 space-y-5'>
                 <div className='text-black grid place-items-center relative max-w-6xl mx-auto'>
                     <div className='text-sm sm:text-xl md:text-3xl font-semibold z-50 bg-white px-6 py-4'>FOLLOW US ON INSTAGRAM</div>
                     <div className='absolute w-full h-[2px] bg-slate-400'></div>

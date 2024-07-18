@@ -44,7 +44,7 @@ const Reviews = () => {
   ];
   return (
     <div className="container mx-auto">
-      <div className="w-full grid lg:grid-cols-[auto_25rem] gap-x-12 px-6 md:px-20 py-3 md:py-10">
+      <div className="w-full grid lg:grid-cols-[auto_20rem] gap-x-12 px-6 md:px-20 py-3 md:py-10">
         <div className="">
           <h2 class="text-2xl font-bold ">Reviews</h2>
 
@@ -192,6 +192,11 @@ const Reviews = () => {
 
       </div>
       <NewPerfumes />
+
+
+
+
+
     </div>
   );
 };

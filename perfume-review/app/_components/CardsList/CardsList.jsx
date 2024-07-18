@@ -1,12 +1,13 @@
 import React from "react";
 import { FaUser } from "react-icons/fa";
+import style from './style.module.css'
 
 const CardsList = ({ data }) => {
   return (
-    <div className="w-full bg-gray-100 p-2 flex flex-col gap-2 rounded-md bg">
+    <div className="w-full  p-2 flex flex-col gap-2 rounded-md bg">
       {data &&
         data?.map((item) => (
-          <div className="bg-white  flex justify-start items-center gap-3 cursor-pointer p-3">
+          <div className={`bg-white ${style.shadowE} flex justify-start items-center gap-3 cursor-pointer p-3`}>
             <img class="h-16 rounded" src={item.imgUrl} alt="" />
             <div className="">
               <span className="text-xl font-semibold">I Want Choo</span>

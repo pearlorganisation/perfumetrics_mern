@@ -8,7 +8,7 @@ const PieChart = ({ mainAccords }) => {
     const chartInstance = useRef(null);
 
     const data = {
-        labels: mainAccords?.map(accord => accord.name),
+        // labels: mainAccords.map(accord => accord.name),
         datasets: [{
             label: 'Main Accords',
             data: mainAccords?.map(accord => accord.percentage),
@@ -39,12 +39,12 @@ const PieChart = ({ mainAccords }) => {
                             weight: 'bold'
                         },
                         formatter: (value, context) => {
-                            return `${context.chart.data.labels[context.dataIndex]} ${value}%`;
+                            // return `${context.chart.data.labels[context.dataIndex]} ${value}%`;
                         }
                     }
                 }
             },
-            plugins: [ChartDataLabels]
+            // plugins: [ChartDataLabels]
         });
         return () => {
             if (chartInstance.current) {
@@ -54,8 +54,26 @@ const PieChart = ({ mainAccords }) => {
     }, [mainAccords]);
 
     return (
-        <div>
-            <canvas ref={chartRef} style={{ width: '300px', height: '200px' }} />
+        <div className='p-2 w-full'>
+            <div className='max-w-[20rem] mx-auto'>
+                <h1 className='text-center font-bold'>Main Accords </h1>
+                <canvas ref={chartRef} style={{ width: "300px", height: "300px" }} />
+            </div>
+            <div className="flex flex-wrap justify-center gap-3 items-center border py-8">
+                {
+                    mainAccords?.map((el) => {
+                        return <div
+                            key={el._id}
+                            style={{
+                                backgroundColor: `${el?.color}`
+                            }}
+                            className='bg-pink-500 px-3 py-1 text-center rounded-sm text-white min-w-[6rem]'>
+                            {el?.name}
+                        </div>
+                    })
+                }
+
+            </div>
         </div>
     );
 };

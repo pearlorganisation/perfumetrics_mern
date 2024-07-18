@@ -69,9 +69,9 @@ const BestSale = () => {
                 );
               })}
           </div>
-          <div className="w-full">
+          <div className="w-full   grid place-items-center">
             <img
-              className="h-[18rem] w-full"
+              className="h-[85%] translate-y-5 w-full "
               src="https://images.unsplash.com/photo-1605619082574-e92eee603b95?q=80&w=2081&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt=""
             />
