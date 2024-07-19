@@ -38,6 +38,7 @@ import ToggleButton from "@/app/_components/ToggleButton/ToggleButton";
 import PieChart from "@/app/_components/DoughnutGraph/DoughnutGraph";
 import { FaFacebookF } from "react-icons/fa";
 import { IoHeart } from "react-icons/io5";
+import { FaPlay } from "react-icons/fa";
 
 const page = async ({ params }) => {
   const { productId } = params;
@@ -218,7 +219,7 @@ const page = async ({ params }) => {
           </span>
         </p>
         <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_25rem]">
-          <div className="grid grid-cols-[55%_45%] border-2 border-yellow-400">
+          <div className="grid grid-cols-[55%_45%] ">
             <div>
               {/* <img src={data?.data?.banner} alt="img" srcset="" /> */}
               <div className="w-full  grid place-items-center">
@@ -253,7 +254,7 @@ const page = async ({ params }) => {
             </div>
 
             <div className="flex flex-col justify-center  items-center gap-4 border-2">
-              <div className="rounded-full overflow-hidden border w-fit">
+              <div className="rounded-full overflow-hidden  w-fit">
                 <img className="size-40" src={data?.data?.logo} alt="" />
               </div>
               <div className="flex flex-wrap w-full">
@@ -290,30 +291,68 @@ const page = async ({ params }) => {
         </div>
 
         <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_25rem] py-8">
-          <div>
-            <div className="space-y-12 w-full grid place-items-center">
-              {[
-                {
-                  title: "Buy From",
-                  img: "https://s3-alpha-sig.figma.com/img/3659/5e0f/7eef1817ec204989391c3be6ac3d5499?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Eez7RfvpVZaxP9V0eylwnnNzYiYt4TuntkPLYpOMc0S3YUIp8RIPE1xyjmzLAeRViSPvm-dPRCl3pfPNUSbLg7UV9hZ6qxDkyDOSdWchcLteNA9xCOhEri4RASZMQ0JObY2y~xNBZ~qq4e7dc3j58MxFGfkmTVMm0l0d~MzVt1x5ehYN3f6WqCD~KszzZYs0nRBoQaMQhVUrUbcrXw8WcW6fCMnHy0hEB86zzzGtbWBul1O7ThN2dmXiw6DhMRNSZkb0vyZhghFpItn5nKNHvkg-yQg~NPfh2mBUsJccqMKx9tjkcYifrGRQHtFine3LLUEDPTxaDLDIbc1jExIapg__",
-                },
-                {
-                  title: "Buy From",
-                  img: "https://s3-alpha-sig.figma.com/img/87cb/8e80/a974a28100d68d7f00b0634e69ff2269?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JMzwB1wBCMjHQF6cykxZ6EXQK8o8OEAhMpHNZ-5eCnRVr8QBz4A0vYZiMHSpLVm7-BAIlTf7tMemYQEkVu6sxqhEY-4NaEx-lR0Z0Po3Ev~FPQoN4P5UxUOI-dr-3IB1fOLYTeLm3Bs4ylcJedIN-w8B7i6S39INHu6dvie~4FMLZ0tqpM2krtvmZWGxohKjNUpuhZQTJTI3Yq9rkIgDd2c48--xWj7Fo9PyXJDlYlTvKIkO82P6myuikCHJXt9L2ds2qsT6oV1LVXTfSMN1mY6Ya1SvFTF-Vb1mwqATm8drsiKsDzdqtYBapIJJDHJ~5n86Eg84khZ6miAAVf~cDA__",
-                },
-              ].map((item) => {
-                return (
-                  <div className="flex gap-4 text-xl font-semibold justify-start items-center bg-[#FAF6FF] w-[20rem] px-6 py-2 rounded-xl">
-                    <span>{item?.title}</span>
-                    <img src={item?.img} alt="" />
-                  </div>
-                );
-              })}
+          <div className="space-y-8">
+            <div className="grid grid-cols-[60%_40%] h-fit">
+              <div className="space-y-12 w-full flex flex-col justify-center items-center ">
+                {[
+                  {
+                    title: "Buy From",
+                    img: "https://s3-alpha-sig.figma.com/img/3659/5e0f/7eef1817ec204989391c3be6ac3d5499?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Eez7RfvpVZaxP9V0eylwnnNzYiYt4TuntkPLYpOMc0S3YUIp8RIPE1xyjmzLAeRViSPvm-dPRCl3pfPNUSbLg7UV9hZ6qxDkyDOSdWchcLteNA9xCOhEri4RASZMQ0JObY2y~xNBZ~qq4e7dc3j58MxFGfkmTVMm0l0d~MzVt1x5ehYN3f6WqCD~KszzZYs0nRBoQaMQhVUrUbcrXw8WcW6fCMnHy0hEB86zzzGtbWBul1O7ThN2dmXiw6DhMRNSZkb0vyZhghFpItn5nKNHvkg-yQg~NPfh2mBUsJccqMKx9tjkcYifrGRQHtFine3LLUEDPTxaDLDIbc1jExIapg__",
+                  },
+                  {
+                    title: "Buy From",
+                    img: "https://s3-alpha-sig.figma.com/img/87cb/8e80/a974a28100d68d7f00b0634e69ff2269?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JMzwB1wBCMjHQF6cykxZ6EXQK8o8OEAhMpHNZ-5eCnRVr8QBz4A0vYZiMHSpLVm7-BAIlTf7tMemYQEkVu6sxqhEY-4NaEx-lR0Z0Po3Ev~FPQoN4P5UxUOI-dr-3IB1fOLYTeLm3Bs4ylcJedIN-w8B7i6S39INHu6dvie~4FMLZ0tqpM2krtvmZWGxohKjNUpuhZQTJTI3Yq9rkIgDd2c48--xWj7Fo9PyXJDlYlTvKIkO82P6myuikCHJXt9L2ds2qsT6oV1LVXTfSMN1mY6Ya1SvFTF-Vb1mwqATm8drsiKsDzdqtYBapIJJDHJ~5n86Eg84khZ6miAAVf~cDA__",
+                  },
+                ].map((item) => {
+                  return (
+                    <div className="flex gap-4 text-xl font-semibold justify-start items-center bg-[#FAF6FF] w-[20rem] px-6 py-2 rounded-xl">
+                      <span>{item?.title}</span>
+                      <img src={item?.img} alt="" />
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="grid place-items-center  h-fit ">
+                <button className="size-14 rounded-full bg-pink-500 grid place-items-center absolute">
+                  <FaPlay size={25} className=" text-white" />
+                </button>
+                <img
+                  className="h-[30rem] w-[90%]"
+                  src="https://plus.unsplash.com/premium_photo-1679106770086-f4355693be1b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVyZnVtZXxlbnwwfHwwfHx8MA%3D%3D"
+                  alt=""
+                />
+              </div>
             </div>
+            <Feedback />
+            {/* detail start */}
+            <div className="space-y-3">
+              <div className="font-medium">{data?.data.details}</div>
+
+              <div className="relative border-y-2 py-4">
+                <div className="p-2 absolute -top-5 left-[50%] bg-white">
+                  <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
+                </div>
+                {data?.data?.description}
+              </div>
+              <div className="relative border-b-2 py-4 text-[#138B92]">
+                <span className="text-[#A2ADC4]">
+                  {" "}
+                  Read about this perfume in other languages:
+                </span>{" "}
+                Deutsch, Español, Français, Čeština, Italiano, Русский, Polski,
+                Português, Ελληνικά, 汉语, Nederlands, Srpski, Română, العربية,
+                Українська, Монгол, עברית.
+              </div>
+            </div>
+            {/* detail ends */}
+
+            {/* pros n cons */}
+            <ProsCons data={data?.data} />
+            {/* pros n cons */}
           </div>
           <div>
             <div className="w-full  flex flex-col gap-10">
-              <div className="border border-pink-500 w-full text-center py-4 shadow-lg">
+              <div className=" w-full text-center py-4 shadow-lg">
                 <span className="text-xl md:text-2xl  font-semibold ">
                   Perfume Reviews
                 </span>
@@ -321,6 +360,15 @@ const page = async ({ params }) => {
               <CardsList data={perfumeReviews} />
             </div>
           </div>
+        </div>
+        <div>
+          <div className="w-full relative grid place-items-center mb-6">
+            <div className="h-[2px] w-full bg-black absolute"></div>
+            <p className="text-3xl font-medium bg-white px-4 z-30">
+              Perfume Photos
+            </p>
+          </div>
+          <PerfumePhotos data={data?.data?.gallery} />
         </div>
       </div>
     </>

@@ -294,7 +294,7 @@ const page = async ({ params }) => {
                             );
                         })}
                     </div>
-                    <Feedback />
+
                     <div className="space-y-3">
                         <div className="font-medium">{data?.data.details}</div>
 
