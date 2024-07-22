@@ -39,6 +39,8 @@ import PieChart from "@/app/_components/DoughnutGraph/DoughnutGraph";
 import { FaFacebookF } from "react-icons/fa";
 import { IoHeart } from "react-icons/io5";
 import { FaPlay } from "react-icons/fa";
+import RelatedFragram from "./RelatedFragram";
+import FragramRatings from "./FragramRatings";
 
 const page = async ({ params }) => {
   const { productId } = params;
@@ -219,17 +221,17 @@ const page = async ({ params }) => {
           </span>
         </p>
         <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_25rem]">
-          <div className="grid grid-cols-[55%_45%] ">
-            <div>
+          <div className="grid grid-cols-[55%_45%]  ">
+            <div className=" ">
               {/* <img src={data?.data?.banner} alt="img" srcset="" /> */}
-              <div className="w-full  grid place-items-center">
+              <div className="w-full  grid place-items-center ">
                 <img
                   src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTx9i5DBcQkjbErPnz2sW4ykIsR66GdgUbTwxahsuFDhg1o5Z1HQBanzufmDf605qhNqlrLF1eOti2Pd9IW1xsmFLuSQly7QSFrBAMrSEh8X-qxtvgNDn5x"
                   alt="img"
                   srcset=""
                 />
               </div>
-              <div className="flex justify-around px-14  py-8 md:mt-36">
+              <div className="flex justify-around px-14  py-8 md:mt-6">
                 <div className="w-fit grid place-items-center gap-1">
                   <IoHeart
                     className="border-2 size-12 border-black rounded-full p-1 text-pink-300"
@@ -253,7 +255,7 @@ const page = async ({ params }) => {
               </div>
             </div>
 
-            <div className="flex flex-col justify-center  items-center gap-4 border-2">
+            <div className="flex flex-col justify-center  items-center gap-4 ">
               <div className="rounded-full overflow-hidden  w-fit">
                 <img className="size-40" src={data?.data?.logo} alt="" />
               </div>
@@ -263,7 +265,7 @@ const page = async ({ params }) => {
             </div>
           </div>
 
-          <div className="border-2 border-red-300 space-y-14">
+          <div className=" space-y-14">
             <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-8">
               <div className="text-xl md:text-2xl font-semibold">Register</div>
               <div className="space-x-4">
@@ -289,10 +291,9 @@ const page = async ({ params }) => {
             </div>
           </div>
         </div>
-
-        <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_25rem] py-8">
+        <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_20rem] py-8">
           <div className="space-y-8">
-            <div className="grid grid-cols-[60%_40%] h-fit">
+            <div className="grid md:grid-cols-[60%_40%] h-fit">
               <div className="space-y-12 w-full flex flex-col justify-center items-center ">
                 {[
                   {
@@ -361,7 +362,8 @@ const page = async ({ params }) => {
             </div>
           </div>
         </div>
-        <div>
+        {/* Perfume Photos starts */}
+        <div className="py-14">
           <div className="w-full relative grid place-items-center mb-6">
             <div className="h-[2px] w-full bg-black absolute"></div>
             <p className="text-3xl font-medium bg-white px-4 z-30">
@@ -370,6 +372,204 @@ const page = async ({ params }) => {
           </div>
           <PerfumePhotos data={data?.data?.gallery} />
         </div>
+        {/* Perfume Photos ends */}
+
+        {/* Fragrance Notes starts */}
+        <div>
+          <div className="w-full relative grid place-items-center mb-6">
+            <div className="h-[2px] w-[70%] bg-black absolute"></div>
+            <p className="text-3xl font-medium bg-white px-4 z-30">
+              Fragrance Notes
+            </p>
+          </div>
+          <div className="grid lg:grid-cols-[auto_20rem]">
+            <div className="flex items-start justify-center lg:translate-x-6   gap-10 ">
+              <div className="flex items-center gap-12  ">
+                <div className="p-4 ">
+                  <p className="px-20 font-bold">High</p>
+                  <div className="">
+                    <svg
+                      version="1.0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="35.000000pt"
+                      height="300.000000pt"
+                      viewBox="0 0 35.000000 300.000000"
+                      preserveAspectRatio="xMidYMid meet"
+                    >
+                      {" "}
+                      <g
+                        transform="translate(0.000000,300.000000) scale(0.050000,-0.050000)"
+                        fill="#000000"
+                        stroke="none"
+                      >
+                        {" "}
+                        <path d="M327 5859 c-47 -117 -138 -288 -211 -394 -66 -97 -58 -101 89 -45 58 22 112 40 120 40 8 0 15 -1224 15 -2720 0 -2404 3 -2720 30 -2720 27 0 30 316 30 2721 l0 2722 45 -14 c25 -8 88 -30 140 -50 114 -42 113 -44 25 78 -38 54 -110 181 -158 284 l-89 187 -36 -89z" />{" "}
+                      </g>{" "}
+                    </svg>
+                  </div>
+                  <p className="px-20 font-bold">Low</p>
+                </div>
+
+                <div className="relative  grid place-items-center  w-fit">
+                  <Image
+                    src={"/PerfumeBottle.svg"}
+                    height={400}
+                    width={450}
+                    alt=""
+                  />
+                  <div className="absolute   flex flex-col -translate-x-3 max-w-[16rem] gap-4">
+                    <div className="flex flex-col gap-4 justify-center items-center overflow-auto ">
+                      <p className="text-center font-bold">Top Notes</p>
+                      <div className="flex gap-4 text-sm">
+                        {data.data.topNote &&
+                          data.data.topNote.map((el) => {
+                            return (
+                              <div
+                                key={el._id}
+                                className=" flex flex-col  justify-center items-center "
+                              >
+                                <img
+                                  src={el.image}
+                                  alt={el.name}
+                                  className="w-10 h-10"
+                                />
+                                <p>{el.name}</p>
+                              </div>
+                            );
+                          })}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-4 justify-center items-center overflow-auto">
+                      <p className="text-center font-bold">Middle Notes</p>
+                      <div className="flex gap-4">
+                        {data.data?.middleNote.map((el) => {
+                          return (
+                            <div
+                              key={el._id}
+                              className=" flex flex-col  justify-center items-center "
+                            >
+                              <img
+                                src={el.image}
+                                alt={el.name}
+                                className="w-10 h-10"
+                              />
+                              <p>{el.name}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-4 justify-center items-center overflow-auto">
+                      <p className="text-center font-bold">Base Notes</p>
+                      <div className="flex gap-4">
+                        {data.data?.baseNote.map((el) => {
+                          return (
+                            <div
+                              key={el._id}
+                              className=" flex flex-col  justify-center items-center "
+                            >
+                              <img
+                                src={el.image}
+                                alt={el.name}
+                                className="w-10 h-10"
+                              />
+                              <p>{el.name}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <CardsList data={perfumeReviews} />
+            </div>
+          </div>
+        </div>
+        {/* Fragrance Notes ends */}
+
+        {/* Releted Fragram starts */}
+        <RelatedFragram />
+        {/* Related Fragram ends */}
+
+        {/*Ya perfume categories starts */}
+        <div className="gap-x-10 gap-y-14 grid lg:grid-cols-[auto_20rem]">
+          <div className="space-y-6 px-6">
+            <div className="text-3xl text-center md:text-left text-green-500 font-medium">
+              Yeah Perfume Categories
+            </div>
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-14">
+              {Array.from({ length: 6 }).map((item) => {
+                return (
+                  <div class="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 overflow-hidden">
+                    <div class="h-48 bg-whtie flex items-center justify-center">
+                      <img
+                        className="h-48"
+                        src="https://i.pinimg.com/736x/6f/a5/02/6fa502656a0d48ee31a5d2f8ed36e80f.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="p-4">
+                      <h2 class="text-sm font-semibold text-blue-600">
+                        Versace Dylan Blue Eau De Toilette, 100ml for Men
+                      </h2>
+                      <div class="mt-2">
+                        <span class="text-xl font-bold text-gray-900">
+                          ₹7,680.00
+                        </span>
+                        <span class="text-gray-600">(₹76.80 / millilitre)</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <FragramRatings />
+            <div className="grid gap-5 container ">
+              <span className="font-medium text-3xl py-4">Rating/Results</span>
+
+              <RatingResult />
+            </div>
+            <div className="space-y-5">
+              <div className="grid gap-2">
+                <span className="text-3xl font-medium">Add Your Review</span>
+                <textarea
+                  className="resize-none border-2 px-3 py-2 outline-none rounded-md border-gray-400"
+                  name=""
+                  placeholder="Add Your Review..."
+                  id=""
+                  cols="30"
+                  rows="10"
+                ></textarea>
+                <div>
+                  <label
+                    className="flex px-6 font-medium py-3 bg-gray-300 w-fit rounded-md justify-center items-center gap-3"
+                    htmlFor="image"
+                  >
+                    Upload Images <IoMdAdd size={25} />
+                  </label>
+                  <input
+                    multiple
+                    className="hidden"
+                    type="file"
+                    name="image"
+                    id="image"
+                  />
+                </div>
+              </div>
+              <Review />
+            </div>
+          </div>
+          <div>
+            <CardsList data={perfumeReviews} />
+            <CardsList data={perfumeReviews} />
+          </div>
+        </div>
+        {/*Ya perfume categories ends */}
       </div>
     </>
   );

@@ -203,7 +203,7 @@ const RatingResult = () => {
                                         <span className="text-nowrap font-medium">{sta.name}</span>
                                         <div className=' w-full flex justify-start items-center gap-3'>
                                             <span>{sta.num}</span>
-                                            <div className="bg-[#105955] h-3 rounded-3xl w-full"></div>
+                                            <div className="bg-orange-700 h-3 rounded-3xl w-full"></div>
                                         </div>
                                     </div>
                                 })

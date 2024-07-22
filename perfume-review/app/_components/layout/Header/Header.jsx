@@ -23,7 +23,7 @@ export default function Example() {
         <div className="flex justify-end items-center px-6">
           <div className="flex items-center lg:hidden">
             <Link href="/">
-              <Image src={logo} width={150} height={50} />
+              <Image src={logo} width={150} height={50} alt="img" />
             </Link>
           </div>
           <div className="flex items-center lg:hidden">
@@ -78,7 +78,7 @@ export default function Example() {
             </div>
             <div className="hidden lg:flex items-center">
               <Link href="/">
-                <Image src={logo} width={280} height={50} />
+                <Image src={logo} width={280} height={50} alt="img" />
               </Link>
             </div>
           </div>
