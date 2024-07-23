@@ -11,8 +11,8 @@ const ProsCons = ({ data }) => {
       <p className="text-4xl font-medium py-2">Pros and Cons</p>
 
       <div className="grid grid-col-2  items-center bg-white p-6 border border-gray-200 rounded-lg shadow-md">
-        <div className="flex justify-center w-full">
-          <div className=" p-4 border-r border-gray-300 grid place-items-center">
+        <div className="grid lg:grid-cols-2 justify-center w-full">
+          <div className=" p-4 lg:border-r border-gray-300 grid place-items-center">
             <div className="mt-4">
               <div className="text-[#2e6e6a] font-semibold text-center px-28 py-4  text-xl">
                 <p className="border border-black flex justify-center items-center px-12 py-3 gap-3 ">

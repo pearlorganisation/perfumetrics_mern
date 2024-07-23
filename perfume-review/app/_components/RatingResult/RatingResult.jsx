@@ -1,5 +1,9 @@
 "use client"
 import React, { useState } from 'react'
+import { IoIosTimer } from "react-icons/io";
+import { FaUser } from "react-icons/fa";
+import { BiSolidDollarCircle } from "react-icons/bi";
+import { IoMaleFemale } from "react-icons/io5";
 
 
 const RatingResult = () => {
@@ -52,7 +56,8 @@ const RatingResult = () => {
     ]
     const ratingData = [
         {
-            name: 'SILLAGE',
+            name: 'LOGENTIVITY',
+            icon: <IoIosTimer className='text-slate-400' size={32} />,
             results: results,
             rating: 1,
             status: [
@@ -79,7 +84,8 @@ const RatingResult = () => {
             ]
         },
         {
-            name: 'LONGEVITY',
+            name: 'SILLAGE',
+            icon: <FaUser className='text-slate-400' size={32} />,
             results: results,
             rating: 2,
             status: [
@@ -106,7 +112,8 @@ const RatingResult = () => {
             ]
         },
         {
-            name: 'PRICE VALUE',
+            name: 'GENDER',
+            icon: <IoMaleFemale className='text-slate-400' size={32} />,
             results: results,
             rating: 4,
             status: [
@@ -133,7 +140,9 @@ const RatingResult = () => {
             ]
         },
         {
-            name: 'GENDER',
+            name: 'PRICE VALUE',
+            icon: <BiSolidDollarCircle className='text-slate-400' size={32} />,
+
             results: results,
             rating: 1,
             status: [
@@ -165,7 +174,10 @@ const RatingResult = () => {
             {
                 ratingData?.map(item => {
                     return <div className='grid'>
-                        <div className="font-semibold text-lg py-2 text-[#2071B2]">{item?.name}</div>
+                        <div className="font-semibold grid place-items-center text-lg py-2 text-[#2071B2]">
+                            <span>{item?.icon}</span>
+                            <span className='text-black'>{item?.name}</span>
+                        </div>
                         <div className='flex justify-around gap-x-5'>
                             {
                                 item.results.map((res, idx) => {
@@ -203,7 +215,9 @@ const RatingResult = () => {
                                         <span className="text-nowrap font-medium">{sta.name}</span>
                                         <div className=' w-full flex justify-start items-center gap-3'>
                                             <span>{sta.num}</span>
-                                            <div className="bg-orange-700 h-3 rounded-3xl w-full"></div>
+                                            <div className='bg-slate-300 relative w-full rounded-3xl h-3'>
+                                                <div style={{ width: `${sta.num}%` }} className="bg-orange-700 absolute h-3 rounded-3xl w-full"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 })

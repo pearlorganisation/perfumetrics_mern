@@ -22,8 +22,8 @@ const Feedback = () => {
     return (
         <>
             <CustomerFeedbackModal ref={modalRef} />
-            <div className="grid grid-cols-2">
-                <div className="grid grid-cols-6 gap-5">
+            <div className="grid lg:grid-cols-2 place-items-center gap-y-4 lg:gap-y-0">
+                <div className="grid grid-cols-6 gap-5 w-full ">
                     {[
                         {
                             name: "Wrost",
@@ -96,7 +96,7 @@ const Feedback = () => {
                         );
                     })}
                 </div>
-                <div className="grid grid-cols-6 gap-5">
+                <div className="grid grid-cols-6 gap-5 w-full ">
                     {[
                         {
                             name: "Winter",

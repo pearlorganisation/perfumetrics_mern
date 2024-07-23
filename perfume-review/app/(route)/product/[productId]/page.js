@@ -1,6 +1,6 @@
 async function getPerfumeById(perfumeId) {
   const response = await fetch(
-    `https://perfume-backend-1.onrender.com/api/v1/perfume/${perfumeId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/${perfumeId}`,
     {
       cache: "no-store",
     }
@@ -11,7 +11,7 @@ async function getPerfumeById(perfumeId) {
 
 async function getPerfumes() {
   const response = await fetch(
-    `https://perfume-backend-1.onrender.com/api/v1/perfume`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume`
   );
   const data = await response.json();
   return data;
@@ -213,7 +213,7 @@ const page = async ({ params }) => {
     <>
       {/* feedback form  */}
 
-      <div className="min-h-screen container mx-auto py-20">
+      <div className="min-h-screen container mx-auto py-20 px-4">
         <p className="text-4xl font-medium py-6">
           {/* {data?.data?.perfume}{" "} */}
           <span className="text-4xl font-semibold ">
@@ -282,16 +282,16 @@ const page = async ({ params }) => {
                 Login
               </button>
             </div>
-            <div className="h-[33rem] border rounded-md overflow-hidden">
+            <div className="h-[33rem]  border rounded-md overflow-hidden">
               <img
-                className="h-full"
+                className="h-full mx-auto"
                 src="https://img.pikbest.com/origin/06/25/40/84bpIkbEsTgk3.jpg!sw800"
                 alt=""
               />
             </div>
           </div>
         </div>
-        <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_20rem] py-8">
+        <div className=" gap-x-10 gap-y-14 grid  lg:grid-cols-[auto_20rem] py-8">
           <div className="space-y-8">
             <div className="grid md:grid-cols-[60%_40%] h-fit">
               <div className="space-y-12 w-full flex flex-col justify-center items-center ">
