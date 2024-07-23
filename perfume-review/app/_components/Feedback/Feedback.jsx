@@ -22,8 +22,8 @@ const Feedback = () => {
     return (
         <>
             <CustomerFeedbackModal ref={modalRef} />
-            <div className="grid grid-cols-2">
-                <div className="grid grid-cols-6 gap-5">
+            <div className="grid lg:grid-cols-2 place-items-center gap-y-4 lg:gap-y-0">
+                <div className="grid grid-cols-6 gap-5 w-full ">
                     {[
                         {
                             name: "Wrost",
@@ -78,9 +78,9 @@ const Feedback = () => {
                         return (
                             <div
                                 onClick={handleOpeningModal}
-                                className="cursor-pointer font-medium text-[#105955] relative grid place-items-center"
+                                className="cursor-pointer font-medium text-pink-400 relative grid place-items-center"
                             >
-                                <div className="absolute w-full h-full bg-transparent hover:backdrop-grayscale-0 backdrop-grayscale"></div>
+                                {/* <div className="absolute w-full h-full bg-transparent hover:backdrop-grayscale-0 backdrop-grayscale"></div> */}
                                 <div className="text-3xl">{item?.icons}</div>
                                 <div className="text-xs font-medium"> {item?.name}</div>
                                 <div className="h-3 border overflow-hidden rounded-lg w-full bg-slate-300">
@@ -96,7 +96,7 @@ const Feedback = () => {
                         );
                     })}
                 </div>
-                <div className="grid grid-cols-6 gap-5">
+                <div className="grid grid-cols-6 gap-5 w-full ">
                     {[
                         {
                             name: "Winter",
@@ -165,9 +165,9 @@ const Feedback = () => {
                         return (
                             <div
                                 onClick={handleOpeningModal}
-                                className="cursor-pointer font-medium text-[#105955] relative grid place-items-center"
+                                className="cursor-pointer font-medium text-pink-400 relative grid place-items-center"
                             >
-                                <div className="absolute w-full h-full bg-transparent hover:backdrop-grayscale-0 backdrop-grayscale"></div>
+                                {/* <div className="absolute w-full h-full bg-transparent hover:backdrop-grayscale-0 backdrop-grayscale"></div> */}
                                 {item.icons}
                                 <div className="text-sm font-medium"> {item?.name}</div>
                                 <div className="h-3 border overflow-hidden rounded-lg w-full bg-slate-300">

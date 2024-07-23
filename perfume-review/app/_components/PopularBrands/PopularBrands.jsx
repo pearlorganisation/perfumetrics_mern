@@ -54,7 +54,7 @@ const popularPerfumeData = [
 const PopularBrands = () => {
   return (
     <>
-      <div className="container mx-auto max-w-6xl ">
+      <div className="container mx-auto max-w-[90%]">
         <div className="p-5">
           <div className="text-center">
             {/* <div className="inline-block relative pb-5">

@@ -1,6 +1,6 @@
 async function getPerfumeById(perfumeId) {
   const response = await fetch(
-    `https://perfume-backend-1.onrender.com/api/v1/perfume/${perfumeId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/${perfumeId}`,
     {
       cache: "no-store",
     }
@@ -11,7 +11,7 @@ async function getPerfumeById(perfumeId) {
 
 async function getPerfumes() {
   const response = await fetch(
-    `https://perfume-backend-1.onrender.com/api/v1/perfume`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume`
   );
   const data = await response.json();
   return data;
@@ -20,6 +20,7 @@ async function getPerfumes() {
 // import CircularProgress from "@/app/_components/CircularProgress/CircularProgress";
 
 import { GiFruitBowl } from "react-icons/gi";
+import { FaLongArrowAltUp } from "react-icons/fa";
 import ProsCons from "../_ProsCons";
 import Image from "next/image";
 import Review from "./Review";
@@ -35,6 +36,11 @@ import { FaQuoteLeft } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import ToggleButton from "@/app/_components/ToggleButton/ToggleButton";
 import PieChart from "@/app/_components/DoughnutGraph/DoughnutGraph";
+import { FaFacebookF } from "react-icons/fa";
+import { IoHeart } from "react-icons/io5";
+import { FaPlay } from "react-icons/fa";
+import RelatedFragram from "./RelatedFragram";
+import FragramRatings from "./FragramRatings";
 
 const page = async ({ params }) => {
   const { productId } = params;
@@ -96,43 +102,7 @@ const page = async ({ params }) => {
       reviewLink: "",
     },
   ];
-  const perfumeReviews = [
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
-      name: "al haraman",
-      brand: null,
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-  ];
+
   const topNews = [
     {
       imgUrl:
@@ -196,243 +166,410 @@ const page = async ({ params }) => {
     },
   ];
 
+  const perfumeReviews = [
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
+      name: "al haraman",
+      brand: null,
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
+      name: "Denver",
+      brand: "Cereria Terenzi Evelino S.R.L.",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
+      name: "Denver",
+      brand: "Cereria Terenzi Evelino S.R.L.",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
+      name: "Denver",
+      brand: "Cereria Terenzi Evelino S.R.L.",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
+      name: "Denver",
+      brand: "Cereria Terenzi Evelino S.R.L.",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
+      name: "Denver",
+      brand: "Cereria Terenzi Evelino S.R.L.",
+    },
+    {
+      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
+      name: "Denver",
+      brand: "Cereria Terenzi Evelino S.R.L.",
+    },
+  ];
+
   const data = await getPerfumeById(productId);
   const perfumeData = await getPerfumes();
   console.log(data?.data, "data");
+  const purchaseLinksData = data.data?.purchaseLinks;
+
   return (
     <>
       {/* feedback form  */}
 
-      <div className="min-h-screen container mx-auto py-20">
-        <div className="grid gap-x-10 gap-y-14 grid-cols-[auto_28rem]">
-          <div className="grid grid-cols-2">
-            <div>
-              <p className="text-3xl font-medium">
-                {data?.data?.perfume}{" "}
-                {/* <span className="text-2xl text-[#5899CA]">for women</span> */}
-              </p>
-              <img src={data?.data?.banner} alt="img" srcset="" />
+      <div className="min-h-screen container mx-auto py-20 px-4">
+        <p className="text-4xl font-medium py-6">
+          {/* {data?.data?.perfume}{" "} */}
+          <span className="text-4xl font-semibold ">
+            Yeah! Perfume Maison Alhambra for men
+          </span>
+        </p>
+        <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_25rem]">
+          <div className="grid grid-cols-[55%_45%]  ">
+            <div className=" ">
+              {/* <img src={data?.data?.banner} alt="img" srcset="" /> */}
+              <div className="w-full  grid place-items-center ">
+                <img
+                  src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTx9i5DBcQkjbErPnz2sW4ykIsR66GdgUbTwxahsuFDhg1o5Z1HQBanzufmDf605qhNqlrLF1eOti2Pd9IW1xsmFLuSQly7QSFrBAMrSEh8X-qxtvgNDn5x"
+                  alt="img"
+                  srcset=""
+                />
+              </div>
+              <div className="flex justify-around px-14  py-8 md:mt-6">
+                <div className="w-fit grid place-items-center gap-1">
+                  <IoHeart
+                    className="border-2 size-12 border-black rounded-full p-1 text-pink-300"
+                    size={38}
+                  />
+                  <div className="h-1 w-full bg-pink-400"></div>
+                  <span>17 Dislikes</span>
+                </div>
+
+                <div className="w-fit grid place-items-center gap-1">
+                  <Image
+                    className="border-2 size-12 border-black rounded-full"
+                    src="/likes.svg"
+                    width={50}
+                    height={50}
+                    alt=""
+                  />
+                  <div className="h-1 w-full bg-pink-400"></div>
+                  <span>17 Dislikes</span>
+                </div>
+              </div>
             </div>
 
-            <div className="flex flex-col justify-center  items-center gap-4">
-              <div className="rounded-full overflow-hidden border w-fit">
-                <img className="h-40" src={data?.data?.logo} alt="" />
+            <div className="flex flex-col justify-center  items-center gap-4 ">
+              <div className="rounded-full overflow-hidden  w-fit">
+                <img className="size-40" src={data?.data?.logo} alt="" />
               </div>
-              <div className="flex flex-wrap">
+              <div className="flex flex-wrap w-full">
                 <PieChart mainAccords={data?.data?.mainAccords} />
               </div>
             </div>
           </div>
-          {/* right side section for perfume review listing starts here */}
-          <div className="row-span-9">
-            {/* right side section for perfume review listing */}
-            <div className="px-4">
-              <div className="flex justify-between items-center py-4 ">
-                <span className="text-2xl font-semibold ">Perfume Reviews</span>{" "}
-                <Link
-                  href={`/write-a-review`}
-                  className="text-pink-400 font-medium"
-                >
-                  Write a review
-                </Link>
+
+          <div className=" space-y-14">
+            <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-8">
+              <div className="text-xl md:text-2xl font-semibold">Register</div>
+              <div className="space-x-4">
+                <button className="w-[8rem] py-2 rounded border border-pink-500">
+                  Login
+                </button>
+                <button className="w-[8rem] py-2 rounded border border-pink-500">
+                  Register
+                </button>
               </div>
-
-              <CardsList data={perfumeReviews} />
-            </div>
-          </div>
-          {/* <div className=" flex gap-x-5 gap-y-4 flex-wrap max-w-2xl">
-            {[
-              `Fruity`,
-              `Fresh`,
-              `Sweet`,
-              `Powdery`,
-              `Floral`,
-              `Mens`,
-              `Women's`,
-              `Citrus`,
-            ]?.map((item) => {
-              return (
-                <div className="flex  justify-start items-center gap-2 font-medium text-lg">
-                  <GiFruitBowl className="text-gray-500" />
-                  {item}
-                </div>
-              );
-            })}
-          </div> */}
-
-          <ToggleButton />
-          {/* <p className="text-lg">
-            Guess Mens Seductive Blue Body Mist ...{" "}
-            <span className="font-medium ">(10.99 USD)</span>
-          </p> */}
-          <div className="space-y-3">
-            {[
-              {
-                title: "Buy From",
-                img: "https://s3-alpha-sig.figma.com/img/3659/5e0f/7eef1817ec204989391c3be6ac3d5499?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Eez7RfvpVZaxP9V0eylwnnNzYiYt4TuntkPLYpOMc0S3YUIp8RIPE1xyjmzLAeRViSPvm-dPRCl3pfPNUSbLg7UV9hZ6qxDkyDOSdWchcLteNA9xCOhEri4RASZMQ0JObY2y~xNBZ~qq4e7dc3j58MxFGfkmTVMm0l0d~MzVt1x5ehYN3f6WqCD~KszzZYs0nRBoQaMQhVUrUbcrXw8WcW6fCMnHy0hEB86zzzGtbWBul1O7ThN2dmXiw6DhMRNSZkb0vyZhghFpItn5nKNHvkg-yQg~NPfh2mBUsJccqMKx9tjkcYifrGRQHtFine3LLUEDPTxaDLDIbc1jExIapg__",
-              },
-              {
-                title: "Buy From",
-                img: "https://s3-alpha-sig.figma.com/img/87cb/8e80/a974a28100d68d7f00b0634e69ff2269?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JMzwB1wBCMjHQF6cykxZ6EXQK8o8OEAhMpHNZ-5eCnRVr8QBz4A0vYZiMHSpLVm7-BAIlTf7tMemYQEkVu6sxqhEY-4NaEx-lR0Z0Po3Ev~FPQoN4P5UxUOI-dr-3IB1fOLYTeLm3Bs4ylcJedIN-w8B7i6S39INHu6dvie~4FMLZ0tqpM2krtvmZWGxohKjNUpuhZQTJTI3Yq9rkIgDd2c48--xWj7Fo9PyXJDlYlTvKIkO82P6myuikCHJXt9L2ds2qsT6oV1LVXTfSMN1mY6Ya1SvFTF-Vb1mwqATm8drsiKsDzdqtYBapIJJDHJ~5n86Eg84khZ6miAAVf~cDA__",
-              },
-            ].map((item) => {
-              return (
-                <div className="flex gap-4 text-xl font-semibold justify-start items-center bg-[#FAF6FF] w-[20rem] px-6 py-2 rounded-xl">
-                  <span>{item?.title}</span>
-                  <img src={item?.img} alt="" />
-                </div>
-              );
-            })}
-          </div>
-          <Feedback />
-          <div className="space-y-3">
-            <div className="font-medium">{data?.data?.details}</div>
-
-            <div className="relative border-y-2 py-4">
-              <div className="p-2 absolute -top-5 left-[50%] bg-white">
-                <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
-              </div>
-              {data?.data?.description}
-            </div>
-            <div className="relative border-b-2 py-4 text-[#138B92]">
-              <span className="text-[#A2ADC4]">
+              <button className="bg-[#1777F2] font-medium text-white px-4 py-2 rounded flex justify-center items-center gap-2">
                 {" "}
-                Read about this perfume in other languages:
-              </span>{" "}
-              Deutsch, Español, Français, Čeština, Italiano, Русский, Polski,
-              Português, Ελληνικά, 汉语, Nederlands, Srpski, Română, العربية,
-              Українська, Монгол, עברית.
+                <FaFacebookF />
+                Login
+              </button>
             </div>
-          </div>
-
-          <ProsCons />
-
-          <div className="grid grid-cols-2 ">
-            <div>
-              <Image
-                src="/Pyramid.png"
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-                alt="img"
+            <div className="h-[33rem]  border rounded-md overflow-hidden">
+              <img
+                className="h-full mx-auto"
+                src="https://img.pikbest.com/origin/06/25/40/84bpIkbEsTgk3.jpg!sw800"
+                alt=""
               />
             </div>
-            {/* <img
-              className="border-2 border-red-500"
-              src="./Pyramid.png"
-              alt=""
-            /> */}
-            <div className="grid grid-rows-3 h-full">
-              <div className=" flex justify-start items-center gap-3 ">
-                {data?.data?.topNote?.map((item) => {
+          </div>
+        </div>
+        <div className=" gap-x-10 gap-y-14 grid  lg:grid-cols-[auto_20rem] py-8">
+          <div className="space-y-8">
+            <div className="grid md:grid-cols-[60%_40%] h-fit">
+              <div className="space-y-12 w-full flex flex-col justify-center items-center ">
+                {[
+                  {
+                    title: "Buy From",
+                    img: "https://s3-alpha-sig.figma.com/img/3659/5e0f/7eef1817ec204989391c3be6ac3d5499?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Eez7RfvpVZaxP9V0eylwnnNzYiYt4TuntkPLYpOMc0S3YUIp8RIPE1xyjmzLAeRViSPvm-dPRCl3pfPNUSbLg7UV9hZ6qxDkyDOSdWchcLteNA9xCOhEri4RASZMQ0JObY2y~xNBZ~qq4e7dc3j58MxFGfkmTVMm0l0d~MzVt1x5ehYN3f6WqCD~KszzZYs0nRBoQaMQhVUrUbcrXw8WcW6fCMnHy0hEB86zzzGtbWBul1O7ThN2dmXiw6DhMRNSZkb0vyZhghFpItn5nKNHvkg-yQg~NPfh2mBUsJccqMKx9tjkcYifrGRQHtFine3LLUEDPTxaDLDIbc1jExIapg__",
+                  },
+                  {
+                    title: "Buy From",
+                    img: "https://s3-alpha-sig.figma.com/img/87cb/8e80/a974a28100d68d7f00b0634e69ff2269?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JMzwB1wBCMjHQF6cykxZ6EXQK8o8OEAhMpHNZ-5eCnRVr8QBz4A0vYZiMHSpLVm7-BAIlTf7tMemYQEkVu6sxqhEY-4NaEx-lR0Z0Po3Ev~FPQoN4P5UxUOI-dr-3IB1fOLYTeLm3Bs4ylcJedIN-w8B7i6S39INHu6dvie~4FMLZ0tqpM2krtvmZWGxohKjNUpuhZQTJTI3Yq9rkIgDd2c48--xWj7Fo9PyXJDlYlTvKIkO82P6myuikCHJXt9L2ds2qsT6oV1LVXTfSMN1mY6Ya1SvFTF-Vb1mwqATm8drsiKsDzdqtYBapIJJDHJ~5n86Eg84khZ6miAAVf~cDA__",
+                  },
+                ].map((item) => {
                   return (
-                    <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                      <img className="h-24" src={item?.image} alt="" />
+                    <div className="flex gap-4 text-xl font-semibold justify-start items-center bg-[#FAF6FF] w-[20rem] px-6 py-2 rounded-xl">
+                      <span>{item?.title}</span>
+                      <img src={item?.img} alt="" />
                     </div>
                   );
                 })}
               </div>
-              <div className=" flex justify-start items-center gap-3 ">
-                {data?.data?.middleNote?.map((item) => {
-                  return (
-                    <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                      <img className="h-24" src={item?.image} alt="" />
-                    </div>
-                  );
-                })}
-              </div>
-              <div className=" flex justify-start items-center gap-3 ">
-                {data?.data?.baseNote?.map((item) => {
-                  return (
-                    <div className="rounded-full border-2 overflow-hidden shadow-xl p-1">
-                      <img className="h-24" src={item?.image} alt="" />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          <div className="w-full col-span-2">
-            <p className="text-3xl font-medium">Perfume Photos</p>
-          </div>
-          <PerfumePhotos data={data?.data?.gallery} />
-
-          <div className="space-y-8 py-4">
-            <p className="text-4xl font-medium">Top Perfumes</p>
-            <ProductCards data={perfumeData?.data} />
-            <div className="grid place-items-center">
-              <button className="px-8 py-2 font-medium border rounded-md">
-                SHOP MORE
-              </button>
-            </div>
-          </div>
-
-          {/* right side section for perfume review listing starts here */}
-          <div className="row-span-9 ">
-            {/* right side section for perfume review listing */}
-            <div className="px-4">
-              <div className="flex justify-between items-center py-4 ">
-                <span className="text-2xl font-semibold ">Perfume Reviews</span>{" "}
-                <Link
-                  href={`/write-a-review`}
-                  className="text-pink-400 font-medium"
-                >
-                  Write a review
-                </Link>
-              </div>
-
-              <CardsList data={perfumeReviews} />
-            </div>
-          </div>
-
-          <div className="space-y-8 py-4">
-            <p className="text-4xl font-medium">Similar Perfumes</p>
-            <ProductCards data={perfumeData?.data} />
-            <div className="grid place-items-center">
-              <button className="px-8 py-2 font-medium border rounded-md">
-                SHOP MORE
-              </button>
-            </div>
-          </div>
-
-          <div className="grid gap-5 container ">
-            <span className="font-medium text-3xl py-4">Rating/Results</span>
-
-            <RatingResult />
-          </div>
-
-          <div className="space-y-5">
-            <div className="grid gap-2">
-              <span className="text-3xl font-medium">Add Your Review</span>
-              <textarea
-                className="resize-none border-2 px-3 py-2 outline-none rounded-md border-gray-400"
-                name=""
-                placeholder="Add Your Review..."
-                id=""
-                cols="30"
-                rows="10"
-              ></textarea>
-              <div>
-                <label
-                  className="flex px-6 font-medium py-3 bg-gray-300 w-fit rounded-md justify-center items-center gap-3"
-                  htmlFor="image"
-                >
-                  Upload Images <IoMdAdd size={25} />
-                </label>
-                <input
-                  multiple
-                  className="hidden"
-                  type="file"
-                  name="image"
-                  id="image"
+              <div className="grid place-items-center  h-fit ">
+                <button className="size-14 rounded-full bg-pink-500 grid place-items-center absolute">
+                  <FaPlay size={25} className=" text-white" />
+                </button>
+                <img
+                  className="h-[30rem] w-[90%]"
+                  src="https://plus.unsplash.com/premium_photo-1679106770086-f4355693be1b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVyZnVtZXxlbnwwfHwwfHx8MA%3D%3D"
+                  alt=""
                 />
               </div>
             </div>
-            <Review />
+            <Feedback />
+            {/* detail start */}
+            <div className="space-y-3">
+              <div className="font-medium">{data?.data.details}</div>
+
+              <div className="relative border-y-2 py-4">
+                <div className="p-2 absolute -top-5 left-[50%] bg-white">
+                  <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
+                </div>
+                {data?.data?.description}
+              </div>
+              <div className="relative border-b-2 py-4 text-[#138B92]">
+                <span className="text-[#A2ADC4]">
+                  {" "}
+                  Read about this perfume in other languages:
+                </span>{" "}
+                Deutsch, Español, Français, Čeština, Italiano, Русский, Polski,
+                Português, Ελληνικά, 汉语, Nederlands, Srpski, Română, العربية,
+                Українська, Монгол, עברית.
+              </div>
+            </div>
+            {/* detail ends */}
+
+            {/* pros n cons */}
+            <ProsCons data={data?.data} />
+            {/* pros n cons */}
+          </div>
+          <div>
+            <div className="w-full  flex flex-col gap-10">
+              <div className=" w-full text-center py-4 shadow-lg">
+                <span className="text-xl md:text-2xl  font-semibold ">
+                  Perfume Reviews
+                </span>
+              </div>
+              <CardsList data={perfumeReviews} />
+            </div>
           </div>
         </div>
+        {/* Perfume Photos starts */}
+        <div className="py-14">
+          <div className="w-full relative grid place-items-center mb-6">
+            <div className="h-[2px] w-full bg-black absolute"></div>
+            <p className="text-3xl font-medium bg-white px-4 z-30">
+              Perfume Photos
+            </p>
+          </div>
+          <PerfumePhotos data={data?.data?.gallery} />
+        </div>
+        {/* Perfume Photos ends */}
+
+        {/* Fragrance Notes starts */}
+        <div>
+          <div className="w-full relative grid place-items-center mb-6">
+            <div className="h-[2px] w-[70%] bg-black absolute"></div>
+            <p className="text-3xl font-medium bg-white px-4 z-30">
+              Fragrance Notes
+            </p>
+          </div>
+          <div className="grid lg:grid-cols-[auto_20rem]">
+            <div className="flex items-start justify-center lg:translate-x-6   gap-10 ">
+              <div className="flex items-center gap-12  ">
+                <div className="p-4 ">
+                  <p className="px-20 font-bold">High</p>
+                  <div className="">
+                    <svg
+                      version="1.0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="35.000000pt"
+                      height="300.000000pt"
+                      viewBox="0 0 35.000000 300.000000"
+                      preserveAspectRatio="xMidYMid meet"
+                    >
+                      {" "}
+                      <g
+                        transform="translate(0.000000,300.000000) scale(0.050000,-0.050000)"
+                        fill="#000000"
+                        stroke="none"
+                      >
+                        {" "}
+                        <path d="M327 5859 c-47 -117 -138 -288 -211 -394 -66 -97 -58 -101 89 -45 58 22 112 40 120 40 8 0 15 -1224 15 -2720 0 -2404 3 -2720 30 -2720 27 0 30 316 30 2721 l0 2722 45 -14 c25 -8 88 -30 140 -50 114 -42 113 -44 25 78 -38 54 -110 181 -158 284 l-89 187 -36 -89z" />{" "}
+                      </g>{" "}
+                    </svg>
+                  </div>
+                  <p className="px-20 font-bold">Low</p>
+                </div>
+
+                <div className="relative  grid place-items-center  w-fit">
+                  <Image
+                    src={"/PerfumeBottle.svg"}
+                    height={400}
+                    width={450}
+                    alt=""
+                  />
+                  <div className="absolute   flex flex-col -translate-x-3 max-w-[16rem] gap-4">
+                    <div className="flex flex-col gap-4 justify-center items-center overflow-auto ">
+                      <p className="text-center font-bold">Top Notes</p>
+                      <div className="flex gap-4 text-sm">
+                        {data.data.topNote &&
+                          data.data.topNote.map((el) => {
+                            return (
+                              <div
+                                key={el._id}
+                                className=" flex flex-col  justify-center items-center "
+                              >
+                                <img
+                                  src={el.image}
+                                  alt={el.name}
+                                  className="w-10 h-10"
+                                />
+                                <p>{el.name}</p>
+                              </div>
+                            );
+                          })}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-4 justify-center items-center overflow-auto">
+                      <p className="text-center font-bold">Middle Notes</p>
+                      <div className="flex gap-4">
+                        {data.data?.middleNote.map((el) => {
+                          return (
+                            <div
+                              key={el._id}
+                              className=" flex flex-col  justify-center items-center "
+                            >
+                              <img
+                                src={el.image}
+                                alt={el.name}
+                                className="w-10 h-10"
+                              />
+                              <p>{el.name}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-4 justify-center items-center overflow-auto">
+                      <p className="text-center font-bold">Base Notes</p>
+                      <div className="flex gap-4">
+                        {data.data?.baseNote.map((el) => {
+                          return (
+                            <div
+                              key={el._id}
+                              className=" flex flex-col  justify-center items-center "
+                            >
+                              <img
+                                src={el.image}
+                                alt={el.name}
+                                className="w-10 h-10"
+                              />
+                              <p>{el.name}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <CardsList data={perfumeReviews} />
+            </div>
+          </div>
+        </div>
+        {/* Fragrance Notes ends */}
+
+        {/* Releted Fragram starts */}
+        <RelatedFragram />
+        {/* Related Fragram ends */}
+
+        {/*Ya perfume categories starts */}
+        <div className="gap-x-10 gap-y-14 grid lg:grid-cols-[auto_20rem]">
+          <div className="space-y-6 px-6">
+            <div className="text-3xl text-center md:text-left text-green-500 font-medium">
+              Yeah Perfume Categories
+            </div>
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-14">
+              {Array.from({ length: 6 }).map((item) => {
+                return (
+                  <div class="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 overflow-hidden">
+                    <div class="h-48 bg-whtie flex items-center justify-center">
+                      <img
+                        className="h-48"
+                        src="https://i.pinimg.com/736x/6f/a5/02/6fa502656a0d48ee31a5d2f8ed36e80f.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="p-4">
+                      <h2 class="text-sm font-semibold text-blue-600">
+                        Versace Dylan Blue Eau De Toilette, 100ml for Men
+                      </h2>
+                      <div class="mt-2">
+                        <span class="text-xl font-bold text-gray-900">
+                          ₹7,680.00
+                        </span>
+                        <span class="text-gray-600">(₹76.80 / millilitre)</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <FragramRatings />
+            <div className="grid gap-5 container ">
+              <span className="font-medium text-3xl py-4">Rating/Results</span>
+
+              <RatingResult />
+            </div>
+            <div className="space-y-5">
+              <div className="grid gap-2">
+                <span className="text-3xl font-medium">Add Your Review</span>
+                <textarea
+                  className="resize-none border-2 px-3 py-2 outline-none rounded-md border-gray-400"
+                  name=""
+                  placeholder="Add Your Review..."
+                  id=""
+                  cols="30"
+                  rows="10"
+                ></textarea>
+                <div>
+                  <label
+                    className="flex px-6 font-medium py-3 bg-gray-300 w-fit rounded-md justify-center items-center gap-3"
+                    htmlFor="image"
+                  >
+                    Upload Images <IoMdAdd size={25} />
+                  </label>
+                  <input
+                    multiple
+                    className="hidden"
+                    type="file"
+                    name="image"
+                    id="image"
+                  />
+                </div>
+              </div>
+              <Review />
+            </div>
+          </div>
+          <div>
+            <CardsList data={perfumeReviews} />
+            <CardsList data={perfumeReviews} />
+          </div>
+        </div>
+        {/*Ya perfume categories ends */}
       </div>
     </>
   );

@@ -4,12 +4,7 @@ const LogoGrid = () => {
   return (
     <section class="py-12 border-t-2 ">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* <div class="mb-14 text-center">
-          <h4 class="text-xl text-gray-400 text-center font-medium">
-            Our clients
-          </h4>
-        </div> */}
-        <div class="grid grid-cols-2  justify-center  items-center  gap-12 md:grid-cols-3  xl:grid-cols-none xl:flex xl:justify-between">
+        <div class="grid sm:grid-cols-2  justify-center  items-center  gap-12 md:grid-cols-3  xl:grid-cols-none xl:flex xl:justify-between">
           <a href="#" class="flex justify-center items-center">
             <svg
               class="h-9"
