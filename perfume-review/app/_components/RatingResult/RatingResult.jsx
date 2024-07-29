@@ -181,7 +181,6 @@ const RatingResult = () => {
                         <div className='flex justify-around gap-x-5'>
                             {
                                 item.results.map((res, idx) => {
-                                    console.log(res.icons)
                                     return <div className="cursor-pointer grid place-items-center font-medium text-[#105955] relative">
                                         <div
                                             className={`absolute w-full h-full bg-transparent ${idx + 1 === item.rating

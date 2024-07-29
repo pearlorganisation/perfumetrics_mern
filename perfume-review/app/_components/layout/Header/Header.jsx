@@ -98,13 +98,13 @@ export default function Example() {
               PERFUMES
             </Link>
             <Link
-              href="/aboutus"
+              href="/about"
               className="hover:text-pink-500 cursor-pointer transition duration-300"
             >
               ABOUT US
             </Link>
             <Link
-              href="/contactus"
+              href="/contactUs"
               className="hover:text-pink-500 cursor-pointer transition duration-300"
             >
               CONTACT US

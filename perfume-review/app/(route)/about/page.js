@@ -2,111 +2,54 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4">
-      <div className="flex flex-col lg:flex-row justify-between gap-8">
-        <div className="w-full lg:w-5/12 flex flex-col justify-center">
-          <h1 className="text-3xl lg:text-4xl font-bold leading-9 text-gray-800 pb-4">
-            About Us
-          </h1>
-          <p className="font-normal text-base leading-6 text-gray-600 ">
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum.In the first place we have granted to God, and
-            by this our present charter confirmed for us and our heirs forever
-            that the English Church shall be free, and shall have her rights
-            entire, and her liberties inviolate; and we will that it be thus
-            observed; which is apparent from
+    <div class=" text-gray-800 container mx-auto p-8">
+      <header class="bg-[#F9A8D4] text-white py-6 ">
+        <div class=" text-center">
+          <h1 class="text-4xl font-bold">About Perfumetrics</h1>
+          <p class="text-lg mt-2">
+            Your trusted source for honest and insightful perfume reviews.
           </p>
         </div>
-        <div className="w-full lg:w-8/12 ">
-          <img
-            className="w-full h-full"
-            src="https://i.ibb.co/FhgPJt8/Rectangle-116.png"
-            alt="A group of People"
-          />
-        </div>
-      </div>
-
-      <div className="flex lg:flex-row flex-col justify-between gap-8 pt-12">
-        <div className="w-full lg:w-5/12 flex flex-col justify-center">
-          <h1 className="text-3xl lg:text-4xl font-bold leading-9 text-gray-800 pb-4">
-            Our Story
-          </h1>
-          <p className="font-normal text-base leading-6 text-gray-600 ">
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum.In the first place we have granted to God, and
-            by this our present charter confirmed for us and our heirs forever
-            that the English Church shall be free, and shall have her rights
-            entire, and her liberties inviolate; and we will that it be thus
-            observed; which is apparent from
+      </header>
+      <main class="">
+        <section class="bg-white p-8 rounded-lg shadow-lg">
+          <h2 class="text-3xl font-bold mb-4">Welcome to Perfumetrics</h2>
+          <p class="mb-4">
+            Based in the United States, we are dedicated to helping you discover
+            the perfect scent that matches your unique style and preferences.
           </p>
-        </div>
-        <div className="w-full lg:w-8/12 lg:pt-8">
-          <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 lg:gap-4 shadow-lg rounded-md">
-            <div className="p-4 pb-6 flex justify-center flex-col items-center">
-              <img
-                className="md:block hidden"
-                src="https://i.ibb.co/FYTKDG6/Rectangle-118-2.png"
-                alt="Alexa featured Img"
-              />
-              <img
-                className="md:hidden block"
-                src="https://i.ibb.co/zHjXqg4/Rectangle-118.png"
-                alt="Alexa featured Img"
-              />
-              <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
-                Alexa
-              </p>
-            </div>
-            <div className="p-4 pb-6 flex justify-center flex-col items-center">
-              <img
-                className="md:block hidden"
-                src="https://i.ibb.co/fGmxhVy/Rectangle-119.png"
-                alt="Olivia featured Img"
-              />
-              <img
-                className="md:hidden block"
-                src="https://i.ibb.co/NrWKJ1M/Rectangle-119.png"
-                alt="Olivia featured Img"
-              />
-              <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
-                Olivia
-              </p>
-            </div>
-            <div className="p-4 pb-6 flex justify-center flex-col items-center">
-              <img
-                className="md:block hidden"
-                src="https://i.ibb.co/Pc6XVVC/Rectangle-120.png"
-                alt="Liam featued Img"
-              />
-              <img
-                className="md:hidden block"
-                src="https://i.ibb.co/C5MMBcs/Rectangle-120.png"
-                alt="Liam featued Img"
-              />
-              <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
-                Liam
-              </p>
-            </div>
-            <div className="p-4 pb-6 flex justify-center flex-col items-center">
-              <img
-                className="md:block hidden"
-                src="https://i.ibb.co/7nSJPXQ/Rectangle-121.png"
-                alt="Elijah featured img"
-              />
-              <img
-                className="md:hidden block"
-                src="https://i.ibb.co/ThZBWxH/Rectangle-121.png"
-                alt="Elijah featured img"
-              />
-              <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
-                Elijah
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+          <h3 class="text-2xl font-semibold mb-4">Our Mission</h3>
+          <p class="mb-4">
+            Our mission is simple: to provide comprehensive and unbiased reviews
+            of a wide range of perfumes. We understand that choosing a fragrance
+            is a deeply personal experience, and we aim to guide you through
+            this journey with our expert advice and detailed analysis.
+          </p>
+          <h3 class="text-2xl font-semibold mb-4">Our Approach</h3>
+          <p class="mb-4">
+            At Perfumetrics, our team of passionate fragrance enthusiasts
+            meticulously tests and evaluates each perfume. We consider various
+            aspects, including scent profile, longevity, sillage, and value for
+            money, to ensure that our reviews are thorough and reliable. Our
+            goal is to empower you with the knowledge you need to make informed
+            decisions about your next fragrance purchase.
+          </p>
+          <h3 class="text-2xl font-semibold mb-4">Our Values</h3>
+          <p class="mb-4">
+            We believe in transparency and integrity, and we are committed to
+            maintaining the highest standards of honesty in our reviews. Whether
+            you're a fragrance aficionado or new to the world of perfumes,
+            Perfumetrics is here to help you navigate the vast array of scents
+            available in the market.
+          </p>
+          <p class="text-xl font-bold mt-8">
+            Thank you for visiting Perfumetrics. We hope our reviews will
+            inspire and assist you in finding the perfect fragrance that
+            captures your essence and elevates your everyday experience.
+          </p>
+          <p class="text-lg mt-4">Stay fragrant,</p>
+        </section>
+      </main>
     </div>
   );
 };
