@@ -62,7 +62,7 @@ const Login = () => {
                             type="password"
                             name='password'
                             required
-                            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-pink-500 shadow-sm rounded-lg"
                         />
                     </div>
                     <div className="flex items-center justify-between text-sm">
@@ -70,22 +70,22 @@ const Login = () => {
                             <input type="checkbox" id="remember-me-checkbox" className="checkbox-item peer hidden" />
                             <label
                                 htmlFor="remember-me-checkbox"
-                                className="relative flex w-5 h-5 bg-white peer-checked:bg-indigo-600 rounded-md border ring-offset-2 ring-indigo-600 duration-150 peer-active:ring cursor-pointer after:absolute after:inset-x-0 after:top-[3px] after:m-auto after:w-1.5 after:h-2.5 after:border-r-2 after:border-b-2 after:border-white after:rotate-45"
+                                className="relative flex w-5 h-5 bg-white peer-checked:bg-pink-500 rounded-md border ring-offset-2 ring-pink-400 duration-150 peer-active:ring cursor-pointer after:absolute after:inset-x-0 after:top-[3px] after:m-auto after:w-1.5 after:h-2.5 after:border-r-2 after:border-b-2 after:border-white after:rotate-45"
                             >
                             </label>
                             <span>Remember me</span>
                         </div>
-                        <a href="javascript:void(0)" className="text-center text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+                        <a href="javascript:void(0)" className="text-center text-pink-500 hover:text-pink-400">Forgot password?</a>
                     </div>
                     {
                         loading ? <button
                             type="button"
                             disabled={loading}
-                            className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
+                            className="w-full px-4 py-2 text-white font-medium bg-pink-500 hover:bg-pink-400 active:bg-pink-500 rounded-lg duration-150"
                         >
                             Loading..
                         </button> : <button
-                            className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
+                            className="w-full px-4 py-2 text-white font-medium bg-pink-500 hover:bg-pink-400 active:bg-pink-500 rounded-lg duration-150"
                         >
                             Sign In
                         </button>
@@ -93,7 +93,7 @@ const Login = () => {
 
                 </form>
 
-                <p className="text-center">Don't have an account? <Link href="/singUp" className="font-medium text-indigo-600 hover:text-indigo-500">Sign up</Link></p>
+                <p className="text-center">Don't have an account? <Link href="/singUp" className="font-medium text-pink-500 hover:text-pink-400">Sign up</Link></p>
             </div>
         </main>
     )
