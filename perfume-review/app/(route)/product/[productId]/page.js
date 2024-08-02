@@ -276,13 +276,19 @@ const page = async ({ params }) => {
           <div className=" space-y-14">
             <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-8">
               <div className="text-xl md:text-2xl font-semibold">Register</div>
-              <div className="space-x-4">
-                <button className="w-[8rem] py-2 rounded border border-pink-500">
-                  <Link href="/login">Login</Link>
-                </button>
-                <button className="w-[8rem] py-2 rounded border border-pink-500">
-                  <Link href="/signUp">Register</Link>
-                </button>
+              <div className="space-x-4 flex">
+                <Link
+                  href="/login"
+                  className="w-[8rem] rounded border border-pink-500"
+                >
+                  <button className="  py-2  w-full">Login</button>
+                </Link>
+                <Link
+                  href="/signUp"
+                  className="w-[8rem] rounded border border-pink-500"
+                >
+                  <button className=" py-2 w-full">Register</button>
+                </Link>
               </div>
               <button className="bg-[#1777F2] font-medium text-white px-4 py-2 rounded flex justify-center items-center gap-2">
                 {" "}
