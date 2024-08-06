@@ -125,8 +125,8 @@ async function PerfumeSection() {
           </div>
           <ProductCards
 
-            // data={data?.data}
-            data={topPerfumes}
+            data={data?.data}
+          // data={topPerfumes}
           />
         </div>
         <div className="space-y-10">

@@ -85,7 +85,7 @@ const SignUp = () => {
                     </button>
                 </form>
 
-                <p className="text-center">Don't have an account? <Link href="/signUp" className="font-medium text-pink-500 hover:text-pink-400">Login</Link></p>
+                <p className="text-center">Don't have an account? <Link href="/login" className="font-medium text-pink-500 hover:text-pink-400">Login</Link></p>
             </div>
         </main>
     )
