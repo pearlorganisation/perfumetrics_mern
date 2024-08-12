@@ -7,15 +7,16 @@ const ProductCards = ({ data }) => {
       {data &&
         data.map((e) => (
           <Link
-            // href={`/product/${e?._id}`}
-            href={`/product/6694b6798c60d31a21ec4731`}
+
+            href={`/product/${e?._id}`}
+            // href={`/product/66b1bdf3e3432a0fb4aa3416`}
             // href={`/product/34232323`}
 
             className="w-full  shadow-[0_2px_30px_2px#cccccc]  h-[400px] bg-[#FFFFFF]  border-2 border-pink-500 grid place-items-center  gap-2 rounded-md transition duration-300"
           >
             <img
-              // src={e.banner}
-              src={e.imgUrl}
+              src={e.banner}
+              // src={e.imgUrl}
 
               // width={"100%"}
               className=" h-[280px] w-full   "

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { userStore } from "@/store/userStore";
 import { FaRegUserCircle } from "react-icons/fa";
 import { HiMenu } from "react-icons/hi";
+import Dropdown from "../../PerfumeBrandDropdown/PerfumeBrandDropdown";
 
 export default function Example() {
   const { user, isUserLoggedIn, logout } = userStore();
@@ -18,7 +19,7 @@ export default function Example() {
   }, [isUserLoggedIn]);
 
   return (
-    <header className="block bg-white shadow-[0_1px_2px#d1d1d1]">
+    <header className="block relative bg-white shadow-[0_1px_2px#d1d1d1]">
       <nav className="w-full py-4 flex flex-col gap-4">
         <div className="flex justify-end items-center px-6">
           <div className="flex items-center lg:hidden">
@@ -91,12 +92,7 @@ export default function Example() {
             >
               WRITE A REVIEW
             </Link>
-            <Link
-              href="/perfumes"
-              className="hover:text-pink-500 cursor-pointer transition duration-300"
-            >
-              PERFUMES
-            </Link>
+            <Dropdown />
             <Link
               href="/about"
               className="hover:text-pink-500 cursor-pointer transition duration-300"

@@ -224,7 +224,7 @@ const page = async ({ params }) => {
         <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_25rem]">
           <div className="grid grid-cols-[55%_45%]  ">
             <div className=" ">
-              {/* <img src={data?.data?.banner} alt="img" srcset="" /> */}
+              <img src={data?.data?.banner} alt="img" srcset="" />
               {/* <Image
                 src="https://res.cloudinary.com/dnixhctcf/image/upload/v1721022071/Design%20Destination/nmviowb6pwjlhli0f3nz.png"
                 width={500}
@@ -232,13 +232,13 @@ const page = async ({ params }) => {
                 alt="Description"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               /> */}
-              <div className="w-full  grid place-items-center ">
+              {/* <div className="w-full  grid place-items-center ">
                 <img
                   src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTx9i5DBcQkjbErPnz2sW4ykIsR66GdgUbTwxahsuFDhg1o5Z1HQBanzufmDf605qhNqlrLF1eOti2Pd9IW1xsmFLuSQly7QSFrBAMrSEh8X-qxtvgNDn5x"
                   alt="img"
                   srcset=""
                 />
-              </div>
+              </div> */}
               <div className="flex justify-around px-14  py-8 md:mt-6">
                 <div className="w-fit grid place-items-center gap-1">
                   <IoHeart
@@ -276,13 +276,19 @@ const page = async ({ params }) => {
           <div className=" space-y-14">
             <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-8">
               <div className="text-xl md:text-2xl font-semibold">Register</div>
-              <div className="space-x-4">
-                <button className="w-[8rem] py-2 rounded border border-pink-500">
-                  <Link href="/login">Login</Link>
-                </button>
-                <button className="w-[8rem] py-2 rounded border border-pink-500">
-                  <Link href="/signUp">Register</Link>
-                </button>
+              <div className="space-x-4 flex">
+                <Link
+                  href="/login"
+                  className="w-[8rem] rounded border border-pink-500"
+                >
+                  <button className="  py-2  w-full">Login</button>
+                </Link>
+                <Link
+                  href="/signUp"
+                  className="w-[8rem] rounded border border-pink-500"
+                >
+                  <button className=" py-2 w-full">Register</button>
+                </Link>
               </div>
               <button className="bg-[#1777F2] font-medium text-white px-4 py-2 rounded flex justify-center items-center gap-2">
                 {" "}
@@ -303,21 +309,14 @@ const page = async ({ params }) => {
           <div className="space-y-8">
             <div className="grid md:grid-cols-[60%_40%] gap-y-4 md:gap-y-0 h-fit">
               <div className="space-y-12 w-full flex flex-col justify-center items-center ">
-                {[
-                  {
-                    title: "Buy From",
-                    img: "https://s3-alpha-sig.figma.com/img/3659/5e0f/7eef1817ec204989391c3be6ac3d5499?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Eez7RfvpVZaxP9V0eylwnnNzYiYt4TuntkPLYpOMc0S3YUIp8RIPE1xyjmzLAeRViSPvm-dPRCl3pfPNUSbLg7UV9hZ6qxDkyDOSdWchcLteNA9xCOhEri4RASZMQ0JObY2y~xNBZ~qq4e7dc3j58MxFGfkmTVMm0l0d~MzVt1x5ehYN3f6WqCD~KszzZYs0nRBoQaMQhVUrUbcrXw8WcW6fCMnHy0hEB86zzzGtbWBul1O7ThN2dmXiw6DhMRNSZkb0vyZhghFpItn5nKNHvkg-yQg~NPfh2mBUsJccqMKx9tjkcYifrGRQHtFine3LLUEDPTxaDLDIbc1jExIapg__",
-                  },
-                  {
-                    title: "Buy From",
-                    img: "https://s3-alpha-sig.figma.com/img/87cb/8e80/a974a28100d68d7f00b0634e69ff2269?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JMzwB1wBCMjHQF6cykxZ6EXQK8o8OEAhMpHNZ-5eCnRVr8QBz4A0vYZiMHSpLVm7-BAIlTf7tMemYQEkVu6sxqhEY-4NaEx-lR0Z0Po3Ev~FPQoN4P5UxUOI-dr-3IB1fOLYTeLm3Bs4ylcJedIN-w8B7i6S39INHu6dvie~4FMLZ0tqpM2krtvmZWGxohKjNUpuhZQTJTI3Yq9rkIgDd2c48--xWj7Fo9PyXJDlYlTvKIkO82P6myuikCHJXt9L2ds2qsT6oV1LVXTfSMN1mY6Ya1SvFTF-Vb1mwqATm8drsiKsDzdqtYBapIJJDHJ~5n86Eg84khZ6miAAVf~cDA__",
-                  },
-                ].map((item) => {
+                {data?.data?.purchaseLinks?.map((item) => {
                   return (
-                    <div className="flex gap-4 text-xl font-semibold justify-start items-center bg-[#FAF6FF] w-[20rem] px-6 py-2 rounded-xl">
-                      <span>{item?.title}</span>
-                      <img src={item?.img} alt="" />
-                    </div>
+                    <Link href={item?.link} target="_blank">
+                      <div className="flex gap-4 text-xl font-semibold justify-start items-center bg-[#FAF6FF] w-[20rem] px-6 py-2 rounded-xl">
+                        <span>{item?.company}</span>
+                        {/* <img src={item?.img} alt="" /> */}
+                      </div>
+                    </Link>
                   );
                 })}
               </div>
@@ -326,7 +325,7 @@ const page = async ({ params }) => {
             <Feedback />
             {/* detail start */}
             <div className="space-y-3">
-              <div className="font-medium">{data?.data.details}</div>
+              <div className="font-medium">{data?.data?.details}</div>
 
               <div className="relative border-y-2 py-4">
                 <div className="p-2 absolute -top-5 left-[50%] bg-white">
@@ -420,8 +419,8 @@ const page = async ({ params }) => {
                     <div className="flex flex-col gap-4 justify-center items-center overflow-auto ">
                       <p className="text-center font-bold">Top Notes</p>
                       <div className="flex gap-4 text-sm">
-                        {data.data.topNote &&
-                          data.data.topNote.map((el) => {
+                        {data?.data?.topNote &&
+                          data?.data?.topNote.map((el) => {
                             return (
                               <div
                                 key={el._id}

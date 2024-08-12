@@ -12,6 +12,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import Link from 'next/link';
 
 const FollowUs = () => {
 
@@ -36,9 +37,11 @@ const FollowUs = () => {
                             `https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
                             `https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
                         ].map(img => {
-                            return <div className='h-[12rem] w-full'>
-                                <img className='w-full h-full' src={img} alt="" />
-                            </div>
+                            return <Link href='https://www.instagram.com/' target='_blank'>
+                                <div className='h-[12rem] w-full'>
+                                    <img className='w-full h-full' src={img} alt="" />
+                                </div>
+                            </Link>
                         })
                     }
                 </div>
