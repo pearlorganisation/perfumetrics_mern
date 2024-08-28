@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cardShadow {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+.swiper-pagination-bullet-active {
+  background-color: #f193c4 !important;
+}
+
+.shadowE {
+}
+.shadowE:hover {
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+
+.ml-80	{
+  margin-left: 20rem; /* 176px */
+}
+
+.pt-4	{padding-top: 1rem; /* 16px */}
+
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1200px!important;
+}
+}
+
+body,html {
+  overflow-x: hidden;
+}
+
+.reviewScroll {
+  width: 341px;
+}
+
+@media (min-width: 665px) {
+  .reviewScroll {
+    width: 100%;
+}
+}
+
+.waveBg {
+
+ position: relative;
+ position: relative;
+ overflow: hidden;
+}
+
+.waveBg::before {
+  content: "";
+  position: absolute;
+  width: 145px;
+  height: 304px;
+  top: -79px;
+  right: 15px;
+  z-index: -1;
+  background-image: url(/left-wave.png);
+  transform: rotate(-58deg);
+  background-repeat: no-repeat;
+}
+
+.leafBg::before{
+  content: '';
+  position: absolute;
+  -webkit-mask-image: url(/blog1.png);;
+  mask-image: url(/blog1.png);;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100%;
+  -webkit-animation-name: float;
+  -webkit-animation-duration: 6s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  background: #2c3d36;
+  left: -66px;
+  top: -47px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 495px;
+  height: 320px;
+  z-index: -1;
+  background-position: center;
+}
+
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+.aboutWrap,.contactWrap {
+  background-image: url(/footer-bg.jpeg);  
+  background-repeat: no-repeat;
+  background-blend-mode: soft-light;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #ffd0f0;
+
+}
+
+.contactForm {
+ /* // background: rgba(255,255,255,.9); */
+}
+.infoWrap {
+  background: rgba(255,255,255,.7);
+  padding: 20px;
+}
