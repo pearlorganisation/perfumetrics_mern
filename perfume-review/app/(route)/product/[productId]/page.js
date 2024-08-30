@@ -225,20 +225,7 @@ const page = async ({ params }) => {
           <div className="grid grid-cols-[55%_45%]  ">
             <div className=" ">
               <img src={data?.data?.banner} alt="img" srcset="" />
-              {/* <Image
-                src="https://res.cloudinary.com/dnixhctcf/image/upload/v1721022071/Design%20Destination/nmviowb6pwjlhli0f3nz.png"
-                width={500}
-                height={300}
-                alt="Description"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              /> */}
-              {/* <div className="w-full  grid place-items-center ">
-                <img
-                  src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTx9i5DBcQkjbErPnz2sW4ykIsR66GdgUbTwxahsuFDhg1o5Z1HQBanzufmDf605qhNqlrLF1eOti2Pd9IW1xsmFLuSQly7QSFrBAMrSEh8X-qxtvgNDn5x"
-                  alt="img"
-                  srcset=""
-                />
-              </div> */}
+
               <div className="flex justify-around px-14  py-8 md:mt-6">
                 <div className="w-fit grid place-items-center gap-1">
                   <IoHeart
