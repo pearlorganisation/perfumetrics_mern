@@ -58,13 +58,13 @@ export default function Example() {
                   href="/login"
                   className="font-semibold hover:text-pink-500 cursor-pointer transition duration-300 flex justify-center items-center space-x-1.5 p-1.5"
                 >
-                 <AiOutlineLogin /> <span>Login</span>
+                  <AiOutlineLogin /> <span>Login</span>
                 </Link>
                 <Link
                   href="/signUp"
                   className=" font-semibold hover:text-pink-500 cursor-pointer transition duration-300 flex justify-center items-center space-x-1.5 p-1.5"
                 >
-                 <FaRegUser/> <span>Register</span>
+                  <FaRegUser /> <span>Register</span>
                 </Link>
               </div>
             )}
@@ -72,7 +72,7 @@ export default function Example() {
         </div>
         <div className="w-full bg-pink-300 px-4 py-0">
           <div className=" mx-auto flex justify-center items-center lg:ml-96">
-            
+
             <div className="hidden lg:flex items-center lg:ml-60">
               <Link href="/" className="ml-9">
                 <Image src={logo} width={280} height={50} alt="img" />
@@ -101,17 +101,24 @@ export default function Example() {
             >
               PERFUMES
             </Link>
+
             <Link
-              href="/about"
+              href="/#"
               className="hover:text-pink-500 cursor-pointer transition duration-300"
             >
-              ABOUT US
+              BEST SALES
             </Link>
             <Link
-              href="/contactUs"
+              href="/#"
               className="hover:text-pink-500 cursor-pointer transition duration-300"
             >
-              CONTACT US
+              MEN'S STYLE
+            </Link>
+            <Link
+              href="/#"
+              className="hover:text-pink-500 cursor-pointer transition duration-300"
+            >
+              WOMEN'S STYLE
             </Link>
           </div>
         </div>

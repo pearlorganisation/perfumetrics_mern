@@ -12,6 +12,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import Link from 'next/link';
 
 const FollowUs = () => {
 
@@ -66,44 +67,58 @@ const FollowUs = () => {
                 </div>
             </div>
 
-        <div className='footerWarp waveBg'>
+            <div className='footerWarp waveBg'>
 
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto text-black'>
-                <div className=' space-y-3 py-5 px-6'>
-                    <div className='flex gap-1'><FaLocationDot className='text-pink-500' size={22} /> <span className='text-xl font-semibold'>FIND YOUR NEAREST STORE</span></div>
-                    <p>A contemporary grooming collection intused
-                        with the inviaoratina and sensual scent of</p>
-                    <div className='w-full'>
-                        <span className='font-semibold text-sm pb-2'>FIND YOUR STORE</span>
-                        <div className='w-full grid grid-cols-[auto_5rem]'><input className='px-4 py-3 bg-slate-300' placeholder='Search...' type="text" name="" id="" /><button className='bg-pink-500 px-5 py-3 text-white' type="button">GO</button></div>
+                <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto text-black'>
+                    <div className=' space-y-3 py-5 px-6'>
+                        <div className='flex gap-1'><FaLocationDot className='text-pink-500' size={22} /> <span className='text-xl font-semibold'>FIND YOUR NEAREST STORE</span></div>
+                        <p>A contemporary grooming collection intused
+                            with the inviaoratina and sensual scent of</p>
+                        <div className='w-full'>
+                            <span className='font-semibold text-sm pb-2'>FIND YOUR STORE</span>
+                            <div className='w-full grid grid-cols-[auto_5rem]'><input className='px-4 py-3 bg-slate-300' placeholder='Search...' type="text" name="" id="" /><button className='bg-pink-500 px-5 py-3 text-white' type="button">GO</button></div>
+                        </div>
+                        <div className=' flex'>
+                            <Link
+                                href="/about"
+                                className="hover:text-pink-500 cursor-pointer transition duration-300"
+                            >
+                                <div className='px-6 py-3 font-bold'>ABOUT</div>
+                            </Link>
+                            <Link
+                                href="/contactUs"
+                                className="hover:text-pink-500 cursor-pointer transition duration-300"
+                            >
+                                <div className='px-6 py-3 font-bold'>CONTACT US</div>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className=' space-y-3 py-5 px-6'>
+                        <div className='flex gap-1'><IoMdMail className='text-pink-500' size={22} /> <span className='text-xl font-semibold'>NEWSLETTER</span></div>
+                        <p>A contemporary grooming collection intused
+                            with the inviaoratina and sensual scent of</p>
+                        <div className='space-y-2 w-full '>
+                            <div className='font-semibold text-sm pb-2'>FIND YOUR STORE</div>
+                            <input className='px-4 py-3 w-full bg-slate-300' placeholder='Enter Your First Name...' type="text" name="" id="" />
+                            <div className='w-full grid grid-cols-[auto_5rem]'><input className='px-4 py-3 w-full bg-slate-300' placeholder='Enter Your Email Address ' type="text" name="" id="" /><button className='bg-pink-500 px-5 py-3 text-white' type="button">GO</button></div>
+                        </div>
+                    </div>
+                    <div className=' md:col-span-2 lg:col-span-1 space-y-3 py-5 px-6'>
+                        <div className='text-center text-xl font-semibold'>FOLLOWS US</div>
+                        <div className='flex w-full justify-around'>
+                            <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaFacebookF size={26} /></div>
+                            <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaXTwitter size={26} /></div>
+                            <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaYoutube size={26} /></div>
+                            <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaInstagram size={26} /></div>
+                        </div>
                     </div>
                 </div>
-                <div className=' space-y-3 py-5 px-6'>
-                    <div className='flex gap-1'><IoMdMail className='text-pink-500' size={22} /> <span className='text-xl font-semibold'>NEWSLETTER</span></div>
-                    <p>A contemporary grooming collection intused
-                        with the inviaoratina and sensual scent of</p>
-                    <div className='space-y-2 w-full '>
-                        <div className='font-semibold text-sm pb-2'>FIND YOUR STORE</div>
-                        <input className='px-4 py-3 w-full bg-slate-300' placeholder='Enter Your First Name...' type="text" name="" id="" />
-                        <div className='w-full grid grid-cols-[auto_5rem]'><input className='px-4 py-3 w-full bg-slate-300' placeholder='Enter Your Email Address ' type="text" name="" id="" /><button className='bg-pink-500 px-5 py-3 text-white' type="button">GO</button></div>
-                    </div>
-                </div>
-                <div className=' md:col-span-2 lg:col-span-1 space-y-3 py-5 px-6'>
-                    <div className='text-center text-xl font-semibold'>FOLLOWS US</div>
-                    <div className='flex w-full justify-around'>
-                        <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaFacebookF size={26} /></div>
-                        <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaXTwitter size={26} /></div>
-                        <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaYoutube size={26} /></div>
-                        <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaInstagram size={26} /></div>
+                <div className='bg-[#ededed]'>
+                    <div className='container mx-auto items-center lg:flex justify-center py-3 '>
+                        <p className='text-xs text-gray-500'>© 1999 - 2024 perfumetrics International Ltd | Privacy Policy | Terms of Use</p>
                     </div>
                 </div>
             </div>
-            <div className='bg-[#ededed]'>
-                <div className='container mx-auto items-center lg:flex justify-center py-3 '>
-                    <p className='text-xs text-gray-500'>© 1999 - 2024 perfumetrics International Ltd | Privacy Policy | Terms of Use</p>
-                </div>
-            </div>
-        </div>
         </div>
     )
 }
