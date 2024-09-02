@@ -10,14 +10,34 @@ import { HiMenu } from "react-icons/hi";
 import { FaRegUser } from "react-icons/fa";
 import { AiOutlineLogin } from "react-icons/ai";
 import { CiLogout } from "react-icons/ci";
+import Dropdown from "../../Dropdown/Dropdown";
+import ReviewDropdown from "../../Dropdown/ReviewDropdown";
 
 export default function Example() {
   const { user, isUserLoggedIn, logout } = userStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [brands, setBrands] = useState([]);
+  const [perfumeDropDown, setPerfumeDropDown] = useState(false);
+  const [reveiwDropDown, setReviewDropDown] = useState(false);
+
+  const getAllBrands = async () => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/brand`,
+      {
+        cache: 'no-store'
+      }
+    )
+    const data = await response.json()
+    setBrands(data?.data)
+    console.log(data, "data")
+    return data
+  }
 
   useEffect(() => {
     console.log(user, "from header");
     console.log(isUserLoggedIn, "isUserLoggedIn");
+  }, [isUserLoggedIn]);
+  useEffect(() => {
+    getAllBrands()
   }, [isUserLoggedIn]);
 
   return (
@@ -89,33 +109,42 @@ export default function Example() {
         </div>
         <div className="w-full flex justify-center lg:justify-between items-center px-6 pt-4">
           <div className="hidden lg:flex justify-center mx-auto gap-20 font-semibold text-lg lg:text-xl">
-            <Link
-              href="/types"
-              className="hover:text-pink-500 cursor-pointer transition duration-300"
+            <div
+              onClick={() => {
+                setReviewDropDown(!reveiwDropDown)
+              }}
+
+              className="hover:text-pink-500 cursor-pointer transition duration-300 relative"
             >
               WRITE A REVIEW
-            </Link>
-            <Link
-              href="/perfumes"
-              className="hover:text-pink-500 cursor-pointer transition duration-300"
+              {reveiwDropDown && <ReviewDropdown />}
+            </div>
+            <div
+              onClick={() => {
+                setPerfumeDropDown(!perfumeDropDown)
+              }}
+              className="hover:text-pink-500  cursor-pointer transition duration-300"
             >
               PERFUMES
-            </Link>
+              {
+                perfumeDropDown && <Dropdown brands={brands} />
+              }
+            </div>
 
             <Link
-              href="/#"
+              href="/sale/BEST SALES"
               className="hover:text-pink-500 cursor-pointer transition duration-300"
             >
               BEST SALES
             </Link>
             <Link
-              href="/#"
+              href="/category/MEN'S STYLE"
               className="hover:text-pink-500 cursor-pointer transition duration-300"
             >
               MEN'S STYLE
             </Link>
             <Link
-              href="/#"
+              href="/category/WOMEN'S STYLE"
               className="hover:text-pink-500 cursor-pointer transition duration-300"
             >
               WOMEN'S STYLE
