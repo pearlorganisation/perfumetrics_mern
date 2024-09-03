@@ -3,8 +3,11 @@
  * @see https://v0.dev/t/fZ9i6MMIMOQ
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
-const FragramRatings = () => {
+const FragramRatings = ({data}) => {
+
+    console.log("Frgaram rating ",data)
     return (
+        <>
         <div>
             <div className="flex flex-col items-center space-y-8">
                 <div className="grid place-items-center relative w-full mt-20 mb-8">
@@ -39,7 +42,7 @@ const FragramRatings = () => {
                                     cy="64"
                                 />
                             </svg>
-                            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">7.5/10</div>
+                            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">{data?.longitivity||0}/10</div>
                         </div>
                         <span className="mt-2 font-semibold">Longevity</span>
                     </div>
@@ -68,7 +71,7 @@ const FragramRatings = () => {
                                     cy="64"
                                 />
                             </svg>
-                            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">8/10</div>
+                            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">{data?.sillage||0}/10</div>
                         </div>
                         <span className="mt-2 font-semibold">Sillage</span>
                     </div>
@@ -97,7 +100,7 @@ const FragramRatings = () => {
                                     cy="64"
                                 />
                             </svg>
-                            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">6/10</div>
+                            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">{data?.pricing||0}/10</div>
                         </div>
                         <span className="mt-2 font-semibold">Pricing</span>
                     </div>
@@ -127,7 +130,8 @@ const FragramRatings = () => {
                                 />
                             </svg>
                             <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">
-                                <UserIcon className="w-8 h-8" />
+                                {data?.gender === 'M' && <UserIcon className="w-8 h-8" />}
+                                {data?.gender !== 'M' &&<XIcon   className="w-8 h-8" />}
                             </div>
                         </div>
                         <span className="mt-2 font-semibold">Gender</span>
@@ -157,7 +161,7 @@ const FragramRatings = () => {
                                     cy="64"
                                 />
                             </svg>
-                            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">8.5/10</div>
+                            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">{data?.compliment||0}/10</div>
                         </div>
                         <span className="mt-2 font-semibold">Compliment</span>
                     </div>
@@ -186,14 +190,14 @@ const FragramRatings = () => {
                                     cy="64"
                                 />
                             </svg>
-                            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">9/10</div>
+                            <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">{data?.overall||0}/10</div>
                         </div>
                         <span className="mt-2 font-semibold">Overall</span>
                     </div>
                 </div>
                 <button className="px-6 py-2 mt-8 text-lg font-semibold text-white bg-pink-500 rounded-md">Rate Fragram</button>
             </div>
-            <div className="space-y-4 mt-24">
+         {data &&   <div className="space-y-4 mt-24">
                 <div className="grid place-items-center relative w-full mb-16">
                     <h1 className="text-3xl font-medium px-8 py-3 bg-white z-40">
                         Fragrams
@@ -224,8 +228,9 @@ const FragramRatings = () => {
                         })
                     }
                 </div>
-            </div>
+            </div>}
         </div>
+        </>
     )
 }
 

@@ -9,6 +9,23 @@ async function getPerfumeById(perfumeId) {
   return data;
 }
 
+async function getPerfumeRating(perfumeId) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/review/${perfumeId}`,
+    {
+      cache: "no-store",
+    }
+  );
+  const data = await response.json();
+  return data.data;
+}
+async function getProsCons(perfumeId) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/prosCons/${perfumeId}`
+  );
+  const data = await response.json();
+  return data;
+}
 async function getPerfumes() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume`
@@ -16,6 +33,15 @@ async function getPerfumes() {
   const data = await response.json();
   return data;
 }
+
+async function getTotalRatings(perfumeId) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${perfumeId}`
+  );
+  const data = await response.json();
+  return data;
+}
+
 
 // import CircularProgress from "@/app/_components/CircularProgress/CircularProgress";
 
@@ -224,9 +250,15 @@ const page = async ({ params }) => {
       { id: 5, detail: "Steep learning curve" }
     ]
   };
+
+  const dataProsCons = await getProsCons(productId);
   const data = await getPerfumeById(productId);
   const perfumeData = await getPerfumes();
-  console.log(data?.data, "data");
+  const perfumeRatings = await getPerfumeRating(productId);
+  const totalRatings = await getTotalRatings(productId);
+
+  console.log(data, "data");
+  console.log(totalRatings, "Ratings perfumme !!!!");
   const purchaseLinksData = data.data?.purchaseLinks;
 
   return (
@@ -265,7 +297,7 @@ const page = async ({ params }) => {
                     size={38}
                   />
                   <div className="h-1 w-full bg-pink-400"></div>
-                  <span>17 Dislikes</span>
+                  <span>{data?.data && data.data.likes} Likes</span>
                 </div>
 
                 <div className="w-fit grid place-items-center gap-1 ml-10">
@@ -277,7 +309,7 @@ const page = async ({ params }) => {
                     alt=""
                   />
                   <div className="h-1 w-full bg-pink-400"></div>
-                  <span>17 Dislikes</span>
+                  <span>{data?.data && data.data.dislike} DisLikes</span>
                 </div>
               </div>
             </div>
@@ -357,7 +389,7 @@ const page = async ({ params }) => {
 Dior in-house perfumer, François Demachy, signed this creation. The fragrance is announced as radically fresh, raw and noble at the same time. The composition is reportedly prevalent with carefully selected natural ingredients. Fresh top notes of Calabria bergamot encounter ambroxan, obtained from precious ambergris, and its woody trail.
 
 Dior Sauvage comes out in September 2015, advertised by actor Johnny Depp. It is available as 60 and 100 ml Eau de Toilette.
-                {/* {data?.data?.description} */}
+                {data?.data?.description}
               </div>
               <div className="relative border-b-2 py-4 text-[#138B92]">
                 <span className="text-[#A2ADC4]">
@@ -372,7 +404,7 @@ Dior Sauvage comes out in September 2015, advertised by actor Johnny Depp. It is
             {/* detail ends */}
 
             {/* pros n cons */}
-            <ProsCons data={dataPros} />
+            {dataProsCons && <ProsCons data={dataProsCons.data} />}
             {/* pros n cons */}
           </div>
           <div>
@@ -552,14 +584,14 @@ Dior Sauvage comes out in September 2015, advertised by actor Johnny Depp. It is
                 );
               })}
             </div>
-            <FragramRatings />
+            { data &&  <FragramRatings data={data.data?.ratingFragrams} />}
             <div className="grid gap-5 container ">
             <div class="grid place-items-center relative mt-24 mb-6">
         <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">Rating/Results </h1>
         <div class="absolute w-full h-[2px] bg-slate-500"></div>
       </div>
             
-              <RatingResult />
+              {totalRatings?.data && <RatingResult perfumeRatings = {totalRatings.data} />}
             </div>
             <div className="space-y-5">
               <div className="grid gap-2">
@@ -589,7 +621,7 @@ Dior Sauvage comes out in September 2015, advertised by actor Johnny Depp. It is
                   />
                 </div>
               </div>
-              <Review />
+              <Review  perfumeId={productId}/>
             </div>
           </div>
           <div>

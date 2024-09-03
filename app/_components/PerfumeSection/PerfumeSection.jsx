@@ -1,5 +1,5 @@
 async function getPerfumes() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume`,
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/topRatedPerfume`,
     {
       cache: 'no-store'
     }
@@ -130,7 +130,7 @@ async function PerfumeSection() {
   ];
 
   const data = await getPerfumes();
-  console.log(Array.isArray(data.data));
+  console.log(Array.isArray(data.data),"rwegtfuw",data);
 
   return (
     <>
@@ -143,11 +143,11 @@ async function PerfumeSection() {
             </h1>
             <div class="absolute w-full h-[2px] bg-slate-500"></div>
           </div>
-          <ProductCards
-
-            // data={data?.data}
-            data={topPerfumes}
-          />
+          {
+            <ProductCards data={data}
+/>
+          }
+          
         </div>
         <div className="space-y-10 mt-[6.6rem] ml-[31px]">
           <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-8">

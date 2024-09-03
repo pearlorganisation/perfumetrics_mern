@@ -6,7 +6,7 @@ import { BiSolidDollarCircle } from "react-icons/bi";
 import { IoMaleFemale } from "react-icons/io5";
 
 
-const RatingResult = () => {
+const RatingResult = ({ perfumeRatings }) => {
     const [emoji, setEmoji] = useState(1)
     const results = [
         {
@@ -53,9 +53,9 @@ const RatingResult = () => {
             c-4.2-2.1-8.3-3.1-8.5-3.2c-2.1-0.5-4.2,0.7-4.7,2.8c-0.5,2.1,0.7,4.2,2.8,4.7c2.1,0.5,4.6,1.5,6.9,2.6
             C39.5,43.5,38.7,45.4,38.7,47.4z"></path></svg>,
         },
-      
-       
-        
+
+
+
     ]
     const ratingData = [
         {
@@ -66,48 +66,48 @@ const RatingResult = () => {
             status: [
                 {
                     name: 'Very Weak',
-                    num: 36,
-                    icon:(
+                    num: perfumeRatings.longevity.veryWeak,
+                    icon: (
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-  <path d="M10 2L10 18" stroke="#ccc" stroke-width="2"/>
-  <circle cx="10" cy="10" r="4" fill="#ccc"/>
-</svg>
+                            <path d="M10 2L10 18" stroke="#ccc" stroke-width="2" />
+                            <circle cx="10" cy="10" r="4" fill="#ccc" />
+                        </svg>
                     )
                 },
                 {
                     name: 'Weak',
-                    num: 30,
-                    icon:(<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M10 4L10 16" stroke="#aaa" stroke-width="2"/>
-                        <circle cx="10" cy="10" r="5" fill="#aaa"/>
-                      </svg>)
+                    num: perfumeRatings.longevity.weak,
+                    icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
+                        <circle cx="10" cy="10" r="5" fill="#aaa" />
+                    </svg>)
                 },
                 {
                     name: 'moderate',
-                    num: 36,
-                    icon:(<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M10 4L10 16" stroke="#aaa" stroke-width="2"/>
-                        <circle cx="10" cy="10" r="5" fill="#aaa"/>
-                      </svg>)
+                    num: perfumeRatings.longevity.moderate,
+                    icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
+                        <circle cx="10" cy="10" r="5" fill="#aaa" />
+                    </svg>)
                 },
                 {
                     name: 'long lasting',
-                    num: 30,
-                    icon:(<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M10 8L10 12" stroke="#555" stroke-width="2"/>
-                        <circle cx="10" cy="10" r="7" fill="#555"/>
-                        <path d="M8 10L12 10" stroke="#555" stroke-width="2"/>
-                      </svg>)
+                    num: perfumeRatings.longevity.longLasting,
+                    icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 8L10 12" stroke="#555" stroke-width="2" />
+                        <circle cx="10" cy="10" r="7" fill="#555" />
+                        <path d="M8 10L12 10" stroke="#555" stroke-width="2" />
+                    </svg>)
                 },
                 {
                     name: 'eternal',
-                    num: 30,
-                    icon:(<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M10 10L10 10" stroke="#333" stroke-width="2"/>
-                        <circle cx="10" cy="10" r="8" fill="#333"/>
-                        <path d="M5 10L15 10" stroke="#333" stroke-width="2"/>
-                        <path d="M10 5L10 15" stroke="#333" stroke-width="2"/>
-                      </svg>)
+                    num: perfumeRatings.longevity.eternal,
+                    icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 10L10 10" stroke="#333" stroke-width="2" />
+                        <circle cx="10" cy="10" r="8" fill="#333" />
+                        <path d="M5 10L15 10" stroke="#333" stroke-width="2" />
+                        <path d="M10 5L10 15" stroke="#333" stroke-width="2" />
+                    </svg>)
                 }
             ]
         },
@@ -119,23 +119,24 @@ const RatingResult = () => {
             status: [
                 {
                     name: 'Intimate',
-                    num: 36
+                    num: perfumeRatings.sillage.intimate 
                 },
                 {
-                    name: 'Mild',
-                    num: 30
+                    name: 'No Vote',
+                    num: perfumeRatings.sillage.noVote 
                 },
+
                 {
                     name: 'Moderate',
-                    num: 36
+                    num: perfumeRatings.sillage.moderate 
                 },
                 {
                     name: 'Strong',
-                    num: 30
+                    num: perfumeRatings.sillage.strong
                 },
                 {
                     name: 'Enormous',
-                    num: 30
+                    num: perfumeRatings.sillage.enormous
                 }
             ]
         },
@@ -147,52 +148,53 @@ const RatingResult = () => {
             status: [
                 {
                     name: 'Way Overpriced',
-                    num: 36
+                    num: perfumeRatings.priceValue.wayOverPriced 
                 },
                 {
                     name: 'Overpriced',
-                    num: 30
+                    num: perfumeRatings.priceValue.overPriced 
                 },
                 {
                     name: 'Ok',
-                    num: 36
+                    num: perfumeRatings.priceValue.ok 
                 },
                 {
                     name: 'Good Value',
-                    num: 30
+                    num: perfumeRatings.priceValue.goodValue 
                 },
                 {
                     name: 'Great Value',
-                    num: 30
+                    num: perfumeRatings.priceValue.greatValue 
                 }
             ]
         },
         {
             name: 'GENDER ',
-            icon: <IoMaleFemale className='text-slate-400' size={32} /> ,
+            icon: <IoMaleFemale className='text-slate-400' size={32} />,
 
             results: results,
             rating: 1,
             status: [
                 {
                     name: 'Female',
-                    num: 36
+                    num: perfumeRatings.gender.female 
                 },
                 {
                     name: 'More Female',
-                    num: 30
+                    num: perfumeRatings.gender.moreMale 
                 },
                 {
                     name: 'Unisex',
-                    num: 36
+                    num: perfumeRatings.gender.unisex 
                 },
                 {
                     name: 'More Male',
-                    num: 30
+                    num: perfumeRatings.gender.moreMale 
                 },
                 {
                     name: 'Male',
-                    num: 30
+                    num: perfumeRatings.gender.male 
+
                 }
             ]
         }
@@ -225,7 +227,7 @@ const RatingResult = () => {
                         <input
                             className="w-full"
                             min={1}
-                            max={5}
+                            max={200}
                             step={1}
                             type="range"
                             onChange={(e) => {

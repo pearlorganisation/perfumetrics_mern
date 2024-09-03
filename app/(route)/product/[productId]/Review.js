@@ -2,7 +2,19 @@ import React from "react";
 import { SlLike } from "react-icons/sl";
 import { SlDislike } from "react-icons/sl";
 import { MdShare } from "react-icons/md";
-const Review = () => {
+async function getAllReviews(perfumeId) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/review/${perfumeId}`
+  );
+  const data = await response.json();
+  return data;
+}
+
+
+async function Review({perfumeId})  {
+  
+  const reviewData = await getAllReviews(perfumeId);
+  console.log("review Data ",reviewData.data);
   return (
     <div className="grid gap-3">
       <div className="text-3xl font-medium pl-1 relative grid place-items-center">
