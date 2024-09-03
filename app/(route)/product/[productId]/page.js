@@ -258,7 +258,7 @@ const page = async ({ params }) => {
   const totalRatings = await getTotalRatings(productId);
 
   console.log(data, "data");
-  console.log(totalRatings, "Ratings perfumme !!!!");
+  // console.log(totalRatings, "Ratings perfumme !!!!");
   const purchaseLinksData = data.data?.purchaseLinks;
 
   return (
@@ -267,9 +267,9 @@ const page = async ({ params }) => {
 
       <div className="min-h-screen container mx-auto py-20 px-4">
         <p className="text-4xl font-medium py-6 mb-16">
-          {/* {data?.data?.perfume}{" "} */}
+          
           <span className="text-4xl font-semibold ">
-            Yeah! Perfume Maison Alhambra for men
+            {data?.data?.perfume}
           </span>
         </p>
         <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_18rem]">
@@ -285,7 +285,7 @@ const page = async ({ params }) => {
               /> */}
               <div className="w-full  grid place-items-left ">
                 <img
-                  src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTx9i5DBcQkjbErPnz2sW4ykIsR66GdgUbTwxahsuFDhg1o5Z1HQBanzufmDf605qhNqlrLF1eOti2Pd9IW1xsmFLuSQly7QSFrBAMrSEh8X-qxtvgNDn5x"
+                  src={data?.data?.banner}
                   alt="img"
                   srcset=""
                 />
@@ -384,11 +384,6 @@ const page = async ({ params }) => {
                 <div className="p-2 absolute -top-5 left-[50%] bg-white">
                   <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
                 </div>
-                Dior launches its new fragrance Sauvage, with the name originating from the fragrance Eau Sauvage from 1966, although the two don’t belong to the same collection. Sauvage is inspired by wild, open spaces; blue sky that covers rocky landscapes, hot under the desert sun.
-
-Dior in-house perfumer, François Demachy, signed this creation. The fragrance is announced as radically fresh, raw and noble at the same time. The composition is reportedly prevalent with carefully selected natural ingredients. Fresh top notes of Calabria bergamot encounter ambroxan, obtained from precious ambergris, and its woody trail.
-
-Dior Sauvage comes out in September 2015, advertised by actor Johnny Depp. It is available as 60 and 100 ml Eau de Toilette.
                 {data?.data?.description}
               </div>
               <div className="relative border-b-2 py-4 text-[#138B92]">
