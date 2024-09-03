@@ -6,6 +6,10 @@ import { FaHeartBroken } from "react-icons/fa";
 import { FaCrown } from "react-icons/fa";
 
 const ProsCons = ({ data }) => {
+ 
+  console.log(data,"data of pros cons section");
+
+
   return (
     <div>
       {/* <p className="text-4xl font-medium py-2 mt-20">Pros and Cons</p> */}
@@ -20,7 +24,7 @@ const ProsCons = ({ data }) => {
                 </p>
               </div>
               <ul>
-              {data?.pros.map((item, index) => (
+              {Array.isArray(data?.pros) && data?.pros?.map((item, index) => (
                
                   <li
                     key={index}
@@ -33,12 +37,12 @@ const ProsCons = ({ data }) => {
                       </span>
                       <span className=" flex flex-col justify-center items-center">
                         <FaHeartBroken className="text-[#f34949]" />
-                        <span className="">{item.dislikes}</span>
+                        <span className="">{item.disLikes}</span>
                       </span>
                     </div>
                     <span className="text-center block">
-                    This is Dummy content...........................This is Dummy content...........................
-                      {/* {item.pros}                 */}
+                    {/* This is Dummy content...........................This is Dummy content........................... */}
+                      {item.title}                
                       </span>
                   </li>
              
@@ -73,7 +77,7 @@ const ProsCons = ({ data }) => {
                   CONS
                 </p>
               </div>
-              {data?.cons.map((item, index) => (
+              {Array.isArray(data?.cons) && data?.cons.map((item, index) => (
                 <div>
                   <li key={index} className="flex items-center space-x-3  my-2">
                     <div className="flex gap-1">
@@ -87,12 +91,11 @@ const ProsCons = ({ data }) => {
                       </span>
                       <span className=" flex flex-col justify-center items-center">
                         <FaHeartBroken className="text-[#f34949]" />
-                        <span className="">{item.dislikes}</span>
+                        <span className="">{item.disLikes}</span>
                       </span>
                     </div>
                     <span className="text-center text-wrap ">
-                      {/* {item.cons} */}
-                      This is Dummy content...........................This is Dummy content...........................
+                      {item.title}
                       </span>
                   </li>
                 </div>
