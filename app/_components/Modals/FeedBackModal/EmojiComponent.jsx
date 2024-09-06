@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const EmojiComponent = ({ res }) => {
+const EmojiComponent = ({ res, handleChanges }) => {
   const [emoji, setEmoji] = useState(1); // Initialize emoji state with a default value
+  useEffect(() => {
+
+    console.log(res[emoji - 1], "res")
+    handleChanges(res[emoji - 1]?.name)
+
+
+
+
+  }, [emoji])
+
 
   return (
     <div className='flex  flex-col justify-between '>

@@ -42,7 +42,6 @@ async function getTotalRatings(perfumeId) {
   return data;
 }
 
-
 // import CircularProgress from "@/app/_components/CircularProgress/CircularProgress";
 
 import { GiFruitBowl } from "react-icons/gi";
@@ -59,7 +58,7 @@ import ProductCards from "@/app/_components/ProductCards/ProductCards";
 import Feedback from "@/app/_components/Feedback/Feedback";
 import PerfumePhotos from "@/app/_components/PerfumePhotos/PerfumePhotos";
 import { FaQuoteLeft } from "react-icons/fa";
-import { IoMdAdd } from "react-icons/io";
+
 import ToggleButton from "@/app/_components/ToggleButton/ToggleButton";
 import PieChart from "@/app/_components/DoughnutGraph/DoughnutGraph";
 import { FaFacebookF } from "react-icons/fa";
@@ -69,9 +68,9 @@ import RelatedFragram from "./RelatedFragram";
 import FragramRatings from "./FragramRatings";
 import VideoBox from "@/app/_components/VideoBox/VideoBox";
 import Buyfrom from "@/app/_components/Buyfrom/Buyfrom";
+import AddReview from "@/app/_components/AddReview/AddReview";
 
 const page = async ({ params }) => {
-
   const { productId } = params;
 
   const topPerfumes = [
@@ -233,22 +232,21 @@ const page = async ({ params }) => {
     },
   ];
 
-
   const dataPros = {
     pros: [
       { id: 1, detail: "Great user interface" },
       { id: 2, detail: "Fast performance" },
       { id: 3, detail: "Affordable price" },
       { id: 4, detail: "Excellent customer support" },
-      { id: 5, detail: "Wide range of features" }
+      { id: 5, detail: "Wide range of features" },
     ],
     cons: [
       { id: 1, detail: "Limited customization options" },
       { id: 2, detail: "Consumes a lot of battery" },
       { id: 3, detail: "Build quality could be better" },
       { id: 4, detail: "Long waiting time on calls" },
-      { id: 5, detail: "Steep learning curve" }
-    ]
+      { id: 5, detail: "Steep learning curve" },
+    ],
   };
 
   const dataProsCons = await getProsCons(productId);
@@ -354,7 +352,7 @@ const page = async ({ params }) => {
           <div className="space-y-8">
             <div className="grid md:grid-cols-[60%_40%] gap-y-4 md:gap-y-0">
               <div className="space-y-12 w-full flex flex-col justify-center items-center ">
-                <Buyfrom/>
+                <Buyfrom />
                 {/* {[
                   {
                     title: "Buy From",
@@ -384,11 +382,18 @@ const page = async ({ params }) => {
                 <div className="p-2 absolute -top-5 left-[50%] bg-white">
                   <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
                 </div>
-                Dior launches its new fragrance Sauvage, with the name originating from the fragrance Eau Sauvage from 1966, although the two don’t belong to the same collection. Sauvage is inspired by wild, open spaces; blue sky that covers rocky landscapes, hot under the desert sun.
-
-Dior in-house perfumer, François Demachy, signed this creation. The fragrance is announced as radically fresh, raw and noble at the same time. The composition is reportedly prevalent with carefully selected natural ingredients. Fresh top notes of Calabria bergamot encounter ambroxan, obtained from precious ambergris, and its woody trail.
-
-Dior Sauvage comes out in September 2015, advertised by actor Johnny Depp. It is available as 60 and 100 ml Eau de Toilette.
+                Dior launches its new fragrance Sauvage, with the name
+                originating from the fragrance Eau Sauvage from 1966, although
+                the two don’t belong to the same collection. Sauvage is inspired
+                by wild, open spaces; blue sky that covers rocky landscapes, hot
+                under the desert sun. Dior in-house perfumer, François Demachy,
+                signed this creation. The fragrance is announced as radically
+                fresh, raw and noble at the same time. The composition is
+                reportedly prevalent with carefully selected natural
+                ingredients. Fresh top notes of Calabria bergamot encounter
+                ambroxan, obtained from precious ambergris, and its woody trail.
+                Dior Sauvage comes out in September 2015, advertised by actor
+                Johnny Depp. It is available as 60 and 100 ml Eau de Toilette.
                 {data?.data?.description}
               </div>
               <div className="relative border-b-2 py-4 text-[#138B92]">
@@ -541,9 +546,7 @@ Dior Sauvage comes out in September 2015, advertised by actor Johnny Depp. It is
                 </div>
               </div>
             </div>
-            <div>
-              {/* <CardsList data={perfumeReviews} /> */}
-            </div>
+            <div>{/* <CardsList data={perfumeReviews} /> */}</div>
           </div>
         </div>
         {/* Fragrance Notes ends */}
@@ -584,44 +587,22 @@ Dior Sauvage comes out in September 2015, advertised by actor Johnny Depp. It is
                 );
               })}
             </div>
-            { data &&  <FragramRatings data={data.data?.ratingFragrams} />}
+            {data && <FragramRatings data={data.data?.ratingFragrams} />}
             <div className="grid gap-5 container ">
-            <div class="grid place-items-center relative mt-24 mb-6">
-        <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">Rating/Results </h1>
-        <div class="absolute w-full h-[2px] bg-slate-500"></div>
-      </div>
-            
-              {totalRatings?.data && <RatingResult perfumeRatings = {totalRatings.data} />}
+              <div class="grid place-items-center relative mt-24 mb-6">
+                <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">
+                  Rating/Results{" "}
+                </h1>
+                <div class="absolute w-full h-[2px] bg-slate-500"></div>
+              </div>
+
+              {totalRatings?.data && (
+                <RatingResult perfumeRatings={totalRatings.data} />
+              )}
             </div>
             <div className="space-y-5">
-              <div className="grid gap-2">
-              <div class="text-3xl font-medium pl-1 relative grid place-items-center mt-24 mb-12"> <div class="absolute w-full border "></div>
-              <div class="z-20 bg-white px-3 py-2">Add Your Review</div></div>    
-                <textarea
-                  className="resize-none border-2 px-3 py-2 outline-none rounded-md border-gray-400"
-                  name=""
-                  placeholder="Add Your Review..."
-                  id=""
-                  cols="30"
-                  rows="10"
-                ></textarea>
-                <div>
-                  <label
-                    className="flex px-6 font-medium py-3 bg-gray-300 w-fit rounded-md justify-center items-center gap-3"
-                    htmlFor="image"
-                  >
-                    Upload Images <IoMdAdd size={25} />
-                  </label>
-                  <input
-                    multiple
-                    className="hidden"
-                    type="file"
-                    name="image"
-                    id="image"
-                  />
-                </div>
-              </div>
-              <Review  perfumeId={productId}/>
+              <AddReview />
+              <Review perfumeId={productId} />
             </div>
           </div>
           <div>

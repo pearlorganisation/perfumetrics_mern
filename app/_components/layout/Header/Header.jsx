@@ -21,7 +21,7 @@ export default function Example() {
   const [reveiwDropDown, setReviewDropDown] = useState(false);
 
   const getAllBrands = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/brand`,
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/brand/menu`,
       {
         cache: 'no-store'
       }
