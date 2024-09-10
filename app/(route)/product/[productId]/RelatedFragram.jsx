@@ -131,9 +131,9 @@ const RelatedFragram = () => {
             className="col-span-2 w-[100%] relative"
           >
             <div className="flex gap-4 relative">
-              {perfumeData?.map((item) => {
+              {perfumeData?.map((item, index) => {
                 return (
-                  <SwiperSlide>
+                  <SwiperSlide key={index}>
                     <Link href={`${item?.link}`} target="_blank">
                       <div className="shadowE cursor-pointer ml-5">
                         <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px]  overflow-hidden mx-auto">
