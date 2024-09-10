@@ -11,7 +11,7 @@ const SignUp = () => {
         const userName = formData.get('name')
         const pin = formData.get('password')
         const response = await fetch(
-            `https://perfume-backend-1.onrender.com/api/v1/auth/signup`, {
+            `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/signup`, {
             headers: {
                 "Content-Type": "application/json",
             },

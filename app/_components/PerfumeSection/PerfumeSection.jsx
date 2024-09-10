@@ -8,13 +8,15 @@ async function getPerfumes() {
   return data
 }
 
+
+
 import Link from "next/link";
 import CardsList from "../CardsList/CardsList";
 import ProductCards from "../ProductCards/ProductCards";
 import { FaFacebookF } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa";
 
-async function PerfumeSection() {
+async function PerfumeSection({ reviewSidebar, length }) {
   const topPerfumes = [
     {
       imgUrl: "https://fimgs.net/mdimg/perfume/375x500.75909.jpg",
@@ -130,24 +132,25 @@ async function PerfumeSection() {
   ];
 
   const data = await getPerfumes();
-  console.log(Array.isArray(data.data),"rwegtfuw",data);
+
+  // console.log(Array.isArray(data.data), "rwegtfuw", data);
 
   return (
     <>
       <div className="w-full  grid lg:grid-cols-[auto_20rem] lg:gap-y-0 gap-1 gap-x-1 px-8 md:px-0 py-10">
-        
+
         <div className="w-full  flex flex-col gap-4">
-        <div class="grid place-items-center relative mb-8">
+          <div class="grid place-items-center relative mb-8">
             <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40 relative lg:left-[-11rem] w-[20rem] text-center bottom-[.1rem]">
-            Top Rated Fragrance
+              Top Rated Fragrance
             </h1>
             <div class="absolute w-full h-[2px] bg-slate-500"></div>
           </div>
           {
             <ProductCards data={data}
-/>
+            />
           }
-          
+
         </div>
         <div className="space-y-10 mt-[6.6rem] ml-[31px]">
           <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-8">
@@ -168,7 +171,7 @@ async function PerfumeSection() {
                 Perfume Reviews
               </span>
             </div>
-            <CardsList data={perfumeReviews} />
+            <CardsList reviewData={reviewSidebar} length={length} />
           </div>
         </div>
 

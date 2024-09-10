@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -11,6 +11,8 @@ import "swiper/css/navigation";
 // Import required modules
 import { Navigation, Pagination } from "swiper/modules";
 import CardsList from "../CardsList/CardsList";
+import axios from "axios";
+import Link from "next/link";
 
 const popularPerfumeData = [
   {
@@ -90,6 +92,27 @@ const perfumeReviews = [
 ];
 
 const NewPerfumes = () => {
+  const [newArrival, setNewArrival] = useState([]);
+  const [celebrityPerfume, setCelebrityPerfume] = useState([]);
+  const getNewArrival = async () => {
+    const result = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/newArrival`
+    );
+    setNewArrival(result?.data?.data);
+    console.log(result?.data?.data, "NewArrival");
+  };
+  // const getCelebrityPerfume = async () => {
+  //   const result = await axios.get(
+  //     `${process.env.NEXT_PUBLIC_API_URL}/api/v1/celebrityPerfumes?limit=4`
+  //   );
+  //   setCelebrityPerfume(result?.data?.data);
+  //   console.log(result?.data?.data, "Celebrity Perfume");
+  // };
+  useEffect(() => {
+    getNewArrival();
+    // getCelebrityPerfume();
+  }, []);
+
   return (
     <>
       <div className="pb-12 container grid gap-x-12 lg:grid-cols-[70%_20%] w-full mt-8">
@@ -122,39 +145,43 @@ const NewPerfumes = () => {
                   modules={[Pagination]}
                   className="mySwiper"
                 >
-                  {popularPerfumeData.map((item, index) => {
-                    return (
-                      <SwiperSlide
-                        key={index}
-                        className="grid place-items-center p-2   md:!w-auto"
-                      >
-                        <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px] overflow-hidden">
-                          <img
-                            src={item.imgUrl}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="flex flex-col justify-center items-center font-medium py-2">
-                          <span>Crazypills</span>
-                          <span className="text-teal-500">Incolonge</span>
-                        </div>
-                      </SwiperSlide>
-                    );
-                  })}
+                  {Array.isArray(newArrival) &&
+                    newArrival.length > 0 &&
+                    newArrival?.map((item, index) => {
+                      return (
+                        <SwiperSlide
+                          key={index}
+                          className="grid place-items-center p-2   md:!w-auto"
+                        >
+                          <Link href={item?.link} target="_blank">
+                            <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px] overflow-hidden">
+                              <img
+                                src={item?.banner || item.imgUrl}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <div className="flex flex-col justify-center items-center font-medium py-2">
+                              <span>{item?.perfumeName}</span>
+                              <span className="text-teal-500">
+                                {item?.brand?.brand}
+                              </span>
+                            </div>
+                          </Link>
+                        </SwiperSlide>
+                      );
+                    })}
                 </Swiper>
               </div>
             </div>
           </div>
           <div className="space-y-3 px-3 mt-1888888888">
-          <div class="grid place-items-center relative mt-8 mb-10">
-            <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">
-            Celebrity Perfumes
-            </h1>
-            <div class="absolute w-full h-[2px] bg-slate-500"></div>
-          </div>
-            <div className="text-3xl text-center md:text-left md:text-5xl font-bold">
-              
+            <div class="grid place-items-center relative mt-8 mb-10">
+              <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">
+                Celebrity Perfumes
+              </h1>
+              <div class="absolute w-full h-[2px] bg-slate-500"></div>
             </div>
+            <div className="text-3xl text-center md:text-left md:text-5xl font-bold"></div>
             <div className="grid md:grid-cols-2 xl:grid-cols-3 place-items-center gap-8">
               {Array(4)
                 .fill(true)

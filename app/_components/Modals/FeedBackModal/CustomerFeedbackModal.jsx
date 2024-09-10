@@ -9,22 +9,7 @@ import { userStore } from '@/store/userStore';
 import { toast } from 'sonner';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
-async function reviewSubmission(payload) {
-  console.log(payload, "payload");
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/review`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload),
-      cache: "no-store",
-    }
-  );
-  const data = await response.json();
-  console.log(data, "Data");
-}
+
 
 
 const CustomerFeedbackModal = forwardRef((props, ref) => {
@@ -43,6 +28,9 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
   const [priceValueRef, setPriceValueRef] = useState();
   const [reactionRef, setReactionRef] = useState();
   const [seasonRef, setSeasonRef] = useState();
+  const [loading, setLoading] = useState(false)
+
+
 
 
 
@@ -54,6 +42,40 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
       modalRef.current.close();
     }
   }));
+
+  async function reviewSubmission(payload) {
+    console.log(payload, "payload");
+    try {
+      setLoading(true)
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/review`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload),
+          cache: "no-store",
+        }
+      );
+      const data = await response.json();
+      if (data?.success || data?.status) {
+        toast.success("Submitted!!", { position: 'top-center' })
+        modalRef.current.close()
+        setLoading(false)
+        console.log(data, "Data");
+      } else {
+        toast.error(data.message, { position: 'top-center' })
+        setLoading(false)
+
+      }
+
+    } catch (error) {
+      toast.error(error.message, { position: 'top-center' })
+      console.log(error.message)
+    }
+
+  }
 
   function handleSumittion() {
     const data = {
@@ -180,7 +202,7 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
   ];
   const emojiDataPriceVal = [
     {
-      name: "Way OverPriced",
+      name: "Way Over Priced",
       icons: <svg className='h-8 stroke-[2px]' viewBox="0 0 128 128" fill="currentColor"><path d="M109.2,18.8C84-6.3,43.6-6.3,18.8,18.8c-25.1,25.1-25.1,65.6,0,90.3c25.1,25.1,65.6,25.1,90.3,0
 C134.3,84.4,134.3,43.6,109.2,18.8z M102.3,102.3c-20.9,20.9-55.4,21.3-76.2,0C5.2,81.5,5.2,47,26.1,25.7
 c20.9-20.9,55.4-20.9,76.7,0C123.2,47,123.2,81,102.3,102.3z"></path> <path d="M64.2,72.7c-0.1,0-0.2,0-0.2,0c-12,0-22.7,6.5-27.3,17c-0.9,2.1-0.1,3.8,1.6,4.7c1.7,0.9,3.9,0,4.8-1.7
@@ -191,7 +213,7 @@ c-4.2-2.1-8.3-3.1-8.5-3.2c-2.1-0.5-4.2,0.7-4.7,2.8c-0.5,2.1,0.7,4.2,2.8,4.7c2.1,
 C39.5,43.5,38.7,45.4,38.7,47.4z"></path></svg>,
     },
     {
-      name: "OverPriced",
+      name: "Over Priced",
       icons: <svg className='h-8 stroke-[2px]' viewBox="0 0 128 128" fill="currentColor"><path d="M109.2,18.8C84-6.3,43.6-6.3,18.8,18.8c-25.1,25.1-25.1,65.6,0,90.3c25.1,25.1,65.6,25.1,90.3,0
       C134.3,84.4,134.3,43.6,109.2,18.8z M102.3,102.3c-20.9,20.9-55.4,21.3-76.2,0C5.2,81.5,5.2,47,26.1,25.7
       c20.9-20.9,55.4-20.9,76.7,0C123.2,47,123.2,81,102.3,102.3z"></path> <circle cx="46.5" cy="47" r="7.7"></circle> <circle cx="81.5" cy="47" r="7.7"></circle> <path d="M90,94.3c-1.7,0.9-3.8,0-4.7-1.7c-3.4-8.1-11.8-13.2-20.7-13.2c-0.3,0-0.6,0-0.6,0
@@ -407,7 +429,7 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
                       color: '#FF8066'
                     },
                     {
-                      name: "Wrost",
+                      name: "Worst",
                       icons: <svg className='h-8 stroke-[2px]' viewBox="0 0 128 128" fill="#FFC75F"><path d="M109.2,18.8C84-6.3,43.6-6.3,18.8,18.8c-25.1,25.1-25.1,65.6,0,90.3c25.1,25.1,65.6,25.1,90.3,0
                            C134.3,84.4,134.3,43.6,109.2,18.8z M102.3,102.3c-20.9,20.9-55.4,21.3-76.2,0C5.2,81.5,5.2,47,26.1,25.7
                            c20.9-20.9,55.4-20.9,76.7,0C123.2,47,123.2,81,102.3,102.3z"></path> <path d="M64.2,72.7c-0.1,0-0.2,0-0.2,0c-12,0-22.7,6.5-27.3,17c-0.9,2.1-0.1,3.8,1.6,4.7c1.7,0.9,3.9,0,4.8-1.7
@@ -521,14 +543,23 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
             </form>
 
             <div className="flex items-center justify-center">
-              <button
-                data-modal-hide="default-modal"
-                type="button"
-                onClick={handleSumittion}
-                className="text-white  bg-blue-700 hover:bg-blue-800 my-4 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                SUBMIT
-              </button>
+              {
+                loading ? <button
+                  data-modal-hide="default-modal"
+                  type="button"
+                  disabled={loading}
+                  className="text-white  bg-blue-700 hover:bg-blue-800 my-4 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Loading...
+                </button> : <button
+                  data-modal-hide="default-modal"
+                  type="button"
+                  onClick={handleSumittion}
+                  className="text-white  bg-blue-700 hover:bg-blue-800 my-4 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  SUBMIT
+                </button>
+              }
             </div>
           </div>
         </div>

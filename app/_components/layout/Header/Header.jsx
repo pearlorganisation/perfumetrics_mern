@@ -12,6 +12,7 @@ import { AiOutlineLogin } from "react-icons/ai";
 import { CiLogout } from "react-icons/ci";
 import Dropdown from "../../Dropdown/Dropdown";
 import ReviewDropdown from "../../Dropdown/ReviewDropdown";
+import MegaMenu from "../../MegaMenu/MegaMenu";
 
 export default function Example() {
   const { user, isUserLoggedIn, logout } = userStore();
@@ -28,7 +29,7 @@ export default function Example() {
     )
     const data = await response.json()
     setBrands(data?.data)
-    console.log(data, "data")
+    // console.log(data, "data")
     return data
   }
 
@@ -59,7 +60,7 @@ export default function Example() {
           </div>
           <div className="hidden lg:flex items-center space-x-3 mr-28">
             {isUserLoggedIn ? (
-              <div className="space-x-3 flex">
+              <div className="space-x-3 flex py-2">
                 <span className="font-medium text-lg flex items-center gap-2">
                   <FaRegUserCircle size={25} />
                   {user?.userName}
@@ -123,11 +124,12 @@ export default function Example() {
               onClick={() => {
                 setPerfumeDropDown(!perfumeDropDown)
               }}
-              className="hover:text-pink-500  cursor-pointer transition duration-300"
+              className="relative   cursor-pointer transition duration-300"
             >
               PERFUMES
               {
                 perfumeDropDown && <Dropdown brands={brands} />
+                // perfumeDropDown && <MegaMenu data={brands} />
               }
             </div>
 

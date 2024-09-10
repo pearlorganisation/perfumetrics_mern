@@ -1,19 +1,23 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { SlLike } from "react-icons/sl";
 import { SlDislike } from "react-icons/sl";
 import { MdShare } from "react-icons/md";
-async function getComments(perfumeId) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/comment/${perfumeId}`
-  );
-  const data = await response.json();
-  console.log(data?.data, "comments");
-  return data?.data;
-}
 
 async function Review({ perfumeId }) {
-  const commentData = await getComments(perfumeId);
-  console.log("review Data ", commentData);
+  const [commentsData, setCommentsData] = useState([]);
+  async function getComments(perfumeId) {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/comment/${perfumeId}`
+    );
+    const data = await response.json();
+    console.log(data?.data, "comments");
+    setCommentsData(data?.data);
+  }
+  useEffect(() => {
+    getComments(perfumeId);
+  }, []);
+
   return (
     <div className="grid gap-3">
       <div className="text-3xl font-medium pl-1 relative grid place-items-center">
@@ -23,8 +27,8 @@ async function Review({ perfumeId }) {
       </div>
 
       <div class="w-full  mx-auto space-y-4 py-4 ">
-        {commentData && commentData?.length > 0 ? (
-          commentData.map((item) => {
+        {commentsData && commentsData?.length > 0 ? (
+          commentsData.map((item) => {
             return (
               <div class="bg-[#fafaf6] shadow rounded-lg p-6 border border-[#83a6c4]">
                 <div class="flex items-start space-x-4">
