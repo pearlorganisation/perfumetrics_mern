@@ -42,8 +42,10 @@ export default function Example() {
   }, [isUserLoggedIn]);
 
   return (
-    <header className="block bg-white shadow-[0_1px_2px#d1d1d1]">
-      <nav className="w-full pb-4 flex sm:justify-center flex-col gap-0 pt-0">
+    <header
+
+      className="block bg-white shadow-[0_1px_2px#d1d1d1]">
+      <nav className="w-full flex sm:justify-center flex-col gap-0 pt-0">
         <div className="flex items-center px-6 sm:justify-center md:justify-end sm:ml-44">
           <div className="flex items-center lg:hidden ml-20">
             <Link href="/">
@@ -108,46 +110,47 @@ export default function Example() {
             </div>
           </div>
         </div>
-        <div className="w-full flex justify-center lg:justify-between items-center px-6 pt-4">
+        <div className="w-full flex justify-center lg:justify-between items-center px-6">
           <div className="hidden lg:flex justify-center mx-auto gap-20 font-semibold text-lg lg:text-xl">
             <div
               onClick={() => {
                 setReviewDropDown(!reveiwDropDown)
               }}
 
-              className="hover:text-pink-500 cursor-pointer transition duration-300 relative"
+              className="hover:text-pink-500 cursor-pointer transition duration-300 relative py-3"
             >
               WRITE A REVIEW
               {reveiwDropDown && <ReviewDropdown />}
             </div>
             <div
-              onClick={() => {
-                setPerfumeDropDown(!perfumeDropDown)
+              onMouseEnter={() => {
+                setPerfumeDropDown(true)
               }}
-              className="relative   cursor-pointer transition duration-300"
+              onMouseLeave={() => setPerfumeDropDown(false)}
+              className="relative   cursor-pointer transition duration-300 py-3"
             >
               PERFUMES
               {
-                perfumeDropDown && <Dropdown brands={brands} />
+                perfumeDropDown && <Dropdown brands={brands} setPerfumeDropDown={setPerfumeDropDown} />
                 // perfumeDropDown && <MegaMenu data={brands} />
               }
             </div>
 
             <Link
               href="/sale/BEST SALES"
-              className="hover:text-pink-500 cursor-pointer transition duration-300"
+              className="hover:text-pink-500 cursor-pointer transition duration-300 py-3"
             >
               BEST SALES
             </Link>
             <Link
               href="/category/MEN'S STYLE"
-              className="hover:text-pink-500 cursor-pointer transition duration-300"
+              className="hover:text-pink-500 cursor-pointer transition duration-300 py-3"
             >
               MEN'S STYLE
             </Link>
             <Link
               href="/category/WOMEN'S STYLE"
-              className="hover:text-pink-500 cursor-pointer transition duration-300"
+              className="hover:text-pink-500 cursor-pointer transition duration-300 py-3"
             >
               WOMEN'S STYLE
             </Link>

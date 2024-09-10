@@ -93,6 +93,7 @@ const perfumeReviews = [
 
 const RelatedFragram = () => {
   const { productId } = useParams()
+  const [isLoading, setIsLoading] = useState(false)
   const [perfumeData, setPerfumeData] = useState(null);
   const getRelatedFragram = (perfumeId) => {
     axios

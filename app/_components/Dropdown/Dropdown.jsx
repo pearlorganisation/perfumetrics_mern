@@ -210,7 +210,9 @@ const Dropdown = ({ brands }) => {
 
 
     return (
-        <div className='absolute border-2  text-black divide-x-2  top-[2.8rem] bg-white z-50  w-[25rem] grid grid-cols-2'>
+        <div
+
+            className='absolute  text-black divide-x-2  top-[2.8rem] bg-white z-50  w-[25rem] grid grid-cols-2'>
 
 
             <div className=' shadow-lg max-h-[35rem] overflow-auto'>
