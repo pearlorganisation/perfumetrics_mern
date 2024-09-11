@@ -101,16 +101,16 @@ const NewPerfumes = () => {
     setNewArrival(result?.data?.data);
     console.log(result?.data?.data, "NewArrival");
   };
-  // const getCelebrityPerfume = async () => {
-  //   const result = await axios.get(
-  //     `${process.env.NEXT_PUBLIC_API_URL}/api/v1/celebrityPerfumes?limit=4`
-  //   );
-  //   setCelebrityPerfume(result?.data?.data);
-  //   console.log(result?.data?.data, "Celebrity Perfume");
-  // };
+  const getCelebrityPerfume = async () => {
+    const result = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/celebrityPerfumes?limit=4`
+    );
+    setCelebrityPerfume(result?.data?.data);
+    console.log(result?.data?.data, "Celebrity Perfume");
+  };
   useEffect(() => {
     getNewArrival();
-    // getCelebrityPerfume();
+    getCelebrityPerfume();
   }, []);
 
   return (
@@ -183,36 +183,30 @@ const NewPerfumes = () => {
             </div>
             <div className="text-3xl text-center md:text-left md:text-5xl font-bold"></div>
             <div className="grid md:grid-cols-2 xl:grid-cols-3 place-items-center gap-8">
-              {Array(4)
-                .fill(true)
-                .map((item, index) => {
-                  return (
+              {celebrityPerfume?.map((item, index) => {
+                return (
+                  <Link href={`/celebrityPerfumeBlog/${item?._id}`}>
                     <div
                       key={index}
                       className="max-w-md bg-white rounded-lg overflow-hidden shadow-lg"
                     >
                       <img
-                        src="https://images.unsplash.com/photo-1623742310401-d8057c3c43c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyZnVtZXxlbnwwfHwwfHx8MA%3D%3D"
+                        src={item?.banner}
                         alt="Luxury Fashion"
                         className="w-full h-[20rem]"
                       />
                       <div className="p-6">
                         <h2 className="text-base md:text-lg lg:text-xl font-bold mb-4 line-clamp-3">
-                          Come summer, luxury brands are turning to experiential
-                          partnerships and collaborations
+                          {item?.title}
                         </h2>
                         <p className="text-gray-700 text-sm md:text-base line-clamp-5">
-                          Luxury fashion houses are increasingly venturing
-                          beyond traditional retail, embracing pop-up stores and
-                          Luxury fashion houses are increasingly venturing
-                          beyond traditional retail, embracing pop-up stores and
-                          Luxury fashion houses are increasingly venturing
-                          beyond traditional retail, embracing pop-up stores and
+                          {item?.content}
                         </p>
                       </div>
                     </div>
-                  );
-                })}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>

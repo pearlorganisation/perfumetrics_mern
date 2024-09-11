@@ -8,6 +8,15 @@ async function getPerfumes() {
   return data
 }
 
+async function getGlobalVideo() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/globalData?itemType=video`
+  );
+  const data = await response.json();
+  console.log(data?.data[0], "globalData")
+  return data?.data[0];
+}
+
 
 
 import Link from "next/link";
@@ -132,6 +141,7 @@ async function PerfumeSection({ reviewSidebar, length }) {
   ];
 
   const data = await getPerfumes();
+  const gVideo = await getGlobalVideo()
 
   // console.log(Array.isArray(data.data), "rwegtfuw", data);
 
@@ -162,8 +172,21 @@ async function PerfumeSection({ reviewSidebar, length }) {
             <button className="bg-[#2f55a4] font-medium text-white px-4 py-2 rounded flex justify-center items-center gap-2"> <FaFacebookF />Login</button>
           </div>
           <div className="grid place-items-center border border-pink-500 h-40 overflow-hidden">
-            <button className="size-14 rounded-full bg-pink-500 grid place-items-center absolute"><FaPlay size={25} className=" text-white" /></button>
-            <img src="https://plus.unsplash.com/premium_photo-1679106770086-f4355693be1b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVyZnVtZXxlbnwwfHwwfHx8MA%3D%3D" alt="" className="object-cover" />
+
+            {
+              gVideo?.item && <div className="grid place-items-center relative bg-slate-100  md:h-[12rem] md:w-[90%] border overflow-hidden">
+
+                <iframe
+                  src={gVideo?.item[0]?.path}
+                  width="100%"
+                  height="100%"
+
+                ></iframe>
+
+
+
+              </div>
+            }
           </div>
           <div className="w-full  flex flex-col gap-10">
             <div className="border border-pink-500 w-full text-center py-4 shadow-lg">

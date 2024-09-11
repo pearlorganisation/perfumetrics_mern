@@ -219,8 +219,8 @@ const Dropdown = ({ brands }) => {
                 {
                     brands.map(item => {
                         return <Link
-                            // href={`/brand/${item?._id}`}
-                            href={`#`}
+                            href={`/brand/${item?.brand}`}
+                        // href={`#`}
                         >
                             <div onMouseOver={() => {
                                 setSubData(item?.AllPerfume)

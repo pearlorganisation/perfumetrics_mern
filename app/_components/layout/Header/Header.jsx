@@ -113,9 +113,11 @@ export default function Example() {
         <div className="w-full flex justify-center lg:justify-between items-center px-6">
           <div className="hidden lg:flex justify-center mx-auto gap-20 font-semibold text-lg lg:text-xl">
             <div
-              onClick={() => {
-                setReviewDropDown(!reveiwDropDown)
+
+              onMouseEnter={() => {
+                setReviewDropDown(true)
               }}
+              onMouseLeave={() => setReviewDropDown(false)}
 
               className="hover:text-pink-500 cursor-pointer transition duration-300 relative py-3"
             >

@@ -157,7 +157,9 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                   );
                 })} */}
                         </div>
-                        <VideoBox />
+                        {
+                            data?.data?.video && <VideoBox videoD={data?.data?.video} />
+                        }
                     </div>
                     <Feedback />
                     {/* detail start */}
@@ -391,7 +393,7 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                     </div>
                     <div className="space-y-5">
                         <AddReview />
-                        <Review perfumeId={productId} />
+
                     </div>
                 </div>
                 <div>

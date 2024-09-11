@@ -4,20 +4,7 @@ import { SlLike } from "react-icons/sl";
 import { SlDislike } from "react-icons/sl";
 import { MdShare } from "react-icons/md";
 
-async function Review({ perfumeId }) {
-  const [commentsData, setCommentsData] = useState([]);
-  async function getComments(perfumeId) {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/comment/${perfumeId}`
-    );
-    const data = await response.json();
-    console.log(data?.data, "comments");
-    setCommentsData(data?.data);
-  }
-  useEffect(() => {
-    getComments(perfumeId);
-  }, []);
-
+async function Review({ commentsData, perfumeId }) {
   return (
     <div className="grid gap-3">
       <div className="text-3xl font-medium pl-1 relative grid place-items-center">
