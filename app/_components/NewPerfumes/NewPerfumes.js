@@ -153,7 +153,7 @@ const NewPerfumes = () => {
                           key={index}
                           className="grid place-items-center p-2   md:!w-auto"
                         >
-                          <Link href={item?.link} target="_blank">
+                          <a href={item?.link} target="_blank">
                             <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px] overflow-hidden">
                               <img
                                 src={item?.banner || item.imgUrl}
@@ -166,7 +166,7 @@ const NewPerfumes = () => {
                                 {item?.brand?.brand}
                               </span>
                             </div>
-                          </Link>
+                          </a>
                         </SwiperSlide>
                       );
                     })}
