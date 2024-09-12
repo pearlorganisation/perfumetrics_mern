@@ -23,11 +23,13 @@ import Link from 'next/link';
 import { userStore } from '@/store/userStore';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
+import { RiCentosLine } from 'react-icons/ri';
 
 
 const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productId }) => {
     // const {productId} = useParams()
     const [perfumeCategories, setPerfumeCategories] = useState([])
+    const [globalBanner, setGlobalBanner] = useState(null)
     const { user, isUserLoggedIn, logout } = userStore();
     useEffect(() => {
         window.scrollTo({
@@ -41,8 +43,14 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
         setPerfumeCategories(result?.data?.data)
         console.log(result?.data?.data, "perfumeCategories")
     }
+    const getGlobalBanner = async () => {
+        const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/globalData?itemType=banner`)
+        setGlobalBanner(result?.data?.data[0])
+        console.log(result?.data?.data, "Global Banner")
+    }
     useEffect(() => {
         perfumeCate(productId)
+        getGlobalBanner()
     }, [])
 
 
@@ -125,20 +133,25 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                             </button>
                         </div> : <div></div>
                     }
-                    <div className="h-[20rem]  border rounded-md overflow-hidden">
-                        <img
-                            className="h-full mx-auto"
-                            src="https://img.pikbest.com/origin/06/25/40/84bpIkbEsTgk3.jpg!sw800"
-                            alt=""
-                        />
-                    </div>
+                    {
+                        globalBanner && <div className="h-[20rem]  border rounded-md overflow-hidden">
+
+                            <img
+                                className="h-full mx-auto"
+                                // src="https://img.pikbest.com/origin/06/25/40/84bpIkbEsTgk3.jpg!sw800"
+                                src={`${globalBanner?.item[0]?.path}`}
+                                alt=""
+                            />
+                        </div>
+                    }
+
                 </div>
             </div>
             <div className=" gap-x-10 gap-y-14 grid  lg:grid-cols-[auto_18.3rem] py-8">
                 <div className="space-y-8">
                     <div className="grid md:grid-cols-[60%_40%] gap-y-4 md:gap-y-0">
                         <div className="space-y-12 w-full flex flex-col justify-center items-center ">
-                            <Buyfrom />
+                            <Buyfrom links={data?.data?.purchaseLinks} />
                             {/* {[
                   {
                     title: "Buy From",
