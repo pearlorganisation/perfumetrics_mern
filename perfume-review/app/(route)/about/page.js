@@ -6,47 +6,36 @@ const AboutUs = () => {
       <header class="bg-[#F9A8D4] text-white py-6 ">
         <div class=" text-center">
           <h1 class="text-4xl font-bold">About Perfumetrics</h1>
-          <p class="text-lg mt-2">
-            Your trusted source for honest and insightful perfume reviews.
-          </p>
+          
         </div>
       </header>
       <main class="">
         <section class="bg-white p-8 rounded-lg shadow-lg">
           <h2 class="text-3xl font-bold mb-4">Welcome to Perfumetrics</h2>
           <p class="mb-4">
-            Based in the United States, we are dedicated to helping you discover
-            the perfect scent that matches your unique style and preferences.
+          Welcome to Perfumetrics, your ultimate destination for discovering the perfect fragrance and
+lifestyle products tailored to your unique preferences.
+As an independent review platform, we aim to help you through the vast world of perfumes and
+lifestyle essentials, ensuring that you make informed decisions when choosing the products that suit
+you best. While we do not sell any products directly on our website, we provide in-depth and
+unbiased reviews that help you to get the right options based on your needs.
+Whether you’re looking for a signature scent or exploring new olfactory horizons, Perfumetrics is
+always here to assist you with honest and comprehensive reviews. Each product review is crafted
+with the utmost research, providing you with detailed information about its composition,
+performance, and overall experience.
+We have a global reach of, offering our content in 10 different languages and many countries to
+serve fragrance enthusiasts and lifestyle seekers. This allows us to help the diverse audiences. At
+Perfumetrics.com, we believe in transparency and trust. Our reviews are independent and unbiased,
+crafted by experts and enthusiasts who share a genuine opinion for helping others, to discover the
+right products.
+As an independent company based at United States, we are committed to maintaining our
+authenticity and integrity. Our mission is simple: to be your trusted partner in navigating the vast
+world of fragrances and lifestyle products. Whether you’re a seasoned connoisseur or new to the
+fragrance scene, we’re here to help you find what works best for you.
+Should you have any questions or need further assistance, our dedicated team is always here to
+help. Feel free to reach out to us at help@perfumetrics.com or visit our contact page.
           </p>
-          <h3 class="text-2xl font-semibold mb-4">Our Mission</h3>
-          <p class="mb-4">
-            Our mission is simple: to provide comprehensive and unbiased reviews
-            of a wide range of perfumes. We understand that choosing a fragrance
-            is a deeply personal experience, and we aim to guide you through
-            this journey with our expert advice and detailed analysis.
-          </p>
-          <h3 class="text-2xl font-semibold mb-4">Our Approach</h3>
-          <p class="mb-4">
-            At Perfumetrics, our team of passionate fragrance enthusiasts
-            meticulously tests and evaluates each perfume. We consider various
-            aspects, including scent profile, longevity, sillage, and value for
-            money, to ensure that our reviews are thorough and reliable. Our
-            goal is to empower you with the knowledge you need to make informed
-            decisions about your next fragrance purchase.
-          </p>
-          <h3 class="text-2xl font-semibold mb-4">Our Values</h3>
-          <p class="mb-4">
-            We believe in transparency and integrity, and we are committed to
-            maintaining the highest standards of honesty in our reviews. Whether
-            you're a fragrance aficionado or new to the world of perfumes,
-            Perfumetrics is here to help you navigate the vast array of scents
-            available in the market.
-          </p>
-          <p class="text-xl font-bold mt-8">
-            Thank you for visiting Perfumetrics. We hope our reviews will
-            inspire and assist you in finding the perfect fragrance that
-            captures your essence and elevates your everyday experience.
-          </p>
+         
           <p class="text-lg mt-4">Stay fragrant,</p>
         </section>
       </main>

@@ -90,13 +90,19 @@ const FollowUs = () => {
                         <div className='w-full grid grid-cols-[auto_5rem]'><input className='px-4 py-3 w-full' placeholder='Enter Your Email Address ' type="text" name="" id="" /><button className='bg-pink-500 px-5 py-3 text-white' type="button">GO</button></div>
                     </div>
                 </div>
-                <div className='bg-pink-300 md:col-span-2 lg:col-span-1 space-y-3 py-5 px-6'>
-                    <div className='text-center text-xl font-semibold'>FOLLOWS US</div>
+                <div className='bg-pink-300 md:col-span-2 lg:col-span-1 space-y-3 py-5 px-6 flex justify-between items-center flex-col'>
+                    <div className='w-full space-y-5'>
+                    <div className='text-center text-xl text-white font-semibold'>FOLLOWS US</div>
                     <div className='flex w-full justify-around'>
                         <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaFacebookF size={26} /></div>
                         <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaXTwitter size={26} /></div>
                         <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaYoutube size={26} /></div>
                         <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaInstagram size={26} /></div>
+                    </div>
+                    </div>
+                    <div className='w-full flex justify-center items-center text-white gap-3 text-sm'>
+                        <Link className='hover:underline' href='/privacyPolicy'>Privacy Policy</Link>
+                        <Link className='hover:underline' href='/termsConditions'>Terms And Conditions</Link>
                     </div>
                 </div>
             </div>
