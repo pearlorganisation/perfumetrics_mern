@@ -29,8 +29,4 @@ const CardsList = ({ reviewData, length, data }) => {
 
 export default CardsList;
 
-{/* <div className="bg-white w-fit p-2">
-              
-            </div>
-            <span class="text-lg font-medium">{item?.name}</span>
-          </div> */}
+

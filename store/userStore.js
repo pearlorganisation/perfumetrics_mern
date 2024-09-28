@@ -37,7 +37,7 @@ export const userStore = create(
       logout: () => set({ user: null, isUserLoggedIn: false }),
     }),
     {
-      name: "perfumetricsUD", // name of the item in the storage (must be unique)
+      name: "perfumetricsUserStore", // name of the item in the storage (must be unique)
       storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
     }
   )

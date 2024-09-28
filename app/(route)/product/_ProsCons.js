@@ -1,14 +1,28 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { FaHeartBroken } from "react-icons/fa";
 import { FaCrown } from "react-icons/fa";
+import { userLikeDislikeHistoryStore } from "@/store/userLikeDislikeHistoryStore";
+import { userStore } from "@/store/userStore";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
-const ProsCons = ({ data }) => {
- 
-  console.log(data,"data of pros cons section");
-
+const ProsCons = ({ data, map }) => {
+  const router = useRouter();
+  const { user, isUserLoggedIn, logout } = userStore();
+  console.log("map", map);
+  const isLikedFunc = async (data) => {
+    console.log({ ...data });
+    const result = await axios.patch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/voteProsCons`,
+      data
+    );
+    router.refresh();
+    console.log(result, "ProsCons");
+  };
 
   return (
     <div>
@@ -24,29 +38,58 @@ const ProsCons = ({ data }) => {
                 </p>
               </div>
               <ul>
-              {Array.isArray(data?.pros) && data?.pros?.map((item, index) => (
-               
-                  <li
-                    key={index}
-                    className="flex items-center space-x-3   my-2"
-                  >
-                    <div className="flex gap-1">
-                      <span className=" flex flex-col justify-center items-center">
-                        <CiHeart size={24} className="text-pink-300" />
-                        <span className="">{item.likes}</span>
+                {Array.isArray(data?.pros) &&
+                  data?.pros?.map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex items-center space-x-3   my-2"
+                    >
+                      <div className="flex gap-3">
+                        <span
+                          onClick={() => {
+                            isLikedFunc({
+                              prosConsId: data?._id,
+                              userId: user?._id,
+                              userVote: 1,
+                              cons: undefined,
+                              pros: item?._id,
+                            });
+                          }}
+                          className={`${
+                            map.get(item?._id)?.vote === 1
+                              ? "ring-4  ring-pink-500/70 rounded-full"
+                              : ""
+                          } flex flex-col justify-center items-center`}
+                        >
+                          <CiHeart size={24} className="text-pink-300" />
+                          <span className="">{item.likes}</span>
+                        </span>
+                        <span
+                          onClick={() => {
+                            isLikedFunc({
+                              prosConsId: data?._id,
+                              userId: user?._id,
+                              userVote: -1,
+                              pros: undefined,
+                              cons: item?._id,
+                            });
+                          }}
+                          className={`${
+                            map.get(item?._id)?.vote === -1
+                              ? "ring-4  ring-pink-500/70 rounded-full"
+                              : ""
+                          } flex flex-col justify-center items-center`}
+                        >
+                          <FaHeartBroken size={22} className="text-[#f34949]" />
+                          <span className="">{item.disLikes}</span>
+                        </span>
+                      </div>
+                      <span className="text-center block">
+                        {/* This is Dummy content...........................This is Dummy content........................... */}
+                        {item.title}
                       </span>
-                      <span className=" flex flex-col justify-center items-center">
-                        <FaHeartBroken className="text-[#f34949]" />
-                        <span className="">{item.disLikes}</span>
-                      </span>
-                    </div>
-                    <span className="text-center block">
-                    {/* This is Dummy content...........................This is Dummy content........................... */}
-                      {item.title}                
-                      </span>
-                  </li>
-             
-              ))}
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>
@@ -77,29 +120,63 @@ const ProsCons = ({ data }) => {
                   CONS
                 </p>
               </div>
-              {Array.isArray(data?.cons) && data?.cons.map((item, index) => (
-                <div>
-                  <li key={index} className="flex items-center space-x-3  my-2">
-                    <div className="flex gap-1">
-                      <span className=" flex flex-col justify-center items-center">
-                        <CiHeart
-                          size={24}
-                          className="text-pink-300 fill-pink-200"
-                        />
-                        <div></div>
-                        <span className="">{item.likes}</span>
+              {Array.isArray(data?.cons) &&
+                data?.cons.map((item, index) => (
+                  <div>
+                    <li
+                      key={index}
+                      className="flex items-center space-x-3  my-2"
+                    >
+                      <div className="flex gap-3">
+                        <span
+                          onClick={() => {
+                            isLikedFunc({
+                              prosConsId: data?._id,
+                              userId: user?._id,
+                              userVote: 1,
+                              pros: item?._id,
+                              cons: undefined,
+                            });
+                          }}
+                          className={`${
+                            map.get(item?._id)?.vote === 1
+                              ? "ring-4  ring-pink-500/70 rounded-full"
+                              : ""
+                          } flex flex-col justify-center items-center`}
+                        >
+                          <CiHeart
+                            size={24}
+                            className="text-pink-300 fill-pink-200"
+                          />
+                          <div></div>
+                          <span className="">{item.likes}</span>
+                        </span>
+                        <span
+                          onClick={() => {
+                            isLikedFunc({
+                              prosConsId: data?._id,
+                              userId: user?._id,
+                              userVote: -1,
+                              cons: item?._id,
+                              pros: undefined,
+                            });
+                          }}
+                          className={`${
+                            map.get(item?._id)?.vote === -1
+                              ? "ring-4  ring-pink-500/70 rounded-full"
+                              : ""
+                          } flex flex-col justify-center items-center`}
+                        >
+                          <FaHeartBroken size={22} className="text-[#f34949]" />
+                          <span className="">{item.disLikes}</span>
+                        </span>
+                      </div>
+                      <span className="text-center text-wrap ">
+                        {item.title}
                       </span>
-                      <span className=" flex flex-col justify-center items-center">
-                        <FaHeartBroken className="text-[#f34949]" />
-                        <span className="">{item.disLikes}</span>
-                      </span>
-                    </div>
-                    <span className="text-center text-wrap ">
-                      {item.title}
-                      </span>
-                  </li>
-                </div>
-              ))}
+                    </li>
+                  </div>
+                ))}
             </div>
           </div>
         </div>

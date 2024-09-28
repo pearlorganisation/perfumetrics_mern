@@ -1,13 +1,29 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoIosTimer } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { BiSolidDollarCircle } from "react-icons/bi";
 import { IoMaleFemale } from "react-icons/io5";
+import { userStore } from '@/store/userStore';
+import axios from 'axios';
 
 
 const RatingResult = ({ perfumeRatings }) => {
+    const [result, setResult] = useState([])
+    const { user } = userStore();
+    console.log("dsa", user);
+
+    const getReviewByUserId = async () => {
+        const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/review/user/${user?._id}`)
+        console.log(result, "Reslt")
+        setResult(result?.data?.data[0])
+    }
     const [emoji, setEmoji] = useState(1)
+    const modifyStr = (str) => {
+        return str?.replace(/([A-Z])/g, ' $1')
+            .replace(/^./, function (match) { return match.toUpperCase(); })
+            .trim()
+    }
     const results = [
         {
             name: "Very Good",
@@ -66,6 +82,7 @@ const RatingResult = ({ perfumeRatings }) => {
             status: [
                 {
                     name: 'Very Weak',
+                    isUserSelected: modifyStr(result?.longevity) === 'Very Weak',
                     num: perfumeRatings.longevity.veryWeak,
                     icon: (
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
@@ -76,6 +93,7 @@ const RatingResult = ({ perfumeRatings }) => {
                 },
                 {
                     name: 'Weak',
+                    isUserSelected: modifyStr(result?.longevity) === 'Weak',
                     num: perfumeRatings.longevity.weak,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
@@ -83,7 +101,8 @@ const RatingResult = ({ perfumeRatings }) => {
                     </svg>)
                 },
                 {
-                    name: 'moderate',
+                    name: 'Moderate',
+                    isUserSelected: modifyStr(result?.longevity) === 'Moderate',
                     num: perfumeRatings.longevity.moderate,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
@@ -91,7 +110,8 @@ const RatingResult = ({ perfumeRatings }) => {
                     </svg>)
                 },
                 {
-                    name: 'long lasting',
+                    name: 'Long Lasting',
+                    isUserSelected: modifyStr(result?.longevity) === 'Long Lasting',
                     num: perfumeRatings.longevity.longLasting,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 8L10 12" stroke="#555" stroke-width="2" />
@@ -100,7 +120,8 @@ const RatingResult = ({ perfumeRatings }) => {
                     </svg>)
                 },
                 {
-                    name: 'eternal',
+                    name: 'Eternal',
+                    isUserSelected: modifyStr(result?.longevity) === 'Eternal',
                     num: perfumeRatings.longevity.eternal,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 10L10 10" stroke="#333" stroke-width="2" />
@@ -119,23 +140,28 @@ const RatingResult = ({ perfumeRatings }) => {
             status: [
                 {
                     name: 'Intimate',
-                    num: perfumeRatings.sillage.intimate 
+                    isUserSelected: modifyStr(result?.sillage) === 'Intimate',
+                    num: perfumeRatings.sillage.intimate
                 },
                 {
                     name: 'No Vote',
-                    num: perfumeRatings.sillage.noVote 
+                    isUserSelected: modifyStr(result?.sillage) === 'No Vote',
+                    num: perfumeRatings.sillage.noVote
                 },
 
                 {
                     name: 'Moderate',
-                    num: perfumeRatings.sillage.moderate 
+                    isUserSelected: modifyStr(result?.sillage) === 'Moderate',
+                    num: perfumeRatings.sillage.moderate
                 },
                 {
                     name: 'Strong',
+                    isUserSelected: modifyStr(result?.sillage) === 'Strong',
                     num: perfumeRatings.sillage.strong
                 },
                 {
                     name: 'Enormous',
+                    isUserSelected: modifyStr(result?.sillage) === 'Enormous',
                     num: perfumeRatings.sillage.enormous
                 }
             ]
@@ -148,23 +174,32 @@ const RatingResult = ({ perfumeRatings }) => {
             status: [
                 {
                     name: 'Way Overpriced',
-                    num: perfumeRatings.priceValue.wayOverPriced 
+                    isUserSelected: modifyStr(result?.priceValue) === 'Way Overpriced',
+                    num: perfumeRatings.priceValue.wayOverPriced
                 },
                 {
-                    name: 'Overpriced',
-                    num: perfumeRatings.priceValue.overPriced 
+                    name: 'Over Priced',
+                    isUserSelected: modifyStr(result?.priceValue) === 'Over Priced',
+
+                    num: perfumeRatings.priceValue.overPriced
                 },
                 {
                     name: 'Ok',
-                    num: perfumeRatings.priceValue.ok 
+                    isUserSelected: modifyStr(result?.priceValue) === 'Ok',
+
+                    num: perfumeRatings.priceValue.ok
                 },
                 {
                     name: 'Good Value',
-                    num: perfumeRatings.priceValue.goodValue 
+                    isUserSelected: modifyStr(result?.priceValue) === 'Good Value',
+
+                    num: perfumeRatings.priceValue.goodValue
                 },
                 {
                     name: 'Great Value',
-                    num: perfumeRatings.priceValue.greatValue 
+                    isUserSelected: modifyStr(result?.priceValue) === 'Great Value',
+
+                    num: perfumeRatings.priceValue.greatValue
                 }
             ]
         },
@@ -177,28 +212,46 @@ const RatingResult = ({ perfumeRatings }) => {
             status: [
                 {
                     name: 'Female',
-                    num: perfumeRatings.gender.female 
+                    isUserSelected: modifyStr(result?.gender) === 'Female',
+                    num: perfumeRatings.gender.female
                 },
                 {
                     name: 'More Female',
-                    num: perfumeRatings.gender.moreMale 
+                    isUserSelected: modifyStr(result?.gender) === 'More Female',
+
+                    num: perfumeRatings.gender.moreMale
                 },
                 {
                     name: 'Unisex',
-                    num: perfumeRatings.gender.unisex 
+                    isUserSelected: modifyStr(result?.gender) === 'Unisex',
+
+                    num: perfumeRatings.gender.unisex
                 },
                 {
                     name: 'More Male',
-                    num: perfumeRatings.gender.moreMale 
+                    isUserSelected: modifyStr(result?.gender) === 'More Male',
+
+                    num: perfumeRatings.gender.moreMale
                 },
                 {
                     name: 'Male',
-                    num: perfumeRatings.gender.male 
+                    isUserSelected: modifyStr(result?.gender) === 'Male',
+
+                    num: perfumeRatings.gender.male
 
                 }
             ]
         }
     ]
+
+    useEffect(() => {
+        if (user?._id) {
+            getReviewByUserId()
+        }
+    }, [user])
+
+
+
     return (
         <div className='grid md:grid-cols-2 gap-20  w-full'>
             {
@@ -211,15 +264,16 @@ const RatingResult = ({ perfumeRatings }) => {
                         <div className='flex justify-around gap-x-5'>
                             {
                                 item.status.map((stats, idx) => {
-                                    return <div className="cursor-pointer grid place-items-center font-medium text-[#ff6fc6] relative capitalize">
+                                    console.log(modifyStr(result?.sillage) === stats?.name, "stats?.isUserSelected")
+                                    return <div className="cursor-pointer grid place-items-center font-medium relative capitalize">
                                         <div
-                                            className={`absolute w-full h-full bg-transparent ${idx + 1 === item.rating
-                                                ? "backdrop-grayscale-0"
-                                                : "backdrop-grayscale"
-                                                }  `}
+                                            className={`absolute w-full h-full bg-transparent   `}
                                         ></div>
                                         {/* {stats?.icon} */}
-                                        <div className='text-pink-400'> {stats?.name}</div>
+                                        <div className={` ${stats?.isUserSelected
+                                            ? "text-pink-400"
+                                            : "backdrop-grayscale"
+                                            } `}> {stats?.name}</div>
                                     </div>
                                 })
                             }
@@ -227,11 +281,13 @@ const RatingResult = ({ perfumeRatings }) => {
                         <input
                             className="w-full"
                             min={1}
-                            max={200}
+                            max={5}
                             step={1}
+                            // disabled
                             type="range"
+                            disabled
                             onChange={(e) => {
-                                console.log(typeof e.target.value);
+                                console.log(e.target.value);
                                 setEmoji(e.target.value);
                             }}
                             name=""

@@ -8,7 +8,7 @@ const Buyfrom = ({ links }) => {
   const [selectedTab, setSelectedTab] = useState('amazon');
   console.log(links, "links")
 
-  console.log("Amazon_India_logo", Amazon_India_logo.src);
+  console.log("Amazon_India_logo", links);
 
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
@@ -20,7 +20,7 @@ const Buyfrom = ({ links }) => {
         links?.map(item => {
           return <div className="mt-4 md:flex md:items-left md:justify-left h-20">
             <a
-              href={`//${item?.link}`}
+              href={`${item?.link}`}
               className="text-blue-500 flex  hover:underline underline text-3xl w-full"
               target="_blank"
               rel="noreferrer"

@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-const WriteAReview = () => {
+const RequestAReview = () => {
     const { user, isUserLoggedIn } = userStore();
 
 
@@ -32,15 +32,9 @@ const WriteAReview = () => {
 
     const onSubmit = (data) => {
         console.log(imageFile[0])
-        const formData = new FormData()
-        formData.append("brand", data?.brand)
-        formData.append("description", data?.description)
-        formData.append("images", imageFile[0])
-        formData.append("perfumeName", data?.perfumeName)
-        formData.append("userId", user?._id)
-
-        console.log(data, "data");
-        postWriteAReview(formData)
+        const datum = { ...data, images: imageFile[0], userId: user?._id }
+        console.log(datum, "datum");
+        postWriteAReview(datum)
         // Handle the form submission
     };
 
@@ -65,7 +59,7 @@ const WriteAReview = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center p-6 space-y-6 bg-gray-100 min-h-screen">
-            <h1 className="text-3xl font-bold text-gray-800 mb-6">Write A Review</h1>
+            <h1 className="text-3xl font-bold text-gray-800 mb-6">Request A Review</h1>
 
             {/* Brand */}
             <div className="w-full max-w-lg rounded-lg">
@@ -164,4 +158,7 @@ const WriteAReview = () => {
     );
 };
 
-export default WriteAReview;
+
+
+
+export default RequestAReview

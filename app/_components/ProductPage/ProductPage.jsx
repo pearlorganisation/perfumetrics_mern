@@ -22,15 +22,29 @@ import { FaPlay } from "react-icons/fa";
 import Link from 'next/link';
 import { userStore } from '@/store/userStore';
 import axios from 'axios';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { RiCentosLine } from 'react-icons/ri';
+import ct from 'countries-and-timezones';
+import { userLikeDislikeHistoryStore } from '@/store/userLikeDislikeHistoryStore';
 
 
 const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productId }) => {
+    const { getUserLikeDisLikeHistory, userLikeDislikeHistory } =
+        userLikeDislikeHistoryStore();
+    const [purchaseLinks, setPurchaseLinks] = useState([])
+    const router = useRouter()
+
+    const tmz = Intl.DateTimeFormat().resolvedOptions().timeZone
+    const timezone = ct.getTimezone(tmz);
+    console.log(timezone?.countries[0], "timezone");
+    const [timeZoneCountry, setTimeZoneCountry] = useState(timezone?.countries[0])
     // const {productId} = useParams()
+    let companiesLists;
     const [perfumeCategories, setPerfumeCategories] = useState([])
     const [globalBanner, setGlobalBanner] = useState(null)
     const { user, isUserLoggedIn, logout } = userStore();
+    const [historyMap, setHistorMap] = useState(null);
+    // const currentPerfumeVote = historyMap.get(productId) || 0;
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -41,18 +55,78 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
     const perfumeCate = async (perfumeId) => {
         const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfumeCategories?perfumeId=${perfumeId}`)
         setPerfumeCategories(result?.data?.data)
-        console.log(result?.data?.data, "perfumeCategories")
+        // console.log(result?.data?.data, "perfumeCategories")
     }
+    const perfumeUserHistory = async (userId) => {
+        const result = await axios.get(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/userHistory/${userId}`
+        );
+
+        const { cons, pros, perfumeMarkedVoted } = result?.data?.data;
+        const userHistoryMap = new Map();
+
+        if (cons && cons.length > 0) {
+            cons.forEach((element) => {
+                userHistoryMap.set(element.consId, element);
+            });
+        }
+        if (pros && pros.length > 0) {
+            pros.forEach((element) => {
+                userHistoryMap.set(element.prosId, element);
+            });
+        }
+        if (perfumeMarkedVoted && perfumeMarkedVoted.length > 1) {
+            perfumeMarkedVoted.forEach((element) => {
+                userHistoryMap.set(element.perfumeId, element);
+            });
+        }
+
+        setHistorMap(userHistoryMap);
+
+        // console.log(result?.data?.data, "perfumeCategories")
+    }
+
     const getGlobalBanner = async () => {
         const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/globalData?itemType=banner`)
         setGlobalBanner(result?.data?.data[0])
-        console.log(result?.data?.data, "Global Banner")
+        // console.log(result?.data?.data, "Global Banner")
     }
     useEffect(() => {
         perfumeCate(productId)
         getGlobalBanner()
     }, [])
 
+
+    useEffect(() => {
+        if (user)
+            perfumeUserHistory(user._id);
+
+    }, [user]);
+
+    useEffect(() => {
+        console.log("fassadsdsDirst", historyMap);
+    }, [historyMap]);
+
+    useEffect(() => {
+        const mapOfLinks = data?.data?.mapOfLinks || {}; // Assuming this is your object
+        companiesLists = (mapOfLinks[timeZoneCountry]) || { companiesList: [] }
+        setPurchaseLinks(companiesLists?.
+            companiesList)
+
+        console.log("first", companiesLists);
+
+    }, [timezone])
+
+    const likeDislike = async (userVote) => {
+        try {
+            const result = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/votePerfume`, {
+                userId: user?._id, perfumeId: productId, userVote
+            })
+            router.refresh()
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
     return (
@@ -80,28 +154,38 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                 /> */}
                             <img src={data?.data?.banner} alt="img" srcset="" />
                         </div>
-                        <div className="flex justify-start px-14  py-8 md:mt-6">
-                            <div className="w-fit grid place-items-center gap-1">
-                                <IoHeart
-                                    className="border-2 size-12 border-black rounded-full p-1 text-pink-300"
-                                    size={38}
-                                />
-                                <div className="h-1 w-full bg-pink-400"></div>
-                                <span>{data?.data && data.data.likes} Likes</span>
-                            </div>
+                        {
+                            historyMap && <div className="flex justify-start px-14  py-8 md:mt-6">
+                                <div
 
-                            <div className="w-fit grid place-items-center gap-1 ml-10">
-                                <Image
-                                    className="border-2 size-12 border-black rounded-full"
-                                    src="/likes.svg"
-                                    width={50}
-                                    height={50}
-                                    alt=""
-                                />
-                                <div className="h-1 w-full bg-pink-400"></div>
-                                <span>{data?.data && data.data.dislike} DisLikes</span>
+                                    onClick={() => {
+                                        likeDislike(1)
+                                    }} className={` w-fit cursor-pointer grid place-items-center gap-1`}>
+                                    <IoHeart
+                                        className={`${(((historyMap && historyMap?.get(productId))?.vote) === 1) ? 'ring-4 ring-pink-500' : ''} border-2 size-12 border-black rounded-full p-1 text-pink-300`}
+                                        size={38}
+                                    />
+                                    <div className="h-1 w-full bg-pink-400"></div>
+                                    <span>{data?.data && data.data.likes} Likes</span>
+                                </div>
+
+                                <div
+                                    onClick={() => {
+                                        likeDislike(-1)
+                                    }}
+                                    className={` w-fit cursor-pointer grid place-items-center gap-1 ml-10`}>
+                                    <Image
+                                        className={`${historyMap?.get(productId)?.vote === -1 ? 'ring-4 ring-pink-500' : ''} border-2 size-12 border-black rounded-full`}
+                                        src="/likes.svg"
+                                        width={50}
+                                        height={50}
+                                        alt=""
+                                    />
+                                    <div className="h-1 w-full bg-pink-400"></div>
+                                    <span>{data?.data && data.data.dislike} DisLikes</span>
+                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
 
                     <div className="flex flex-col justify-center  items-center gap-4 ">
@@ -151,7 +235,8 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                 <div className="space-y-8">
                     <div className="grid md:grid-cols-[60%_40%] gap-y-4 md:gap-y-0">
                         <div className="space-y-12 w-full flex flex-col justify-center items-center ">
-                            <Buyfrom links={data?.data?.purchaseLinks} />
+
+                            {purchaseLinks?.length > 0 && <Buyfrom links={purchaseLinks} />}
                             {/* {[
                   {
                     title: "Buy From",
@@ -210,7 +295,7 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                     {/* detail ends */}
 
                     {/* pros n cons */}
-                    {dataProsCons && <ProsCons data={dataProsCons.data} />}
+                    {dataProsCons && historyMap && <ProsCons map={historyMap} data={dataProsCons.data} />}
                     {/* pros n cons */}
                 </div>
                 <div>
@@ -280,7 +365,7 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                                     alt=""
                                 />
                                 <div className="absolute   flex flex-col -translate-x-3 max-w-[16rem] gap-4">
-                                    <div className="flex flex-col gap-4 justify-center items-center overflow-auto ">
+                                    <div className="flex flex-col gap-4 justify-center items-center flex-wrap ">
                                         <p className="text-center font-bold">Top Notes</p>
                                         <div className="flex gap-4 text-sm">
                                             {data?.data?.topNote &&
@@ -302,7 +387,7 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-col gap-4 justify-center items-center overflow-auto">
+                                    <div className="flex flex-col gap-4 justify-center items-center flex-wrap">
                                         <p className="text-center font-bold">Middle Notes</p>
                                         <div className="flex gap-4">
                                             {data.data?.middleNote.map((el) => {
@@ -323,7 +408,7 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-col gap-4 justify-center items-center overflow-auto">
+                                    <div className="flex flex-col gap-4 justify-center items-center flex-wrap">
                                         <p className="text-center font-bold">Base Notes</p>
                                         <div className="flex gap-4">
                                             {data.data?.baseNote.map((el) => {

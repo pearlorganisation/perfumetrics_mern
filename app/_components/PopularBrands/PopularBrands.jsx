@@ -50,7 +50,7 @@ const PopularBrands = () => {
                         />
                       </div>
 
-                      <div className="mt-4"><b>{item.perfume}</b><br />By {item?.brand?.brand || 'redo'}</div>
+                      <div className="mt-4 line-clamp-1"><b>{item.perfume}</b><br />By {item?.brand?.brand || 'redo'}</div>
                     </section>
                   </Link>
                 );
