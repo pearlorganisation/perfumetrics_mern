@@ -1,6 +1,26 @@
-import React from "react";
+"use client"
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import parse from 'html-react-parser';
 
 const News = () => {
+  const [newsData, setNewsData] = useState([])
+  const [newsMapData, setNewsMapData] = useState(null)
+  const getNews = async () => {
+    const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/news`)
+    setNewsData(result?.data?.data)
+    console.log(result?.data?.data, "result News")
+  }
+  useEffect(() => {
+    getNews()
+  }, [])
+  useEffect(() => {
+    if (newsData) {
+      const dataMap = new Map(newsData?.map((item, index) => [index + 1, item]));
+      setNewsMapData(dataMap)
+    }
+  }, [newsData])
+
   return (
     <div className="space-y-4">
       <div class="grid place-items-center relative mb-6">
@@ -16,16 +36,21 @@ const News = () => {
               <div className="space-y-4 w-full">
                 <img
                   className="w-full h-[30rem] object-cover"
-                  src="https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww"
+
+                  src={newsMapData?.get(1)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
                   alt=""
                 />
 
                 <div className="font-medium text-3xl text-black">
                   Is your perfume sustainble?
                 </div>
-                <div className="font-medium">By Rahul Rawat:</div>
+                <div className="font-medium">By {newsMapData?.get(1)?.user} :</div>
                 <p className="line-clamp-4">
-                  Let’s get the bad news over with first. The moment a brand
+                  {newsMapData?.get(1)?.details}
+                  {/* {
+                    parse(newsMapData?.get(1)?.description || '')
+                  } */}
+                  {/* Let’s get the bad news over with first. The moment a brand
                   exists, sustainability no longer exists. Even at its most
                   responsible, a brand creates waste in some form. And if anyone
                   harps about your carbon footprint—just a friendly reminder
@@ -37,7 +62,7 @@ const News = () => {
                   British Petroleum, placing the blame of environmental damage
                   on consumers and not the companies drilling for fossil
                   fuel. blame of environmental damage on consumers and not the
-                  companies drilling for fossil fuel.
+                  companies drilling for fossil fuel. */}
                 </p>
               </div>
             );
@@ -47,56 +72,58 @@ const News = () => {
         <div>
           <div className="mb-8">
             <img
-              className="rounded-md"
-              src="https://images.unsplash.com/photo-1624613533305-28d421d70875?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D"
+              className="w-full rounded-md h-[13.5rem]"
+              src={newsMapData?.get(2)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
               alt=""
             />
-            <div className="font-semibold mt-4">A Perfume</div>
-            <p className="font-medium">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
-              qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
-              nihil assumenda sed{" "}
+            <div className="font-semibold mt-4">{newsMapData?.get(2)?.user}</div>
+            <p className="font-medium line-clamp-4">
+              {newsMapData?.get(2)?.details}{" "}
             </p>
           </div>
           <div className="mb-8">
             <img
-              className="rounded-md"
-              src="https://images.unsplash.com/photo-1624613533305-28d421d70875?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D"
+              className="w-full rounded-md h-[13.5rem]"
+              src={newsMapData?.get(3)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
               alt=""
             />
-            <div className="font-semibold mt-4">A Perfume</div>
-            <p className="font-medium">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
+            <div className="font-semibold mt-4"> {newsMapData?.get(3)?.user}</div>
+            <p className="font-medium line-clamp-4">
+              {newsMapData?.get(3)?.details}{" "}
+              {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
               qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
-              nihil assumenda sed{" "}
+              nihil assumenda sed{" "} */}
             </p>
           </div>
         </div>
         <div className=" space-y-3">
           <img
-            className="w-full rounded-md"
-            src="https://plus.unsplash.com/premium_photo-1667161521640-bba57df66f29?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D"
+            className="w-full rounded-md h-[20rem]"
+            src={newsMapData?.get(4)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
             alt=""
           />
-          <p className="font-bold">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
-            qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
-            nihil assumenda sed{" "}
+          <div className="font-semibold mt-4"> {newsMapData?.get(4)?.user}</div>
+          <p className="font-medium line-clamp-3">
+            {newsMapData?.get(4)?.details}{" "}
+            {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
+              qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
+              nihil assumenda sed{" "} */}
           </p>
         </div>
       </div>
       <div className="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8 border-gray-400">
         <div>
-          <span className="font-semibold text-lg">This is Perfume News.</span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint
-            voluptate blanditiis quasi illo numquam. Maiores libero quos
-            consequatur amet accusamus voluptatum vel, minus magni voluptatibus
-            deserunt facere repellat ipsa ullam?
+          <span className="font-semibold text-lg"> {newsMapData?.get(5)?.user}{" "}</span>
+          <p className="font-medium line-clamp-4">
+            {newsMapData?.get(5)?.details}{" "}
+            {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
+              qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
+              nihil assumenda sed{" "} */}
           </p>
         </div>
         <img
-          src="https://images.unsplash.com/photo-1702165642103-454c1b251c9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTUyfHxwZXJmdW1lfGVufDB8fDB8fHww"
+          className="w-full h-[20rem] object-cover"
+          src={newsMapData?.get(5)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
           alt=""
         />
       </div>
@@ -110,28 +137,27 @@ const News = () => {
               <div className="space-y-4 w-full">
                 <img
                   className="w-full h-[30rem] object-cover"
-                  src="https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww"
+                  src={newsMapData?.get(6)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
                   alt=""
                 />
 
                 <div className="font-medium text-3xl text-black">
-                  Is your perfume sustainble?
+                  {
+                    newsMapData?.get(6)?.title
+
+                  }
                 </div>
-                <div className="font-medium">By Rahul Rawat:</div>
+                <div className="font-medium">By {
+                  newsMapData?.get(6)?.user
+
+                }:</div>
                 <p className="line-clamp-4">
-                  Let’s get the bad news over with first. The moment a brand
-                  exists, sustainability no longer exists. Even at its most
-                  responsible, a brand creates waste in some form. And if anyone
-                  harps about your carbon footprint—just a friendly reminder
-                  that it’s a term coined by the marketing division of British
-                  Petroleum, placing the blame of environmental damage on
-                  consumers and not the companies drilling for fossil fuel. And
-                  if anyone harps about your carbon footprint—just a friendly
-                  reminder that it’s a term coined by the marketing division of
-                  British Petroleum, placing the blame of environmental damage
-                  on consumers and not the companies drilling for fossil
-                  fuel. blame of environmental damage on consumers and not the
-                  companies drilling for fossil fuel.
+                  {
+                    newsMapData?.get(6)?.
+                      details
+
+                  }
+
                 </p>
               </div>
             );
@@ -145,28 +171,31 @@ const News = () => {
               <div className="space-y-4 w-full">
                 <img
                   className="w-full h-[30rem] object-cover"
-                  src="https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww"
+                  src={newsMapData?.get(7)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
                   alt=""
                 />
 
                 <div className="font-medium text-3xl text-black">
-                  Is your perfume sustainble?
+
+                  {
+                    newsMapData?.get(7)?.
+                      title
+
+                  }
                 </div>
-                <div className="font-medium">By Rahul Rawat:</div>
+                <div className="font-medium">By
+                  {
+                    newsMapData?.get(7)?.
+                      user
+
+                  }:</div>
                 <p className="line-clamp-4">
-                  Let’s get the bad news over with first. The moment a brand
-                  exists, sustainability no longer exists. Even at its most
-                  responsible, a brand creates waste in some form. And if anyone
-                  harps about your carbon footprint—just a friendly reminder
-                  that it’s a term coined by the marketing division of British
-                  Petroleum, placing the blame of environmental damage on
-                  consumers and not the companies drilling for fossil fuel. And
-                  if anyone harps about your carbon footprint—just a friendly
-                  reminder that it’s a term coined by the marketing division of
-                  British Petroleum, placing the blame of environmental damage
-                  on consumers and not the companies drilling for fossil
-                  fuel. blame of environmental damage on consumers and not the
-                  companies drilling for fossil fuel.
+
+                  {
+                    newsMapData?.get(7)?.
+                      details
+
+                  }
                 </p>
               </div>
             );
