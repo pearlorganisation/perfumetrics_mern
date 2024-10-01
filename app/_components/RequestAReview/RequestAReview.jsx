@@ -20,7 +20,7 @@ const RequestAReview = () => {
     const postWriteAReview = async (data) => {
 
         try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/writeReview`, data)
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/requestReview`, data)
             console.log(response, "response")
             toast.success("Successfully Submitted !!")
             router.push('/')
@@ -32,9 +32,19 @@ const RequestAReview = () => {
 
     const onSubmit = (data) => {
         console.log(imageFile[0])
+
+
+        const formData = new FormData();
+        formData.append('userId', user?._id);
+        formData.append('images', imageFile[0]);
+        formData.append('perfumeName', data.perfumeName);
+        formData.append('description', data.description);
+
+
+
         const datum = { ...data, images: imageFile[0], userId: user?._id }
         console.log(datum, "datum");
-        postWriteAReview(datum)
+        postWriteAReview(formData)
         // Handle the form submission
     };
 

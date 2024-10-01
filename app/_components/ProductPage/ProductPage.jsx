@@ -12,7 +12,7 @@ import RelatedFragram from '@/app/(route)/product/[productId]/RelatedFragram';
 import FragramRatings from '@/app/(route)/product/[productId]/FragramRatings';
 import RatingResult from '../RatingResult/RatingResult';
 import AddReview from '../AddReview/AddReview';
-import Review from '@/app/(route)/product/[productId]/Review';
+// import Review from '@/app/(route)/product/[productId]/Review';
 import { GiFruitBowl } from "react-icons/gi";
 import { FaLongArrowAltUp } from "react-icons/fa";
 import { FaQuoteLeft } from "react-icons/fa";
@@ -115,7 +115,7 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
 
         console.log("first", companiesLists);
 
-    }, [timezone])
+    }, [])
 
     const likeDislike = async (userVote) => {
         try {
@@ -155,7 +155,7 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                             <img src={data?.data?.banner} alt="img" srcset="" />
                         </div>
                         {
-                            historyMap && <div className="flex justify-start px-14  py-8 md:mt-6">
+                            <div className="flex justify-start px-14  py-8 md:mt-6">
                                 <div
 
                                     onClick={() => {
@@ -175,7 +175,7 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                                     }}
                                     className={` w-fit cursor-pointer grid place-items-center gap-1 ml-10`}>
                                     <Image
-                                        className={`${historyMap?.get(productId)?.vote === -1 ? 'ring-4 ring-pink-500' : ''} border-2 size-12 border-black rounded-full`}
+                                        className={`${(((historyMap && historyMap?.get(productId))?.vote) === -1) ? 'ring-4 ring-pink-500' : ''} border-2 size-12 border-black rounded-full`}
                                         src="/likes.svg"
                                         width={50}
                                         height={50}
