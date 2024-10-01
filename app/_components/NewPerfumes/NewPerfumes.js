@@ -208,6 +208,14 @@ const NewPerfumes = () => {
                 );
               })}
             </div>
+            <div className="text-center">
+              <Link
+                className="hover:underline text-lg hover:text-blue-600"
+                href={`/celebrityPerfumeBlog`}
+              >
+                view more...
+              </Link>
+            </div>
           </div>
         </div>
         <div className="w-full">

@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import parse from 'html-react-parser';
+import Link from "next/link";
 
 const News = () => {
   const [newsData, setNewsData] = useState([])
@@ -28,29 +29,26 @@ const News = () => {
         <div class="absolute w-full h-[2px] bg-slate-500"></div>
       </div>
       <div className="flex justify-between items-center text-lg md:text-4xl font-medium"></div>
-      <div className="grid grid-cols-1 gap-6 py-6 pt-0">
-        {Array(1)
-          .fill(true)
-          .map((item) => {
-            return (
-              <div className="space-y-4 w-full">
-                <img
-                  className="w-full h-[30rem] object-cover"
+      <Link href={`/news/${newsMapData?.get(1)?._id}`} className="grid grid-cols-1 gap-6 py-6 pt-0">
 
-                  src={newsMapData?.get(1)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
-                  alt=""
-                />
+        <div className="space-y-4 w-full">
+          <img
+            className="w-full h-[30rem] object-cover"
 
-                <div className="font-medium text-3xl text-black">
-                  Is your perfume sustainble?
-                </div>
-                <div className="font-medium">By {newsMapData?.get(1)?.user} :</div>
-                <p className="line-clamp-4">
-                  {newsMapData?.get(1)?.details}
-                  {/* {
+            src={newsMapData?.get(1)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+            alt=""
+          />
+
+          <div className="font-medium text-3xl text-black">
+            Is your perfume sustainble?
+          </div>
+          <div className="font-medium">By {newsMapData?.get(1)?.user} :</div>
+          <p className="line-clamp-4">
+            {newsMapData?.get(1)?.details}
+            {/* {
                     parse(newsMapData?.get(1)?.description || '')
                   } */}
-                  {/* Let’s get the bad news over with first. The moment a brand
+            {/* Let’s get the bad news over with first. The moment a brand
                   exists, sustainability no longer exists. Even at its most
                   responsible, a brand creates waste in some form. And if anyone
                   harps about your carbon footprint—just a friendly reminder
@@ -63,14 +61,14 @@ const News = () => {
                   on consumers and not the companies drilling for fossil
                   fuel. blame of environmental damage on consumers and not the
                   companies drilling for fossil fuel. */}
-                </p>
-              </div>
-            );
-          })}
-      </div>
+          </p>
+        </div>
+
+      </Link>
       <div className="grid gap-6 md:grid-cols-[18rem_auto] py-6 ">
+
         <div>
-          <div className="mb-8">
+          <Link href={`/news/${newsMapData?.get(2)?._id}`} className="mb-8">
             <img
               className="w-full rounded-md h-[13.5rem]"
               src={newsMapData?.get(2)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
@@ -80,8 +78,8 @@ const News = () => {
             <p className="font-medium line-clamp-4">
               {newsMapData?.get(2)?.details}{" "}
             </p>
-          </div>
-          <div className="mb-8">
+          </Link>
+          <Link href={`/news/${newsMapData?.get(3)?._id}`} className="mb-8">
             <img
               className="w-full rounded-md h-[13.5rem]"
               src={newsMapData?.get(3)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
@@ -94,9 +92,9 @@ const News = () => {
               qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
               nihil assumenda sed{" "} */}
             </p>
-          </div>
+          </Link>
         </div>
-        <div className=" space-y-3">
+        <Link href={`/news/${newsMapData?.get(4)?._id}`} className=" space-y-3">
           <img
             className="w-full rounded-md h-[20rem]"
             src={newsMapData?.get(4)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
@@ -109,9 +107,9 @@ const News = () => {
               qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
               nihil assumenda sed{" "} */}
           </p>
-        </div>
+        </Link>
       </div>
-      <div className="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8 border-gray-400">
+      <Link href={`/news/${newsMapData?.get(5)?._id}`} className="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8 border-gray-400">
         <div>
           <span className="font-semibold text-lg"> {newsMapData?.get(5)?.user}{" "}</span>
           <p className="font-medium line-clamp-4">
@@ -126,80 +124,73 @@ const News = () => {
           src={newsMapData?.get(5)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
           alt=""
         />
-      </div>
+      </Link>
 
       {/* News */}
       <div className="grid grid-cols-1 gap-6 py-6">
-        {Array(1)
-          .fill(true)
-          .map((item) => {
-            return (
-              <div className="space-y-4 w-full">
-                <img
-                  className="w-full h-[30rem] object-cover"
-                  src={newsMapData?.get(6)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
-                  alt=""
-                />
 
-                <div className="font-medium text-3xl text-black">
-                  {
-                    newsMapData?.get(6)?.title
 
-                  }
-                </div>
-                <div className="font-medium">By {
-                  newsMapData?.get(6)?.user
+        <Link href={`/news/${newsMapData?.get(6)?._id}`} className="space-y-4 w-full">
+          <img
+            className="w-full h-[30rem] object-cover"
+            src={newsMapData?.get(6)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+            alt=""
+          />
 
-                }:</div>
-                <p className="line-clamp-4">
-                  {
-                    newsMapData?.get(6)?.
-                      details
+          <div className="font-medium text-3xl text-black">
+            {
+              newsMapData?.get(6)?.title
 
-                  }
+            }
+          </div>
+          <div className="font-medium">By {
+            newsMapData?.get(6)?.user
 
-                </p>
-              </div>
-            );
-          })}
+          }:</div>
+          <p className="line-clamp-4">
+            {
+              newsMapData?.get(6)?.
+                details
+
+            }
+
+          </p>
+        </Link>
+
       </div>
       <div className="grid grid-cols-1 gap-6 py-6">
-        {Array(1)
-          .fill(true)
-          .map((item) => {
-            return (
-              <div className="space-y-4 w-full">
-                <img
-                  className="w-full h-[30rem] object-cover"
-                  src={newsMapData?.get(7)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
-                  alt=""
-                />
 
-                <div className="font-medium text-3xl text-black">
+        <Link href={`/news/${newsMapData?.get(7)?._id}`} className="space-y-4 w-full">
+          <img
+            className="w-full h-[30rem] object-cover"
+            src={newsMapData?.get(7)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+            alt=""
+          />
 
-                  {
-                    newsMapData?.get(7)?.
-                      title
+          <div className="font-medium text-3xl text-black">
 
-                  }
-                </div>
-                <div className="font-medium">By
-                  {
-                    newsMapData?.get(7)?.
-                      user
+            {
+              newsMapData?.get(7)?.
+                title
 
-                  }:</div>
-                <p className="line-clamp-4">
+            }
+          </div>
+          <div className="font-medium">By
+            {
+              newsMapData?.get(7)?.
+                user
 
-                  {
-                    newsMapData?.get(7)?.
-                      details
+            }:</div>
+          <p className="line-clamp-4">
 
-                  }
-                </p>
-              </div>
-            );
-          })}
+            {
+              newsMapData?.get(7)?.
+                details
+
+            }
+          </p>
+        </Link>
+
       </div>
     </div>
   );

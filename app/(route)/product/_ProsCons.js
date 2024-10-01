@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 const ProsCons = ({ data, map }) => {
   const router = useRouter();
   const { user, isUserLoggedIn, logout } = userStore();
-  console.log("map", map);
+  console.log("mapdirt", data);
   const isLikedFunc = async (data) => {
     console.log({ ...data });
     const result = await axios.patch(
@@ -62,7 +62,7 @@ const ProsCons = ({ data, map }) => {
                           } flex flex-col justify-center items-center`}
                         >
                           <CiHeart size={24} className="text-pink-300" />
-                          <span className="">{item.likes}</span>
+                          <span className="">{item.likesVote}</span>
                         </span>
                         <span
                           onClick={() => {
@@ -70,8 +70,8 @@ const ProsCons = ({ data, map }) => {
                               prosConsId: data?._id,
                               userId: user?._id,
                               userVote: -1,
-                              pros: undefined,
-                              cons: item?._id,
+                              cons: undefined,
+                              pros: item?._id,
                             });
                           }}
                           className={`${
@@ -81,7 +81,7 @@ const ProsCons = ({ data, map }) => {
                           } flex flex-col justify-center items-center`}
                         >
                           <FaHeartBroken size={22} className="text-[#f34949]" />
-                          <span className="">{item.disLikes}</span>
+                          <span className="">{item.disLikesVote}</span>
                         </span>
                       </div>
                       <span className="text-center block">
@@ -134,8 +134,8 @@ const ProsCons = ({ data, map }) => {
                               prosConsId: data?._id,
                               userId: user?._id,
                               userVote: 1,
-                              pros: item?._id,
-                              cons: undefined,
+                              cons: item?._id,
+                              pros: undefined,
                             });
                           }}
                           className={`${
@@ -149,7 +149,7 @@ const ProsCons = ({ data, map }) => {
                             className="text-pink-300 fill-pink-200"
                           />
                           <div></div>
-                          <span className="">{item.likes}</span>
+                          <span className="">{item.likesVote}</span>
                         </span>
                         <span
                           onClick={() => {
@@ -168,7 +168,7 @@ const ProsCons = ({ data, map }) => {
                           } flex flex-col justify-center items-center`}
                         >
                           <FaHeartBroken size={22} className="text-[#f34949]" />
-                          <span className="">{item.disLikes}</span>
+                          <span className="">{item.disLikesVote}</span>
                         </span>
                       </div>
                       <span className="text-center text-wrap ">
