@@ -63,7 +63,7 @@ export default async function Page({ params }) {
             alt="Blog Post"
             className="max-w-4xl w-full h-[35rem] rounded-lg mb-6"
           />
-          <h1 className="text-gray-500">Description :</h1>
+          <h1 className="text-gray-500">Details :</h1>
           {/* <p className="mb-4 font-medium">{post.data.details}</p> */}
         </article>
 
