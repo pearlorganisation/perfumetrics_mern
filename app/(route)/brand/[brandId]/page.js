@@ -48,7 +48,7 @@ async function PerfumeSection() {
                   </a>
                   <div className="mt-4">
                     <a href="#">
-                      <h5 className="text-center font-semibold tracking-tight text-black">
+                      <h5 className="text-center font-semibold tracking-tight text-black line-clamp-2">
                         {item?.perfume}
                       </h5>
                     </a>
