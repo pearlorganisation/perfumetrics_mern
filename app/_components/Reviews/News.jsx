@@ -40,7 +40,8 @@ const News = () => {
           />
 
           <div className="font-medium text-3xl text-black">
-            Is your perfume sustainble?
+            {newsMapData?.get(1)?.title}
+
           </div>
           <div className="font-medium">By {newsMapData?.get(1)?.user} :</div>
           <p className="line-clamp-4">
@@ -66,7 +67,6 @@ const News = () => {
 
       </Link>
       <div className="grid gap-6 md:grid-cols-[18rem_auto] py-6 ">
-
         <div>
           <Link href={`/news/${newsMapData?.get(2)?._id}`} className="mb-8">
             <img
@@ -74,7 +74,11 @@ const News = () => {
               src={newsMapData?.get(2)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
               alt=""
             />
-            <div className="font-semibold mt-4">{newsMapData?.get(2)?.user}</div>
+            <div className="font-bold pt-2 text-black">
+              {newsMapData?.get(2)?.title}
+
+            </div>
+            <div className="font-semibold ">{newsMapData?.get(2)?.user}</div>
             <p className="font-medium line-clamp-4">
               {newsMapData?.get(2)?.details}{" "}
             </p>
@@ -85,7 +89,11 @@ const News = () => {
               src={newsMapData?.get(3)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
               alt=""
             />
-            <div className="font-semibold mt-4"> {newsMapData?.get(3)?.user}</div>
+            <div className="font-bold pt-2 text-black">
+              {newsMapData?.get(3)?.title}
+
+            </div>
+            <div className="font-semibold "> {newsMapData?.get(3)?.user}</div>
             <p className="font-medium line-clamp-4">
               {newsMapData?.get(3)?.details}{" "}
               {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
@@ -100,7 +108,8 @@ const News = () => {
             src={newsMapData?.get(4)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
             alt=""
           />
-          <div className="font-semibold mt-4"> {newsMapData?.get(4)?.user}</div>
+          <div className="font-semibold "> {newsMapData?.get(4)?.title}</div>
+          <div className="font-semibold"> {newsMapData?.get(4)?.user}</div>
           <p className="font-medium line-clamp-3">
             {newsMapData?.get(4)?.details}{" "}
             {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
@@ -111,6 +120,10 @@ const News = () => {
       </div>
       <Link href={`/news/${newsMapData?.get(5)?._id}`} className="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8 border-gray-400">
         <div>
+          <div className="font-bold pt-2 text-black">
+            {newsMapData?.get(5)?.title}
+
+          </div>
           <span className="font-semibold text-lg"> {newsMapData?.get(5)?.user}{" "}</span>
           <p className="font-medium line-clamp-4">
             {newsMapData?.get(5)?.details}{" "}

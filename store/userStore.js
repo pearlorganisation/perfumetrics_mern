@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { create } from "zustand";
 import { devtools, createJSONStorage, persist } from "zustand/middleware";
 
@@ -24,6 +25,7 @@ export const userStore = create(
           );
 
           if (!response.ok) {
+            console.log(response);
             throw new Error("Login failed");
           }
 
@@ -31,6 +33,8 @@ export const userStore = create(
 
           set({ user: user.data, isUserLoggedIn: true, loading: false });
         } catch (error) {
+          console.log(error);
+          toast.error(error.message, { position: "top-center" });
           set({ error: error.message, loading: false });
         }
       },

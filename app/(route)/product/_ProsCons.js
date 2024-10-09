@@ -1,188 +1,189 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect } from "react";
-import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import React, { useEffect, useState, useCallback } from "react";
+import {
+  FaThumbsUp,
+  FaThumbsDown,
+  FaHeartBroken,
+  FaCrown,
+} from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
-import { FaHeartBroken } from "react-icons/fa";
-import { FaCrown } from "react-icons/fa";
 import { userLikeDislikeHistoryStore } from "@/store/userLikeDislikeHistoryStore";
 import { userStore } from "@/store/userStore";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 
-const ProsCons = ({ data, map }) => {
+const ProsCons = () => {
   const router = useRouter();
-  const { user, isUserLoggedIn, logout } = userStore();
-  console.log("mapdirt", data);
-  const isLikedFunc = async (data) => {
-    console.log({ ...data });
-    const result = await axios.patch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/voteProsCons`,
-      data
-    );
-    router.refresh();
-    console.log(result, "ProsCons");
+  const [historyMap, setHistoryMap] = useState(new Map());
+  const [prosNconsData, setProsNconsData] = useState(null);
+
+  const { productId } = useParams();
+  const { user } = userStore();
+
+  const getProsCons = useCallback(async (perfumeId) => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/prosCons/${perfumeId}`
+      );
+      setProsNconsData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching pros and cons:", error);
+    }
+  }, []);
+
+  const fetchUserHistory = useCallback(async (userId) => {
+    try {
+      const result = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/userHistory/${userId}`
+      );
+      const { cons, pros } = result.data.data;
+
+      const userHistoryMap = new Map();
+      cons?.forEach((item) => userHistoryMap.set(item.consId, item));
+      pros?.forEach((item) => userHistoryMap.set(item.prosId, item));
+
+      setHistoryMap(userHistoryMap);
+    } catch (error) {
+      console.error("Error fetching user history:", error);
+    }
+  }, []);
+
+  const handleVote = async (voteData) => {
+    try {
+      await axios.patch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/voteProsCons`,
+        voteData
+      );
+      getProsCons(productId);
+      fetchUserHistory(user?._id);
+    } catch (error) {
+      console.error("Error submitting vote:", error);
+    }
   };
 
+  useEffect(() => {
+    if (productId && user?._id) {
+      getProsCons(productId);
+      fetchUserHistory(user._id);
+    }
+  }, [getProsCons, fetchUserHistory, productId, user]);
+
   return (
-    <div>
-      {/* <p className="text-4xl font-medium py-2 mt-20">Pros and Cons</p> */}
-
-      <div className="grid grid-col-2  items-center bg-white md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
-        <div className="grid lg:grid-cols-2 justify-center md:w-full sm:w-60">
-          <div className=" md:p-4 lg:border-r border-gray-300 grid place-items-center bg-[#f0fff1]">
-            <div className="mt-4">
-              <div className="text-[#2e6e6a] font-semibold text-center   mx-auto w-[15rem] py-4  text-xl">
-                <p className="border border-black flex justify-center items-center px-12 py-3 gap-3 ">
-                  <FaCrown /> PROS
-                </p>
-              </div>
-              <ul>
-                {Array.isArray(data?.pros) &&
-                  data?.pros?.map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-center space-x-3   my-2"
-                    >
-                      <div className="flex gap-3">
-                        <span
-                          onClick={() => {
-                            isLikedFunc({
-                              prosConsId: data?._id,
-                              userId: user?._id,
-                              userVote: 1,
-                              cons: undefined,
-                              pros: item?._id,
-                            });
-                          }}
-                          className={`${
-                            map.get(item?._id)?.vote === 1
-                              ? "ring-4  ring-pink-500/70 rounded-full"
-                              : ""
-                          } flex flex-col justify-center items-center`}
-                        >
-                          <CiHeart size={24} className="text-pink-300" />
-                          <span className="">{item.likesVote}</span>
-                        </span>
-                        <span
-                          onClick={() => {
-                            isLikedFunc({
-                              prosConsId: data?._id,
-                              userId: user?._id,
-                              userVote: -1,
-                              cons: undefined,
-                              pros: item?._id,
-                            });
-                          }}
-                          className={`${
-                            map.get(item?._id)?.vote === -1
-                              ? "ring-4  ring-pink-500/70 rounded-full"
-                              : ""
-                          } flex flex-col justify-center items-center`}
-                        >
-                          <FaHeartBroken size={22} className="text-[#f34949]" />
-                          <span className="">{item.disLikesVote}</span>
-                        </span>
-                      </div>
-                      <span className="text-center block">
-                        {/* This is Dummy content...........................This is Dummy content........................... */}
-                        {item.title}
-                      </span>
-                    </li>
-                  ))}
-              </ul>
+    <div className="grid grid-col-2 items-center bg-white md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
+      <div className="grid lg:grid-cols-2 justify-center md:w-full sm:w-60">
+        <div className="md:p-4 lg:border-r border-gray-300 grid place-items-center bg-[#f0fff1]">
+          <div className="mt-4">
+            <div className="text-[#2e6e6a] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
+              <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
+                <FaCrown /> PROS
+              </p>
             </div>
-          </div>
-
-          <div className=" p-4  border-gray-300 grid  place-items-center bg-[#fff5f5]">
-            <div className="mt-4">
-              <div className="text-[#ec5151] font-semibold text-center   mx-auto w-[15rem] py-4  text-xl ">
-                <p className="border border-black flex justify-center items-center px-12 py-3 gap-3 ">
-                  {" "}
-                  <svg
-                    className="h-8 stroke-[2px]"
-                    viewBox="0 0 128 128"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M109.2,18.8C84-6.3,43.6-6.3,18.8,18.8c-25.1,25.1-25.1,65.6,0,90.3c25.1,25.1,65.6,25.1,90.3,0
-                            C134.3,84.4,134.3,43.6,109.2,18.8z M102.3,102.3c-20.9,20.9-55.4,21.3-76.2,0C5.2,81.5,5.2,47,26.1,25.7
-                            c20.9-20.9,55.4-20.9,76.7,0C123.2,47,123.2,81,102.3,102.3z"
-                    ></path>{" "}
-                    <circle cx="46.5" cy="47" r="7.7"></circle>{" "}
-                    <circle cx="81.5" cy="47" r="7.7"></circle>{" "}
-                    <path
-                      d="M90,94.3c-1.7,0.9-3.8,0-4.7-1.7c-3.4-8.1-11.8-13.2-20.7-13.2c-0.3,0-0.6,0-0.6,0
-                            c-9,0-17.6,5.1-21,13.2c-0.9,1.7-3.1,2.6-4.8,1.7c-1.7-0.9-2.4-2.5-1.6-4.7c4.6-10.5,15.3-17,27.3-17c0,0,0.1,0,0.2,0
-                            c12.4,0,22.9,6.4,27.6,17C92.6,91.8,91.7,93.5,90,94.3z"
-                    ></path>
-                  </svg>
-                  CONS
-                </p>
-              </div>
-              {Array.isArray(data?.cons) &&
-                data?.cons.map((item, index) => (
-                  <div>
-                    <li
-                      key={index}
-                      className="flex items-center space-x-3  my-2"
+            <ul>
+              {prosNconsData?.pros?.map((item) => (
+                <li key={item._id} className="flex items-center space-x-3 my-2">
+                  <div className="flex gap-3">
+                    <span
+                      onClick={() =>
+                        handleVote({
+                          prosConsId: prosNconsData._id,
+                          userId: user?._id,
+                          userVote: 1,
+                          pros: item._id,
+                        })
+                      }
+                      className={`${
+                        historyMap.get(item._id)?.vote === 1
+                          ? "ring-4 ring-pink-500/70 rounded-full"
+                          : ""
+                      } flex flex-col justify-center items-center`}
                     >
-                      <div className="flex gap-3">
-                        <span
-                          onClick={() => {
-                            isLikedFunc({
-                              prosConsId: data?._id,
-                              userId: user?._id,
-                              userVote: 1,
-                              cons: item?._id,
-                              pros: undefined,
-                            });
-                          }}
-                          className={`${
-                            map.get(item?._id)?.vote === 1
-                              ? "ring-4  ring-pink-500/70 rounded-full"
-                              : ""
-                          } flex flex-col justify-center items-center`}
-                        >
-                          <CiHeart
-                            size={24}
-                            className="text-pink-300 fill-pink-200"
-                          />
-                          <div></div>
-                          <span className="">{item.likesVote}</span>
-                        </span>
-                        <span
-                          onClick={() => {
-                            isLikedFunc({
-                              prosConsId: data?._id,
-                              userId: user?._id,
-                              userVote: -1,
-                              cons: item?._id,
-                              pros: undefined,
-                            });
-                          }}
-                          className={`${
-                            map.get(item?._id)?.vote === -1
-                              ? "ring-4  ring-pink-500/70 rounded-full"
-                              : ""
-                          } flex flex-col justify-center items-center`}
-                        >
-                          <FaHeartBroken size={22} className="text-[#f34949]" />
-                          <span className="">{item.disLikesVote}</span>
-                        </span>
-                      </div>
-                      <span className="text-center text-wrap ">
-                        {item.title}
-                      </span>
-                    </li>
+                      <CiHeart size={24} className="text-pink-300" />
+                      <span>{item.likesVote}</span>
+                    </span>
+                    <span
+                      onClick={() =>
+                        handleVote({
+                          prosConsId: prosNconsData._id,
+                          userId: user?._id,
+                          userVote: -1,
+                          pros: item._id,
+                        })
+                      }
+                      className={`${
+                        historyMap.get(item._id)?.vote === -1
+                          ? "ring-4 ring-pink-500/70 rounded-full"
+                          : ""
+                      } flex flex-col justify-center items-center`}
+                    >
+                      <FaHeartBroken size={22} className="text-[#f34949]" />
+                      <span>{item.disLikesVote}</span>
+                    </span>
                   </div>
-                ))}
+                  <span>{item.title}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="p-4 grid place-items-center bg-[#fff5f5]">
+          <div className="mt-4">
+            <div className="text-[#ec5151] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
+              <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
+                <FaCrown /> CONS
+              </p>
             </div>
+            <ul>
+              {prosNconsData?.cons?.map((item) => (
+                <li key={item._id} className="flex items-center space-x-3 my-2">
+                  <div className="flex gap-3">
+                    <span
+                      onClick={() =>
+                        handleVote({
+                          prosConsId: prosNconsData._id,
+                          userId: user?._id,
+                          userVote: 1,
+                          cons: item._id,
+                        })
+                      }
+                      className={`${
+                        historyMap.get(item._id)?.vote === 1
+                          ? "ring-4 ring-pink-500/70 rounded-full"
+                          : ""
+                      } flex flex-col justify-center items-center`}
+                    >
+                      <CiHeart size={24} className="text-pink-300" />
+                      <span>{item.likesVote}</span>
+                    </span>
+                    <span
+                      onClick={() =>
+                        handleVote({
+                          prosConsId: prosNconsData._id,
+                          userId: user?._id,
+                          userVote: -1,
+                          cons: item._id,
+                        })
+                      }
+                      className={`${
+                        historyMap.get(item._id)?.vote === -1
+                          ? "ring-4 ring-pink-500/70 rounded-full"
+                          : ""
+                      } flex flex-col justify-center items-center`}
+                    >
+                      <FaHeartBroken size={22} className="text-[#f34949]" />
+                      <span>{item.disLikesVote}</span>
+                    </span>
+                  </div>
+                  <span>{item.title}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
 
-      <p className="text-left text-blue-600 text-base  mt-4">
+      <p className="text-left text-blue-600 text-base mt-4">
         Note: The pros and cons listed on this page have been generated using
         the artificial intelligence system, which analyzes product reviews
         submitted by our members. While we strive to provide accurate and

@@ -66,9 +66,9 @@ const Reviews = async ({ reviewSidebar, length }) => {
             <div class="absolute w-full h-[2px] bg-slate-500"></div>
           </div>
 
-          <div class=" space-y-4">
+          <div class=" space-y-4 w-full">
             <div
-              className={`flex space-x-4 overflow-x-auto py-8 px-2 w-full ${style.custom_scrollbar} reviewScroll`}
+              className={`flex space-x-4 overflow-x-auto py-8 px-2 w-full  mx-auto ${style.custom_scrollbar} reviewScroll`}
             >
 
               {

@@ -26,9 +26,10 @@ import { useParams, useRouter } from 'next/navigation';
 import { RiCentosLine } from 'react-icons/ri';
 import ct from 'countries-and-timezones';
 import { userLikeDislikeHistoryStore } from '@/store/userLikeDislikeHistoryStore';
+import LikeDislikeComponent from './LikeDislikeComponent';
 
 
-const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productId }) => {
+const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
     const { getUserLikeDisLikeHistory, userLikeDislikeHistory } =
         userLikeDislikeHistoryStore();
     const [purchaseLinks, setPurchaseLinks] = useState([])
@@ -57,34 +58,7 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
         setPerfumeCategories(result?.data?.data)
         // console.log(result?.data?.data, "perfumeCategories")
     }
-    const perfumeUserHistory = async (userId) => {
-        const result = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/userHistory/${userId}`
-        );
 
-        const { cons, pros, perfumeMarkedVoted } = result?.data?.data;
-        const userHistoryMap = new Map();
-
-        if (cons && cons.length > 0) {
-            cons.forEach((element) => {
-                userHistoryMap.set(element.consId, element);
-            });
-        }
-        if (pros && pros.length > 0) {
-            pros.forEach((element) => {
-                userHistoryMap.set(element.prosId, element);
-            });
-        }
-        if (perfumeMarkedVoted && perfumeMarkedVoted.length > 1) {
-            perfumeMarkedVoted.forEach((element) => {
-                userHistoryMap.set(element.perfumeId, element);
-            });
-        }
-
-        setHistorMap(userHistoryMap);
-
-        // console.log(result?.data?.data, "perfumeCategories")
-    }
 
     const getGlobalBanner = async () => {
         const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/globalData?itemType=banner`)
@@ -116,6 +90,23 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
         console.log("first", companiesLists);
 
     }, [])
+    const perfumeUserHistory = async (userId) => {
+        const result = await axios.get(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/userHistory/${userId}`
+        );
+
+        const { cons, pros, perfumeMarkedVoted } = result?.data?.data;
+        const userHistoryMap = new Map();
+        if (perfumeMarkedVoted && perfumeMarkedVoted.length > 1) {
+            perfumeMarkedVoted.forEach((element) => {
+                userHistoryMap.set(element.perfumeId, element);
+            });
+        }
+
+        setHistorMap(userHistoryMap);
+
+        // console.log(result?.data?.data, "perfumeCategories")
+    }
 
     const likeDislike = async (userVote) => {
         try {
@@ -155,36 +146,7 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                             <img src={data?.data?.banner} alt="img" srcset="" />
                         </div>
                         {
-                            <div className="flex justify-start px-14  py-8 md:mt-6">
-                                <div
-
-                                    onClick={() => {
-                                        likeDislike(1)
-                                    }} className={` w-fit cursor-pointer grid place-items-center gap-1`}>
-                                    <IoHeart
-                                        className={`${(((historyMap && historyMap?.get(productId))?.vote) === 1) ? 'ring-4 ring-pink-500' : ''} border-2 size-12 border-black rounded-full p-1 text-pink-300`}
-                                        size={38}
-                                    />
-                                    <div className="h-1 w-full bg-pink-400"></div>
-                                    <span>{data?.data && data.data.likes} Likes</span>
-                                </div>
-
-                                <div
-                                    onClick={() => {
-                                        likeDislike(-1)
-                                    }}
-                                    className={` w-fit cursor-pointer grid place-items-center gap-1 ml-10`}>
-                                    <Image
-                                        className={`${(((historyMap && historyMap?.get(productId))?.vote) === -1) ? 'ring-4 ring-pink-500' : ''} border-2 size-12 border-black rounded-full`}
-                                        src="/likes.svg"
-                                        width={50}
-                                        height={50}
-                                        alt=""
-                                    />
-                                    <div className="h-1 w-full bg-pink-400"></div>
-                                    <span>{data?.data && data.data.dislike} DisLikes</span>
-                                </div>
-                            </div>
+                            <LikeDislikeComponent key={1} data={data} historyMap={historyMap} productId={productId} likeDislike={likeDislike} />
                         }
                     </div>
 
@@ -295,7 +257,7 @@ const ProductPage = ({ data, totalRatings, dataProsCons, sidebarReview, productI
                     {/* detail ends */}
 
                     {/* pros n cons */}
-                    {dataProsCons && historyMap && <ProsCons map={historyMap} data={dataProsCons.data} />}
+                    {<ProsCons />}
                     {/* pros n cons */}
                 </div>
                 <div>

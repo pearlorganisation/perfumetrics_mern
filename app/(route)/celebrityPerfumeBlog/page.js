@@ -37,7 +37,7 @@ export default async function Page({ params }) {
             <img
               src={post.banner}
               alt={post.title}
-              className="w-full h-48 object-cover"
+              className="w-full h-72 object-cover"
             />
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
