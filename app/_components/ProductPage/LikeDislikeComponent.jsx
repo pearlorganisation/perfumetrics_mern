@@ -2,7 +2,18 @@ import React, { useCallback } from 'react';
 import { IoHeart } from 'react-icons/io5';
 import Image from 'next/image';
 
-const LikeDislikeComponent = React.memo(({ historyMap, productId, data, likeDislike }) => {
+const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
+
+    const likeDislike = async (userVote) => {
+        try {
+            const result = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/votePerfume`, {
+                userId: user?._id, perfumeId: productId, userVote
+            })
+            router.refresh()
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const handleLike = useCallback(() => {
         likeDislike(1);

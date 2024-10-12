@@ -1,10 +1,12 @@
 import axios from "axios";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 
 const BrandFilter = () => {
   const { brandId } = useParams();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState(
     brandId?.split("%20").join(" ")
   );
@@ -22,44 +24,95 @@ const BrandFilter = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-bold">
-          {selectedBrand ? `${selectedBrand} Perfumes` : "All Perfumes"}
-        </h2>
-        {/* <button
-      onClick={() => setIsDarkMode(!isDarkMode)}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
-    >
-      {isDarkMode ? (
-        <Sun className="h-6 w-6" />
-      ) : (
-        <Moon className="h-6 w-6" />
-      )}
-    </button> */}
-      </div>
-      <div className="flex flex-wrap gap-2 mb-8">
-        {brandsData?.map((brand) => (
-          <Link href={`/brand/${brand?.brand}`} scroll={false}>
+      <div className="relative">
+        <header className=" absolute left-[-1.5rem] top-[-3.8rem]">
+          <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <button
-              key={brand?.brand}
-              //   onClick={() =>
-              //     setSelectedBrand(
-              //       brand?.brand === selectedBrand ? null : brand?.brand
-              //     )
-              //   }
-              className={`px-4 py-2 rounded-full transition-colors duration-300 ${
-                selectedBrand === brand?.brand
-                  ? "bg-purple-500 text-white"
-                  : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900"
-              }`}
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
             >
-              {brand?.brand}
+              <span className="sr-only">Open sidebar</span>
+              <Menu className="h-6 w-6" aria-hidden="true" />
             </button>
-          </Link>
-        ))}
+          </div>
+        </header>
+        {/* Sidebar for desktop */}
+        <aside className="hidden lg:flex lg:flex-col lg:w-64 bg-white border-r border-gray-200 h-[80vh]  overflow-y-auto">
+          <div className="px-4 py-6">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Brands</h2>
+            <ul className="space-y-2 ">
+              {brandsData?.map((brand) => (
+                <Link href={`/brand/${brand?.brand}`} scroll={false}>
+                  <li key={brand}>
+                    <button
+                      // onClick={() => setSelectedBrand(brand)}
+                      className={`w-full text-left px-2 py-1 rounded-md ${
+                        selectedBrand === brand?.brand
+                          ? "bg-indigo-100 text-indigo-700"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
+                    >
+                      {brand?.brand}
+                    </button>
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </div>
+        </aside>
+
+        {/* Sidebar for mobile */}
+        {sidebarOpen && (
+          <div className="fixed inset-0 flex z-40 lg:hidden">
+            <div
+              className="fixed inset-0 bg-gray-600 bg-opacity-75"
+              aria-hidden="true"
+              onClick={() => setSidebarOpen(false)}
+            ></div>
+            <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white">
+              <div className="absolute top-0 right-0 -mr-12 pt-2">
+                <button
+                  className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  <span className="sr-only">Close sidebar</span>
+                  <X className="h-6 w-6 text-white" aria-hidden="true" />
+                </button>
+              </div>
+              <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
+                <div className="px-4">
+                  <h2 className="text-lg font-semibold text-gray-900 mb-4">
+                    Brands
+                  </h2>
+                  <ul className="space-y-2">
+                    {brandsData?.map((brand) => (
+                      <Link href={`/brand/${brand?.brand}`} scroll={false}>
+                        <li key={brand}>
+                          <button
+                            onClick={() => {
+                              // setSelectedBrand(brand);
+                              setSidebarOpen(false);
+                            }}
+                            className={`w-full text-left px-2 py-1 rounded-md ${
+                              selectedBrand === brand?.brand
+                                ? "bg-indigo-100 text-indigo-700"
+                                : "text-gray-600 hover:bg-gray-100"
+                            }`}
+                          >
+                            {brand?.brand}
+                          </button>
+                        </li>
+                      </Link>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
 };
 
-export default BrandFilter;
+export default memo(BrandFilter);

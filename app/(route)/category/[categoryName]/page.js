@@ -55,7 +55,7 @@ function PerfumeSection() {
       {["WOMEN'S STYLE", "MEN'S STYLE"].includes(
         categoryName.split("%20").join(" ")
       ) ? (
-        <div className="container mx-auto px-4 py-10 min-h-screen">
+        <div className=" px-4 py-10 min-h-screen">
           <Dummy
             gender={categoryName?.split("%20")?.join(" ")}
             data={genderData?.data}
