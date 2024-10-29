@@ -44,7 +44,7 @@ export default function InteractivePerfumePage() {
         <section
           style={{
             backgroundImage:
-              "url(https://res.cloudinary.com/dnixhctcf/image/upload/v1729660358/rosemarb_teubz9.jpg)",
+              "url(https://res.cloudinary.com/dznz3eqe8/image/upload/v1730184227/rosemarb_jlyt2z.jpg)",
             backgroundSize: "cover", // this makes sure the image covers the entire div
             backgroundPosition: "center", // centers the image
           }}
@@ -52,7 +52,7 @@ export default function InteractivePerfumePage() {
         >
           <img
             className="object-contain mix-blend-darken md:h-[28rem]"
-            src="https://res.cloudinary.com/dnixhctcf/image/upload/v1729675862/Group_913_fk14on.png"
+            src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1730184109/Group_913_uupksl.png"
             alt=""
           />
         </section>

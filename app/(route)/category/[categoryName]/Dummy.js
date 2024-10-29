@@ -26,19 +26,19 @@ const Dummy = ({ data, gender, totalPages }) => {
         <picture>
           <source
             media="(max-width: 640px)"
-            srcSet="https://res.cloudinary.com/dnixhctcf/image/upload/h_320,w_640/v1729577242/perfumeBanner_ihazup.avif"
+            srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1730184304/perfumeBanner_ihazup_t2hcc3.png"
           />
           <source
             media="(max-width: 1024px)"
-            srcSet="https://res.cloudinary.com/dnixhctcf/image/upload/h_480,w_1024/v1729577242/perfumeBanner_ihazup.avif"
+            srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1730184304/perfumeBanner_ihazup_t2hcc3.png"
           />
           <source
             media="(min-width: 1025px)"
-            srcSet="https://res.cloudinary.com/dnixhctcf/image/upload/h_620,w_1920/v1729577242/perfumeBanner_ihazup.avif"
+            srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1730184304/perfumeBanner_ihazup_t2hcc3.png"
           />
           <Image
             className="object-cover mx-auto"
-            src="https://res.cloudinary.com/dnixhctcf/image/upload/h_620,w_1920/v1729577242/perfumeBanner_ihazup.avif"
+            src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1730184304/perfumeBanner_ihazup_t2hcc3.png"
             alt="Banner"
             layout="responsive"
             width={1920}

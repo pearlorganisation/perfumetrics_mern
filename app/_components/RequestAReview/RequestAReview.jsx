@@ -67,7 +67,7 @@ const RequestAReview = () => {
                 {/* Right side illustration (add the image here) */}
                 <div className="order-2 md:order-none block md:w-1/2 relative">
                     <Image
-                        src={`https://res.cloudinary.com/dnixhctcf/image/upload/v1729580030/PerfumeWriteR_wsmnmk.png`} // Update the path to match your imported image
+                        src={`https://res.cloudinary.com/dznz3eqe8/image/upload/v1730196194/tiny-women-with-huge-perfume-bottle-flat-vector-illustration-girls-creating-new-fragrance-flower-deodorant-adding-cinnamon-orange-scent-good-body-smell-aromatherapy-cosmetic-concept_74855-23229_djdn8r.jpg`} // Update the path to match your imported image
                         alt="Illustration"
                         layout="responsive"
                         width={500}

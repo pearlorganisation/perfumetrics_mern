@@ -1,18 +1,10 @@
 import React from "react";
+import Image from "next/image";
 
 const AboutUs = () => {
   return (
     <>
       <section className="bg-white py-8">
-        {/* Breadcrumb */}
-        {/* <div className="w-full bg-gray-100 py-4 flex justify-center items-center">
-          <div className="container mx-auto px-4 flex items-center">
-            <p className="text-gray-500">Home</p>
-            <span className="mx-2">/</span>
-            <p className="font-semibold text-gray-900">About Us</p>
-          </div>
-        </div> */}
-
         {/* Main content */}
         <div className="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-12">
           {/* Left Side (Text) */}
@@ -38,23 +30,35 @@ const AboutUs = () => {
             </p>
           </div>
 
-          {/* Right Side (Image Placeholder) */}
+          {/* Right Side (Image) */}
           <div className="flex justify-center items-center">
-            <img
-              src="https://res.cloudinary.com/dnixhctcf/image/upload/v1729672943/spraying-perfume-bottle-dark-purple-background_875825-31139_a8cokd.avif"
-              alt=""
+            <Image
+              className="rounded-lg"
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1730190578/spraying-perfume-bottle-dark-purple-background_875825-31139_ecreni.avif"
+              alt="Perfume Bottle Spraying"
+              width={500}
+              height={700}
+              layout="responsive"
+              objectFit="cover"
             />
           </div>
         </div>
-        {/* Main content */}
+
+        {/* Second content section */}
         <div className="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-12">
-          {/* Right Side (Image Placeholder) */}
-          <div className="flex justify-center  items-center">
-            <img
-              src="https://res.cloudinary.com/dnixhctcf/image/upload/v1729672943/spraying-perfume-bottle-dark-purple-background_875825-31139_a8cokd.avif"
-              alt=""
+          {/* Right Side (Image) */}
+          <div className="flex justify-center items-center">
+            <Image
+              className="rounded-lg"
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1730190809/closeup-perfume-spraying_1036975-250183_i8fukx.avif"
+              alt="Closeup Perfume Spraying"
+              width={500}
+              height={700}
+              layout="responsive"
+              objectFit="cover"
             />
           </div>
+
           {/* Left Side (Text) */}
           <div className="flex flex-col justify-center">
             <p className="text-gray-700 mb-6">

@@ -66,7 +66,7 @@ const WriteAReview = () => {
                 {/* Right side illustration (add the image here) */}
                 <div className="order-2 md:order-none block md:w-1/2 relative">
                     <Image
-                        src={`https://res.cloudinary.com/dnixhctcf/image/upload/v1729580030/PerfumeWriteR_wsmnmk.png`} // Update the path to match your imported image
+                        src={`https://res.cloudinary.com/dznz3eqe8/image/upload/v1730198850/love-potion-concept-illustration_114360-4648_clx6v7.jpg`} // Update the path to match your imported image
                         alt="Illustration"
                         layout="responsive"
                         width={500}
