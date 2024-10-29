@@ -41,7 +41,7 @@ async function PerfumeSection({ reviewSidebar, length }) {
 
         <div className="w-full  flex flex-col gap-4">
           <div class="grid place-items-center relative mb-8">
-            <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40 relative lg:left-[-11rem] w-[20rem] text-center bottom-[.1rem]">
+            <h1 class="text-3xl text-nowrap font-medium px-8 py-3 bg-white z-40 relative lg:left-[-11rem] w-[20rem] text-center bottom-[.1rem]">
               Top Rated Fragrance
             </h1>
             <div class="absolute w-full h-[2px] bg-slate-500"></div>

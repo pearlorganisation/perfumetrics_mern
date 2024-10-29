@@ -41,33 +41,32 @@ export default function InteractivePerfumePage() {
     >
       <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
         {/* Hero Section */}
-        <section className="relative h-96 bg-gradient-to-r from-purple-500 to-pink-500 overflow-hidden">
-          <div className="absolute inset-0 bg-black bg-opacity-50" />
-          <div className="relative h-full flex items-center justify-center text-center px-4">
-            <div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-                Discover Your Signature Scent
-              </h1>
-              <p className="text-xl text-white mb-8">
-                Explore our curated collection of luxury perfumes
-              </p>
-              <button
-                onClick={() => setSelectedBrand(null)}
-                className="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-purple-100 transition-colors duration-300"
-              >
-                Shop All Perfumes
-              </button>
-            </div>
-          </div>
+        <section
+          style={{
+            backgroundImage:
+              "url(https://res.cloudinary.com/dnixhctcf/image/upload/v1729660358/rosemarb_teubz9.jpg)",
+            backgroundSize: "cover", // this makes sure the image covers the entire div
+            backgroundPosition: "center", // centers the image
+          }}
+          className=" bg-cover  overflow-hidden grid place-items-center w-full bg-no-repeat h-fit"
+        >
+          <img
+            className="object-contain mix-blend-darken md:h-[28rem]"
+            src="https://res.cloudinary.com/dnixhctcf/image/upload/v1729675862/Group_913_fk14on.png"
+            alt=""
+          />
         </section>
 
         {/* Main Content */}
+        <div className="text-center pt-8 text-base font-medium sm:text-2xl md:text-4xl uppercase">
+          {brandId.split("%20").join(" ")}
+        </div>
         <main className=" mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow flex md:gap-12 ">
           {/* BrandFilter component wrapped in memo to avoid re-render */}
-          <BrandFilter />
+          {/* <BrandFilter /> */}
 
           {/* Perfume Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 h-[80vh] w-full">
+          <div className="grid grid-cols-2 md::grid-cols-3 lg:grid-cols-4 gap-6 min-h-[80vh] w-full container mx-auto">
             {isLoading ? (
               Array.from({ length: 6 }).map((item, ind) => {
                 return (
@@ -87,33 +86,30 @@ export default function InteractivePerfumePage() {
             ) : Array.isArray(brandsPerfume?.perfumes) &&
               brandsPerfume?.perfumes?.length ? (
               brandsPerfume?.perfumes?.map((perfume) => (
-                <Link key={perfume?._id} href={`/product/${perfume?._id}`}>
-                  <div
-                    key={perfume.id}
-                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 cursor-pointer"
-                  >
-                    <div className="relative">
-                      <img
-                        src={perfume?.banner}
-                        alt={perfume?.perfume}
-                        className="w-full h-64 object-contain "
-                      />
-                      <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center opacity-0 hover:opacity-100">
-                        <span className="bg-white text-purple-600 px-4 py-2 rounded-full font-semibold">
-                          Quick View
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-4">
-                      <h3 className="text-lg font-semibold mb-1 line-clamp-1">
-                        {perfume?.perfume}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 mb-2">
-                        {perfume.brand?.brand}
-                      </p>
-                    </div>
+                <div key={perfume.id} className="space-y-2 min-h-[10rem] ">
+                  <div className="text-center flex flex-col gap-3 p-4 justify-between shadow-[0px_0px_8px_0px_#00000040] rounded-[16px] overflow-hidden">
+                    <img
+                      src={perfume?.banner}
+                      alt={perfume?.perfume}
+                      className="w-full h-[150px] sm:h-[150px] md:h-[20rem] object-contain max-w-xs mx-auto"
+                    />
                   </div>
-                </Link>
+                  <div className="flex justify-center gap-3 items-center flex-col">
+                    <h2 className="text-base sm:text-lg mt-2 font-serif line-clamp-1">
+                      {perfume?.perfume}
+                    </h2>
+                    <p className="text-gray-600 text-base sm:text-lg dark:text-gray-400 mb-2">
+                      {perfume.brand?.brand}
+                    </p>
+                  </div>
+                  <div className="grid place-items-center">
+                    <Link href={`/product/${perfume?._id}`}>
+                      <button className="group shadow-[0px_0px_8px_0px_#00000040] mx-auto rounded-[16px] relative group overflow-hidden bg-white px-3 py-1 text-black">
+                        <span className="relative z-10">Read More</span>
+                      </button>
+                    </Link>
+                  </div>
+                </div>
               ))
             ) : (
               <div className="flex flex-col justify-center items-center col-span-4">

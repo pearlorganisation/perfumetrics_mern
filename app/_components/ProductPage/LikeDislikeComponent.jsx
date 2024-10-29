@@ -1,8 +1,14 @@
 import React, { useCallback } from 'react';
 import { IoHeart } from 'react-icons/io5';
 import Image from 'next/image';
+import axios from 'axios';
+import { userStore } from '@/store/userStore';
+import { useRouter } from 'next/navigation';
 
 const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
+    const { user, isUserLoggedIn } = userStore();
+    const router = useRouter();
+
 
     const likeDislike = async (userVote) => {
         try {
@@ -16,10 +22,12 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
     }
 
     const handleLike = useCallback(() => {
+        // alert("hello")
         likeDislike(1);
     }, [likeDislike]);
 
     const handleDislike = useCallback(() => {
+        // alert("hello")
         likeDislike(-1);
     }, [likeDislike]);
 

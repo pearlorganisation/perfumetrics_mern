@@ -36,12 +36,15 @@ function PerfumeSection() {
   const getGenderData = async (productId) => {
     const p = searchParams.get("page");
     const q = searchParams.get("query");
+    const brandId = searchParams.get("BrandId");
     const result = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/genderPerfumes/${
         categoryName === "WOMEN'S%20STYLE" ? "female" : "male"
       }?Page=${p || 1}&Search=${
         q || ""
-      }&Limit=10&Select=banner perfume updatedAt`
+      }&Limit=10&Select=banner perfume updatedAt ${
+        brandId ? `&BrandId=${brandId}` : ""
+      }`
     );
     setGenderData(result?.data);
     console.log(result?.data, "genderData");
@@ -59,8 +62,8 @@ function PerfumeSection() {
           <Dummy
             gender={categoryName?.split("%20")?.join(" ")}
             data={genderData?.data}
+            totalPages={genderData?.totalPage}
           />
-          <Pagination totalPages={genderData?.totalPage} />
         </div>
       ) : (
         <div className="min-h-screen grid place-items-center">No Data</div>

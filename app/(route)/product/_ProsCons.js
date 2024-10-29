@@ -12,6 +12,7 @@ import { userLikeDislikeHistoryStore } from "@/store/userLikeDislikeHistoryStore
 import { userStore } from "@/store/userStore";
 import axios from "axios";
 import { useRouter, useParams } from "next/navigation";
+import { toast } from "sonner";
 
 const ProsCons = () => {
   const router = useRouter();
@@ -68,6 +69,11 @@ const ProsCons = () => {
       fetchUserHistory(user._id);
     }
   }, [getProsCons, fetchUserHistory, productId, user]);
+  useEffect(() => {
+    if (productId) {
+      getProsCons(productId);
+    }
+  }, [productId]);
 
   return (
     <div className="grid grid-col-2 items-center bg-white md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
@@ -85,12 +91,14 @@ const ProsCons = () => {
                   <div className="flex gap-3">
                     <span
                       onClick={() =>
-                        handleVote({
-                          prosConsId: prosNconsData._id,
-                          userId: user?._id,
-                          userVote: 1,
-                          pros: item._id,
-                        })
+                        user?._id
+                          ? handleVote({
+                              prosConsId: prosNconsData._id,
+                              userId: user?._id,
+                              userVote: 1,
+                              pros: item._id,
+                            })
+                          : toast.info("Please Login First...")
                       }
                       className={`${
                         historyMap.get(item._id)?.vote === 1
@@ -103,12 +111,14 @@ const ProsCons = () => {
                     </span>
                     <span
                       onClick={() =>
-                        handleVote({
-                          prosConsId: prosNconsData._id,
-                          userId: user?._id,
-                          userVote: -1,
-                          pros: item._id,
-                        })
+                        user?._id
+                          ? handleVote({
+                              prosConsId: prosNconsData._id,
+                              userId: user?._id,
+                              userVote: -1,
+                              pros: item._id,
+                            })
+                          : toast.info("Please Login First...")
                       }
                       className={`${
                         historyMap.get(item._id)?.vote === -1
@@ -140,12 +150,14 @@ const ProsCons = () => {
                   <div className="flex gap-3">
                     <span
                       onClick={() =>
-                        handleVote({
-                          prosConsId: prosNconsData._id,
-                          userId: user?._id,
-                          userVote: 1,
-                          cons: item._id,
-                        })
+                        user?._id
+                          ? handleVote({
+                              prosConsId: prosNconsData._id,
+                              userId: user?._id,
+                              userVote: 1,
+                              cons: item._id,
+                            })
+                          : toast.info("Please Login First...")
                       }
                       className={`${
                         historyMap.get(item._id)?.vote === 1
@@ -158,12 +170,14 @@ const ProsCons = () => {
                     </span>
                     <span
                       onClick={() =>
-                        handleVote({
-                          prosConsId: prosNconsData._id,
-                          userId: user?._id,
-                          userVote: -1,
-                          cons: item._id,
-                        })
+                        user?._id
+                          ? handleVote({
+                              prosConsId: prosNconsData._id,
+                              userId: user?._id,
+                              userVote: -1,
+                              cons: item._id,
+                            })
+                          : toast.info("Please Login First...")
                       }
                       className={`${
                         historyMap.get(item._id)?.vote === -1

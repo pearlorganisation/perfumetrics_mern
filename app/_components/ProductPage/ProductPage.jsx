@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo, useCallback } from 'react'
 import PieChart from '../DoughnutGraph/DoughnutGraph';
 import Buyfrom from '../Buyfrom/Buyfrom';
 import VideoBox from '../VideoBox/VideoBox';
@@ -30,94 +30,71 @@ import LikeDislikeComponent from './LikeDislikeComponent';
 
 
 const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
-    const { getUserLikeDisLikeHistory, userLikeDislikeHistory } =
-        userLikeDislikeHistoryStore();
-    const [purchaseLinks, setPurchaseLinks] = useState([])
-    const router = useRouter()
+    const { getUserLikeDisLikeHistory, userLikeDislikeHistory } = userLikeDislikeHistoryStore();
+    const [purchaseLinks, setPurchaseLinks] = useState([]);
+    const router = useRouter();
 
-    const tmz = Intl.DateTimeFormat().resolvedOptions().timeZone
-    const timezone = ct.getTimezone(tmz);
-    console.log(timezone?.countries[0], "timezone");
-    const [timeZoneCountry, setTimeZoneCountry] = useState(timezone?.countries[0])
-    // const {productId} = useParams()
-    let companiesLists;
-    const [perfumeCategories, setPerfumeCategories] = useState([])
-    const [globalBanner, setGlobalBanner] = useState(null)
-    const { user, isUserLoggedIn, logout } = userStore();
-    const [historyMap, setHistorMap] = useState(null);
-    // const currentPerfumeVote = historyMap.get(productId) || 0;
-    useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth' // Add smooth scrolling behavior
-        });
-    }, [])
+    const tmz = useMemo(() => Intl.DateTimeFormat().resolvedOptions().timeZone, []);
+    const timezone = useMemo(() => ct.getTimezone(tmz), [tmz]);
+    const [timeZoneCountry, setTimeZoneCountry] = useState(timezone?.countries[0]);
 
-    const perfumeCate = async (perfumeId) => {
-        const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfumeCategories?perfumeId=${perfumeId}`)
-        setPerfumeCategories(result?.data?.data)
-        // console.log(result?.data?.data, "perfumeCategories")
-    }
+    const [perfumeCategories, setPerfumeCategories] = useState([]);
+    const [globalBanner, setGlobalBanner] = useState(null);
+    const { user, isUserLoggedIn } = userStore();
+    const [historyMap, setHistorMap] = useState(new Map()); // Initialize with an empty Map
 
+    // Fetch perfume categories and global banner
+    const fetchPerfumeData = useCallback(async (perfumeId) => {
+        const [perfumeRes, bannerRes] = await Promise.all([
+            axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfumeCategories?perfumeId=${perfumeId}`),
+            axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/globalData?itemType=banner`)
+        ]);
 
-    const getGlobalBanner = async () => {
-        const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/globalData?itemType=banner`)
-        setGlobalBanner(result?.data?.data[0])
-        // console.log(result?.data?.data, "Global Banner")
-    }
-    useEffect(() => {
-        perfumeCate(productId)
-        getGlobalBanner()
-    }, [])
+        setPerfumeCategories(perfumeRes?.data?.data || []);
+        setGlobalBanner(bannerRes?.data?.data?.[0] || null);
+    }, []);
 
+    // Perfume user history
+    const perfumeUserHistory = useCallback(async (userId) => {
+        const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/userHistory/${userId}`);
+        const { perfumeMarkedVoted } = result?.data?.data;
 
-    useEffect(() => {
-        if (user)
-            perfumeUserHistory(user._id);
-
-    }, [user]);
-
-    useEffect(() => {
-        console.log("fassadsdsDirst", historyMap);
-    }, [historyMap]);
-
-    useEffect(() => {
-        const mapOfLinks = data?.data?.mapOfLinks || {}; // Assuming this is your object
-        companiesLists = (mapOfLinks[timeZoneCountry]) || { companiesList: [] }
-        setPurchaseLinks(companiesLists?.
-            companiesList)
-
-        console.log("first", companiesLists);
-
-    }, [])
-    const perfumeUserHistory = async (userId) => {
-        const result = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/userHistory/${userId}`
-        );
-
-        const { cons, pros, perfumeMarkedVoted } = result?.data?.data;
-        const userHistoryMap = new Map();
-        if (perfumeMarkedVoted && perfumeMarkedVoted.length > 1) {
-            perfumeMarkedVoted.forEach((element) => {
-                userHistoryMap.set(element.perfumeId, element);
-            });
+        if (perfumeMarkedVoted?.length > 0) {
+            const userHistoryMap = new Map(perfumeMarkedVoted.map((item) => [item.perfumeId, item]));
+            setHistorMap(userHistoryMap);
         }
+    }, []);
 
-        setHistorMap(userHistoryMap);
+    // Set purchase links when data changes
+    useEffect(() => {
+        const mapOfLinks = data?.data?.mapOfLinks || {};
+        const companiesList = mapOfLinks[timeZoneCountry]?.companiesList || [];
+        setPurchaseLinks(companiesList);
+    }, [timeZoneCountry]);
 
-        // console.log(result?.data?.data, "perfumeCategories")
-    }
+    // Run effects only when dependencies change
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (user) perfumeUserHistory(user._id);
+    }, [user, perfumeUserHistory]);
 
-    const likeDislike = async (userVote) => {
+    useEffect(() => {
+        if (productId) fetchPerfumeData(productId);
+    }, [productId, fetchPerfumeData]);
+
+    // Like or dislike a perfume
+    const likeDislike = useCallback(async (userVote) => {
         try {
-            const result = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/votePerfume`, {
-                userId: user?._id, perfumeId: productId, userVote
-            })
-            router.refresh()
+            await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/votePerfume`, {
+                userId: user?._id,
+                perfumeId: productId,
+                userVote
+            });
+            router.refresh(); // Reload the page to update data
         } catch (error) {
-            console.log(error)
+            console.error(error);
         }
-    }
+    }, [user?._id, productId, router]);
 
 
     return (

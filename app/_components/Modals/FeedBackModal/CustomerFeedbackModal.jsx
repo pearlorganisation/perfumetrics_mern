@@ -104,8 +104,23 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
         }
       })
     );
-    reviewSubmission({ ...finalData, perfume: productId, reviewBy: user?._id })
+    console.log("finalData", finalData)
+    const validateObjectFields = (obj) => {
+      for (const [key, value] of Object.entries(obj)) {
+        if (!value || value === "") {
+          return { status: false, message: `Error: Please fill all the fields. ${key} is missing or empty.` }
+        }
+      }
+      return { status: true, message: 'All the filled are fields.' };
+    };
+    const validationMessage = validateObjectFields(data);
+    if (validationMessage?.status) {
+      reviewSubmission({ ...finalData, perfume: productId, reviewBy: user?._id })
+    } else {
+      toast.error(validationMessage?.message)
+    }
     console.log({ ...finalData, perfume: productId, reviewBy: user?._id }, "data submittionkj hjkd")
+
   }
 
   const emojiDataLong = [

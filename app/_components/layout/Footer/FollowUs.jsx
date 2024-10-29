@@ -70,7 +70,7 @@ const FollowUs = () => {
             </div>
 
 
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6  text-black'>
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 md:gap-6  text-black'>
                 <div className='bg-pink-200 space-y-3 py-5 px-6'>
                     <div className='flex gap-1'><FaLocationDot className='text-pink-500' size={22} /> <span className='text-xl font-semibold'>FIND YOUR NEAREST STORE</span></div>
                     <p>A contemporary grooming collection intused

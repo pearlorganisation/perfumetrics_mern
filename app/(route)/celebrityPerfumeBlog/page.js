@@ -1,12 +1,11 @@
-// Next.js will invalidate the cache when a
-
 import Image from "next/image";
 import parse from "html-react-parser";
 import Link from "next/link";
 
 export default async function Page({ params }) {
   const posts = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/celebrityPerfumes`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/celebrityPerfumes`,
+    { cache: "no-store" }
   ).then((res) => res?.json());
   console.log(posts, "posts");
 
@@ -25,7 +24,7 @@ export default async function Page({ params }) {
   }
   return (
     <div className="max-w-6xl mx-auto p-4 min-h-screen">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">
+      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center py-3">
         Celebrity Perfume Blogs
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -37,7 +36,7 @@ export default async function Page({ params }) {
             <img
               src={post.banner}
               alt={post.title}
-              className="w-full h-72 object-cover"
+              className="w-full h-72 object-contain"
             />
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{post.title}</h2>

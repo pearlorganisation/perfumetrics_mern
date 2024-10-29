@@ -44,23 +44,11 @@ export default function Example() {
   return (
     <header
 
-      className="block bg-white shadow-[0_1px_2px#d1d1d1]">
-      <nav className="w-full flex sm:justify-center flex-col gap-0 pt-0">
-        <div className="flex items-center px-6 sm:justify-center md:justify-end sm:ml-44">
-          <div className="flex items-center lg:hidden ml-20">
-            <Link href="/">
-              <Image src={logo} width={150} height={50} alt="img" />
-            </Link>
-          </div>
-          <div className="flex items-center lg:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 focus:outline-none"
-            >
-              <HiMenu size={30} />
-            </button>
-          </div>
-          <div className="hidden lg:flex items-center space-x-3 mr-28">
+      className="block relative bg-white shadow-[0_1px_2px#d1d1d1]">
+      <nav className="w-full relative flex sm:justify-center flex-col gap-0 pt-0">
+        <div className="flex justify-end items-end  px-3">
+
+          <div className="flex justify-end space-x-3 w-full">
             {isUserLoggedIn ? (
               <div className="space-x-3 flex py-2">
                 <span className="font-medium text-lg flex items-center gap-2">
@@ -96,7 +84,7 @@ export default function Example() {
         <div className="w-full bg-pink-300 px-4 py-0">
           <div className=" mx-auto flex justify-center items-center lg:ml-96">
 
-            <div className="hidden lg:flex items-center lg:ml-60">
+            <div className="flex items-center lg:ml-60">
               <Link href="/" className="ml-9">
                 <Image src={logo} width={280} height={50} alt="img" />
               </Link>
@@ -111,7 +99,7 @@ export default function Example() {
           </div>
         </div>
         <div className="w-full flex justify-center lg:justify-between items-center px-6">
-          <div className="hidden lg:flex justify-center mx-auto gap-20 font-semibold text-lg lg:text-xl">
+          <div className="flex justify-center mx-auto gap-3 md:gap-8 lg:gap-12 font-semibold text-[10px] sm:text-base md:text-lg lg:text-xl">
             <div
 
               onMouseEnter={() => {
@@ -119,7 +107,7 @@ export default function Example() {
               }}
               onMouseLeave={() => setReviewDropDown(false)}
 
-              className="hover:text-pink-500 cursor-pointer transition duration-300 relative py-3"
+              className="hover:text-pink-500 cursor-pointer transition duration-300 text-nowrap relative py-3 "
             >
               WRITE A REVIEW
               {reveiwDropDown && <ReviewDropdown />}
@@ -129,36 +117,36 @@ export default function Example() {
                 setPerfumeDropDown(true)
               }}
               onMouseLeave={() => setPerfumeDropDown(false)}
-              className="relative   cursor-pointer transition duration-300 py-3"
+              className="md:relative   cursor-pointer transition duration-300 py-3"
             >
               PERFUMES
               {
-                perfumeDropDown && <Dropdown brands={brands} setPerfumeDropDown={setPerfumeDropDown} />
+                perfumeDropDown && <Dropdown brands={brands} setPerfumeDropDown={setPerfumeDropDown} perfumeDropDown={perfumeDropDown} />
                 // perfumeDropDown && <MegaMenu data={brands} />
               }
             </div>
 
             <Link
               href="/sale/BEST SALES"
-              className="hover:text-pink-500 cursor-pointer transition duration-300 py-3"
+              className="hover:text-pink-500 cursor-pointer transition duration-300 py-3 text-nowrap"
             >
               BEST SALES
             </Link>
             <Link
               href="/category/MEN'S STYLE"
-              className="hover:text-pink-500 cursor-pointer transition duration-300 py-3"
+              className="hover:text-pink-500 cursor-pointer transition duration-300 py-3 text-nowrap"
             >
               MEN'S STYLE
             </Link>
             <Link
               href="/category/WOMEN'S STYLE"
-              className="hover:text-pink-500 cursor-pointer transition duration-300 py-3"
+              className="hover:text-pink-500 cursor-pointer transition duration-300 py-3 text-nowrap"
             >
               WOMEN'S STYLE
             </Link>
           </div>
         </div>
-        {isMenuOpen && (
+        {/* {isMenuOpen && (
           <div className="lg:hidden flex flex-col gap-4 px-6">
             {isUserLoggedIn ? (
               <div className="flex flex-col items-center space-y-3">
@@ -217,7 +205,7 @@ export default function Example() {
               </Link>
             </div>
           </div>
-        )}
+        )} */}
       </nav>
     </header>
   );
