@@ -15,16 +15,6 @@ SwiperCore.use([Navigation]);
 
 const BrandSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const categories = [
-    "Design",
-    "Photography",
-    "Red",
-    "Tree",
-    "Background",
-    "Plant",
-    "Hanging",
-    "Defocused",
-  ];
 
   // Refs for custom navigation buttons
   const swiperRef = useRef(null);
