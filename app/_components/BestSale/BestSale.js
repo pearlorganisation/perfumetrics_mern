@@ -9,7 +9,7 @@ const BestSale = () => {
         <div className="grid lg:grid-cols-3 place-items-center gap-3 py-5">
           <div className="w-full flex flex-col justify-between ">
             <span className="text-2xl font-semibold pb-3 border-b-2">
-              BEST SALES
+              SALES OFF
             </span>
 
             {Array(3)
@@ -70,7 +70,7 @@ const BestSale = () => {
                 );
               })}
           </div>
-          <div className="w-full relative  grid place-items-center">
+          {/* <div className="w-full relative  grid place-items-center">
             <img
               className="h-[100%] translate-y-0 w-full "
               src="https://images.unsplash.com/photo-1605619082574-e92eee603b95?q=80&w=2081&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -147,7 +147,7 @@ const BestSale = () => {
                   </div>
                 );
               })}
-          </div>
+          </div> */}
         </div>
         <div className="flex gap-4 w-full py-6">
           {Array(2)
