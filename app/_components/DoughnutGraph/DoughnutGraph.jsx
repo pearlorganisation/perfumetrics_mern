@@ -57,11 +57,11 @@ const PieChart = ({ mainAccords }) => {
 
     return (
         <div className='p-2 w-full'>
-            <div className='max-w-[20rem] mx-auto'>
+            <div className='max-w-[15rem] mx-auto'>
                 <h1 className='text-center font-bold'>Main Accords </h1>
-                <canvas ref={chartRef} style={{ width: "300px", height: "300px" }} />
+                <canvas ref={chartRef} style={{ width: "150px", height: "150px" }} />
             </div>
-            <div className="flex flex-wrap justify-center gap-3 items-center  py-8">
+            <div className="flex flex-wrap justify-center gap-3 items-start  py-8">
                 {
                     mainAccords?.map((el) => {
                         return <div
