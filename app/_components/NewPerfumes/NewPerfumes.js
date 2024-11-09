@@ -182,26 +182,29 @@ const NewPerfumes = () => {
               <div class="absolute w-full h-[2px] bg-slate-500"></div>
             </div>
             <div className="text-3xl text-center md:text-left md:text-5xl font-bold"></div>
-            <div className="grid md:grid-cols-2 xl:grid-cols-3 place-items-center gap-8">
-              {celebrityPerfume?.map((item, index) => {
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {celebrityPerfume?.map((blog, index) => {
                 return (
-                  <Link href={`/celebrityPerfumeBlog/${item?._id}`}>
+                  <Link href={`/celebrityPerfumeBlog/${blog?._id}`}>
                     <div
                       key={index}
-                      className="max-w-md bg-white rounded-lg overflow-hidden shadow-lg"
+                      className="bg-white rounded-lg shadow-md overflow-hidden"
                     >
                       <img
-                        src={item?.banner}
-                        alt="Luxury Fashion"
-                        className="w-full h-[20rem]"
+                        src={blog.banner}
+                        alt={blog.title}
+                        className="w-full h-48 object-cover"
                       />
-                      <div className="p-6">
-                        <h2 className="text-base md:text-lg lg:text-xl font-bold mb-4 line-clamp-3">
-                          {item?.title}
-                        </h2>
-                        <p className="text-gray-700 text-sm md:text-base line-clamp-5">
-                          {item?.content}
+                      <div className="p-4">
+                        <h3 className="text-lg font-semibold mb-2 text-gray-800">
+                          {blog.title}
+                        </h3>
+                        <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                          {blog.content}
                         </p>
+                        <button className="w-full text-black py-2 px-4 rounded  transition duration-300">
+                          Read More
+                        </button>
                       </div>
                     </div>
                   </Link>

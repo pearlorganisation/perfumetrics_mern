@@ -27,33 +27,34 @@ export default async function Page({ params }) {
       <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center py-3">
         Celebrity Perfume Blogs
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {posts?.data?.map((post) => (
-          <div
-            key={post._id}
-            className="bg-white rounded-lg shadow-md overflow-hidden"
-          >
-            <img
-              src={post.banner}
-              alt={post.title}
-              className="w-full h-72 object-contain"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-              <p className="text-gray-600 mb-2">
-                {/* By <span className="font-semibold">{post.author}</span> on{" "} */}
-                {formatDate(post.updatedAt)}
-              </p>
-              {/* <p className="text-gray-700 mb-4">{parse(post.content)}</p> */}
-              <Link
-                href={`/celebrityPerfumeBlog/${post._id}`}
-                className="text-blue-600 hover:underline"
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {posts?.data?.map((blog, index) => {
+          return (
+            <Link href={`/celebrityPerfumeBlog/${blog?._id}`}>
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-md overflow-hidden"
               >
-                Read more
-              </Link>
-            </div>
-          </div>
-        ))}
+                <img
+                  src={blog.banner}
+                  alt={blog.title}
+                  className="w-full h-48 object-contain"
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold mb-2 text-gray-800">
+                    {blog.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                    {blog.content}
+                  </p>
+                  <button className="w-full text-black py-2 px-4 rounded  transition duration-300">
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

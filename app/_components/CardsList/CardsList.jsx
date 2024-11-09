@@ -3,9 +3,9 @@ import { FaUser } from "react-icons/fa";
 import style from './style.module.css'
 import Link from "next/link";
 
-const CardsList = ({ reviewData, length, data }) => {
+const CardsList = ({ reviewData, length, data, bg }) => {
   return (
-    <div className="w-full  p-2 flex flex-col gap-2 rounded-md bg bg-[#ededed]">
+    <div className={`w-full  p-2 flex flex-col gap-2 rounded-md ${bg ? `bg-[${bg}]` : "bg-[#ededed]"}`}>
       {Array.isArray(reviewData) && reviewData.length > 0 &&
         reviewData?.slice(0, length).map((item) => (
           <Link href={`/product/${item?.perfumeId}`}>

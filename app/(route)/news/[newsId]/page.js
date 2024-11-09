@@ -1,7 +1,22 @@
+async function getSiderbarReviews() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/reviewsSidebar`,
+    {
+      cache: "no-store",
+    }
+  );
+  const data = await response.json();
+  // console.log(data, "sidebar Review")
+  return data?.data;
+}
+
 // Next.js will invalidate the cache when a
 
 import Image from "next/image";
 import parse from "html-react-parser";
+import CardsList from "@/app/_components/CardsList/CardsList";
+import { RiFacebookBoxFill } from "react-icons/ri";
+import Link from "next/link";
 
 // request comes in, at most once every 60 seconds.
 export const revalidate = 60;
@@ -22,6 +37,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
+  const sidebarReview = await getSiderbarReviews();
   const post = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/v1/news/${params.newsId}`
   ).then((res) => res?.json());
@@ -41,67 +57,83 @@ export default async function Page({ params }) {
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen py-4">
-      <div className="text-center font-bold text-4xl">News Blog</div>
+    <div className="min-h-screen py-4">
       {/* Blog Post */}
-      <main className="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-md">
-        <article>
-          <h2 className="text-2xl font-bold mb-4">{post.data.title}</h2>
-          <p className="text-gray-600 mb-2">
-            By <span className="font-semibold">{post.data.user}</span> on{" "}
-            <span className="text-gray-400">
-              {formatDate(post.data.updatedAt)}
-            </span>
-          </p>
-          <Image
-            src={post.data.image}
-            width={400}
-            height={400}
-            alt="Blog Post"
-            className="max-w-4xl w-full h-[35rem] rounded-lg mb-6"
-          />
-          <h1 className="text-gray-500">Description :</h1>
-          <p className="mb-4 font-medium">{post.data.details}</p>
-        </article>
+      <div className="grid grid-cols-[auto_20rem] container mx-auto">
+        <div className="font-bold text-4xl col-span-2 leading-[4rem] pl-4">
+          News Blog
+        </div>
+        <main className=" mx-auto p-4 bg-white rounded-lg">
+          <article>
+            <Image
+              src={post.data.image}
+              width={400}
+              height={400}
+              alt="Blog Post"
+              className="max-w-4xl w-full h-[35rem] rounded-lg mb-6"
+            />
+            <h2 className="text-2xl font-bold mb-4">{post.data.title}</h2>
+            <p className="text-gray-600 mb-2">
+              By <span className="font-semibold">{post.data.user}</span> on{" "}
+              <span className="text-gray-400">
+                {formatDate(post.data.updatedAt)}
+              </span>
+            </p>
+            <h1 className="text-gray-500">Description :</h1>
+            <p className="mb-4 font-medium">{post.data.details}</p>
+          </article>
 
-        {/* text editor data */}
-        <section className=" bg-gray-50 rounded-lg">
-          <p>{parse(post.data.description)}</p>
-        </section>
+          {/* text editor data */}
+          <section className=" bg-gray-50 rounded-lg">
+            <p>{parse(post.data.description)}</p>
+          </section>
+        </main>
+        <div className="">
+          <div className="max-w-xs mx-auto bg-white rounded-lg  p-4 text-center">
+            <h2 className="text-lg font-semibold mb-2">Perfume Encyclopedia</h2>
+            <div className="border-t border-b py-2 text-left">
+              <p className="text-sm">
+                Perfumes: <span className="font-bold">97,158</span>
+              </p>
+              <p className="text-sm">
+                Fragrance Reviews: <span className="font-bold">1,901,166</span>
+              </p>
+              <p className="text-sm">
+                Perfume lovers: <span className="font-bold">1,361,339</span>
+              </p>
+            </div>
 
-        {/* Comments Section
-        <section className="mt-8">
-          <h3 className="text-lg font-semibold mb-2">Comments</h3>
-          <div className="mb-4">
-            <div className="flex items-start mb-4">
-              <img
-                src="https://via.placeholder.com/40"
-                alt="User Avatar"
-                className="w-10 h-10 rounded-full mr-3"
-              />
-              <div>
-                <p className="font-semibold">Commenter Name</p>
-                <p className="text-gray-600">
-                  Great post! Really enjoyed reading it.
-                </p>
-              </div>
+            <div className="flex justify-around mt-4">
+              <Link
+                href="/login"
+                className="px-4 grid place-items-center bg-teal-600 text-white rounded hover:bg-teal-700"
+              >
+                Log in
+              </Link>
+              <button className="border-2 p-1 rounded" type="button">
+                <div className="bg-[#4267B2] rounded-sm text-base font-medium px-2 py-[0.15rem]  text-white flex justify-center items-center">
+                  <RiFacebookBoxFill className="text-lg mr-1" /> Login
+                </div>
+              </button>
+              <Link
+                href="/signUp"
+                className="px-4 grid place-items-center bg-teal-600 text-white rounded hover:bg-teal-700"
+              >
+                Register
+              </Link>
             </div>
           </div>
-          <form className="mt-4">
-            <textarea
-              className="w-full p-2 border border-gray-300 rounded-lg"
-              rows="3"
-              placeholder="Add a comment..."
-            />
-            <button
-              type="submit"
-              className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg"
-            >
-              Submit
-            </button>
-          </form>
-        </section> */}
-      </main>
+          <div className="w-full  flex flex-col gap-5">
+            <div className=" w-full text-center py-4  relative grid place-items-center">
+              <hr className="border absolute w-full" />
+              <div className="text-xl md:text-2xl  font-semibold  bg-white z-10 px-3">
+                Perfume Reviews
+              </div>
+            </div>
+            <CardsList reviewData={sidebarReview} length={14} bg="white" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

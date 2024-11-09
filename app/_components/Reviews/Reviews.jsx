@@ -18,43 +18,7 @@ import Link from "next/link";
 
 const Reviews = async ({ reviewSidebar, length }) => {
   const commentsData = await comments()
-  const perfumeReviews = [
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.2355.jpg",
-      name: "al haraman",
-      brand: null,
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.90689.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.25324.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-    {
-      imgUrl: "https://fimgs.net/mdimg/perfume/375x500.35456.jpg",
-      name: "Denver",
-      brand: "Cereria Terenzi Evelino S.R.L.",
-    },
-  ];
+
   return (
     <div className="container mx-auto mt-24">
       <div className="w-full grid lg:grid-cols-[auto_20rem] gap-x-4 px-6 md:px-10 py-3 md:py-10">
