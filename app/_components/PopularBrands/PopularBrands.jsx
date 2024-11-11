@@ -17,7 +17,12 @@ const PopularBrands = () => {
   const [popularPerfumeData, setPopularPerfumeData] = useState(null)
 
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/recent`).then((res) => {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/recent`, {
+      headers: {
+        'Content-Type': 'application/json',
+        // Note: Adding `Access-Control-Allow-Origin` here does NOT solve CORS issues on the client side
+      },
+    }).then((res) => {
       setPopularPerfumeData(res.data.data)
     }).catch((err) => console.log(err))
   }, [])
