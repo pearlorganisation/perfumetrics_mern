@@ -24,9 +24,9 @@ const News = () => {
 
   return (
     <div className="space-y-4">
-      <div class="grid place-items-center relative mb-6">
-        <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">News </h1>
-        <div class="absolute w-full h-[2px] bg-slate-500"></div>
+      <div className="grid place-items-center relative mb-6">
+        <h1 className="text-3xl font-medium px-8 py-3 bg-white z-40">News </h1>
+        <div className="absolute w-full h-[2px] bg-slate-500"></div>
       </div>
       <div className="flex justify-between items-center text-lg md:text-4xl font-medium"></div>
       <Link href={`/news/${newsMapData?.get(1)?._id}`} className="grid grid-cols-1 gap-6 py-6 pt-0">

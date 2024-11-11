@@ -70,14 +70,14 @@ export default function InteractivePerfumePage() {
             {isLoading ? (
               Array.from({ length: 6 }).map((item, ind) => {
                 return (
-                  <div key={ind} class="animate-pulse">
-                    <div class="bg-gray-200  rounded-lg shadow-md overflow-hidden transition-transform cursor-pointer">
-                      <div class="relative">
-                        <div class="w-full h-64 bg-gray-300/90"></div>
+                  <div key={ind} className="animate-pulse">
+                    <div className="bg-gray-200  rounded-lg shadow-md overflow-hidden transition-transform cursor-pointer">
+                      <div className="relative">
+                        <div className="w-full h-64 bg-gray-300/90"></div>
                       </div>
-                      <div class="p-4">
-                        <div class="h-4 bg-gray-200 rounded w-3/4 mb-1"></div>
-                        <div class="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
+                      <div className="p-4">
+                        <div className="h-4 bg-gray-200 rounded w-3/4 mb-1"></div>
+                        <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
                       </div>
                     </div>
                   </div>

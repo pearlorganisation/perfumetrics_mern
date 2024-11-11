@@ -27,6 +27,8 @@ const PopularBrands = () => {
     console.log("popularPerfumeData", popularPerfumeData);
   }, [popularPerfumeData])
 
+  console.log("PopularBrands component rendered",popularPerfumeData);
+
   return (
     <>
       <div className="container mx-auto max-w-[100%] md:max-w-[90%]">

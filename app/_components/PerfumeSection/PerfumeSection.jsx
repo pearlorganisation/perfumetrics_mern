@@ -40,11 +40,11 @@ async function PerfumeSection({ reviewSidebar, length }) {
       <div className="w-full grid lg:grid-cols-[auto_20rem] lg:gap-y-0 gap-1 gap-x-1 px-8 md:px-0 py-10">
 
         <div className="w-full  flex flex-col gap-4">
-          <div class="grid place-items-center relative mb-8">
-            <h1 class="text-3xl text-nowrap font-medium px-8 py-3 bg-white z-40 relative lg:left-[-11rem] w-[20rem] text-center bottom-[.1rem]">
+          <div className="grid place-items-center relative mb-8">
+            <h1 className="text-3xl text-nowrap font-medium px-8 py-3 bg-white z-40 relative lg:left-[-11rem] w-[20rem] text-center bottom-[.1rem]">
               Top Rated Fragrance
             </h1>
-            <div class="absolute w-full h-[2px] bg-slate-500"></div>
+            <div className="absolute w-full h-[2px] bg-slate-500"></div>
           </div>
           {
             <ProductCards data={data}
@@ -84,9 +84,9 @@ async function PerfumeSection({ reviewSidebar, length }) {
                 Perfume Reviews
               </span>
             </div> */}
-            <div class="grid place-items-center relative mb-2 mt-6">
-              <h1 class="text-2xl text-nowrap font-medium bg-white z-40 relative lg:left-[0rem] w-[12rem] text-center bottom-[.1rem]"> Perfume Reviews</h1>
-              <div class="absolute w-full h-[2px] bg-slate-500"></div></div>
+            <div className="grid place-items-center relative mb-2 mt-6">
+              <h1 className="text-2xl text-nowrap font-medium bg-white z-40 relative lg:left-[0rem] w-[12rem] text-center bottom-[.1rem]"> Perfume Reviews</h1>
+              <div className="absolute w-full h-[2px] bg-slate-500"></div></div>
             <CardsList reviewData={reviewSidebar} length={length} />
           </div>
         </div>

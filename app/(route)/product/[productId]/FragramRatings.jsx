@@ -270,19 +270,19 @@ const FragramRatings = ({ data }) => {
               {fragramsData?.map((item) => {
                 return (
                   <Link href={`${item?.link}`} target="_blank">
-                    <div class="w-full bg-white shadowE cursor-pointer rounded-lg  overflow-hidden">
-                      <div class="flex">
-                        <div class="w-1/4">
+                    <div className="w-full bg-white shadowE cursor-pointer rounded-lg  overflow-hidden">
+                      <div className="flex">
+                        <div className="w-1/4">
                           <img
                             src={item?.banner}
                             alt="Image"
-                            class="object-cover w-full h-full"
+                            className="object-cover w-full h-full"
                           />
                         </div>
-                        <div class="w-3/4 p-4">
-                          <div class="flex justify-between items-center">
+                        <div className="w-3/4 p-4">
+                          <div className="flex justify-between items-center">
                             <div className="flex gap-3">
-                              <h3 class="text-lg font-semibold text-gray-900">
+                              <h3 className="text-lg font-semibold text-gray-900">
                                 {item?.title}
                               </h3>
                               <div className="size-5 rounded-full bg-green-500 text-xs grid place-items-center">
@@ -290,10 +290,10 @@ const FragramRatings = ({ data }) => {
                               </div>
                             </div>
                           </div>
-                          <p class="text-sm text-gray-600">
-                            by <span class="text-gray-800">{item?.postBy}</span>
+                          <p className="text-sm text-gray-600">
+                            by <span className="text-gray-800">{item?.postBy}</span>
                           </p>
-                          <p class="text-xs text-gray-500 mt-2">
+                          <p className="text-xs text-gray-500 mt-2">
                             {new Date(item?.createdAt).toLocaleString("en-US")}
                           </p>
                         </div>

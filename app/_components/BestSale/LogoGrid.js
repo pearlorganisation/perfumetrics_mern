@@ -2,12 +2,12 @@ import React from "react";
 
 const LogoGrid = () => {
   return (
-    <section class="py-12 border-t-2 ">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid sm:grid-cols-2  justify-center  items-center  gap-12 md:grid-cols-3  xl:grid-cols-none xl:flex xl:justify-between">
-          <a href="#" class="flex justify-center items-center">
+    <section className="py-12 border-t-2 ">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid sm:grid-cols-2  justify-center  items-center  gap-12 md:grid-cols-3  xl:grid-cols-none xl:flex xl:justify-between">
+          <a href="#" className="flex justify-center items-center">
             <svg
-              class="h-9"
+              className="h-9"
               viewBox="0 0 125 36"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -40,9 +40,9 @@ const LogoGrid = () => {
               />
             </svg>
           </a>
-          <a href="#" class="flex justify-center items-center">
+          <a href="#" className="flex justify-center items-center">
             <svg
-              class="h-9"
+              className="h-9"
               viewBox="0 0 114 36"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -69,9 +69,9 @@ const LogoGrid = () => {
               </defs>
             </svg>
           </a>
-          <a href="#" class="flex justify-center items-center">
+          <a href="#" className="flex justify-center items-center">
             <svg
-              class="h-9"
+              className="h-9"
               viewBox="0 0 215 36"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -126,9 +126,9 @@ const LogoGrid = () => {
               </defs>
             </svg>
           </a>
-          <a href="#" class="flex justify-center items-center">
+          <a href="#" className="flex justify-center items-center">
             <svg
-              class="h-9"
+              className="h-9"
               viewBox="0 0 114 36"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -153,9 +153,9 @@ const LogoGrid = () => {
               </defs>
             </svg>
           </a>
-          <a href="#" class="flex justify-center items-center">
+          <a href="#" className="flex justify-center items-center">
             <svg
-              class="h-9"
+              className="h-9"
               viewBox="0 0 189 36"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

@@ -392,23 +392,23 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                         {perfumeCategories?.map((item) => {
                             return (
                                 <Link href={item?.link} target='_blank'>
-                                    <div class="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 overflow-hidden">
-                                        <div class="h-48 bg-whtie flex items-center justify-center">
+                                    <div className="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 overflow-hidden">
+                                        <div className="h-48 bg-whtie flex items-center justify-center">
                                             <img
                                                 className="h-48"
                                                 src={item?.banner}
                                                 alt=""
                                             />
                                         </div>
-                                        <div class="p-4">
-                                            <h2 class="text-sm font-semibold text-blue-600">
+                                        <div className="p-4">
+                                            <h2 className="text-sm font-semibold text-blue-600">
                                                 {item?.perfumeName}
                                             </h2>
-                                            <div class="mt-2 space-x-2">
-                                                <span class="text-xl font-bold text-gray-900">
+                                            <div className="mt-2 space-x-2">
+                                                <span className="text-xl font-bold text-gray-900">
                                                     ₹{item?.price}
                                                 </span>
-                                                <span class="text-gray-600">{item?.priceMl
+                                                <span className="text-gray-600">{item?.priceMl
                                                 }</span>
                                             </div>
                                         </div>
@@ -419,11 +419,11 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                     </div>
                     {data && <FragramRatings data={data.data?.ratingFragrams} />}
                     <div className="grid gap-5 container ">
-                        <div class="grid place-items-center relative mt-24 mb-6">
-                            <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">
+                        <div className="grid place-items-center relative mt-24 mb-6">
+                            <h1 className="text-3xl font-medium px-8 py-3 bg-white z-40">
                                 Rating/Results{" "}
                             </h1>
-                            <div class="absolute w-full h-[2px] bg-slate-500"></div>
+                            <div className="absolute w-full h-[2px] bg-slate-500"></div>
                         </div>
 
                         {totalRatings?.data && (

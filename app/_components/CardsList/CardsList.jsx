@@ -10,7 +10,7 @@ const CardsList = ({ reviewData, length, data }) => {
         reviewData?.slice(0, length).map((item) => (
           <Link href={`/product/${item?.perfumeId}`}>
             <div className={`bg-white ${style.shadowE} flex justify-start items-center gap-3 cursor-pointer p-3`}>
-              <div className="h-20 rounded w-[5rem]"><img class="object-cover w-16" src={item?.banner || item?.imgUrl} alt="" /></div>
+              <div className="h-20 rounded w-[5rem]"><img className="object-cover w-16" src={item?.banner || item?.imgUrl} alt="" /></div>
 
               <div className="w-[12rem]">
                 <span className="text-xl font-semibold">{item?.title}</span>
