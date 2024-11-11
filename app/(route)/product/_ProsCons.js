@@ -13,6 +13,7 @@ import { userStore } from "@/store/userStore";
 import axios from "axios";
 import { useRouter, useParams } from "next/navigation";
 import { toast } from "sonner";
+import { FaQuoteLeft } from "react-icons/fa";
 
 const ProsCons = () => {
   const router = useRouter();
@@ -200,7 +201,13 @@ const ProsCons = () => {
 
      
     </div>
-    <p className="text-left text-blue-600 text-base mt-4">
+    <div className="relative border-t-2 pt-4">
+                            <div className="p-2 absolute -top-5 left-[50%] bg-white">
+                                <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
+                            </div>
+                           
+                        </div>
+    <p className="md:text-left text-blue-600 text-base mt-4 text-justify">
         Note: The pros and cons listed on this page have been generated using
         the artificial intelligence system, which analyzes product reviews
         submitted by our members. While we strive to provide accurate and

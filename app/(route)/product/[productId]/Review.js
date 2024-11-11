@@ -10,7 +10,7 @@ async function Review({ commentsData, perfumeId }) {
       <div className="text-3xl font-medium pl-1 relative grid place-items-center">
         {" "}
         <div className="absolute w-full border "></div>{" "}
-        <div className="z-20 bg-white px-3 py-2">All Reviews By Date</div>
+        <div className="z-20 bg-white px-3 py-2 hidden md:block">All Reviews By Date</div>
       </div>
 
       <div class="w-full  mx-auto space-y-4 py-4 ">
@@ -57,7 +57,7 @@ async function Review({ commentsData, perfumeId }) {
             );
           })
         ) : (
-          <div className="text-4xl font-medium">No Comments</div>
+          <div className="text-4xl font-medium hidden md:block">No Comments</div>
         )}
       </div>
     </div>

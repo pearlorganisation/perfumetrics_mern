@@ -253,7 +253,7 @@ const RatingResult = ({ perfumeRatings }) => {
 
 
     return (
-        <div className='grid md:grid-cols-2 gap-20  w-full'>
+        <div className='grid md:grid-cols-2 gap-10 md:gap-20  w-full'>
             {
                 ratingData?.map(item => {
                     return <div className='grid'>
@@ -300,7 +300,7 @@ const RatingResult = ({ perfumeRatings }) => {
                                         <span className="text-nowrap font-medium capitalize w-[6rem]">{sta.name}</span>
                                         <div className=' w-full flex justify-start items-center gap-3'>
                                             <span>{sta.num}</span>
-                                            <div className='bg-slate-300 relative w-full rounded-3xl h-[7px]'>
+                                            <div className='bg-slate-300 relative w-full rounded-3xl md:h-[7px] h-[5px]'>
                                                 <div style={{ width: `${sta.num}%` }} className="bg-pink-300 absolute h-3 rounded-3xl w-full"></div>
                                             </div>
                                         </div>

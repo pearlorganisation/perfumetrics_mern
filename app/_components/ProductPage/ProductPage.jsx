@@ -98,8 +98,8 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
 
 
     return (
-        <div className="min-h-screen container mx-auto py-20 px-4">
-            <p className="text-4xl font-medium py-6 mb-16">
+        <div className="min-h-screen container mx-auto mt-10 md:py-20 px-4">
+            <p className="text-4xl font-medium py-6 md:mb-16 mb-0 text-center">
                 {/* {data?.data?.perfume}{" "} */}
                 <span className="text-4xl font-semibold ">{data?.data?.perfume}</span>
             </p>
@@ -137,7 +137,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                     </div>
                 </div>
 
-                <div className=" space-y-14">
+                <div className=" space-y-14 hidden md:block">
                     {
                         !isUserLoggedIn ? <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-2">
                             <div className="text-xl md:text-2xl font-semibold">Register</div>
@@ -201,13 +201,14 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                     <Feedback />
                     {/* detail start */}
                     <div className="space-y-3">
-                        <div className="font-medium">{data?.data?.details}</div>
+                        <div className="font-medium text-justify md:text-left">{data?.data?.details}</div>
 
                         <div className="relative border-y-2 py-4">
                             <div className="p-2 absolute -top-5 left-[50%] bg-white">
                                 <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
                             </div>
-                            Dior launches its new fragrance Sauvage, with the name
+                           <p className='text-justify md:text-left'>
+                           Dior launches its new fragrance Sauvage, with the name
                             originating from the fragrance Eau Sauvage from 1966, although
                             the two don’t belong to the same collection. Sauvage is inspired
                             by wild, open spaces; blue sky that covers rocky landscapes, hot
@@ -220,6 +221,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                             Dior Sauvage comes out in September 2015, advertised by actor
                             Johnny Depp. It is available as 60 and 100 ml Eau de Toilette.
                             {data?.data?.description}
+                           </p>
                         </div>
                         {/* <div className="relative border-b-2 py-4 text-[#138B92]">
                             <span className="text-[#A2ADC4]">
@@ -237,7 +239,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                     {<ProsCons />}
                     {/* pros n cons */}
                 </div>
-                <div>
+                <div className='hidden md:block'>
                     <div className="w-full  flex flex-col gap-10">
                         <div className=" w-full text-center py-4 shadow-lg">
                             <span className="text-xl md:text-2xl  font-semibold ">
@@ -249,7 +251,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                 </div>
             </div>
             {/* Perfume Photos starts */}
-            <div className="py-14 mt-14">
+            <div className="mt-4 md:py-14 md:mt-14">
                 <div className="w-full relative grid place-items-center mb-14">
                     <div className="h-[2px] w-full bg-black absolute"></div>
                     <p className="text-3xl font-medium bg-white px-4 z-30">
@@ -271,7 +273,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                 <div className="grid lg:grid-cols-[auto_18rem]">
                     <div className="flex items-start justify-center lg:translate-x-6   gap-10 ">
                         <div className="flex items-center gap-1  ">
-                            <div className="p-4 relative left-5">
+                            <div className="p-4 relative left-5 hidden md:block">
                                 <p className="px-20 font-bold">High</p>
                                 <div className="">
                                     <svg
@@ -303,7 +305,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                                     width={450}
                                     alt=""
                                 />
-                                <div className="absolute   flex flex-col -translate-x-3 max-w-[16rem] gap-4">
+                                <div className="absolute   flex flex-col -translate-x-3 max-w-[20rem] md:max-w-[16rem] gap-4">
                                     <div className="flex flex-col gap-4 justify-center items-center flex-wrap ">
                                         <p className="text-center font-bold">Top Notes</p>
                                         <div className="flex gap-4 text-sm">
@@ -382,7 +384,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
 
             {/*Ya perfume categories starts */}
             <div className=" grid lg:grid-cols-[auto_18rem]">
-                <div className="space-y-6 px-6">
+                <div className="md:space-y-6 md:px-6">
                     <div className="text-3xl text-center md:text-left text-green-500 font-medium mt-10 mb-14">
                         Yeah Perfume Categories
                     </div>
@@ -433,7 +435,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
 
                     </div>
                 </div>
-                <div>
+                <div className='hidden md:block'>
                     <CardsList reviewData={sidebarReview} length={7} />
                 </div>
             </div>

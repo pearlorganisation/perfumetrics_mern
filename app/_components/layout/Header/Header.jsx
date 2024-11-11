@@ -52,7 +52,7 @@ export default function Example() {
               type="button"
               onClick={() => setIsMenuOpen((prev) => !prev)}
             >
-              <IoMenuSharp size={36} />
+              <IoMenuSharp size={36} className="" />
             </button>
             {isMenuOpen && (
               <div className="w-64 bg-gray-100 p-4 rounded-lg shadow-md absolute top-[2.3rem] z-10 -left-4">
@@ -155,7 +155,7 @@ export default function Example() {
             {isSearchOpen&&  <input
                 type="text"
                 placeholder="Search reviews"
-                className="w-full rounded-full p-4 h-[30px] focus:outline-none shadow-[0_0_1px_1px#d1d1d1] flex md:hidden absolute left-0 top-[2.8rem]"
+                className="w-full rounded-full p-4 h-[30px] focus:outline-none shadow-[0_0_1px_1px#d1d1d1] flex md:hidden absolute left-0 top-[2.5rem]"
               />}
         
           </div>
