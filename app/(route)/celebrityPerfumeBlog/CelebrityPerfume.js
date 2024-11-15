@@ -83,7 +83,7 @@ export default function CelebrityPerfume() {
                 width={400}
                 height={400}
                 alt="Blog Post"
-                className="w-full lg:max-w-4xl  lg:h-[30rem] rounded-lg mb-6 object-cover"
+                className="w-fit lg:max-w-4xl  lg:h-[30rem] rounded-lg mb-6 object-contain"
               />
               <h2 className="text-2xl font-bold mb-4">
                 {newsData?.data?.title}
