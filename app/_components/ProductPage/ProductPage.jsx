@@ -127,7 +127,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                         }
                     </div>
 
-                    <div className="flex flex-col justify-center  items-center gap-4 ">
+                    <div className="flex flex-col justify-center  item-start gap-4 ">
                         <div className="rounded-full overflow-hidden  w-fit">
                             <img className="size-40" src={data?.data?.logo} alt="" />
                         </div>

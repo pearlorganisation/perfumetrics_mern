@@ -74,7 +74,7 @@ const News = () => {
               src={newsMapData?.get(2)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
               alt=""
             />
-            <div className="font-bold pt-2 text-black">
+            <div className="font-bold pt-2 text-black text-xl">
               {newsMapData?.get(2)?.title}
 
             </div>
@@ -89,7 +89,7 @@ const News = () => {
               src={newsMapData?.get(3)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
               alt=""
             />
-            <div className="font-bold pt-2 text-black">
+            <div className="font-bold pt-2 text-black text-xl">
               {newsMapData?.get(3)?.title}
 
             </div>
@@ -108,7 +108,7 @@ const News = () => {
             src={newsMapData?.get(4)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
             alt=""
           />
-          <div className="font-semibold "> {newsMapData?.get(4)?.title}</div>
+          <div className="font-semibold text-xl"> {newsMapData?.get(4)?.title}</div>
           <div className="font-semibold"> {newsMapData?.get(4)?.user}</div>
           <p className="font-medium line-clamp-3">
             {newsMapData?.get(4)?.details}{" "}
@@ -120,7 +120,7 @@ const News = () => {
       </div>
       <Link href={`/news/${newsMapData?.get(5)?._id}`} className="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8 border-gray-400">
         <div>
-          <div className="font-bold pt-2 text-black">
+          <div className="font-bold pt-2 text-black text-xl">
             {newsMapData?.get(5)?.title}
 
           </div>
@@ -150,7 +150,7 @@ const News = () => {
             alt=""
           />
 
-          <div className="font-medium text-3xl text-black">
+          <div className="font-medium text-3xl text-black ">
             {
               newsMapData?.get(6)?.title
 

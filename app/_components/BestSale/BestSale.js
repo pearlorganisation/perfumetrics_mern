@@ -9,7 +9,7 @@ const BestSale = () => {
         <div className="grid lg:grid-cols-3 place-items-center gap-3 py-5">
           <div className="w-full flex flex-col justify-between ">
             <span className="text-2xl font-semibold pb-3 border-b-2">
-              BEST SALES
+              SALES OFF
             </span>
 
             {Array(3)
@@ -87,8 +87,8 @@ const BestSale = () => {
             </div>
           </div>
           <div className="flex flex-col justify-between w-full ">
-            <span className="text-2xl font-semibold pb-3 border-b-2">
-              SALE OFF
+            <span className="text-2xl font-semibold pb-3 h-10">
+              {/* SALE OFF */}
             </span>
             {Array(3)
               .fill(true)

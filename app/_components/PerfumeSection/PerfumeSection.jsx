@@ -52,8 +52,8 @@ async function PerfumeSection({ reviewSidebar, length }) {
           }
 
         </div>
-        <div className="space-y-10 mt-[6.6rem] ml-[31px]">
-          <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-8">
+        <div className="space-y-4 mt-[6.6rem] ml-[31px]">
+          <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-4">
 
             <div className="text-xl md:text-2xl font-semibold">Register</div>
             <div className="space-x-4"><button className="w-[8rem] py-2 rounded border border-pink-500">
@@ -78,12 +78,15 @@ async function PerfumeSection({ reviewSidebar, length }) {
               </div>
             }
           </div>
-          <div className="w-full  flex flex-col gap-10">
-            <div className="border border-pink-500 w-full text-center py-4 shadow-lg">
+          <div className="w-full  flex flex-col gap-4">
+            {/* <div className="border-0 border-pink-500 w-full text-center py-4">
               <span className="text-xl md:text-2xl  font-semibold ">
                 Perfume Reviews
               </span>
-            </div>
+            </div> */}
+            <div class="grid place-items-center relative mb-2 mt-6">
+              <h1 class="text-2xl text-nowrap font-medium bg-white z-40 relative lg:left-[0rem] w-[12rem] text-center bottom-[.1rem]"> Perfume Reviews</h1>
+              <div class="absolute w-full h-[2px] bg-slate-500"></div></div>
             <CardsList reviewData={reviewSidebar} length={length} />
           </div>
         </div>
