@@ -1,9 +1,6 @@
 async function comments() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/reviewsSidebar`,
-    {
-      cache: "no-store",
-    }
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/reviewsSidebar`
   );
   const data = await response.json();
   console.log(data, "sidebar Review")
@@ -11,10 +8,26 @@ async function comments() {
 }
 import React from "react";
 import CardsList from "../CardsList/CardsList";
-import News from "./News";
+// import News from "./News";
 import NewPerfumes from "../NewPerfumes/NewPerfumes";
 import style from "./style.module.css";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const News = dynamic(
+  () => import("./News"),
+  {
+    ssr: false,
+    loading: () => <div class="animate-pulse grid grid-cols-1 gap-6 py-6 pt-0">
+      <div class="space-y-4 w-full">
+        <div class="w-full h-[30rem] bg-gray-200"></div>
+        <div class="h-6 bg-gray-200 w-3/5"></div>
+        <div class="h-4 bg-gray-200 w-1/2"></div>
+        <div class="h-16 bg-gray-200"></div>
+      </div>
+    </div>,
+  }
+)
 
 const Reviews = async ({ reviewSidebar, length }) => {
   const commentsData = await comments()
