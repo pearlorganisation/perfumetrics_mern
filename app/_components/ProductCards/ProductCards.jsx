@@ -3,7 +3,7 @@ import { IoIosArrowRoundForward, IoMdStar, IoMdStarHalf } from "react-icons/io";
 
 const ProductCards = ({ data }) => {
   return (
-    <div className="grid  sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-x-8 gap-y-14  ">
+    <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 md:gap-x-8 md:gap-y-14  gap-x-4 gap-y-4 ">
       {data &&
         data.map((e) => (
           <Link
@@ -11,14 +11,14 @@ const ProductCards = ({ data }) => {
             href={`/product/${e.perfumeId}`}
             // href={`/product/34232323`}
 
-            className="w-full   h-[280px]  border-2 border-pink-500 grid place-items-center  gap-2 rounded-md transition duration-300"
+            className="w-full h-[180px]  md:h-[280px]  border-2 border-pink-500 grid place-items-center  gap-2 rounded-md transition duration-300"
           >
             <img
               src={e?.banner || e?.imgUrl}
               // src={e.banner}
 
               // width={"100%"}
-              className=" h-[280px] w-full   "
+              className="h-auto md:h-[280px] w-full   "
             />
             {/* <div className="flex flex-col h-full gap-1 items-start pb-4">
               <div className="w-full text-sm text-left font-bold ">

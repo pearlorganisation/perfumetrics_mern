@@ -21,7 +21,7 @@ const Buyfrom = ({ links }) => {
           return <div className="mt-4 md:flex md:items-left md:justify-left h-20">
             <a
               href={`${item?.link}`}
-              className="text-blue-500 flex  hover:underline underline text-3xl w-full"
+              className="text-blue-500 flex  hover:underline underline text-xl md:text-3xl w-full"
               target="_blank"
               rel="noreferrer"
             >

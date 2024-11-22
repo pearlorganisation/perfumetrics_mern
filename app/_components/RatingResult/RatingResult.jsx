@@ -253,15 +253,15 @@ const RatingResult = ({ perfumeRatings }) => {
 
 
     return (
-        <div className='grid md:grid-cols-2 gap-20  w-full'>
+        <div className='grid md:grid-cols-2 gap-10 md:gap-20  w-full'>
             {
                 ratingData?.map(item => {
                     return <div className='grid'>
-                        <div className="font-semibold grid place-items-center text-lg py-2 text-[#2071B2] capitalize">
+                        <div className="font-semibold grid place-items-center text-sm sm:text-lg py-2 text-[#2071B2] capitalize">
                             <span>{item?.icon}</span>
                             <span className='text-black'>{item?.name}</span>
                         </div>
-                        <div className='flex justify-around gap-x-5'>
+                        <div className='flex justify-around md:gap-x-5'>
                             {
                                 item.status.map((stats, idx) => {
                                     console.log(modifyStr(result?.sillage) === stats?.name, "stats?.isUserSelected")
@@ -273,13 +273,13 @@ const RatingResult = ({ perfumeRatings }) => {
                                         <div className={` ${stats?.isUserSelected
                                             ? "text-pink-400"
                                             : "backdrop-grayscale"
-                                            } `}> {stats?.name}</div>
+                                            } text-xs sm:text-base `}> {stats?.name}</div>
                                     </div>
                                 })
                             }
                         </div>
                         <input
-                            className="w-full"
+                            className="w-full h-[10px]"
                             min={1}
                             max={5}
                             step={1}
@@ -293,14 +293,14 @@ const RatingResult = ({ perfumeRatings }) => {
                             name=""
                             id=""
                         />
-                        <div className="space-y-6">
+                        <div className="space-y-2">
                             {
                                 item?.status.map(sta => {
                                     return <div className="grid grid-cols-[7rem_auto] gap-1">
-                                        <span className="text-nowrap font-medium capitalize w-[6rem]">{sta.name}</span>
+                                        <span className="text-nowrap font-medium capitalize w-[6rem] text-sm sm:text-base">{sta.name}</span>
                                         <div className=' w-full flex justify-start items-center gap-3'>
                                             <span>{sta.num}</span>
-                                            <div className='bg-slate-300 relative w-full rounded-3xl h-3'>
+                                            <div className='bg-slate-300 relative w-full rounded-3xl md:h-[7px] h-[5px]'>
                                                 <div style={{ width: `${sta.num}%` }} className="bg-pink-300 absolute h-3 rounded-3xl w-full"></div>
                                             </div>
                                         </div>

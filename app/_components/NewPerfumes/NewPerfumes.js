@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import parse from "html-react-parser";
 
 // Import Swiper styles
 import "swiper/css";
@@ -196,11 +197,12 @@ const NewPerfumes = () => {
                         className="w-full h-48 object-cover"
                       />
                       <div className="p-4">
-                        <h3 className="text-lg font-semibold mb-2 text-gray-800">
-                          {blog.title}
+                        <h3 className="text-lg font-semibold mb-2 text-gray-800 line-clamp-2">
+                          {blog?.title}
                         </h3>
                         <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                          {blog.content}
+                          {/* {parse(blog?.content || "")} */}
+                          {blog?.content}
                         </p>
                         <button className="w-full text-black py-2 px-4 rounded  transition duration-300">
                           Read More

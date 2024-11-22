@@ -3,14 +3,14 @@ import { FaUser } from "react-icons/fa";
 import style from './style.module.css'
 import Link from "next/link";
 
-const CardsList = ({ reviewData, length, data, bg }) => {
+const CardsList = ({ reviewData, length, data }) => {
   return (
-    <div className={`w-full  p-2 flex flex-col gap-2 rounded-md ${bg ? `bg-[${bg}]` : "bg-[#ededed]"}`}>
+    <div className="w-full  p-2 flex flex-col gap-2 rounded-md bg bg-[#ededed]">
       {Array.isArray(reviewData) && reviewData.length > 0 &&
         reviewData?.slice(0, length).map((item) => (
           <Link href={`/product/${item?.perfumeId}`}>
             <div className={`bg-white ${style.shadowE} flex justify-start items-center gap-3 cursor-pointer p-3`}>
-              <div className="h-20 rounded w-[5rem]"><img class="object-cover w-16" src={item?.banner || item?.imgUrl} alt="" /></div>
+              <div className="h-20 rounded w-[5rem]"><img className="object-cover w-16" src={item?.banner || item?.imgUrl} alt="" /></div>
 
               <div className="w-[12rem]">
                 <span className="text-xl font-semibold">{item?.title}</span>

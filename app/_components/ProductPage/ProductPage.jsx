@@ -53,7 +53,6 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
         setPerfumeCategories(perfumeRes?.data?.data || []);
         setGlobalBanner(bannerRes?.data?.data?.[0] || null);
     }, []);
-
     // Perfume user history
     const perfumeUserHistory = useCallback(async (userId) => {
         const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/userHistory/${userId}`);
@@ -98,10 +97,10 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
 
 
     return (
-        <div className="min-h-screen container mx-auto py-20 px-4">
-            <p className="text-4xl font-medium py-6 mb-16">
+        <div className="min-h-screen container mx-auto mt-10 md:py-20 px-4">
+            <p className="text-4xl font-medium py-6 md:mb-16 mb-0 text-center">
                 {/* {data?.data?.perfume}{" "} */}
-                <span className="text-4xl font-semibold ">{data?.data?.perfume}</span>
+                <span className="text-2xl md:text-4xl font-semibold ">{data?.data?.perfume}</span>
             </p>
             <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_18rem]">
                 <div className="grid md:grid-cols-[55%_45%]  ">
@@ -127,19 +126,19 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                         }
                     </div>
 
-                    <div className="flex flex-col justify-center  item-start gap-4 ">
+                    <div className="flex flex-col items-center gap-4 ">
                         <div className="rounded-full overflow-hidden  w-fit">
-                            <img className="size-40" src={data?.data?.logo} alt="" />
+                            <img className="size-52 md:size-60" src={data?.data?.logo} alt="" />
                         </div>
-                        <div className="flex flex-wrap w-full">
+                        <div className="flex flex-wrap w-full justify-center">
                             <PieChart mainAccords={data?.data?.mainAccords} />
                         </div>
                     </div>
                 </div>
 
-                <div className=" space-y-14">
+                <div className=" space-y-14 hidden md:block">
                     {
-                        !isUserLoggedIn ? <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-8">
+                        !isUserLoggedIn ? <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-2">
                             <div className="text-xl md:text-2xl font-semibold">Register</div>
                             <div className="space-x-4">
                                 <button className="w-[8rem] py-2 rounded border border-pink-500">
@@ -201,27 +200,18 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                     <Feedback />
                     {/* detail start */}
                     <div className="space-y-3">
-                        <div className="font-medium">{data?.data?.details}</div>
+                        <div className="font-medium text-sm md:text-base text-justify md:text-left">{data?.data?.details}</div>
 
                         <div className="relative border-y-2 py-4">
                             <div className="p-2 absolute -top-5 left-[50%] bg-white">
                                 <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
                             </div>
-                            Dior launches its new fragrance Sauvage, with the name
-                            originating from the fragrance Eau Sauvage from 1966, although
-                            the two don’t belong to the same collection. Sauvage is inspired
-                            by wild, open spaces; blue sky that covers rocky landscapes, hot
-                            under the desert sun. Dior in-house perfumer, François Demachy,
-                            signed this creation. The fragrance is announced as radically
-                            fresh, raw and noble at the same time. The composition is
-                            reportedly prevalent with carefully selected natural
-                            ingredients. Fresh top notes of Calabria bergamot encounter
-                            ambroxan, obtained from precious ambergris, and its woody trail.
-                            Dior Sauvage comes out in September 2015, advertised by actor
-                            Johnny Depp. It is available as 60 and 100 ml Eau de Toilette.
-                            {data?.data?.description}
-                        </div>
-                        <div className="relative border-b-2 py-4 text-[#138B92]">
+                            <p className='text-justify md:text-left text-sm md:text-base'>
+
+                                {data?.data?.description}
+                            </p>
+                        </div >
+                        {/* <div className="relative border-b-2 py-4 text-[#138B92]">
                             <span className="text-[#A2ADC4]">
                                 {" "}
                                 Read about this perfume in other languages:
@@ -229,15 +219,15 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                             Deutsch, Español, Français, Čeština, Italiano, Русский, Polski,
                             Português, Ελληνικά, 汉语, Nederlands, Srpski, Română, العربية,
                             Українська, Монгол, עברית.
-                        </div>
-                    </div>
+                        </div> */}
+                    </div >
                     {/* detail ends */}
 
                     {/* pros n cons */}
                     {<ProsCons />}
                     {/* pros n cons */}
-                </div>
-                <div>
+                </div >
+                <div className='hidden md:block'>
                     <div className="w-full  flex flex-col gap-10">
                         <div className=" w-full text-center py-4 shadow-lg">
                             <span className="text-xl md:text-2xl  font-semibold ">
@@ -249,10 +239,10 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                 </div>
             </div>
             {/* Perfume Photos starts */}
-            <div className="py-14 mt-14">
+            <div className="mt-4 md:py-14 md:mt-14">
                 <div className="w-full relative grid place-items-center mb-14">
                     <div className="h-[2px] w-full bg-black absolute"></div>
-                    <p className="text-3xl font-medium bg-white px-4 z-30">
+                    <p className="text-xl md:text-3xl font-medium bg-white px-4 z-30">
                         Perfume Photos
                     </p>
                 </div>
@@ -264,14 +254,14 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
             <div className="mt-20">
                 <div className="w-full relative grid place-items-center mb-14">
                     <div className="h-[2px] w-[70%] bg-black absolute"></div>
-                    <p className="text-3xl font-medium bg-white px-4 z-30">
+                    <p className="text-xl  md:text-3xl font-medium bg-white px-2 md:px-4 z-30">
                         Fragrance Notes
                     </p>
                 </div>
                 <div className="grid lg:grid-cols-[auto_18rem]">
                     <div className="flex items-start justify-center lg:translate-x-6   gap-10 ">
                         <div className="flex items-center gap-1  ">
-                            <div className="p-4 relative left-5">
+                            <div className="p-4 relative left-5 hidden md:block">
                                 <p className="px-20 font-bold">High</p>
                                 <div className="">
                                     <svg
@@ -303,10 +293,10 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                                     width={450}
                                     alt=""
                                 />
-                                <div className="absolute   flex flex-col -translate-x-3 max-w-[16rem] gap-4">
-                                    <div className="flex flex-col gap-4 justify-center items-center flex-wrap ">
-                                        <p className="text-center font-bold">Top Notes</p>
-                                        <div className="flex gap-4 text-sm">
+                                <div className="absolute   flex flex-col -translate-x-3 max-w-[20rem] md:max-w-[16rem] gap-1 md:gap-4">
+                                    <div className="flex flex-col gap-3 justify-center items-center flex-wrap ">
+                                        <p className="text-center font-bold text-xs md:text-base">Top Notes</p>
+                                        <div className="flex gap-3 text-sm">
                                             {data?.data?.topNote &&
                                                 data?.data?.topNote.map((el) => {
                                                     return (
@@ -317,18 +307,18 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                                                             <img
                                                                 src={el.image}
                                                                 alt={el.name}
-                                                                className="w-10 h-10"
+                                                                className="w-7 h-7 md:w-10 md:h-10"
                                                             />
-                                                            <p>{el.name}</p>
+                                                            <p className=' text-xs md:text-balance'>{el.name}</p>
                                                         </div>
                                                     );
                                                 })}
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-col gap-4 justify-center items-center flex-wrap">
-                                        <p className="text-center font-bold">Middle Notes</p>
-                                        <div className="flex gap-4">
+                                    <div className="flex flex-col gap-3 justify-center items-center flex-wrap">
+                                        <p className="text-center font-bold text-xs md:text-base">Middle Notes</p>
+                                        <div className="flex gap-3">
                                             {data.data?.middleNote.map((el) => {
                                                 return (
                                                     <div
@@ -338,18 +328,18 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-10 h-10"
+                                                            className="w-7 h-7 md:w-10 md:h-10"
                                                         />
-                                                        <p>{el.name}</p>
+                                                        <p className=' text-xs md:text-balance'>{el.name}</p>
                                                     </div>
                                                 );
                                             })}
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-col gap-4 justify-center items-center flex-wrap">
-                                        <p className="text-center font-bold">Base Notes</p>
-                                        <div className="flex gap-4">
+                                    <div className="flex flex-col gap-3 justify-center items-center flex-wrap">
+                                        <p className="text-center font-bold text-xs md:text-base">Base Notes</p>
+                                        <div className="flex gap-3">
                                             {data.data?.baseNote.map((el) => {
                                                 return (
                                                     <div
@@ -359,9 +349,9 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-10 h-10"
+                                                            className="w-7 h-7 md:w-10 md:h-10"
                                                         />
-                                                        <p>{el.name}</p>
+                                                        <p className=' text-xs md:text-balance'>{el.name}</p>
                                                     </div>
                                                 );
                                             })}
@@ -369,11 +359,11 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div >
+                    </div >
                     <div>{/* <CardsList data={perfumeReviews} /> */}</div>
-                </div>
-            </div>
+                </div >
+            </div >
             {/* Fragrance Notes ends */}
 
             {/* Releted Fragram starts */}
@@ -382,63 +372,63 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
 
             {/*Ya perfume categories starts */}
             <div className=" grid lg:grid-cols-[auto_18rem]">
-                <div className="space-y-6 px-6">
-                    <div className="text-3xl text-center md:text-left text-green-500 font-medium mt-10 mb-14">
+                <div className="md:space-y-6 md:px-6">
+                    <div className="text-xl md:text-3xl text-center md:text-left text-green-500 font-medium mt-10 mb-14">
                         Yeah Perfume Categories
                     </div>
                     <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-14">
                         {perfumeCategories?.map((item) => {
                             return (
                                 <Link href={item?.link} target='_blank'>
-                                    <div class="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 overflow-hidden">
-                                        <div class="h-48 bg-whtie flex items-center justify-center">
+                                    <div className="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 overflow-hidden">
+                                        <div className="h-48 bg-whtie flex items-center justify-center">
                                             <img
                                                 className="h-48"
                                                 src={item?.banner}
                                                 alt=""
                                             />
                                         </div>
-                                        <div class="p-4">
-                                            <h2 class="text-sm font-semibold text-blue-600">
+                                        <div className="p-4">
+                                            <h2 className="text-sm font-semibold text-blue-600">
                                                 {item?.perfumeName}
                                             </h2>
-                                            <div class="mt-2 space-x-2">
-                                                <span class="text-xl font-bold text-gray-900">
+                                            <div className="mt-2 space-x-2">
+                                                <span className="text-xl font-bold text-gray-900">
                                                     ₹{item?.price}
                                                 </span>
-                                                <span class="text-gray-600">{item?.priceMl
+                                                <span className="text-gray-600">{item?.priceMl
                                                 }</span>
                                             </div>
                                         </div>
-                                    </div>
-                                </Link>
+                                    </div >
+                                </Link >
                             );
                         })}
-                    </div>
+                    </div >
                     {data && <FragramRatings data={data.data?.ratingFragrams} />}
                     <div className="grid gap-5 container ">
-                        <div class="grid place-items-center relative mt-24 mb-6">
-                            <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">
+                        <div className="grid place-items-center relative mt-24 mb-6">
+                            <h1 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
                                 Rating/Results{" "}
                             </h1>
-                            <div class="absolute w-full h-[2px] bg-slate-500"></div>
+                            <div className="absolute w-full h-[2px] bg-slate-500"></div>
                         </div>
 
                         {totalRatings?.data && (
                             <RatingResult perfumeRatings={totalRatings.data} />
                         )}
                     </div>
-                    <div className="space-y-5">
+                    {/* <div className="space-y-5">
                         <AddReview />
 
-                    </div>
-                </div>
-                <div>
+                    </div> */}
+                </div >
+                <div className='hidden md:block'>
                     <CardsList reviewData={sidebarReview} length={7} />
                 </div>
             </div>
             {/*Ya perfume categories ends */}
-        </div>
+        </div >
     )
 }
 

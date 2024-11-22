@@ -7,12 +7,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 // import './styles.css';
 
 // import required modules
-import { Navigation } from 'swiper/modules';
+import { Keyboard, Navigation, Pagination } from 'swiper/modules';
 
 const PerfumePhotos = ({ data }) => {
     console.log(data, "data")
@@ -21,28 +20,59 @@ const PerfumePhotos = ({ data }) => {
 
 
         <Swiper
-            slidesPerView={8}
-            spaceBetween={20}
-            navigation={true}
+            slidesPerView={4}
+            spaceBetween={0}
+            grabCursor={true}
+            pagination={{
+                clickable: true,
+            }}
+            breakpoints={{
+                769: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 1,
+                    spaceBetween: 5
+                },
+                310: {
+                    slidesPerView: 2,
+                    spaceBetween: 1
+                },
+            }}
 
-            modules={[Navigation]}
-            className="col-span-2 w-[100%] relative border-2"
+            navigation={true}
+            // pagination={{
+            //   clickable: true,
+            // }}
+            modules={[Keyboard, Navigation]}
+            className="mySwiper"
         >
 
-            <div className="flex gap-4 relative">
+            {/* <div className="flex gap-4 relative"> */}
 
-                {data
-                    ?.map((item) => {
-                        return (
-                            <SwiperSlide className='border'>
-                                <img className="size-52 object-cover" src={item?.path} alt="" />
-                            </SwiperSlide>
+            {data
+                ?.map((item) => {
+                    return (
+                        <SwiperSlide className='border '>
+                            <img className="size-24 object-cover" src={item?.path} alt="" />
+                        </SwiperSlide>
 
-                        );
-                    })}
-            </div>
+                    );
+                })}
+            {/* </div> */}
 
         </Swiper>
+
+        //     <Swiper
+        //     spaceBetween={50}
+        //     slidesPerView={3}
+        //     onSlideChange={() => console.log('slide change')}
+        //     onSwiper={(swiper) => console.log(swiper)}
+        //   >
+        //     <SwiperSlide>Slide 1</SwiperSlide>
+        //     <SwiperSlide>Slide 2</SwiperSlide>
+        //     <SwiperSlide>Slide 3</SwiperSlide>
+        //     <SwiperSlide>Slide 4</SwiperSlide>
+        //     ...
+        //   </Swiper>
 
 
 

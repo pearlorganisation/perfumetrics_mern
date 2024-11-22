@@ -17,7 +17,12 @@ const PopularBrands = () => {
   const [popularPerfumeData, setPopularPerfumeData] = useState(null)
 
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/recent`).then((res) => {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/recent`, {
+      headers: {
+        'Content-Type': 'application/json',
+        // Note: Adding `Access-Control-Allow-Origin` here does NOT solve CORS issues on the client side
+      },
+    }).then((res) => {
       setPopularPerfumeData(res.data.data)
     }).catch((err) => console.log(err))
   }, [])
@@ -27,16 +32,18 @@ const PopularBrands = () => {
     console.log("popularPerfumeData", popularPerfumeData);
   }, [popularPerfumeData])
 
+  console.log("PopularBrands component rendered", popularPerfumeData);
+
   return (
     <>
-      <div className="container mx-auto max-w-[90%]">
-        <div className="p-5 mt-10 mb-10">
+      <div className="container mx-auto max-w-[100%] md:max-w-[90%]">
+        <div className="p-5 my-0 md:my-10">
           <div className="text-center">
             {/* <div className="inline-block relative pb-5">
               <h1 className="text-3xl font-medium">Popular Brands</h1>
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-[#F8306C]"></div>
             </div> */}
-            <div className={`flex gap-7 space-x-4 overflow-x-auto py-8 px-2  w-full ${style.custom_scrollbar}`}>
+            <div className={`flex gap-7 space-x-4 overflow-x-auto py-2 md:py-8 px-2  w-full ${style.custom_scrollbar}`}>
 
               {popularPerfumeData && popularPerfumeData.map((item, index) => {
                 return (
@@ -50,7 +57,7 @@ const PopularBrands = () => {
                         />
                       </div>
 
-                      <div className="mt-4 line-clamp-1"><b>{item.perfume}</b><br />By {item?.brand?.brand || 'redo'}</div>
+                      <div className="mt-4 line-clamp-2"><b>{item.perfume}</b><br />By {item?.brand?.brand || 'redo'}</div>
                     </Link>
                   </section>
                 );

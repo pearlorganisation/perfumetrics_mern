@@ -1,11 +1,9 @@
 async function getPerfumeById(perfumeId) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/${perfumeId}`,
-    {
-      cache: "no-store",
-    }
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/${perfumeId}`
   );
   const data = await response.json();
+
   return data;
 }
 
@@ -77,7 +75,7 @@ const page = async ({ params }) => {
   const sidebarReview = await getSiderbarReviews();
 
   console.log(data, "data");
-  console.log(totalRatings, "Ratings perfumme !!!!");
+  // console.log(totalRatings, "Ratings perfumme !!!!");
 
   return (
     <>

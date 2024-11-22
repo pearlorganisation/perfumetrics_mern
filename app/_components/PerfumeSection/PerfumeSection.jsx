@@ -37,14 +37,14 @@ async function PerfumeSection({ reviewSidebar, length }) {
 
   return (
     <>
-      <div className="w-full  grid lg:grid-cols-[auto_20rem] lg:gap-y-0 gap-1 gap-x-1 px-8 md:px-0 py-10">
+      <div className="w-full grid lg:grid-cols-[auto_20rem] lg:gap-y-0 gap-1 gap-x-1 px-8 md:px-0 py-10">
 
         <div className="w-full  flex flex-col gap-4">
-          <div class="grid place-items-center relative mb-8">
-            <h1 class="text-3xl text-nowrap font-medium px-8 py-3 bg-white z-40 relative lg:left-[-11rem] w-[20rem] text-center bottom-[.1rem]">
+          <div className="grid place-items-center relative mb-8">
+            <h1 className="text-lg md:text-3xl text-nowrap font-medium px-8 py-3 bg-white z-40 relative lg:left-[-11rem] w-full md:w-[20rem] text-center bottom-[.1rem]">
               Top Rated Fragrance
             </h1>
-            <div class="absolute w-full h-[2px] bg-slate-500"></div>
+            <div className="absolute w-full h-[2px] bg-slate-500"></div>
           </div>
           {
             <ProductCards data={data}
@@ -52,7 +52,7 @@ async function PerfumeSection({ reviewSidebar, length }) {
           }
 
         </div>
-        <div className="space-y-4 mt-[6.6rem] ml-[31px]">
+        <div className="space-y-4 mt-[6.6rem] ml-[31px] hidden md:block">
           <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-4">
 
             <div className="text-xl md:text-2xl font-semibold">Register</div>
@@ -84,9 +84,9 @@ async function PerfumeSection({ reviewSidebar, length }) {
                 Perfume Reviews
               </span>
             </div> */}
-            <div class="grid place-items-center relative mb-2 mt-6">
-              <h1 class="text-2xl text-nowrap font-medium bg-white z-40 relative lg:left-[0rem] w-[12rem] text-center bottom-[.1rem]"> Perfume Reviews</h1>
-              <div class="absolute w-full h-[2px] bg-slate-500"></div></div>
+            <div className="grid place-items-center relative mb-2 mt-6">
+              <h1 className="text-2xl text-nowrap font-medium bg-white z-40 relative lg:left-[0rem] w-[12rem] text-center bottom-[.1rem]"> Perfume Reviews</h1>
+              <div className="absolute w-full h-[2px] bg-slate-500"></div></div>
             <CardsList reviewData={reviewSidebar} length={length} />
           </div>
         </div>

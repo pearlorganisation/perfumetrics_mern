@@ -317,7 +317,7 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
         className="overflow-y-auto  flex overflow-x-hidden fixed top-0 right-0 left-0 z-80 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
       >
         <div className="relative p-4 w-full max-w-4xl max-h-full">
-          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div className="relative bg-white mt-16 rounded-lg shadow dark:bg-gray-700">
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
               <div className="text-2xl text-center font-semibold ">
                 Give Your FeedBack

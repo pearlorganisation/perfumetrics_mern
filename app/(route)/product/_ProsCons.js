@@ -13,6 +13,7 @@ import { userStore } from "@/store/userStore";
 import axios from "axios";
 import { useRouter, useParams } from "next/navigation";
 import { toast } from "sonner";
+import { FaQuoteLeft } from "react-icons/fa";
 
 const ProsCons = () => {
   const router = useRouter();
@@ -76,128 +77,140 @@ const ProsCons = () => {
   }, [productId]);
 
   return (
-    <div className="grid grid-col-2 items-center bg-white md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
-      <div className="grid lg:grid-cols-2 justify-center md:w-full sm:w-60">
-        <div className="md:p-4 lg:border-r border-gray-300 grid place-items-center bg-[#f0fff1]">
-          <div className="mt-4">
-            <div className="text-[#2e6e6a] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
-              <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
-                <FaCrown /> PROS
-              </p>
+    <>
+      <div className="grid grid-col-2 items-center bg-white md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
+        <div className="grid lg:grid-cols-2 justify-center md:w-full sm:w-60">
+          <div className="md:p-4 lg:border-r border-gray-300 grid place-items-center bg-[#f0fff1]">
+            <div className="mt-4">
+              <div className="text-[#2e6e6a] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
+                <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
+                  <FaCrown /> PROS
+                </p>
+              </div>
+              <ul>
+                {prosNconsData?.pros?.map((item) => (
+                  <li
+                    key={item._id}
+                    className="flex items-center space-x-3 my-2"
+                  >
+                    <div className="flex gap-3">
+                      <span
+                        onClick={() =>
+                          user?._id
+                            ? handleVote({
+                                prosConsId: prosNconsData._id,
+                                userId: user?._id,
+                                userVote: 1,
+                                pros: item._id,
+                              })
+                            : toast.info("Please Login First...")
+                        }
+                        className={`${
+                          historyMap.get(item._id)?.vote === 1
+                            ? "ring-4 ring-pink-500/70 rounded-full"
+                            : ""
+                        } flex flex-col justify-center items-center`}
+                      >
+                        <CiHeart size={24} className="text-pink-300" />
+                        <span>{item.likesVote}</span>
+                      </span>
+                      <span
+                        onClick={() =>
+                          user?._id
+                            ? handleVote({
+                                prosConsId: prosNconsData._id,
+                                userId: user?._id,
+                                userVote: -1,
+                                pros: item._id,
+                              })
+                            : toast.info("Please Login First...")
+                        }
+                        className={`${
+                          historyMap.get(item._id)?.vote === -1
+                            ? "ring-4 ring-pink-500/70 rounded-full"
+                            : ""
+                        } flex flex-col justify-center items-center`}
+                      >
+                        <FaHeartBroken size={22} className="text-[#f34949]" />
+                        <span>{item.disLikesVote}</span>
+                      </span>
+                    </div>
+                    <span>{item.title}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul>
-              {prosNconsData?.pros?.map((item) => (
-                <li key={item._id} className="flex items-center space-x-3 my-2">
-                  <div className="flex gap-3">
-                    <span
-                      onClick={() =>
-                        user?._id
-                          ? handleVote({
-                              prosConsId: prosNconsData._id,
-                              userId: user?._id,
-                              userVote: 1,
-                              pros: item._id,
-                            })
-                          : toast.info("Please Login First...")
-                      }
-                      className={`${
-                        historyMap.get(item._id)?.vote === 1
-                          ? "ring-4 ring-pink-500/70 rounded-full"
-                          : ""
-                      } flex flex-col justify-center items-center`}
-                    >
-                      <CiHeart size={24} className="text-pink-300" />
-                      <span>{item.likesVote}</span>
-                    </span>
-                    <span
-                      onClick={() =>
-                        user?._id
-                          ? handleVote({
-                              prosConsId: prosNconsData._id,
-                              userId: user?._id,
-                              userVote: -1,
-                              pros: item._id,
-                            })
-                          : toast.info("Please Login First...")
-                      }
-                      className={`${
-                        historyMap.get(item._id)?.vote === -1
-                          ? "ring-4 ring-pink-500/70 rounded-full"
-                          : ""
-                      } flex flex-col justify-center items-center`}
-                    >
-                      <FaHeartBroken size={22} className="text-[#f34949]" />
-                      <span>{item.disLikesVote}</span>
-                    </span>
-                  </div>
-                  <span>{item.title}</span>
-                </li>
-              ))}
-            </ul>
           </div>
-        </div>
 
-        <div className="p-4 grid place-items-center bg-[#fff5f5]">
-          <div className="mt-4">
-            <div className="text-[#ec5151] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
-              <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
-                <FaCrown /> CONS
-              </p>
+          <div className="p-4 grid place-items-center bg-[#fff5f5]">
+            <div className="mt-4">
+              <div className="text-[#ec5151] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
+                <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
+                  <FaCrown /> CONS
+                </p>
+              </div>
+              <ul>
+                {prosNconsData?.cons?.map((item) => (
+                  <li
+                    key={item._id}
+                    className="flex items-center space-x-3 my-2"
+                  >
+                    <div className="flex gap-3">
+                      <span
+                        onClick={() =>
+                          user?._id
+                            ? handleVote({
+                                prosConsId: prosNconsData._id,
+                                userId: user?._id,
+                                userVote: 1,
+                                cons: item._id,
+                              })
+                            : toast.info("Please Login First...")
+                        }
+                        className={`${
+                          historyMap.get(item._id)?.vote === 1
+                            ? "ring-4 ring-pink-500/70 rounded-full"
+                            : ""
+                        } flex flex-col justify-center items-center`}
+                      >
+                        <CiHeart size={24} className="text-pink-300" />
+                        <span>{item.likesVote}</span>
+                      </span>
+                      <span
+                        onClick={() =>
+                          user?._id
+                            ? handleVote({
+                                prosConsId: prosNconsData._id,
+                                userId: user?._id,
+                                userVote: -1,
+                                cons: item._id,
+                              })
+                            : toast.info("Please Login First...")
+                        }
+                        className={`${
+                          historyMap.get(item._id)?.vote === -1
+                            ? "ring-4 ring-pink-500/70 rounded-full"
+                            : ""
+                        } flex flex-col justify-center items-center`}
+                      >
+                        <FaHeartBroken size={22} className="text-[#f34949]" />
+                        <span>{item.disLikesVote}</span>
+                      </span>
+                    </div>
+                    <span>{item.title}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul>
-              {prosNconsData?.cons?.map((item) => (
-                <li key={item._id} className="flex items-center space-x-3 my-2">
-                  <div className="flex gap-3">
-                    <span
-                      onClick={() =>
-                        user?._id
-                          ? handleVote({
-                              prosConsId: prosNconsData._id,
-                              userId: user?._id,
-                              userVote: 1,
-                              cons: item._id,
-                            })
-                          : toast.info("Please Login First...")
-                      }
-                      className={`${
-                        historyMap.get(item._id)?.vote === 1
-                          ? "ring-4 ring-pink-500/70 rounded-full"
-                          : ""
-                      } flex flex-col justify-center items-center`}
-                    >
-                      <CiHeart size={24} className="text-pink-300" />
-                      <span>{item.likesVote}</span>
-                    </span>
-                    <span
-                      onClick={() =>
-                        user?._id
-                          ? handleVote({
-                              prosConsId: prosNconsData._id,
-                              userId: user?._id,
-                              userVote: -1,
-                              cons: item._id,
-                            })
-                          : toast.info("Please Login First...")
-                      }
-                      className={`${
-                        historyMap.get(item._id)?.vote === -1
-                          ? "ring-4 ring-pink-500/70 rounded-full"
-                          : ""
-                      } flex flex-col justify-center items-center`}
-                    >
-                      <FaHeartBroken size={22} className="text-[#f34949]" />
-                      <span>{item.disLikesVote}</span>
-                    </span>
-                  </div>
-                  <span>{item.title}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>
-
-      <p className="text-left text-blue-600 text-base mt-4">
+      <div className="relative border-t-2 pt-4">
+        <div className="p-2 absolute -top-5 left-[50%] bg-white">
+          <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
+        </div>
+      </div>
+      <p className="md:text-left text-blue-600 text-base mt-4 text-justify">
         Note: The pros and cons listed on this page have been generated using
         the artificial intelligence system, which analyzes product reviews
         submitted by our members. While we strive to provide accurate and
@@ -206,7 +219,7 @@ const ProsCons = () => {
         reviews and consider your own needs and preferences before making a
         purchasing decision.
       </p>
-    </div>
+    </>
   );
 };
 

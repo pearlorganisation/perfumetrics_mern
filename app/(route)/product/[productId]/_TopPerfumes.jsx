@@ -23,10 +23,10 @@ const TopPerfumes = () => {
                             <span className="font-medium text-xl">
                                 Giorgio Armani{" "}
                             </span>
-                            <div class="text-yellow-500 flex justify-start items-center gap-2">
+                            <div className="text-yellow-500 flex justify-start items-center gap-2">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 inline-block"
+                                    className="h-5 w-5 inline-block"
                                     viewBox="0 0 20 20"
                                     fill="currentColor"
                                 >
@@ -34,7 +34,7 @@ const TopPerfumes = () => {
                                 </svg>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 inline-block"
+                                    className="h-5 w-5 inline-block"
                                     viewBox="0 0 20 20"
                                     fill="currentColor"
                                 >
@@ -42,7 +42,7 @@ const TopPerfumes = () => {
                                 </svg>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 inline-block"
+                                    className="h-5 w-5 inline-block"
                                     viewBox="0 0 20 20"
                                     fill="currentColor"
                                 >
@@ -50,7 +50,7 @@ const TopPerfumes = () => {
                                 </svg>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 inline-block"
+                                    className="h-5 w-5 inline-block"
                                     viewBox="0 0 20 20"
                                     fill="currentColor"
                                 >
@@ -58,7 +58,7 @@ const TopPerfumes = () => {
                                 </svg>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 inline-block"
+                                    className="h-5 w-5 inline-block"
                                     viewBox="0 0 20 20"
                                     fill="currentColor"
                                 >

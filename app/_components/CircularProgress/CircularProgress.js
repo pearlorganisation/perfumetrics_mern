@@ -9,10 +9,10 @@ const CircularProgress = ({
 }) => {
   return (
     <div className={className}>
-      <svg class="w-full h-full" viewBox="0 0 100 100">
+      <svg className="w-full h-full" viewBox="0 0 100 100">
         {/* <!-- Background circle --> */}
         <circle
-          class="text-gray-200 stroke-current"
+          className="text-gray-200 stroke-current"
           stroke-width={strokeWidth}
           cx="50"
           cy="50"
@@ -21,7 +21,7 @@ const CircularProgress = ({
         ></circle>
         {/* <!-- Progress circle --> */}
         <circle
-          class={`text-indigo-500 ${styles.progress_ring__circle}   stroke-current`}
+          className={`text-indigo-500 ${styles.progress_ring__circle}   stroke-current`}
           stroke-width={strokeWidth}
           stroke-linecap="round"
           cx="50"
