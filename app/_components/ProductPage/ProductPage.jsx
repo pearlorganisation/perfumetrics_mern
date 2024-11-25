@@ -100,7 +100,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
         <div className="min-h-screen container mx-auto mt-10 md:py-20 px-4">
             <p className="text-4xl font-medium py-6 md:mb-16 mb-0 text-center">
                 {/* {data?.data?.perfume}{" "} */}
-                <span className="text-2xl md:text-4xl font-semibold ">{data?.data?.perfume}</span>
+                <h1 className="text-2xl md:text-4xl font-semibold ">{data?.data?.perfume}</h1>
             </p>
             <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_18rem]">
                 <div className="grid md:grid-cols-[55%_45%]  ">
@@ -119,7 +119,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                   alt="img"
                   srcset=""
                 /> */}
-                            <img src={data?.data?.banner} alt="img" srcset="" />
+                            <img src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
                         </div>
                         {
                             <LikeDislikeComponent key={1} data={data} historyMap={historyMap} productId={productId} likeDislike={likeDislike} />
@@ -128,7 +128,7 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
 
                     <div className="flex flex-col items-center gap-4 ">
                         <div className="rounded-full overflow-hidden  w-fit">
-                            <img className="size-52 md:size-60" src={data?.data?.logo} alt="" />
+                            <img className="size-52 md:size-60" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
                         </div>
                         <div className="flex flex-wrap w-full justify-center">
                             <PieChart mainAccords={data?.data?.mainAccords} />
@@ -230,9 +230,9 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                 <div className='hidden md:block'>
                     <div className="w-full  flex flex-col gap-10">
                         <div className=" w-full text-center py-4 shadow-lg">
-                            <span className="text-xl md:text-2xl  font-semibold ">
+                            <h2 className="text-xl md:text-2xl  font-semibold ">
                                 Perfume Reviews
-                            </span>
+                            </h2>
                         </div>
                         <CardsList reviewData={sidebarReview} length={7} />
                     </div>
@@ -242,9 +242,10 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
             <div className="mt-4 md:py-14 md:mt-14">
                 <div className="w-full relative grid place-items-center mb-14">
                     <div className="h-[2px] w-full bg-black absolute"></div>
-                    <p className="text-xl md:text-3xl font-medium bg-white px-4 z-30">
+                    <h2
+                        className="text-xl md:text-3xl font-medium bg-white px-4 z-30">
                         Perfume Photos
-                    </p>
+                    </h2>
                 </div>
                 <PerfumePhotos data={data?.data?.gallery} />
             </div>
@@ -254,9 +255,9 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
             <div className="mt-20">
                 <div className="w-full relative grid place-items-center mb-14">
                     <div className="h-[2px] w-[70%] bg-black absolute"></div>
-                    <p className="text-xl  md:text-3xl font-medium bg-white px-2 md:px-4 z-30">
+                    <h2 className="text-xl  md:text-3xl font-medium bg-white px-2 md:px-4 z-30">
                         Fragrance Notes
-                    </p>
+                    </h2>
                 </div>
                 <div className="grid lg:grid-cols-[auto_18rem]">
                     <div className="flex items-start justify-center lg:translate-x-6   gap-10 ">
@@ -373,9 +374,9 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
             {/*Ya perfume categories starts */}
             <div className=" grid lg:grid-cols-[auto_18rem]">
                 <div className="md:space-y-6 md:px-6">
-                    <div className="text-xl md:text-3xl text-center md:text-left text-green-500 font-medium mt-10 mb-14">
+                    <h2 className="text-xl md:text-3xl text-center md:text-left text-green-500 font-medium mt-10 mb-14">
                         Yeah Perfume Categories
-                    </div>
+                    </h2>
                     <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-14">
                         {perfumeCategories?.map((item) => {
                             return (
@@ -389,9 +390,9 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                                             />
                                         </div>
                                         <div className="p-4">
-                                            <h2 className="text-sm font-semibold text-blue-600">
+                                            <h3 className="text-sm font-semibold text-blue-600">
                                                 {item?.perfumeName}
-                                            </h2>
+                                            </h3>
                                             <div className="mt-2 space-x-2">
                                                 <span className="text-xl font-bold text-gray-900">
                                                     ₹{item?.price}
@@ -408,9 +409,9 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                     {data && <FragramRatings data={data.data?.ratingFragrams} />}
                     <div className="grid gap-5 container ">
                         <div className="grid place-items-center relative mt-24 mb-6">
-                            <h1 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
+                            <h2 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
                                 Rating/Results{" "}
-                            </h1>
+                            </h2>
                             <div className="absolute w-full h-[2px] bg-slate-500"></div>
                         </div>
 

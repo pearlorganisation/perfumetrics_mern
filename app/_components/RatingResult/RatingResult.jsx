@@ -259,7 +259,7 @@ const RatingResult = ({ perfumeRatings }) => {
                     return <div className='grid'>
                         <div className="font-semibold grid place-items-center text-sm sm:text-lg py-2 text-[#2071B2] capitalize">
                             <span>{item?.icon}</span>
-                            <span className='text-black'>{item?.name}</span>
+                            <h3 className='text-black'>{item?.name}</h3>
                         </div>
                         <div className='flex justify-around md:gap-x-5'>
                             {

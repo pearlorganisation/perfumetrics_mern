@@ -26,9 +26,9 @@ const FragramRatings = ({ data }) => {
       <div>
         <div className="flex flex-col items-center  md:space-y-8">
           <div className="grid place-items-center relative w-full mt-20 mb-0 md:mb-8">
-            <h1 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
+            <h2 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
               Fragram Ratings
-            </h1>
+            </h2>
             <div className="absolute w-full h-[2px] bg-slate-500"></div>
           </div>
           <div className="grid grid-cols-3 gap-8">
@@ -66,7 +66,7 @@ const FragramRatings = ({ data }) => {
                 </div>
               </div>
 
-              <span className="mt-2 font-semibold">Longevity</span>
+              <h3 className="mt-2 font-semibold">Longevity</h3>
             </div>
             <div className="flex flex-col items-center">
               <div className="relative">
@@ -102,7 +102,7 @@ const FragramRatings = ({ data }) => {
                 </div>
               </div>
 
-              <span className="mt-2 font-semibold">Sillage</span>
+              <h3 className="mt-2 font-semibold">Sillage</h3>
             </div>
             <div className="flex flex-col items-center">
               <div className="relative">
@@ -138,7 +138,7 @@ const FragramRatings = ({ data }) => {
                 </div>
               </div>
 
-              <span className="mt-2 font-semibold">Pricing</span>
+              <h3 className="mt-2 font-semibold">Pricing</h3>
             </div>
             <div className="flex flex-col items-center">
               <div className="relative">
@@ -179,7 +179,7 @@ const FragramRatings = ({ data }) => {
                 </div>
               </div>
 
-              <span className="mt-2 font-semibold">Gender</span>
+              <h3 className="mt-2 font-semibold">Gender</h3>
             </div>
             <div className="flex flex-col items-center">
               <div className="relative">
@@ -215,7 +215,7 @@ const FragramRatings = ({ data }) => {
                 </div>
               </div>
 
-              <span className="mt-2 font-semibold">Compliment</span>
+              <h3 className="mt-2 font-semibold">Compliment</h3>
             </div>
             <div className="flex flex-col items-center">
               <div className="relative">
@@ -251,7 +251,7 @@ const FragramRatings = ({ data }) => {
                 </div>
               </div>
 
-              <span className="mt-2 font-semibold">Overall</span>
+              <h3 className="mt-2 font-semibold">Overall</h3>
             </div>
           </div>
           <button className="px-6 py-2 mt-8 text-lg font-semibold text-white bg-pink-500 rounded-md">
@@ -261,9 +261,9 @@ const FragramRatings = ({ data }) => {
         {data && (
           <div className="space-y-4 mt-24">
             <div className="grid place-items-center relative w-full mb-16">
-              <h1 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
+              <h2 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
                 Fragrams
-              </h1>
+              </h2>
               <div className="absolute w-full h-[2px] bg-slate-500"></div>
             </div>
             <div className="grid md:grid-cols-2 gap-8">

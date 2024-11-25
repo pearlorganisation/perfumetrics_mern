@@ -1,6 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import SwiperCore, { Navigation } from "swiper";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+// import required modules
+import { Navigation } from "swiper/modules";
+
 import axios from "axios";
 import {
   useParams,
@@ -11,7 +17,7 @@ import {
 import React, { memo, useEffect, useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
-SwiperCore.use([Navigation]);
+// SwiperCore.use([Navigation]);
 
 const BrandSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -96,6 +102,8 @@ const BrandSlider = () => {
           className="py-4"
           spaceBetween={10}
           slidesPerView={5}
+          modules={[Navigation]}
+          navigation={true}
         >
           {brandsData?.map((brand, index) => (
             <SwiperSlide key={brand?._id} className=" !w-auto">

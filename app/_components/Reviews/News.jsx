@@ -29,180 +29,233 @@ const News = () => {
         <div class="absolute w-full h-[2px] bg-slate-500"></div>
       </div>
       <div className="flex justify-between items-center text-lg md:text-4xl font-medium"></div>
-      <Link href={`/news/${newsMapData?.get(1)?._id}`} className="grid grid-cols-1 gap-6 py-6 pt-0">
+      {
+        newsMapData ? <Link href={`/news/${newsMapData?.get(1)?._id}`} className="grid grid-cols-1 gap-6 py-6 pt-0">
 
-        <div className="space-y-4 w-full">
-          <img
-            className="w-full h-[30rem] object-cover"
+          <div className="space-y-4 w-full">
+            <img
+              className="w-full h-[30rem] object-cover"
 
-            src={newsMapData?.get(1)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
-            alt=""
-          />
+              src={newsMapData?.get(1)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+              alt=""
+            />
 
-          <div className="font-medium text-3xl text-black">
-            {newsMapData?.get(1)?.title}
+            <div className="font-medium text-3xl text-black">
+              {newsMapData?.get(1)?.title}
 
+            </div>
+            <div className="font-medium">By {newsMapData?.get(1)?.user} :</div>
+            <p className="line-clamp-4">
+              {newsMapData?.get(1)?.details}
+
+            </p>
           </div>
-          <div className="font-medium">By {newsMapData?.get(1)?.user} :</div>
-          <p className="line-clamp-4">
-            {newsMapData?.get(1)?.details}
-            {/* {
-                    parse(newsMapData?.get(1)?.description || '')
-                  } */}
-            {/* Let’s get the bad news over with first. The moment a brand
-                  exists, sustainability no longer exists. Even at its most
-                  responsible, a brand creates waste in some form. And if anyone
-                  harps about your carbon footprint—just a friendly reminder
-                  that it’s a term coined by the marketing division of British
-                  Petroleum, placing the blame of environmental damage on
-                  consumers and not the companies drilling for fossil fuel. And
-                  if anyone harps about your carbon footprint—just a friendly
-                  reminder that it’s a term coined by the marketing division of
-                  British Petroleum, placing the blame of environmental damage
-                  on consumers and not the companies drilling for fossil
-                  fuel. blame of environmental damage on consumers and not the
-                  companies drilling for fossil fuel. */}
-          </p>
-        </div>
 
-      </Link>
+        </Link> : <div class="grid grid-cols-1 gap-6 py-6 pt-0 animate-pulse">
+          <div class="space-y-4 w-full">
+            <div class="w-full h-[30rem] bg-gray-200"></div>
+            <div class="h-12 bg-gray-200 w-3/4"></div>
+            <div class="h-6 bg-gray-200 w-1/2"></div>
+            <div class="h-16 bg-gray-200 w-full"></div>
+          </div>
+        </div>
+      }
+
       <div className="grid gap-6 md:grid-cols-[18rem_auto] py-6 ">
         <div>
-          <Link href={`/news/${newsMapData?.get(2)?._id}`} className="mb-8">
+          {
+            newsMapData ? <Link href={`/news/${newsMapData?.get(2)?._id}`} className="mb-8">
+              <img
+                className="w-full rounded-md h-[13.5rem]"
+                src={newsMapData?.get(2)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+                alt=""
+              />
+              <div className="font-bold pt-2 text-black text-xl">
+                {newsMapData?.get(2)?.title}
+
+              </div>
+              <div className="font-semibold ">{newsMapData?.get(2)?.user}</div>
+              <p className="font-medium line-clamp-4">
+                {newsMapData?.get(2)?.details}{" "}
+              </p>
+            </Link> : <div class="mb-8 animate-pulse space-y-2">
+              <div class="w-full rounded-md h-[13.5rem] bg-gray-200"></div>
+              <div class="font-bold pt-2 text-black text-xl h-6 bg-gray-200 rounded w-3/4"></div>
+              <div class="font-semibold h-4 bg-gray-200 rounded w-1/2"></div>
+              <div class="font-medium h-20 bg-gray-200 rounded w-full"></div>
+            </div>
+          }
+          {
+            newsMapData ? <Link href={`/news/${newsMapData?.get(3)?._id}`} className="mb-8">
+              <img
+                className="w-full rounded-md h-[13.5rem]"
+                src={newsMapData?.get(3)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+                alt=""
+              />
+              <div className="font-bold pt-2 text-black text-xl">
+                {newsMapData?.get(3)?.title}
+
+              </div>
+              <div className="font-semibold "> {newsMapData?.get(3)?.user}</div>
+              <p className="font-medium line-clamp-4">
+                {newsMapData?.get(3)?.details}{" "}
+                {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
+              qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
+              nihil assumenda sed{" "} */}
+              </p>
+            </Link> : <div class="mb-8 animate-pulse space-y-2">
+              <div class="w-full rounded-md h-[13.5rem] bg-gray-200"></div>
+              <div class="font-bold pt-2 text-black text-xl">
+                <div class="h-4 bg-gray-200 w-3/4"></div>
+              </div>
+              <div class="font-semibold">
+                <div class="h-4 bg-gray-200 w-1/2"></div>
+              </div>
+              <p class="font-medium line-clamp-4">
+                <div class="h-4 bg-gray-200 mb-2 w-full"></div>
+                <div class="h-4 bg-gray-200 mb-2 w-4/5"></div>
+                <div class="h-4 bg-gray-200 mb-2 w-3/4"></div>
+                <div class="h-4 bg-gray-200 mb-2 w-2/3"></div>
+              </p>
+            </div>
+          }
+
+        </div>
+        {
+          newsMapData ? <Link href={`/news/${newsMapData?.get(4)?._id}`} className=" space-y-3">
             <img
-              className="w-full rounded-md h-[13.5rem]"
-              src={newsMapData?.get(2)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+              className="w-full rounded-md h-[20rem]"
+              src={newsMapData?.get(4)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
               alt=""
             />
-            <div className="font-bold pt-2 text-black text-xl">
-              {newsMapData?.get(2)?.title}
-
-            </div>
-            <div className="font-semibold ">{newsMapData?.get(2)?.user}</div>
-            <p className="font-medium line-clamp-4">
-              {newsMapData?.get(2)?.details}{" "}
-            </p>
-          </Link>
-          <Link href={`/news/${newsMapData?.get(3)?._id}`} className="mb-8">
-            <img
-              className="w-full rounded-md h-[13.5rem]"
-              src={newsMapData?.get(3)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
-              alt=""
-            />
-            <div className="font-bold pt-2 text-black text-xl">
-              {newsMapData?.get(3)?.title}
-
-            </div>
-            <div className="font-semibold "> {newsMapData?.get(3)?.user}</div>
-            <p className="font-medium line-clamp-4">
-              {newsMapData?.get(3)?.details}{" "}
+            <div className="font-semibold text-xl"> {newsMapData?.get(4)?.title}</div>
+            <div className="font-semibold"> {newsMapData?.get(4)?.user}</div>
+            <p className="font-medium line-clamp-3">
+              {newsMapData?.get(4)?.details}{" "}
               {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
               qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
               nihil assumenda sed{" "} */}
             </p>
-          </Link>
-        </div>
-        <Link href={`/news/${newsMapData?.get(4)?._id}`} className=" space-y-3">
+          </Link> : <div class="animate-pulse space-y-3">
+            <div class="w-full rounded-md h-80 bg-gray-200"></div>
+            <div class="font-semibold text-xl h-5 bg-gray-200"></div>
+            <div class="font-semibold h-5 bg-gray-200"></div>
+            <div class="font-medium h-10 bg-gray-200"></div>
+          </div>
+        }
+
+      </div>
+      {
+        newsMapData ? <Link href={`/news/${newsMapData?.get(5)?._id}`} className="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8 border-gray-400">
+          <div>
+            <div className="font-bold pt-2 text-black text-xl">
+              {newsMapData?.get(5)?.title}
+
+            </div>
+            <span className="font-semibold text-lg"> {newsMapData?.get(5)?.user}{" "}</span>
+            <p className="font-medium line-clamp-4">
+              {newsMapData?.get(5)?.details}{" "}
+              {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
+              qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
+              nihil assumenda sed{" "} */}
+            </p>
+          </div>
           <img
-            className="w-full rounded-md h-[20rem]"
-            src={newsMapData?.get(4)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+            className="w-full h-[20rem] object-cover"
+            src={newsMapData?.get(5)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
             alt=""
           />
-          <div className="font-semibold text-xl"> {newsMapData?.get(4)?.title}</div>
-          <div className="font-semibold"> {newsMapData?.get(4)?.user}</div>
-          <p className="font-medium line-clamp-3">
-            {newsMapData?.get(4)?.details}{" "}
-            {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
-              qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
-              nihil assumenda sed{" "} */}
-          </p>
-        </Link>
-      </div>
-      <Link href={`/news/${newsMapData?.get(5)?._id}`} className="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8 border-gray-400">
-        <div>
-          <div className="font-bold pt-2 text-black text-xl">
-            {newsMapData?.get(5)?.title}
-
+        </Link> : <div class="animate-pulse">
+          <div class="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8 border-gray-400">
+            <div>
+              <div class="h-6 bg-gray-200 rounded w-1/2 my-2"></div>
+              <div class="h-5 bg-gray-200 rounded w-1/3 my-2"></div>
+              <div class="h-16 bg-gray-200 rounded w-full my-2"></div>
+            </div>
+            <div class="w-full h-[20rem] bg-gray-200 rounded"></div>
           </div>
-          <span className="font-semibold text-lg"> {newsMapData?.get(5)?.user}{" "}</span>
-          <p className="font-medium line-clamp-4">
-            {newsMapData?.get(5)?.details}{" "}
-            {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
-              qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
-              nihil assumenda sed{" "} */}
-          </p>
         </div>
-        <img
-          className="w-full h-[20rem] object-cover"
-          src={newsMapData?.get(5)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
-          alt=""
-        />
-      </Link>
+      }
+
 
       {/* News */}
       <div className="grid grid-cols-1 gap-6 py-6">
+        {
+          newsMapData ? <Link href={`/news/${newsMapData?.get(6)?._id}`} className="space-y-4 w-full">
+            <img
+              className="w-full h-[30rem] object-cover"
+              src={newsMapData?.get(6)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+              alt=""
+            />
 
+            <div className="font-medium text-3xl text-black ">
+              {
+                newsMapData?.get(6)?.title
 
-        <Link href={`/news/${newsMapData?.get(6)?._id}`} className="space-y-4 w-full">
-          <img
-            className="w-full h-[30rem] object-cover"
-            src={newsMapData?.get(6)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
-            alt=""
-          />
+              }
+            </div>
+            <div className="font-medium">By {
+              newsMapData?.get(6)?.user
 
-          <div className="font-medium text-3xl text-black ">
-            {
-              newsMapData?.get(6)?.title
+            }:</div>
+            <p className="line-clamp-4">
+              {
+                newsMapData?.get(6)?.
+                  details
 
-            }
+              }
+
+            </p>
+          </Link> : <div class="space-y-4 w-full animate-pulse">
+            <div class="w-full h-[30rem] bg-gray-200"></div>
+            <div class="font-medium text-3xl text-black h-12 bg-gray-200"></div>
+            <div class="h-6 bg-gray-200"></div>
+            <div class="line-clamp-4 h-24 bg-gray-200"></div>
           </div>
-          <div className="font-medium">By {
-            newsMapData?.get(6)?.user
+        }
 
-          }:</div>
-          <p className="line-clamp-4">
-            {
-              newsMapData?.get(6)?.
-                details
 
-            }
-
-          </p>
-        </Link>
 
       </div>
       <div className="grid grid-cols-1 gap-6 py-6">
+        {
+          newsMapData ? <Link href={`/news/${newsMapData?.get(7)?._id}`} className="space-y-4 w-full">
+            <img
+              className="w-full h-[30rem] object-cover"
+              src={newsMapData?.get(7)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+              alt=""
+            />
 
-        <Link href={`/news/${newsMapData?.get(7)?._id}`} className="space-y-4 w-full">
-          <img
-            className="w-full h-[30rem] object-cover"
-            src={newsMapData?.get(7)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
-            alt=""
-          />
+            <div className="font-medium text-3xl text-black">
 
-          <div className="font-medium text-3xl text-black">
+              {
+                newsMapData?.get(7)?.
+                  title
 
-            {
-              newsMapData?.get(7)?.
-                title
+              }
+            </div>
+            <div className="font-medium">By
+              {
+                newsMapData?.get(7)?.
+                  user
 
-            }
+              }:</div>
+            <p className="line-clamp-4">
+
+              {
+                newsMapData?.get(7)?.
+                  details
+
+              }
+            </p>
+          </Link> : <div class="space-y-4 w-full animate-pulse">
+            <div class="w-full h-[30rem] bg-gray-200"></div>
+            <div class="font-medium text-3xl text-black h-12 bg-gray-200"></div>
+            <div class="h-6 bg-gray-200"></div>
+            <div class="line-clamp-4 h-24 bg-gray-200"></div>
           </div>
-          <div className="font-medium">By
-            {
-              newsMapData?.get(7)?.
-                user
+        }
 
-            }:</div>
-          <p className="line-clamp-4">
-
-            {
-              newsMapData?.get(7)?.
-                details
-
-            }
-          </p>
-        </Link>
 
       </div>
     </div>
