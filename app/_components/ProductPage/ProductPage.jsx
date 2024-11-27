@@ -29,7 +29,7 @@ import { userLikeDislikeHistoryStore } from '@/store/userLikeDislikeHistoryStore
 import LikeDislikeComponent from './LikeDislikeComponent';
 
 
-const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
+const ProductPage = ({ data, sidebarReview, productId }) => {
     const { getUserLikeDisLikeHistory, userLikeDislikeHistory } = userLikeDislikeHistoryStore();
     const [purchaseLinks, setPurchaseLinks] = useState([]);
     const router = useRouter();
@@ -415,9 +415,9 @@ const ProductPage = ({ data, totalRatings, sidebarReview, productId }) => {
                             <div className="absolute w-full h-[2px] bg-slate-500"></div>
                         </div>
 
-                        {totalRatings?.data && (
-                            <RatingResult perfumeRatings={totalRatings.data} />
-                        )}
+
+                        <RatingResult productId={productId} />
+
                     </div>
                     {/* <div className="space-y-5">
                         <AddReview />

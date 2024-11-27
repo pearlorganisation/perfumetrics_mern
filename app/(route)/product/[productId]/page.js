@@ -44,14 +44,6 @@ async function getSiderbarReviews() {
   return data?.data;
 }
 
-async function getTotalRatings(perfumeId) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${perfumeId}`
-  );
-  const data = await response.json();
-  return data;
-}
-
 import { lazy, Suspense } from "react";
 import "./style.css";
 
@@ -71,7 +63,6 @@ const page = async ({ params }) => {
   const dataProsCons = await getProsCons(productId);
   const data = await getPerfumeById(productId);
 
-  const totalRatings = await getTotalRatings(productId);
   const sidebarReview = await getSiderbarReviews();
 
   console.log(data, "data");
@@ -90,7 +81,6 @@ const page = async ({ params }) => {
       >
         <ProductPage
           data={data}
-          totalRatings={totalRatings}
           dataProsCons={dataProsCons}
           sidebarReview={sidebarReview}
           productId={productId}

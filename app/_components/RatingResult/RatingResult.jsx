@@ -6,23 +6,73 @@ import { BiSolidDollarCircle } from "react-icons/bi";
 import { IoMaleFemale } from "react-icons/io5";
 import { userStore } from '@/store/userStore';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { toast } from 'sonner';
+import { useSearchParams } from 'next/navigation';
 
 
-const RatingResult = ({ perfumeRatings }) => {
-    const [result, setResult] = useState([])
+const RatingResult = ({ productId }) => {
     const { user } = userStore();
+    const [result, setResult] = useState([])
+    const [perfumeRatings, setPerfumeRatings] = useState([])
+    const [rateData, setRateData] = useState({})
     console.log("dsa", user);
+    async function getTotalRatings(perfumeId) {
+        const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${perfumeId}`)
+        console.log(result)
+        setPerfumeRatings(result?.data?.data)
+    }
+    useEffect(() => {
+        getTotalRatings(productId)
+    }, [])
+
+
 
     const getReviewByUserId = async () => {
         const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/review/user/${user?._id}`)
         console.log(result, "Reslt")
         setResult(result?.data?.data[0])
     }
+    const updateReviewByUserId = async (payload) => {
+        console.log(productId, "productid")
+        console.log(payload, "payload")
+        const result = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${productId}`, { ...payload })
+        getTotalRatings(productId)
+        console.log(result, "Reslt")
+    }
     const [emoji, setEmoji] = useState(1)
     const modifyStr = (str) => {
         return str?.replace(/([A-Z])/g, ' $1')
             .replace(/^./, function (match) { return match.toUpperCase(); })
             .trim()
+    }
+
+    const toCamelCase = (str) => {
+        if (!str) return ""; // Handle empty or undefined input
+        return str
+            .toLowerCase() // Convert the string to lowercase
+            .split(" ") // Split the string by spaces
+            .map((word, index) =>
+                index === 0
+                    ? word // Keep the first word lowercase
+                    : word.charAt(0).toUpperCase() + word.slice(1) // Capitalize the first letter of subsequent words
+            )
+            .join(""); // Join the array into a single string
+    };
+    const updateRating = (p1, p2) => {
+        if (user?._id) {
+            console.log(user, "user")
+            let obj = {}
+            obj[toCamelCase(p1?.name)] = toCamelCase(p2?.name)
+            console.log(obj, "obj")
+            updateReviewByUserId({ userId: user?._id, ...obj })
+            setRateData(prev => {
+                return { userId: user?._id, ...obj }
+            })
+        } else {
+            toast.info("Please Login First...")
+        }
+
     }
     const results = [
         {
@@ -83,7 +133,7 @@ const RatingResult = ({ perfumeRatings }) => {
                 {
                     name: 'Very Weak',
                     isUserSelected: modifyStr(result?.longevity) === 'Very Weak',
-                    num: perfumeRatings.longevity.veryWeak,
+                    num: perfumeRatings?.longevity?.veryWeak,
                     icon: (
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M10 2L10 18" stroke="#ccc" stroke-width="2" />
@@ -94,7 +144,7 @@ const RatingResult = ({ perfumeRatings }) => {
                 {
                     name: 'Weak',
                     isUserSelected: modifyStr(result?.longevity) === 'Weak',
-                    num: perfumeRatings.longevity.weak,
+                    num: perfumeRatings?.longevity?.weak,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
                         <circle cx="10" cy="10" r="5" fill="#aaa" />
@@ -103,7 +153,7 @@ const RatingResult = ({ perfumeRatings }) => {
                 {
                     name: 'Moderate',
                     isUserSelected: modifyStr(result?.longevity) === 'Moderate',
-                    num: perfumeRatings.longevity.moderate,
+                    num: perfumeRatings?.longevity?.moderate,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
                         <circle cx="10" cy="10" r="5" fill="#aaa" />
@@ -112,7 +162,7 @@ const RatingResult = ({ perfumeRatings }) => {
                 {
                     name: 'Long Lasting',
                     isUserSelected: modifyStr(result?.longevity) === 'Long Lasting',
-                    num: perfumeRatings.longevity.longLasting,
+                    num: perfumeRatings?.longevity?.longLasting,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 8L10 12" stroke="#555" stroke-width="2" />
                         <circle cx="10" cy="10" r="7" fill="#555" />
@@ -122,7 +172,7 @@ const RatingResult = ({ perfumeRatings }) => {
                 {
                     name: 'Eternal',
                     isUserSelected: modifyStr(result?.longevity) === 'Eternal',
-                    num: perfumeRatings.longevity.eternal,
+                    num: perfumeRatings?.longevity?.eternal,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 10L10 10" stroke="#333" stroke-width="2" />
                         <circle cx="10" cy="10" r="8" fill="#333" />
@@ -141,28 +191,28 @@ const RatingResult = ({ perfumeRatings }) => {
                 {
                     name: 'Intimate',
                     isUserSelected: modifyStr(result?.sillage) === 'Intimate',
-                    num: perfumeRatings.sillage.intimate
+                    num: perfumeRatings?.sillage?.intimate
                 },
                 {
                     name: 'No Vote',
                     isUserSelected: modifyStr(result?.sillage) === 'No Vote',
-                    num: perfumeRatings.sillage.noVote
+                    num: perfumeRatings?.sillage?.noVote
                 },
 
                 {
                     name: 'Moderate',
                     isUserSelected: modifyStr(result?.sillage) === 'Moderate',
-                    num: perfumeRatings.sillage.moderate
+                    num: perfumeRatings?.sillage?.moderate
                 },
                 {
                     name: 'Strong',
                     isUserSelected: modifyStr(result?.sillage) === 'Strong',
-                    num: perfumeRatings.sillage.strong
+                    num: perfumeRatings?.sillage?.strong
                 },
                 {
                     name: 'Enormous',
                     isUserSelected: modifyStr(result?.sillage) === 'Enormous',
-                    num: perfumeRatings.sillage.enormous
+                    num: perfumeRatings?.sillage?.enormous
                 }
             ]
         },
@@ -175,31 +225,31 @@ const RatingResult = ({ perfumeRatings }) => {
                 {
                     name: 'Way Overpriced',
                     isUserSelected: modifyStr(result?.priceValue) === 'Way Overpriced',
-                    num: perfumeRatings.priceValue.wayOverPriced
+                    num: perfumeRatings?.priceValue?.wayOverPriced
                 },
                 {
                     name: 'Over Priced',
                     isUserSelected: modifyStr(result?.priceValue) === 'Over Priced',
 
-                    num: perfumeRatings.priceValue.overPriced
+                    num: perfumeRatings?.priceValue?.overPriced
                 },
                 {
                     name: 'Ok',
                     isUserSelected: modifyStr(result?.priceValue) === 'Ok',
 
-                    num: perfumeRatings.priceValue.ok
+                    num: perfumeRatings?.priceValue?.ok
                 },
                 {
                     name: 'Good Value',
                     isUserSelected: modifyStr(result?.priceValue) === 'Good Value',
 
-                    num: perfumeRatings.priceValue.goodValue
+                    num: perfumeRatings?.priceValue?.goodValue
                 },
                 {
                     name: 'Great Value',
                     isUserSelected: modifyStr(result?.priceValue) === 'Great Value',
 
-                    num: perfumeRatings.priceValue.greatValue
+                    num: perfumeRatings?.priceValue?.greatValue
                 }
             ]
         },
@@ -213,31 +263,31 @@ const RatingResult = ({ perfumeRatings }) => {
                 {
                     name: 'Female',
                     isUserSelected: modifyStr(result?.gender) === 'Female',
-                    num: perfumeRatings.gender.female
+                    num: perfumeRatings?.gender?.female
                 },
                 {
                     name: 'More Female',
                     isUserSelected: modifyStr(result?.gender) === 'More Female',
 
-                    num: perfumeRatings.gender.moreMale
+                    num: perfumeRatings?.gender?.moreMale
                 },
                 {
                     name: 'Unisex',
                     isUserSelected: modifyStr(result?.gender) === 'Unisex',
 
-                    num: perfumeRatings.gender.unisex
+                    num: perfumeRatings?.gender?.unisex
                 },
                 {
                     name: 'More Male',
                     isUserSelected: modifyStr(result?.gender) === 'More Male',
 
-                    num: perfumeRatings.gender.moreMale
+                    num: perfumeRatings?.gender?.moreMale
                 },
                 {
                     name: 'Male',
                     isUserSelected: modifyStr(result?.gender) === 'Male',
 
-                    num: perfumeRatings.gender.male
+                    num: perfumeRatings?.gender?.male
 
                 }
             ]
@@ -264,7 +314,7 @@ const RatingResult = ({ perfumeRatings }) => {
                         <div className='flex justify-around md:gap-x-5'>
                             {
                                 item.status.map((stats, idx) => {
-                                    console.log(modifyStr(result?.sillage) === stats?.name, "stats?.isUserSelected")
+
                                     return <div className="cursor-pointer grid place-items-center font-medium relative capitalize">
                                         <div
                                             className={`absolute w-full h-full bg-transparent   `}
@@ -285,9 +335,8 @@ const RatingResult = ({ perfumeRatings }) => {
                             step={1}
                             // disabled
                             type="range"
-                            disabled
                             onChange={(e) => {
-                                console.log(e.target.value);
+                                updateRating(item, item.status[e.target.value - 1])
                                 setEmoji(e.target.value);
                             }}
                             name=""
