@@ -15,7 +15,7 @@ async function Review({ commentsData, perfumeId }) {
         </div>
       </div>
 
-      <div className="w-full  mx-auto space-y-4 py-4 border-2 border-red-500 ">
+      <div className="w-full  mx-auto space-y-4 py-4  ">
         {commentsData && commentsData?.length > 0 ? (
           commentsData.map((item) => {
             return (
@@ -40,7 +40,7 @@ async function Review({ commentsData, perfumeId }) {
                     </div>
 
                     <p className="mt-2 text-gray-700">{item?.description}</p>
-                    <div className="mt-4 flex space-x-4">
+                    {/* <div className="mt-4 flex space-x-4">
                       <button className="flex items-center space-x-2 text-gray-500 hover:text-gray-700">
                         <SlLike />
                       </button>
@@ -52,7 +52,7 @@ async function Review({ commentsData, perfumeId }) {
                         <MdShare />
                         <span>Share</span>
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

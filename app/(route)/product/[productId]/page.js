@@ -1,32 +1,21 @@
 async function getPerfumeById(perfumeId) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/${perfumeId}`
-  );
-  const data = await response.json();
-
-  return data;
-}
-
-async function getPerfumeRating(perfumeId) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/review/${perfumeId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/${perfumeId}`,
     {
-      cache: "no-store",
+      cache: "no-cache",
     }
   );
   const data = await response.json();
-  return data.data;
-}
-async function getProsCons(perfumeId) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/prosCons/${perfumeId}`
-  );
-  const data = await response.json();
+
   return data;
 }
-async function getPerfumes() {
+
+async function getProsCons(perfumeId) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/prosCons/${perfumeId}`,
+    {
+      cache: "no-cache",
+    }
   );
   const data = await response.json();
   return data;
@@ -36,7 +25,7 @@ async function getSiderbarReviews() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/v1/reviewsSidebar`,
     {
-      cache: "no-store",
+      cache: "no-cache",
     }
   );
   const data = await response.json();

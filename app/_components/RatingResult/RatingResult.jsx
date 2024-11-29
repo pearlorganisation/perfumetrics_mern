@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { useSearchParams } from 'next/navigation';
+import { useDebouncedCallback } from "use-debounce";
 
 
 const RatingResult = ({ productId }) => {
@@ -37,6 +38,7 @@ const RatingResult = ({ productId }) => {
         console.log(productId, "productid")
         console.log(payload, "payload")
         const result = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${productId}`, { ...payload })
+        getReviewByUserId()
         getTotalRatings(productId)
         console.log(result, "Reslt")
     }
@@ -59,7 +61,24 @@ const RatingResult = ({ productId }) => {
             )
             .join(""); // Join the array into a single string
     };
-    const updateRating = (p1, p2) => {
+    // const updateRating = (p1, p2) => {
+    //     if (user?._id) {
+    //         console.log(user, "user")
+    //         let obj = {}
+    //         obj[toCamelCase(p1?.name)] = toCamelCase(p2?.name)
+    //         console.log(obj, "obj")
+    //         updateReviewByUserId({ userId: user?._id, ...obj })
+    //         setRateData(prev => {
+    //             return { userId: user?._id, ...obj }
+    //         })
+    //     } else {
+    //         toast.info("Please Login First...")
+    //     }
+
+    // }
+
+
+    const updateRating = useDebouncedCallback((p1, p2) => {
         if (user?._id) {
             console.log(user, "user")
             let obj = {}
@@ -72,8 +91,7 @@ const RatingResult = ({ productId }) => {
         } else {
             toast.info("Please Login First...")
         }
-
-    }
+    }, 300);
     const results = [
         {
             name: "Very Good",
@@ -125,7 +143,7 @@ const RatingResult = ({ productId }) => {
     ]
     const ratingData = [
         {
-            name: 'LOGENTIVITY',
+            name: 'LONGEVITY',
             icon: <IoIosTimer className='text-slate-400' size={32} />,
             results: results,
             rating: 1,

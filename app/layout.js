@@ -15,7 +15,7 @@ import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 const roboto_Condensed = Roboto_Condensed({ subsets: ["latin"] });
 const poppins = Poppins({ weight: "500", subsets: ["latin"] });
-const montserrat = Montserrat({ weight: "500", subsets: ["latin"] });
+const montserrat = Montserrat({ weight: "300", subsets: ["latin"] });
 
 export const metadata = {
   title: "Perfumetrics",
@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
       <Head>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <body className={roboto_Condensed.className}>
+      <body className={poppins.className}>
         <Header />
         {children}
         <Footer />

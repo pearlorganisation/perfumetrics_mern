@@ -419,10 +419,10 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                         <RatingResult productId={productId} />
 
                     </div>
-                    {/* <div className="space-y-5">
+                    <div className="space-y-5">
                         <AddReview />
 
-                    </div> */}
+                    </div>
                 </div >
                 <div className='hidden md:block'>
                     <CardsList reviewData={sidebarReview} length={7} />
