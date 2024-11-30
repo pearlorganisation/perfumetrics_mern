@@ -368,7 +368,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
             {/* Fragrance Notes ends */}
 
             {/* Releted Fragram starts */}
-            <RelatedFragram />
+            <RelatedFragram country={timeZoneCountry} />
             {/* Related Fragram ends */}
 
             {/*Ya perfume categories starts */}
@@ -379,8 +379,13 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     </h2>
                     <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-14">
                         {perfumeCategories?.map((item) => {
+
+                           if(!item?.mapOfLinks[timeZoneCountry])
+                              return ; 
+                           const {link,price,quantity} = item?.mapOfLinks[timeZoneCountry];
+
                             return (
-                                <Link href={item?.link} target='_blank'>
+                                <Link href={link||'https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png'} target='_blank'>
                                     <div className="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 overflow-hidden">
                                         <div className="h-48 bg-whtie flex items-center justify-center">
                                             <img
@@ -395,9 +400,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                             </h3>
                                             <div className="mt-2 space-x-2">
                                                 <span className="text-xl font-bold text-gray-900">
-                                                    ₹{item?.price}
+                                                    ₹{price||0}
                                                 </span>
-                                                <span className="text-gray-600">{item?.priceMl
+                                                <span className="text-gray-600">{quantity||'90ml'
                                                 }</span>
                                             </div>
                                         </div>
@@ -406,7 +411,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                             );
                         })}
                     </div >
-                    {data && <FragramRatings data={data.data?.ratingFragrams} />}
+                    {data && <FragramRatings data={data.data?.ratingFragrams} country={timeZoneCountry} />}
                     <div className="grid gap-5 container ">
                         <div className="grid place-items-center relative mt-24 mb-6">
                             <h2 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
