@@ -44,9 +44,11 @@ const RatingResult = ({ productId }) => {
     }
     const [emoji, setEmoji] = useState(1)
     const modifyStr = (str) => {
-        return str?.replace(/([A-Z])/g, ' $1')
-            .replace(/^./, function (match) { return match.toUpperCase(); })
-            .trim()
+
+        const camelCaseValue = str
+            ?.toLowerCase()
+            ?.replace(/ (\w)/g, (match, letter) => letter?.toUpperCase());
+        return camelCaseValue
     }
 
     const toCamelCase = (str) => {
@@ -241,8 +243,8 @@ const RatingResult = ({ productId }) => {
             rating: 4,
             status: [
                 {
-                    name: 'Way Overpriced',
-                    isUserSelected: modifyStr(result?.priceValue) === 'Way Overpriced',
+                    name: 'Way Over Priced',
+                    isUserSelected: modifyStr(result?.priceValue) === 'Way Over Priced',
                     num: perfumeRatings?.priceValue?.wayOverPriced
                 },
                 {
@@ -287,7 +289,7 @@ const RatingResult = ({ productId }) => {
                     name: 'More Female',
                     isUserSelected: modifyStr(result?.gender) === 'More Female',
 
-                    num: perfumeRatings?.gender?.moreMale
+                    num: perfumeRatings?.gender?.moreFemale
                 },
                 {
                     name: 'Unisex',
@@ -364,11 +366,11 @@ const RatingResult = ({ productId }) => {
                             {
                                 item?.status.map(sta => {
                                     return <div className="grid grid-cols-[7rem_auto] gap-1">
-                                        <span className="text-nowrap font-medium capitalize w-[6rem] text-sm sm:text-base">{sta.name}</span>
+                                        <span className="text-wrap font-medium capitalize w-[6rem] text-sm sm:text-base">{sta.name}</span>
                                         <div className=' w-full flex justify-start items-center gap-3'>
                                             <span>{sta.num}</span>
                                             <div className='bg-slate-300 relative w-full rounded-3xl md:h-[7px] h-[5px]'>
-                                                <div style={{ width: `${sta.num}%` }} className="bg-pink-300 absolute h-3 rounded-3xl w-full"></div>
+                                                <div style={{ width: `${sta.num}%` }} className="bg-pink-300 absolute rounded-3xl md:h-[7px] h-[5px]"></div>
                                             </div>
                                         </div>
                                     </div>

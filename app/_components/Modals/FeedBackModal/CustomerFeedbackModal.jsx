@@ -125,7 +125,7 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
 
   const emojiDataLong = [
     {
-      name: "No Vote",
+      name: "Eternal",
       icons: <svg className='h-8 stroke-[2px]' viewBox="0 0 128 128" fill="currentColor"><path d="M109.2,18.8C84-6.3,43.6-6.3,18.8,18.8c-25.1,25.1-25.1,65.6,0,90.3c25.1,25.1,65.6,25.1,90.3,0
 C134.3,84.4,134.3,43.6,109.2,18.8z M102.3,102.3c-20.9,20.9-55.4,21.3-76.2,0C5.2,81.5,5.2,47,26.1,25.7
 c20.9-20.9,55.4-20.9,76.7,0C123.2,47,123.2,81,102.3,102.3z"></path> <path d="M64.2,72.7c-0.1,0-0.2,0-0.2,0c-12,0-22.7,6.5-27.3,17c-0.9,2.1-0.1,3.8,1.6,4.7c1.7,0.9,3.9,0,4.8-1.7
@@ -366,7 +366,7 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
 
               <div className='grid grid-cols-2'>
                 <div>
-                  <legend className='text-left text-[#2071B2] m-4 text-md font-bold'>Longitivity</legend>
+                  <legend className='text-left text-[#2071B2] m-4 text-md font-bold'>Longevity</legend>
                   <EmojiComponent res={emojiDataLong} handleChanges={setLongRef} />
                 </div>
 
