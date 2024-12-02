@@ -91,7 +91,8 @@ const perfumeReviews = [
   },
 ];
 
-const RelatedFragram = () => {
+const 
+RelatedFragram = ({country}) => {
   const { productId } = useParams()
   const [isLoading, setIsLoading] = useState(false)
   const [perfumeData, setPerfumeData] = useState(null);
@@ -99,7 +100,6 @@ const RelatedFragram = () => {
     axios
       .get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/relatedFragrams?perfumeId=${perfumeId}`)
       .then((res) => {
-        console.log(res?.data?.data)
         setPerfumeData(res?.data?.data);
         setIsLoading(false);
       })
@@ -132,9 +132,12 @@ const RelatedFragram = () => {
           >
             <div className="flex gap-4 relative">
               {perfumeData?.map((item, index) => {
+
+                if(!item.mapOfLinks[country])
+                   return;
                 return (
                   <SwiperSlide key={index}>
-                    <Link href={`${item?.link}`} target="_blank">
+                    <Link href={item?.mapOfLinks[country]||'https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png'} target="_blank">
                       <div className="shadowE cursor-pointer ml-5">
                         <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px]  overflow-hidden mx-auto">
                           <img
@@ -147,6 +150,7 @@ const RelatedFragram = () => {
                           <span className="text-teal-500">{item?.brand?.brand}</span>
                         </div>
                       </div>
+                
                     </Link>
                   </SwiperSlide>
                 );

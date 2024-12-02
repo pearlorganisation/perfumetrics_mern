@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const FragramRatings = ({ data }) => {
+const FragramRatings = ({ data,country }) => {
   const { productId } = useParams();
   const [fragramsData, setFragramsData] = useState([]);
 
@@ -268,8 +268,11 @@ const FragramRatings = ({ data }) => {
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               {fragramsData?.map((item) => {
+
+                if(!item?.mapOfLinks[country])
+                   return;
                 return (
-                  <Link href={`${item?.link}`} target="_blank">
+                  <Link href={`${item?.mapOfLinks[country]}||'https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png'`} target="_blank">
                     <div className="w-full bg-white shadowE cursor-pointer rounded-lg  overflow-hidden">
                       <div className="flex">
                         <div className="w-1/4">
