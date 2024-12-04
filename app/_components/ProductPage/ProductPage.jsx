@@ -27,6 +27,14 @@ import { RiCentosLine } from 'react-icons/ri';
 import ct from 'countries-and-timezones';
 import { userLikeDislikeHistoryStore } from '@/store/userLikeDislikeHistoryStore';
 import LikeDislikeComponent from './LikeDislikeComponent';
+import {
+    Lora
+} from "next/font/google";
+
+const lora = Lora({
+    subsets: ['latin'],
+    weight: ['400', '700'],
+});
 
 
 const ProductPage = ({ data, sidebarReview, productId }) => {
@@ -69,6 +77,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
         const mapOfLinks = data?.data?.mapOfLinks || {};
         const companiesList = mapOfLinks[timeZoneCountry]?.companiesList || [];
         setPurchaseLinks(companiesList);
+        console.log("timeZoneCountry", timeZoneCountry)
     }, [timeZoneCountry]);
 
     // Run effects only when dependencies change
@@ -100,7 +109,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
         <div className="min-h-screen container mx-auto mt-10 md:py-20 px-4">
             <p className="text-4xl font-medium py-6 md:mb-16 mb-0 text-center">
                 {/* {data?.data?.perfume}{" "} */}
-                <h1 className="text-2xl md:text-4xl font-semibold ">{data?.data?.perfume}</h1>
+                <h1 className={`text-2xl md:text-4xl font-semibold ${lora.className}`}>{data?.data?.perfume}</h1>
             </p>
             <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_18rem]">
                 <div className="grid md:grid-cols-[55%_45%]  ">
@@ -380,12 +389,12 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-14">
                         {perfumeCategories?.map((item) => {
 
-                           if(!item?.mapOfLinks[timeZoneCountry])
-                              return ; 
-                           const {link,price,quantity} = item?.mapOfLinks[timeZoneCountry];
+                            if (!item?.mapOfLinks[timeZoneCountry])
+                                return;
+                            const { link, price, quantity } = item?.mapOfLinks[timeZoneCountry];
 
                             return (
-                                <Link href={link||'https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png'} target='_blank'>
+                                <Link href={link || 'https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png'} target='_blank'>
                                     <div className="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 overflow-hidden">
                                         <div className="h-48 bg-whtie flex items-center justify-center">
                                             <img
@@ -400,9 +409,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                             </h3>
                                             <div className="mt-2 space-x-2">
                                                 <span className="text-xl font-bold text-gray-900">
-                                                    ₹{price||0}
+                                                    ₹{price || 0}
                                                 </span>
-                                                <span className="text-gray-600">{quantity||'90ml'
+                                                <span className="text-gray-600">{quantity || '90ml'
                                                 }</span>
                                             </div>
                                         </div>
