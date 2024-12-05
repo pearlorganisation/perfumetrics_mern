@@ -1,5 +1,6 @@
 "use client"
 
+import { userHistory } from "@/store/userHistory"
 import { userStore } from "@/store/userStore"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -8,6 +9,7 @@ import { toast } from "sonner"
 
 const Login = () => {
     const { user, error, loading, login, isUserLoggedIn } = userStore();
+    const {getUserHistories} = userHistory();
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -15,7 +17,8 @@ const Login = () => {
     async function userLogin(formData) {
         const userName = formData.get('name')
         const pin = formData.get('password')
-        login({ userName, pin })
+        await login({ userName, pin });
+
 
 
     }
@@ -25,6 +28,8 @@ const Login = () => {
                 router.back()
             }
             else {
+                getUserHistories(user?._id);
+
                 router.push('/')
             }
         }
