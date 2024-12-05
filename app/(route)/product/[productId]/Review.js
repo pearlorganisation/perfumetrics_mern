@@ -3,8 +3,47 @@ import React, { useEffect, useState } from "react";
 import { SlLike } from "react-icons/sl";
 import { SlDislike } from "react-icons/sl";
 import { MdShare } from "react-icons/md";
+import CommentLikeDisLike from "./CommentLikeDisLike";
+import { userStore } from "@/store/userStore";
+
+async function getUserHistories(userId)
+{
+  try{
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/userHistory/${userId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to submit vote");
+    }
+
+    return response.json();
+  }catch(err)
+  {
+    toast.error("Something Went Wrong !!",err);
+  }
+}
 
 async function Review({ commentsData, perfumeId }) {
+  const {user} = userStore();
+  
+  const [userHistoryMap,setUserHistoryMap] = useState(null);
+ 
+  // if(user)
+  // {
+  //   const {data} = await getUserHistories(user._id);
+  //   const {commentsData} = data;
+  //   console.log("commentsData",commentsData);
+  // }
+  
+
   return (
     <div className="grid gap-3">
       <div className="text-3xl font-medium pl-1 relative grid place-items-center">
@@ -42,18 +81,22 @@ async function Review({ commentsData, perfumeId }) {
                     <p className="mt-2 text-gray-700">{item?.description}</p>
                     {/* <div className="mt-4 flex space-x-4">
                       <button className="flex items-center space-x-2 text-gray-500 hover:text-gray-700">
-                        <SlLike />
+                        <SlLike className="text-pink-500" />
                       </button>
                       <button className="flex items-center space-x-2 text-gray-500 hover:text-gray-700">
                         <SlDislike />
-                      </button>
+                      </button> */}
 
-                      <button className="flex items-center space-x-2 text-gray-500 hover:text-gray-700">
+                      {/* <button className="flex items-center space-x-2 text-gray-500 hover:text-gray-700">
                         <MdShare />
                         <span>Share</span>
-                      </button>
-                    </div> */}
+                      </button> */}
+                    {/* </div> */}
+                    
+                    <CommentLikeDisLike item = {item}/>
+
                   </div>
+
                 </div>
               </div>
             );
