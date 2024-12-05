@@ -50,14 +50,14 @@ const PopularBrands = () => {
 
                   <section className=" h-[200px] w-[200px] md:h-[200px] md:w-[200px] xl:w-[240px] xl:h-[240px] lg:w-[240px] lg:h-[240px] flex flex-col justify-center items-center ">
                     <Link href={`/product/${item?._id}`}>
-                      <div className="h-[80px] w-[80px] md:h-[120px] md:w-[120px] xl:w-[150px] xl:h-[150px] lg:w-[150px] lg:h-[150px] rounded-full overflow-hidden shadow-[0_0_0_5px#f193c4] flex-shrink-0">
+                      <div className="h-[80px] w-[80px] mx-auto md:h-[120px] md:w-[120px] xl:w-[150px] xl:h-[150px] lg:w-[150px] lg:h-[150px] rounded-full overflow-hidden shadow-[0_0_0_5px#f193c4] flex-shrink-0">
                         <img
                           src={item.banner}
                           className="w-full h-full object-cover p-1 rounded-full hover:scale-125 ease-in duration-300"
                         />
                       </div>
 
-                      <div className="mt-4 line-clamp-2"><b>{item.perfume}</b><br />By {item?.brand?.brand || 'redo'}</div>
+                      <div className="mt-4 line-clamp-2 text-center"><b>{item.perfume}</b><br />By {item?.brand?.brand || 'redo'}</div>
                     </Link>
                   </section>
                 );

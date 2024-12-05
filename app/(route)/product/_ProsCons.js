@@ -80,8 +80,8 @@ const ProsCons = () => {
     <>
       <div className="grid grid-col-2 items-center bg-white md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
         <div className="grid lg:grid-cols-2 justify-center md:w-full sm:w-60">
-          <div className="md:p-4 lg:border-r border-gray-300 grid place-items-center bg-[#f0fff1]">
-            <div className="mt-4">
+          <div className="md:p-4 lg:border-r border-gray-300 grid bg-[#f0fff1]">
+            <div className=" ">
               <div className="text-[#2e6e6a] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
                 <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
                   <FaCrown /> PROS
@@ -142,8 +142,8 @@ const ProsCons = () => {
             </div>
           </div>
 
-          <div className="p-4 grid place-items-center bg-[#fff5f5]">
-            <div className="mt-4">
+          <div className="p-4 grid  bg-[#fff5f5]">
+            <div className="">
               <div className="text-[#ec5151] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
                 <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
                   <FaCrown /> CONS

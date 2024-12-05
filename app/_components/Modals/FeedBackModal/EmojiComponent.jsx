@@ -15,7 +15,7 @@ const EmojiComponent = ({ res, handleChanges }) => {
 
   return (
     <div className='flex  flex-col justify-between '>
-      <div className='flex gap-6 mx-2 '>
+      <div className='flex text-left gap-3 md:gap-4 lg:gap-6 mx-2 '>
         {res.map((item, idx) => (
           <div key={idx} className="cursor-pointer grid place-items-center font-medium text-[#105955] relative">
             <div
@@ -23,11 +23,11 @@ const EmojiComponent = ({ res, handleChanges }) => {
                 }`}
             ></div>
             <div className="text-2xl text-center">{item.icons}</div>
-            <div className='text-sm text-center'>{item.name}</div>
+            <div className='text-sm text-center line-clamp-1'>{item.name}</div>
           </div>
         ))}
       </div>
-      <div className='w-[340px] mx-2 text-green-400'>
+      <div className='w-full mx-2 text-green-400'>
         <input
           className="w-full  "
           min={1}

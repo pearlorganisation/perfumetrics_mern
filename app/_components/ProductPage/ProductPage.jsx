@@ -409,7 +409,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                             </h3>
                                             <div className="mt-2 space-x-2">
                                                 <span className="text-xl font-bold text-gray-900">
-                                                    ₹{price || 0}
+                                                    {price || 0}
                                                 </span>
                                                 <span className="text-gray-600">{quantity || '90ml'
                                                 }</span>

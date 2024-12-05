@@ -316,7 +316,7 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
         aria-hidden="true"
         className="overflow-y-auto  flex overflow-x-hidden fixed top-0 right-0 left-0 z-80 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
       >
-        <div className="relative p-4 w-full max-w-4xl max-h-full">
+        <div className="relative p-4 w-full max-w-6xl max-h-full">
           <div className="relative bg-white mt-16 rounded-lg shadow dark:bg-gray-700">
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
               <div className="text-2xl text-center font-semibold ">
@@ -346,7 +346,7 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
               </button>
             </div>
 
-            <form action="#" className='p-10  grid place-items-center'>
+            <form action="#" className='p-6  grid place-items-center'>
               <div className='w-89  flex items-center justify-center'>
                 <div className='checkBoxes flex gap-8 p-4 justify-between '>
 
@@ -364,7 +364,7 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
                 </div>
               </div>
 
-              <div className='grid grid-cols-2'>
+              <div className='grid md:grid-cols-2 gap-4'>
                 <div>
                   <legend className='text-left text-[#2071B2] m-4 text-md font-bold'>Longevity</legend>
                   <EmojiComponent res={emojiDataLong} handleChanges={setLongRef} />
@@ -375,10 +375,7 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
                   <EmojiComponent res={emojiDataSill} handleChanges={setSillRef} />
                 </div>
 
-              </div>
 
-
-              <div className='grid grid-cols-2'>
                 <div>
                   <legend className='text-left text-[#2071B2] m-4 text-md font-bold'>PRICE VALUE</legend>
                   <EmojiComponent res={emojiDataPriceVal} handleChanges={setPriceValueRef} />
@@ -388,13 +385,13 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
                   <legend className='text-left text-[#2071B2] m-4 text-md font-bold'>GENDER</legend>
                   <EmojiComponent res={emojiDataGender} handleChanges={setGenderRef} />
                 </div>
+
               </div>
 
 
 
-
-              <div className='grid grid-cols-2'>
-                <div className="grid grid-cols-6 gap-5">
+              <div className='grid md:grid-cols-2 gap-6  py-3 md:py-0  w-full'>
+                <div className="flex justify-evenly gap-5 ">
                   {[
 
                     {
@@ -467,13 +464,13 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
                       >
                         <div className={`absolute w-full h-full bg-transparent ${selectedReactionIcon === item?.name ? 'backdrop-grayscale-0' : 'backdrop-grayscale'}  `}></div>
                         {item?.icons}
-                        <div className="text-sm font-medium"> {item?.name}</div>
+                        <div className="text-sm font-medium line-clamp-1"> {item?.name}</div>
 
                       </div>
                     );
                   })}
                 </div>
-                <div className="grid grid-cols-6 gap-5">
+                <div className="flex justify-evenly gap-5">
                   {[
                     {
                       name: "Winter",
@@ -548,7 +545,7 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
                       >
                         <div className={`absolute w-full h-full bg-transparent ${selectedIcon === item?.name ? 'backdrop-grayscale-0' : 'backdrop-grayscale'}  `}></div>
                         {item?.icons}
-                        <div className="text-sm font-medium"> {item?.name}</div>
+                        <div className="text-sm font-medium line-clamp-1"> {item?.name}</div>
 
                       </div>
                     );
@@ -563,14 +560,14 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
                   data-modal-hide="default-modal"
                   type="button"
                   disabled={loading}
-                  className="text-white  bg-blue-700 hover:bg-blue-800 my-4 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="text-white  bg-pink-500 hover:bg-blue-800 my-4 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Loading...
                 </button> : <button
                   data-modal-hide="default-modal"
                   type="button"
                   onClick={handleSumittion}
-                  className="text-white  bg-blue-700 hover:bg-blue-800 my-4 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="text-white  bg-pink-500 hover:bg-pink-500 my-4 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   SUBMIT
                 </button>

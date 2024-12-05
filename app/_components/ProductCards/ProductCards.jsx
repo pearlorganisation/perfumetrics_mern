@@ -11,7 +11,7 @@ const ProductCards = ({ data }) => {
             href={`/product/${e.perfumeId}`}
             // href={`/product/34232323`}
 
-            className="w-full h-[180px]  md:h-[280px]  border-2 border-pink-500 grid place-items-center  gap-2 rounded-md transition duration-300"
+            className="w-full h-[180px]  md:h-[280px]  border-2 overflow-hidden border-pink-500 grid place-items-center  gap-2 rounded-md transition duration-300"
           >
             <img
               src={e?.banner || e?.imgUrl}

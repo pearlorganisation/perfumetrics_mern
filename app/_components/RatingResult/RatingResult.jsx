@@ -44,10 +44,10 @@ const RatingResult = ({ productId }) => {
     }
     const [emoji, setEmoji] = useState(1)
     const modifyStr = (str) => {
-
         const camelCaseValue = str
             ?.toLowerCase()
             ?.replace(/ (\w)/g, (match, letter) => letter?.toUpperCase());
+
         return camelCaseValue
     }
 
@@ -152,7 +152,7 @@ const RatingResult = ({ productId }) => {
             status: [
                 {
                     name: 'Very Weak',
-                    isUserSelected: modifyStr(result?.longevity) === 'Very Weak',
+                    isUserSelected: modifyStr(result?.longevity) === 'veryweak',
                     num: perfumeRatings?.longevity?.veryWeak,
                     icon: (
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
@@ -163,7 +163,7 @@ const RatingResult = ({ productId }) => {
                 },
                 {
                     name: 'Weak',
-                    isUserSelected: modifyStr(result?.longevity) === 'Weak',
+                    isUserSelected: modifyStr(result?.longevity) === 'weak',
                     num: perfumeRatings?.longevity?.weak,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
@@ -172,7 +172,7 @@ const RatingResult = ({ productId }) => {
                 },
                 {
                     name: 'Moderate',
-                    isUserSelected: modifyStr(result?.longevity) === 'Moderate',
+                    isUserSelected: modifyStr(result?.longevity) === 'moderate',
                     num: perfumeRatings?.longevity?.moderate,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
@@ -181,7 +181,7 @@ const RatingResult = ({ productId }) => {
                 },
                 {
                     name: 'Long Lasting',
-                    isUserSelected: modifyStr(result?.longevity) === 'Long Lasting',
+                    isUserSelected: modifyStr(result?.longevity) === 'longlasting',
                     num: perfumeRatings?.longevity?.longLasting,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 8L10 12" stroke="#555" stroke-width="2" />
@@ -191,7 +191,7 @@ const RatingResult = ({ productId }) => {
                 },
                 {
                     name: 'Eternal',
-                    isUserSelected: modifyStr(result?.longevity) === 'Eternal',
+                    isUserSelected: modifyStr(result?.longevity) === 'eternal',
                     num: perfumeRatings?.longevity?.eternal,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 10L10 10" stroke="#333" stroke-width="2" />
@@ -210,28 +210,28 @@ const RatingResult = ({ productId }) => {
             status: [
                 {
                     name: 'Intimate',
-                    isUserSelected: modifyStr(result?.sillage) === 'Intimate',
+                    isUserSelected: modifyStr(result?.sillage) === 'intimate',
                     num: perfumeRatings?.sillage?.intimate
                 },
                 {
                     name: 'No Vote',
-                    isUserSelected: modifyStr(result?.sillage) === 'No Vote',
+                    isUserSelected: modifyStr(result?.sillage) === 'novote',
                     num: perfumeRatings?.sillage?.noVote
                 },
 
                 {
                     name: 'Moderate',
-                    isUserSelected: modifyStr(result?.sillage) === 'Moderate',
+                    isUserSelected: modifyStr(result?.sillage) === 'moderate',
                     num: perfumeRatings?.sillage?.moderate
                 },
                 {
                     name: 'Strong',
-                    isUserSelected: modifyStr(result?.sillage) === 'Strong',
+                    isUserSelected: modifyStr(result?.sillage) === 'strong',
                     num: perfumeRatings?.sillage?.strong
                 },
                 {
                     name: 'Enormous',
-                    isUserSelected: modifyStr(result?.sillage) === 'Enormous',
+                    isUserSelected: modifyStr(result?.sillage) === 'enormous',
                     num: perfumeRatings?.sillage?.enormous
                 }
             ]
@@ -244,30 +244,30 @@ const RatingResult = ({ productId }) => {
             status: [
                 {
                     name: 'Way Over Priced',
-                    isUserSelected: modifyStr(result?.priceValue) === 'Way Over Priced',
+                    isUserSelected: modifyStr(result?.priceValue) === 'wayoverpriced',
                     num: perfumeRatings?.priceValue?.wayOverPriced
                 },
                 {
                     name: 'Over Priced',
-                    isUserSelected: modifyStr(result?.priceValue) === 'Over Priced',
+                    isUserSelected: modifyStr(result?.priceValue) === 'overpriced',
 
                     num: perfumeRatings?.priceValue?.overPriced
                 },
                 {
                     name: 'Ok',
-                    isUserSelected: modifyStr(result?.priceValue) === 'Ok',
+                    isUserSelected: modifyStr(result?.priceValue) === 'ok',
 
                     num: perfumeRatings?.priceValue?.ok
                 },
                 {
                     name: 'Good Value',
-                    isUserSelected: modifyStr(result?.priceValue) === 'Good Value',
+                    isUserSelected: modifyStr(result?.priceValue) === 'goodvalue',
 
                     num: perfumeRatings?.priceValue?.goodValue
                 },
                 {
                     name: 'Great Value',
-                    isUserSelected: modifyStr(result?.priceValue) === 'Great Value',
+                    isUserSelected: modifyStr(result?.priceValue) === 'greatvalue',
 
                     num: perfumeRatings?.priceValue?.greatValue
                 }
@@ -282,30 +282,30 @@ const RatingResult = ({ productId }) => {
             status: [
                 {
                     name: 'Female',
-                    isUserSelected: modifyStr(result?.gender) === 'Female',
+                    isUserSelected: modifyStr(result?.gender) === 'female',
                     num: perfumeRatings?.gender?.female
                 },
                 {
                     name: 'More Female',
-                    isUserSelected: modifyStr(result?.gender) === 'More Female',
+                    isUserSelected: modifyStr(result?.gender) === 'morefemale',
 
                     num: perfumeRatings?.gender?.moreFemale
                 },
                 {
                     name: 'Unisex',
-                    isUserSelected: modifyStr(result?.gender) === 'Unisex',
+                    isUserSelected: modifyStr(result?.gender) === 'unisex',
 
                     num: perfumeRatings?.gender?.unisex
                 },
                 {
                     name: 'More Male',
-                    isUserSelected: modifyStr(result?.gender) === 'More Male',
+                    isUserSelected: modifyStr(result?.gender) === 'moremale',
 
                     num: perfumeRatings?.gender?.moreMale
                 },
                 {
                     name: 'Male',
-                    isUserSelected: modifyStr(result?.gender) === 'Male',
+                    isUserSelected: modifyStr(result?.gender) === 'male',
 
                     num: perfumeRatings?.gender?.male
 
@@ -325,7 +325,7 @@ const RatingResult = ({ productId }) => {
     return (
         <div className='grid md:grid-cols-2 gap-10 md:gap-20  w-full'>
             {
-                ratingData?.map(item => {
+                ratingData?.map((item, ind) => {
                     return <div className='grid'>
                         <div className="font-semibold grid place-items-center text-sm sm:text-lg py-2 text-[#2071B2] capitalize">
                             <span>{item?.icon}</span>

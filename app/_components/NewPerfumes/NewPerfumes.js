@@ -117,7 +117,7 @@ const NewPerfumes = () => {
   return (
     <>
       <div className="pb-12 container grid gap-x-12 lg:grid-cols-[70%_20%] w-full mt-8">
-        <div className="hidden lg:block">
+        <div className="block">
           <div className="p-5">
             <div className="text-center">
               <div className="grid place-items-center relative">
@@ -152,18 +152,20 @@ const NewPerfumes = () => {
                       return (
                         <SwiperSlide
                           key={index}
-                          className="grid place-items-center p-2   md:!w-auto"
+                          className="grid place-items-center p-2  !min-w-[10rem]  "
                         >
                           <a href={item?.link} target="_blank">
-                            <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px] overflow-hidden">
+                            <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px]   mx-auto">
                               <img
                                 src={item?.banner || item.imgUrl}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain "
                               />
                             </div>
                             <div className="flex flex-col justify-center items-center font-medium py-2">
-                              <span>{item?.perfumeName}</span>
-                              <span className="text-teal-500">
+                              <span className="line-clamp-1">
+                                {item?.perfumeName}
+                              </span>
+                              <span className="text-teal-500 ">
                                 {item?.brand?.brand}
                               </span>
                             </div>
@@ -183,7 +185,7 @@ const NewPerfumes = () => {
               <div class="absolute w-full h-[2px] bg-slate-500"></div>
             </div>
             <div className="text-3xl text-center md:text-left md:text-5xl font-bold"></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
               {celebrityPerfume?.map((blog, index) => {
                 return (
                   <Link href={`/celebrityPerfumeBlog/${blog?._id}`}>
@@ -197,13 +199,13 @@ const NewPerfumes = () => {
                         className="w-full h-48 object-cover"
                       />
                       <div className="p-4">
-                        <h3 className="text-lg font-semibold mb-2 text-gray-800 line-clamp-2">
+                        <h3 className="text-xs sm:text-lg font-semibold mb-2 text-gray-800 line-clamp-2">
                           {blog?.title}
                         </h3>
-                        <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                          {/* {parse(blog?.content || "")} */}
+                        {/* <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                          {parse(blog?.content || "")}
                           {blog?.content}
-                        </p>
+                        </p> */}
                         <button className="w-full text-black py-2 px-4 rounded  transition duration-300">
                           Read More
                         </button>
