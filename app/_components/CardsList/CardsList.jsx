@@ -15,7 +15,7 @@ const CardsList = ({ reviewData, length, data }) => {
               <div className="w-[12rem]">
                 <h3 className="text-xl font-semibold">{item?.title}</h3>
                 <p className="text-xs line-clamp-3">{item?.description}</p>
-                <div className="flex justify-end items-center gap-2 "><span className="text-yellow-700 text-sm">{item?.reviewBy} </span>
+                <div className="flex justify-end items-center gap-2 "><span className="text-yellow-700 text-sm !font-thin">{item?.reviewBy} </span>
                   <div className="bg-pink-500 rounded-full size-6 grid place-items-center">
                     <FaUser className="text-white" />
                   </div></div>

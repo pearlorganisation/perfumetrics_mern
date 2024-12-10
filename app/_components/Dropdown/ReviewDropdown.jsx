@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function ReviewDropdown() {
     return (
-        <div className='absolute top-[2.8rem] bg-white z-30 w-[12rem] border text-black'>
+        <div className='absolute !font-normal top-[2.8rem] bg-white z-30 w-[12rem] border text-black'>
             <Link
                 href='/review/writeAreview'
             >

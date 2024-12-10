@@ -28,10 +28,12 @@ import ct from 'countries-and-timezones';
 import { userLikeDislikeHistoryStore } from '@/store/userLikeDislikeHistoryStore';
 import LikeDislikeComponent from './LikeDislikeComponent';
 import {
-    Lora
+    Montserrat
 } from "next/font/google";
+import PerfumeCarousel from './PerfumeCarousel';
+import PerfumeCategorySlider from './PerfumeCategorySlider';
 
-const lora = Lora({
+const lora = Montserrat({
     subsets: ['latin'],
     weight: ['400', '700'],
 });
@@ -106,10 +108,10 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
 
 
     return (
-        <div className="min-h-screen container mx-auto mt-10 md:py-20 px-4">
+        <div className="min-h-screen container mx-auto  py-6 px-4">
             <p className="text-4xl font-medium py-6 md:mb-16 mb-0 text-center">
                 {/* {data?.data?.perfume}{" "} */}
-                <h1 className={`text-2xl md:text-4xl font-semibold ${lora.className}`}>{data?.data?.perfume}</h1>
+                <h1 className={`text-2xl md:w-[70%] md:text-left md:text-4xl font-semibold ${lora.className}`}>{data?.data?.perfume}</h1>
             </p>
             <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_18rem]">
                 <div className="grid md:grid-cols-[55%_45%]  ">
@@ -136,8 +138,8 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     </div>
 
                     <div className="flex flex-col items-center gap-4 ">
-                        <div className="rounded-full overflow-hidden  w-fit">
-                            <img className="size-52 md:size-60" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
+                        <div className="  w-fit py-6 md:py-0">
+                            <img className="w-[80%]" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
                         </div>
                         <div className="flex flex-wrap w-full justify-center">
                             <PieChart mainAccords={data?.data?.mainAccords} />
@@ -184,23 +186,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                         <div className="space-y-12 w-full flex flex-col justify-center items-center ">
 
                             {purchaseLinks?.length > 0 && <Buyfrom links={purchaseLinks} />}
-                            {/* {[
-                  {
-                    title: "Buy From",
-                    img: "https://s3-alpha-sig.figma.com/img/3659/5e0f/7eef1817ec204989391c3be6ac3d5499?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Eez7RfvpVZaxP9V0eylwnnNzYiYt4TuntkPLYpOMc0S3YUIp8RIPE1xyjmzLAeRViSPvm-dPRCl3pfPNUSbLg7UV9hZ6qxDkyDOSdWchcLteNA9xCOhEri4RASZMQ0JObY2y~xNBZ~qq4e7dc3j58MxFGfkmTVMm0l0d~MzVt1x5ehYN3f6WqCD~KszzZYs0nRBoQaMQhVUrUbcrXw8WcW6fCMnHy0hEB86zzzGtbWBul1O7ThN2dmXiw6DhMRNSZkb0vyZhghFpItn5nKNHvkg-yQg~NPfh2mBUsJccqMKx9tjkcYifrGRQHtFine3LLUEDPTxaDLDIbc1jExIapg__",
-                  },
-                  {
-                    title: "Buy From",
-                    img: "https://s3-alpha-sig.figma.com/img/87cb/8e80/a974a28100d68d7f00b0634e69ff2269?Expires=1720396800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JMzwB1wBCMjHQF6cykxZ6EXQK8o8OEAhMpHNZ-5eCnRVr8QBz4A0vYZiMHSpLVm7-BAIlTf7tMemYQEkVu6sxqhEY-4NaEx-lR0Z0Po3Ev~FPQoN4P5UxUOI-dr-3IB1fOLYTeLm3Bs4ylcJedIN-w8B7i6S39INHu6dvie~4FMLZ0tqpM2krtvmZWGxohKjNUpuhZQTJTI3Yq9rkIgDd2c48--xWj7Fo9PyXJDlYlTvKIkO82P6myuikCHJXt9L2ds2qsT6oV1LVXTfSMN1mY6Ya1SvFTF-Vb1mwqATm8drsiKsDzdqtYBapIJJDHJ~5n86Eg84khZ6miAAVf~cDA__",
-                  },
-                ].map((item) => {
-                  return (
-                    <div className="flex gap-4 text-xl font-semibold justify-start items-center bg-[#FAF6FF] w-[20rem] px-6 py-2 rounded-xl">
-                      <span>{item?.title}</span>
-                      <img src={item?.img} alt="" />
-                    </div>
-                  );
-                })} */}
+
                         </div>
                         {
                             data?.data?.video && <VideoBox videoD={data?.data?.video} />
@@ -209,13 +195,13 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     <Feedback />
                     {/* detail start */}
                     <div className="space-y-3">
-                        <div className="font-medium text-sm md:text-base text-justify md:text-left">{data?.data?.details}</div>
+                        <div className=" text-sm  md:text-base text-justify md:text-left">{data?.data?.details}</div>
 
-                        <div className="relative border-y-2 py-4">
+                        <div className="relative border-t-2 py-4">
                             <div className="p-2 absolute -top-5 left-[50%] bg-white">
                                 <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
                             </div>
-                            <p className='text-justify md:text-left text-sm md:text-base'>
+                            <p className='text-justify md:text-left text-sm '>
 
                                 {data?.data?.description}
                             </p>
@@ -248,7 +234,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                 </div>
             </div>
             {/* Perfume Photos starts */}
-            <div className="mt-4 md:py-14 md:mt-14">
+            <div className="mt-4 md:py-14 ">
                 <div className="w-full relative grid place-items-center mb-14">
                     <div className="h-[2px] w-full bg-black absolute"></div>
                     <h2
@@ -261,7 +247,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
             {/* Perfume Photos ends */}
 
             {/* Fragrance Notes starts */}
-            <div className="mt-20">
+            <div className="mt-10">
                 <div className="w-full relative grid place-items-center mb-14">
                     <div className="h-[2px] w-[70%] bg-black absolute"></div>
                     <h2 className="text-xl  md:text-3xl font-medium bg-white px-2 md:px-4 z-30">
@@ -317,9 +303,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                             <img
                                                                 src={el.image}
                                                                 alt={el.name}
-                                                                className="w-7 h-7 md:w-10 md:h-10"
+                                                                className="w-12 sm:h-12 md:w-20 md:h-20"
                                                             />
-                                                            <p className=' text-xs md:text-balance'>{el.name}</p>
+                                                            <p className='text-base md:text-lg'>{el.name}</p>
                                                         </div>
                                                     );
                                                 })}
@@ -338,9 +324,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-7 h-7 md:w-10 md:h-10"
+                                                            className="w-12 sm:h-12 md:w-20 md:h-20"
                                                         />
-                                                        <p className=' text-xs md:text-balance'>{el.name}</p>
+                                                        <p className='text-base md:text-lg'>{el.name}</p>
                                                     </div>
                                                 );
                                             })}
@@ -359,9 +345,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-7 h-7 md:w-10 md:h-10"
+                                                            className="w-12 sm:h-12 md:w-20 md:h-20"
                                                         />
-                                                        <p className=' text-xs md:text-balance'>{el.name}</p>
+                                                        <p className='text-base md:text-lg'>{el.name}</p>
                                                     </div>
                                                 );
                                             })}
@@ -383,46 +369,19 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
             {/*Ya perfume categories starts */}
             <div className=" grid lg:grid-cols-[auto_18rem]">
                 <div className="md:space-y-6 md:px-6">
-                    <h2 className="text-xl md:text-3xl text-center md:text-left text-green-500 font-medium mt-10 mb-14">
+                    <h2 className="text-xl md:text-3xl text-center md:text-left text-black-500 font-medium  mb-8">
                         Yeah Perfume Categories
                     </h2>
-                    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-14">
-                        {perfumeCategories?.map((item) => {
+                    <div>
 
-                            if (!item?.mapOfLinks[timeZoneCountry])
-                                return;
-                            const { link, price, quantity } = item?.mapOfLinks[timeZoneCountry];
+                    </div>
+                    <div className="grid">
+                        <PerfumeCategorySlider perfumeCategories={perfumeCategories} timeZoneCountry={timeZoneCountry} />
 
-                            return (
-                                <Link href={link || 'https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png'} target='_blank'>
-                                    <div className="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 overflow-hidden">
-                                        <div className="h-48 bg-whtie flex items-center justify-center">
-                                            <img
-                                                className="h-48"
-                                                src={item?.banner}
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div className="p-4">
-                                            <h3 className="text-sm font-semibold text-blue-600">
-                                                {item?.perfumeName}
-                                            </h3>
-                                            <div className="mt-2 space-x-2">
-                                                <span className="text-xl font-bold text-gray-900">
-                                                    {price || 0}
-                                                </span>
-                                                <span className="text-gray-600">{quantity || '90ml'
-                                                }</span>
-                                            </div>
-                                        </div>
-                                    </div >
-                                </Link >
-                            );
-                        })}
                     </div >
                     {data && <FragramRatings data={data.data?.ratingFragrams} country={timeZoneCountry} />}
                     <div className="grid gap-5 container ">
-                        <div className="grid place-items-center relative mt-24 mb-6">
+                        <div className="grid place-items-center relative mt-12">
                             <h2 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
                                 Rating/Results{" "}
                             </h2>

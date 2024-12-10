@@ -367,7 +367,7 @@ const RatingResult = ({ productId }) => {
                                 item?.status.map(sta => {
                                     return <div className="grid grid-cols-[7rem_auto] gap-1">
                                         <span className="text-wrap font-medium capitalize w-[6rem] text-sm sm:text-base">{sta.name}</span>
-                                        <div className=' w-full flex justify-start items-center gap-3'>
+                                        <div className=' w-[50%] md:w-full flex justify-start items-center gap-3'>
                                             <span>{sta.num}</span>
                                             <div className='bg-slate-300 relative w-full rounded-3xl md:h-[7px] h-[5px]'>
                                                 <div style={{ width: `${sta.num}%` }} className="bg-pink-300 absolute rounded-3xl md:h-[7px] h-[5px]"></div>

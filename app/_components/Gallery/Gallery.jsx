@@ -60,18 +60,19 @@ const galleryData = [
 const Gallery = () => {
   return (
     <>
-      <div className="px-8 md:px-8 leafBg relative mt-20">
+      <div className="px-8 md:px-8 leafBg relative mt-10">
         <div className="p-5">
           <div className="grid place-items-center relative mb-6">
             <h1 className="text-3xl font-medium px-8 py-3 bg-white z-40">
-              Fregram Gallery
+              Fragram Gallery
             </h1>
             <div className="absolute w-full h-[2px] bg-slate-500"></div>
           </div>
         </div>
 
-        <ul className="flex flex-wrap gap-3">
-          {galleryData.map((image, index) => (
+        <ul className="flex flex-wrap gap-3 border-2">
+          <img className="w-full" src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1733475426/Untitled_design_20241206_014911_0000_tpl2lt.jpg" alt="" srcset="" />
+          {/* {galleryData.map((image, index) => (
             <li
               key={index}
               className=" h-[100px] sm:h-[25vh] xl:h-[200px]  flex-grow portrait-height short-screen-height"
@@ -83,7 +84,7 @@ const Gallery = () => {
                 loading="lazy"
               />
             </li>
-          ))}
+          ))} */}
           <li className="flex-grow-[0]"></li>
         </ul>
       </div>

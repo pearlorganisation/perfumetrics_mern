@@ -41,8 +41,8 @@ const CommentLikeDisLike = memo(({ item }) => {
 
   // Determine if the user has liked or disliked this comment
   const userVote =
-  userHistoryData[`${item._id}`]?.vote ; // 1 for like, -1 for dislike, 0 for no action
-  
+    userHistoryData[`${item?._id}`]?.vote || -99; // 1 for like, -1 for dislike, 0 for no action
+
   async function postAnVoteForComment(currVote) {
     if (!user) {
       toast.error("Please log in!");
@@ -102,9 +102,8 @@ const CommentLikeDisLike = memo(({ item }) => {
             postAnVoteForComment(1);
           }
         }}
-        className={`flex items-center space-x-2 ${
-          userVote == 1 ? "text-green-500" : "text-gray-500"
-        } hover:text-green-700`}
+        className={`flex items-center space-x-2 ${userVote == 1 ? "text-green-500" : "text-gray-500"
+          } hover:text-green-700`}
         disabled={loading} // Disable button when loading
       >
         <div>
@@ -126,9 +125,8 @@ const CommentLikeDisLike = memo(({ item }) => {
             postAnVoteForComment(-1);
           }
         }}
-        className={`flex items-center space-x-2 ${
-          userVote == -1 ? "text-red-500" : "text-gray-500"
-        } hover:text-red-700`}
+        className={`flex items-center space-x-2 ${userVote == -1 ? "text-red-500" : "text-gray-500"
+          } hover:text-red-700`}
         disabled={loading} // Disable button when loading
       >
         <div>
@@ -142,6 +140,6 @@ const CommentLikeDisLike = memo(({ item }) => {
       </button>
     </div>
   );
-},[]);
+});
 
 export default CommentLikeDisLike;

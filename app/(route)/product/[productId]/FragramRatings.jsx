@@ -4,8 +4,10 @@ import axios from "axios";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import FragramSlider from "./FragranceSlider";
+import FragranceSlider from "./FragranceSlider";
 
-const FragramRatings = ({ data,country }) => {
+const FragramRatings = ({ data, country }) => {
   const { productId } = useParams();
   const [fragramsData, setFragramsData] = useState([]);
 
@@ -259,52 +261,17 @@ const FragramRatings = ({ data,country }) => {
           </button>
         </div>
         {data && (
-          <div className="space-y-4 mt-24">
-            <div className="grid place-items-center relative w-full mb-16">
+          <div className=" mt-12">
+            <div className="grid place-items-center relative w-full">
               <h2 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
                 Fragrams
               </h2>
               <div className="absolute w-full h-[2px] bg-slate-500"></div>
             </div>
-            <div className="grid md:grid-cols-2 gap-8">
-              {fragramsData?.map((item) => {
 
-                if(!item?.mapOfLinks[country])
-                   return;
-                return (
-                  <Link href={`${item?.mapOfLinks[country]}||'https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png'`} target="_blank">
-                    <div className="w-full bg-white shadowE cursor-pointer rounded-lg  overflow-hidden">
-                      <div className="flex">
-                        <div className="w-1/4">
-                          <img
-                            src={item?.banner}
-                            alt="Image"
-                            className="object-cover w-full h-full"
-                          />
-                        </div>
-                        <div className="w-3/4 p-4">
-                          <div className="flex justify-between items-center">
-                            <div className="flex gap-3">
-                              <h3 className="text-lg font-semibold text-gray-900">
-                                {item?.title}
-                              </h3>
-                              <div className="size-5 rounded-full bg-green-500 text-xs grid place-items-center">
-                                {item?.rating}
-                              </div>
-                            </div>
-                          </div>
-                          <p className="text-sm text-gray-600">
-                            by <span className="text-gray-800">{item?.postBy}</span>
-                          </p>
-                          <p className="text-xs text-gray-500 mt-2">
-                            {new Date(item?.createdAt).toLocaleString("en-US")}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
+            <div className="grid  gap-8">
+              <FragranceSlider fragramsData={fragramsData} country={country} />
+
             </div>
           </div>
         )}

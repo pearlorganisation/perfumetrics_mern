@@ -21,7 +21,7 @@ const FollowUs = () => {
         <div className='space-y-8'>
             <div className='px-3 space-y-5'>
                 <div className='text-black grid place-items-center relative max-w-6xl mx-auto '>
-                    <div className='text-sm sm:text-xl md:text-3xl font-semibold z-50 bg-white px-6 py-4'>FOLLOW US ON INSTAGRAM</div>
+                    <div className='text-sm sm:text-xl md:text-3xl font-semibold z-50 bg-white px-6 py-4'>FOLLOW US ON PINTEREST</div>
                     <div className='absolute w-full h-[2px] bg-slate-400'></div>
                 </div>
                 <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-1'>
@@ -45,7 +45,7 @@ const FollowUs = () => {
                     }
                 </div>
             </div>
-            <div className='bg-pink-500'>
+            {/* <div className='bg-pink-500'>
                 <div className='grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 place-items-center gap-4 md:gap-6 container mx-auto md:divide-x-2 py-12'>
                     <div className='flex w-full md:w-auto  justify-center gap-[3rem]  md:gap-2 px-8'><FaTruckMoving className='text-white-400 ' size={40} />
                         <div className='font-semibold flex flex-col text-white text-xs lg:text-sm'>FREE DELIVERY <span>From 275 AED</span></div>
@@ -66,7 +66,7 @@ const FollowUs = () => {
                     <div className='hidden md:flex w-full md:w-auto  justify-center gap-[3rem]  md:gap-2 px-8'><BsFillTelephoneFill className='text-white-400' size={40} />
                         <div className='font-semibold flex flex-col text-white text-xs lg:text-sm'>FREE DELIVERY <span>From 275 AED</span></div></div>
                 </div>
-            </div>
+            </div> */}
 
             <div className='footerWarp waveBg'>
 

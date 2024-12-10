@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
       <Head>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <body className={poppins.className}>
+      <body className={`${poppins.className} h-screen`}>
         <Header />
         {children}
         <Footer />

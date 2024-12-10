@@ -56,7 +56,7 @@ export default function Example() {
             </button>
             {isMenuOpen && (
               <div className="w-64 bg-gray-100 p-4 rounded-lg shadow-md absolute top-[2.3rem] z-10 -left-4">
-                <ul className="space-y-2 font-semibold">
+                <ul className="space-y-2 !font-normal">
                   <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <div
                       onMouseEnter={() => {
@@ -93,7 +93,7 @@ export default function Example() {
                   <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <Link
                       href="/sale/BEST SALES"
-                      className="block text-lg font-medium text-gray-800"
+                      className="block text-lg  text-gray-800"
                     >
                       BEST SALES
                     </Link>
@@ -101,7 +101,7 @@ export default function Example() {
                   <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <Link
                       href="/category/MEN'S STYLE"
-                      className="block text-lg font-medium text-gray-800"
+                      className="block text-lg  text-gray-800"
                     >
                       MEN'S STYLE
                     </Link>
@@ -109,7 +109,7 @@ export default function Example() {
                   <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <Link
                       href="/category/WOMEN'S STYLE"
-                      className="block text-lg font-medium text-gray-800"
+                      className="block text-lg  text-gray-800"
                     >
                       WOMEN'S STYLE
                     </Link>

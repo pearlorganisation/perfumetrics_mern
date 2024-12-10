@@ -58,7 +58,7 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
 
 
     return (
-        <div className="flex justify-start px-14 py-8 md:mt-6">
+        <div className="flex justify-start  md:mt-6 ">
             <div
                 onClick={handleLike}
                 className="w-fit cursor-pointer grid place-items-center gap-1"

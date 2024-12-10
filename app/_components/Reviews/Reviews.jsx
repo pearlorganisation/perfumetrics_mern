@@ -33,7 +33,7 @@ const Reviews = async ({ reviewSidebar, length }) => {
   const commentsData = await comments()
 
   return (
-    <div className="container mx-auto mt-24">
+    <div className="container mx-auto mt-10">
       <div className="w-full grid lg:grid-cols-[auto_20rem] gap-x-4 px-6 md:px-10 py-3 md:py-10">
         <div className="w-full">
           <div class="grid place-items-center relative mb-10">
@@ -116,7 +116,7 @@ const Reviews = async ({ reviewSidebar, length }) => {
             </div>
 
             {/* news */}
-            <div className="!mt-[6rem]">
+            <div className="!mt-[4rem]">
               <News />
             </div>
           </div>

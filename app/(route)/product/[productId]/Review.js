@@ -6,9 +6,8 @@ import { MdShare } from "react-icons/md";
 import CommentLikeDisLike from "./CommentLikeDisLike";
 import { userStore } from "@/store/userStore";
 
-async function getUserHistories(userId)
-{
-  try{
+async function getUserHistories(userId) {
+  try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/userHistory/${userId}`,
       {
@@ -16,7 +15,6 @@ async function getUserHistories(userId)
         headers: {
           "Content-Type": "application/json",
         },
-
       }
     );
 
@@ -25,24 +23,13 @@ async function getUserHistories(userId)
     }
 
     return response.json();
-  }catch(err)
-  {
-    toast.error("Something Went Wrong !!",err);
+  } catch (err) {
+    toast.error("Something Went Wrong !!", err);
   }
 }
 
 async function Review({ commentsData, perfumeId }) {
-  const {user} = userStore();
-  
-  const [userHistoryMap,setUserHistoryMap] = useState(null);
- 
-  // if(user)
-  // {
-  //   const {data} = await getUserHistories(user._id);
-  //   const {commentsData} = data;
-  //   console.log("commentsData",commentsData);
-  // }
-  
+  const { user } = userStore();
 
   return (
     <div className="grid gap-3">
@@ -87,16 +74,14 @@ async function Review({ commentsData, perfumeId }) {
                         <SlDislike />
                       </button> */}
 
-                      {/* <button className="flex items-center space-x-2 text-gray-500 hover:text-gray-700">
+                    {/* <button className="flex items-center space-x-2 text-gray-500 hover:text-gray-700">
                         <MdShare />
                         <span>Share</span>
                       </button> */}
                     {/* </div> */}
-                    
-                    <CommentLikeDisLike item = {item}/>
 
+                    <CommentLikeDisLike item={item} />
                   </div>
-
                 </div>
               </div>
             );

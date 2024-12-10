@@ -116,9 +116,9 @@ const NewPerfumes = () => {
 
   return (
     <>
-      <div className="pb-12 container grid gap-x-12 lg:grid-cols-[70%_20%] w-full mt-8">
+      <div className="pb-12  container grid gap-x-12 lg:grid-cols-[70%_20%] w-full ">
         <div className="block">
-          <div className="p-5">
+          <div className=" ">
             <div className="text-center">
               <div className="grid place-items-center relative">
                 <h1 className="text-3xl font-medium px-8 py-3 bg-white z-40">
@@ -126,7 +126,7 @@ const NewPerfumes = () => {
                 </h1>
                 <div className="absolute w-full h-[2px] bg-slate-500"></div>
               </div>
-              <div className="p-10">
+              <div className=" pt-10 ">
                 <Swiper
                   slidesPerView={2}
                   breakpoints={{
@@ -144,7 +144,7 @@ const NewPerfumes = () => {
                     },
                   }}
                   modules={[Pagination]}
-                  className="mySwiper"
+                  className="mySwipe"
                 >
                   {Array.isArray(newArrival) &&
                     newArrival.length > 0 &&
@@ -177,8 +177,8 @@ const NewPerfumes = () => {
               </div>
             </div>
           </div>
-          <div className="space-y-3 px-3 mt-1888888888">
-            <div class="grid place-items-center relative mt-8 mb-10">
+          <div className="space-y-3 px-3">
+            <div class="grid place-items-center relative mb-10">
               <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">
                 Celebrity Perfumes
               </h1>

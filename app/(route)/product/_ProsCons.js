@@ -81,7 +81,7 @@ const ProsCons = () => {
       <div className="grid grid-col-2 items-center bg-white md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
         <div className="grid lg:grid-cols-2 justify-center md:w-full sm:w-60">
           <div className="md:p-4 lg:border-r border-gray-300 grid bg-[#f0fff1]">
-            <div className=" ">
+            <div className=" w-full ">
               <div className="text-[#2e6e6a] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
                 <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
                   <FaCrown /> PROS
@@ -112,7 +112,7 @@ const ProsCons = () => {
                         } flex flex-col justify-center items-center`}
                       >
                         <CiHeart size={24} className="text-pink-300" />
-                        <span>{item.likesVote}</span>
+                        <span className="text-sm">{item.likesVote}</span>
                       </span>
                       <span
                         onClick={() =>
@@ -132,7 +132,7 @@ const ProsCons = () => {
                         } flex flex-col justify-center items-center`}
                       >
                         <FaHeartBroken size={22} className="text-[#f34949]" />
-                        <span>{item.disLikesVote}</span>
+                        <span className="text-sm">{item.disLikesVote}</span>
                       </span>
                     </div>
                     <span>{item.title}</span>
@@ -174,7 +174,7 @@ const ProsCons = () => {
                         } flex flex-col justify-center items-center`}
                       >
                         <CiHeart size={24} className="text-pink-300" />
-                        <span>{item.likesVote}</span>
+                        <span className="text-sm">{item.likesVote}</span>
                       </span>
                       <span
                         onClick={() =>
@@ -194,7 +194,7 @@ const ProsCons = () => {
                         } flex flex-col justify-center items-center`}
                       >
                         <FaHeartBroken size={22} className="text-[#f34949]" />
-                        <span>{item.disLikesVote}</span>
+                        <span className="text-sm">{item.disLikesVote}</span>
                       </span>
                     </div>
                     <span>{item.title}</span>
@@ -205,19 +205,16 @@ const ProsCons = () => {
           </div>
         </div>
       </div>
-      <div className="relative border-t-2 pt-4">
-        <div className="p-2 absolute -top-5 left-[50%] bg-white">
-          <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
-        </div>
-      </div>
-      <p className="md:text-left text-blue-600 text-base mt-4 text-justify">
-        Note: The pros and cons listed on this page have been generated using
-        the artificial intelligence system, which analyzes product reviews
-        submitted by our members. While we strive to provide accurate and
-        helpful information, we cannot guarantee the complete accuracy or
-        reliability of the AI-generated pros and cons. Please read the full
-        reviews and consider your own needs and preferences before making a
-        purchasing decision.
+
+      <p className="md:text-left  text-sm text-blue-500 italic text-justify font-normal">
+        <span className="font-semibold text-base text-black"> Note:</span> The
+        pros and cons listed on this page have been generated using the
+        artificial intelligence system, which analyzes product reviews submitted
+        by our members. While we strive to provide accurate and helpful
+        information, we cannot guarantee the complete accuracy or reliability of
+        the AI-generated pros and cons. Please read the full reviews and
+        consider your own needs and preferences before making a purchasing
+        decision.
       </p>
     </>
   );
