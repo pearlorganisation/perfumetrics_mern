@@ -4,8 +4,8 @@ const LogoGrid = () => {
   const logos = [
     `https://t1.gstatic.com/images?q=tbn:ANd9GcQtj9Um9w50KiJTC7FH5BrRQAmB_oB9s4yRf5y4FH6T_Rpo93p3`,
     `https://customisation.club/cdn/shop/products/calvin-klein-emblem_iron_on_c2a13244-96fc-4105-970a-6f2659eced0e_530x@2x.jpg?v=1682789693`,
-    `https://c8.alamy.com/comp/2M7REH8/jimmy-choo-ltd-logo-white-background-2M7REH8.jpg`,
-    `https://shop.brusselsairport.be/medias/logo-davidoff.svg?context=bWFzdGVyfHJvb3R8MzA2ODJ8aW1hZ2Uvc3ZnK3htbHxhRGRrTDJnMk5pODRPREF6TXpjeE56RXlOVFF5TDJ4dloyOHRaR0YyYVdSdlptWXVjM1pufGVjYzE4M2MxZTUxY2RiMzEzM2U5MmU2MzZlNjg0NmUxOTA2NmRlOTRlYWVmZjFjNGFiNjE2ZTcwODQwY2M4Yjk`,
+    `https://d1csarkz8obe9u.cloudfront.net/posterpreviews/perfume-logo-design-template-ff1935b52ff631dab8ec18b3eb308f0f_screen.jpg?ts=1666687681`,
+    `https://t3.ftcdn.net/jpg/04/01/72/28/360_F_401722870_Xio5WyZiS2Z0mwHzIll2R4mocKUWLnKj.jpg`,
   ];
   return (
     <section className="py-12 border-t-2 ">
@@ -14,7 +14,7 @@ const LogoGrid = () => {
           {logos?.map((item) => {
             return (
               <a href="#" className="flex justify-center items-center">
-                <img className=" w-full" src={item} alt="" />
+                <img className=" w-full h-[5rem]" src={item} alt="" />
               </a>
             );
           })}

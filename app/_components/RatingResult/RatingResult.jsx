@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from "use-debounce";
+import { RiWindyFill } from 'react-icons/ri';
 
 
 const RatingResult = ({ productId }) => {
@@ -204,7 +205,7 @@ const RatingResult = ({ productId }) => {
         },
         {
             name: 'SILLAGE',
-            icon: <FaUser className='text-slate-400' size={32} />,
+            icon: <RiWindyFill className='text-slate-400' size={32} />,
             results: results,
             rating: 2,
             status: [

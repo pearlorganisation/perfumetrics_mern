@@ -194,10 +194,10 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     </div>
                     <Feedback />
                     {/* detail start */}
-                    <div className="space-y-3">
-                        <div className=" text-sm  md:text-base text-justify md:text-left">{data?.data?.details}</div>
+                    <div className="space-y-6">
+                        <div className="text-base text-justify md:text-left">{data?.data?.details}</div>
 
-                        <div className="relative border-t-2 py-4">
+                        <div className="relative border-t-2 py-6">
                             <div className="p-2 absolute -top-5 left-[50%] bg-white">
                                 <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
                             </div>
@@ -247,7 +247,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
             {/* Perfume Photos ends */}
 
             {/* Fragrance Notes starts */}
-            <div className="mt-10">
+            <div className="mt-14">
                 <div className="w-full relative grid place-items-center mb-14">
                     <div className="h-[2px] w-[70%] bg-black absolute"></div>
                     <h2 className="text-xl  md:text-3xl font-medium bg-white px-2 md:px-4 z-30">
@@ -369,7 +369,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
             {/*Ya perfume categories starts */}
             <div className=" grid lg:grid-cols-[auto_18rem]">
                 <div className="md:space-y-6 md:px-6">
-                    <h2 className="text-xl md:text-3xl text-center md:text-left text-black-500 font-medium  mb-8">
+                    <h2 className="text-2xl md:text-3xl text-center md:text-left text-black-500 font-medium  mb-8">
                         Yeah Perfume Categories
                     </h2>
                     <div>

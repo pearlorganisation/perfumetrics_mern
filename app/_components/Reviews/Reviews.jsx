@@ -37,7 +37,7 @@ const Reviews = async ({ reviewSidebar, length }) => {
       <div className="w-full grid lg:grid-cols-[auto_20rem] gap-x-4 px-6 md:px-10 py-3 md:py-10">
         <div className="w-full">
           <div class="grid place-items-center relative mb-10">
-            <h1 class="text-lg md:text-3xl font-medium px-8 py-3 bg-white z-40">
+            <h1 class="text-2xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
               Reviews
             </h1>
             <div class="absolute w-full h-[2px] bg-slate-500"></div>
@@ -61,48 +61,25 @@ const Reviews = async ({ reviewSidebar, length }) => {
                           />
                         </div>
                       </div>
-                      <p className="text-gray-700 mb-4 line-clamp-5">
+                      <p className="text-gray-700 text-base font-medium mb-4 line-clamp-1 md:line-clamp-3">
                         {_?.description}
                       </p>
                       <div className="flex justify-between mb-0 md:mb-4 flex-wrap">
                         <div className="flex items-center">
-                          <svg
-                            className="w-5 h-5 text-yellow-500"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M10 15l-5.878 3.09 1.122-6.545L.487 7.545l6.57-.955L10 1l2.943 5.59 6.57.955-4.757 4.09L15.878 18z" />
-                          </svg>
-                          <svg
-                            className="w-5 h-5 text-yellow-500"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M10 15l-5.878 3.09 1.122-6.545L.487 7.545l6.57-.955L10 1l2.943 5.59 6.57.955-4.757 4.09L15.878 18z" />
-                          </svg>
-                          <svg
-                            className="w-5 h-5 text-yellow-500"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M10 15l-5.878 3.09 1.122-6.545L.487 7.545l6.57-.955L10 1l2.943 5.59 6.57.955-4.757 4.09L15.878 18z" />
-                          </svg>
-                          <svg
-                            className="w-5 h-5 text-yellow-500"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M10 15l-5.878 3.09 1.122-6.545L.487 7.545l6.57-.955L10 1l2.943 5.59 6.57.955-4.757 4.09L15.878 18z" />
-                          </svg>
-                          <svg
-                            className="w-5 h-5 text-yellow-500"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M10 15l-5.878 3.09 1.122-6.545L.487 7.545l6.57-.955L10 1l2.943 5.59 6.57.955-4.757 4.09L15.878 18z" />
-                          </svg>
+
+                          {
+                            Array.from({ length: 5 }).map(item => {
+                              return <svg
+                                className="w-3 h-3 md:w-5 md:h-5 text-yellow-500"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                              >
+                                <path d="M10 15l-5.878 3.09 1.122-6.545L.487 7.545l6.57-.955L10 1l2.943 5.59 6.57.955-4.757 4.09L15.878 18z" />
+                              </svg>
+                            })
+                          }
                         </div>
-                        <p className="text-gray-900 font-bold text-balance md:text-xl xl:text-3xl">
+                        <p className="text-gray-900 text-sm font-normal ">
                           {_?.reviewBy}
                         </p>
                       </div>

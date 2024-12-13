@@ -79,7 +79,7 @@ const ProsCons = () => {
   return (
     <>
       <div className="grid grid-col-2 items-center bg-white md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
-        <div className="grid lg:grid-cols-2 justify-center md:w-full sm:w-60">
+        <div className="grid md:grid-cols-2 py-3 gap-10 justify-center  w-full ">
           <div className="md:p-4 lg:border-r border-gray-300 grid bg-[#f0fff1]">
             <div className=" w-full ">
               <div className="text-[#2e6e6a] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
@@ -111,7 +111,7 @@ const ProsCons = () => {
                             : ""
                         } flex flex-col justify-center items-center`}
                       >
-                        <CiHeart size={24} className="text-pink-300" />
+                        <CiHeart size={20} className="text-pink-300" />
                         <span className="text-sm">{item.likesVote}</span>
                       </span>
                       <span
@@ -131,7 +131,7 @@ const ProsCons = () => {
                             : ""
                         } flex flex-col justify-center items-center`}
                       >
-                        <FaHeartBroken size={22} className="text-[#f34949]" />
+                        <FaHeartBroken className="text-[#f34949]" />
                         <span className="text-sm">{item.disLikesVote}</span>
                       </span>
                     </div>
@@ -173,7 +173,7 @@ const ProsCons = () => {
                             : ""
                         } flex flex-col justify-center items-center`}
                       >
-                        <CiHeart size={24} className="text-pink-300" />
+                        <CiHeart size={20} className="text-pink-300" />
                         <span className="text-sm">{item.likesVote}</span>
                       </span>
                       <span
@@ -193,7 +193,7 @@ const ProsCons = () => {
                             : ""
                         } flex flex-col justify-center items-center`}
                       >
-                        <FaHeartBroken size={22} className="text-[#f34949]" />
+                        <FaHeartBroken className="text-[#f34949]" />
                         <span className="text-sm">{item.disLikesVote}</span>
                       </span>
                     </div>

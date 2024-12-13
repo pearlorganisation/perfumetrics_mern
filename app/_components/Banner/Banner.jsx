@@ -1,25 +1,49 @@
 import React from "react";
 
-const Banner = () => {
+const HeroSection = () => {
   return (
-    <div className="flex shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset]">
-      <div className=" h-[63vh] md:h-[60vh]">
-        <img className="h-full w-full " src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1733475696/HeroBoth_tnmjbq.jpg" alt="" srcset="" />
-        {/* <img
-          className="object-contain object-center md:w-[50vw] h-[63vh] md:h-[60vh]"
-          src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1733475574/Hero1_i0qyrm.jpg"
-          alt="perfumegirl"
-        />
-      </div>
-      <div className=" w-[50vw] h-[60vh] hidden md:block">
-        <img
-          className="object-contain object-center w-[50vw] h-[60vh]"
-          src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1733475574/Hero2_voe7ta.jpg"
-          alt="perfume"
-        /> */}
+    <div className="relative bg-gray-50">
+      <div className="container mx-auto px-4 py-16 lg:py-24 flex flex-col lg:flex-row items-center">
+        {/* Text Content */}
+        <div className="lg:w-1/2 text-center lg:text-left">
+          <h1 className="text-5xl font-extrabold leading-tight sm:text-6xl lg:text-7xl text-gray-800">
+            Awaken Your Senses
+          </h1>
+          <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-lg mx-auto lg:mx-0">
+            Dive into the world of luxurious perfumes, where timeless elegance
+            meets captivating scents. Discover your perfect match today.
+          </p>
+          <div className="mt-8 hidden md:flex justify-center lg:justify-start space-x-4">
+            <button className="px-8 py-3 bg-pink-500 text-white font-semibold rounded-lg shadow-lg hover:bg-pink-600 transition transform hover:scale-105">
+              Explore Men's
+            </button>
+            <button className="px-8 py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-lg hover:bg-gray-300 transition transform hover:scale-105">
+              Explore Women's
+            </button>
+          </div>
+        </div>
+
+        {/* Image */}
+        <div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center relative">
+          {/* Decorative Overlay */}
+          <div className="absolute inset-0 w-[30rem] h-[30rem] bg-gradient-to-br from-purple-300 to-purple-100 rounded-full blur-3xl opacity-40"></div>
+          <img
+            src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1733984224/static_hero_primary_Now_And_Then_2_aynsff.webp"
+            alt="Hero Perfume Bottle"
+            className="relative z-10 rounded-lg shadow-2xl w-full max-w-md transition transform hover:scale-105"
+          />
+        </div>
+        <div className="mt-8 flex md:hidden justify-center lg:justify-start space-x-4">
+          <button className="px-8 py-3 bg-pink-500 text-white font-semibold rounded-lg shadow-lg hover:bg-pink-600 transition transform hover:scale-105">
+            Explore Men's
+          </button>
+          <button className="px-8 py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-lg hover:bg-gray-300 transition transform hover:scale-105">
+            Explore Women's
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Banner;
+export default HeroSection;

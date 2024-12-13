@@ -28,11 +28,11 @@ const News = () => {
         <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">News </h1>
         <div class="absolute w-full h-[2px] bg-slate-500"></div>
       </div>
-      <div className="flex justify-between items-center text-lg md:text-4xl font-medium"></div>
+      <div className="flex justify-between  items-center text-lg md:text-4xl font-medium"></div>
       {
         newsMapData ? <Link href={`/news/${newsMapData?.get(1)?._id}`} className="grid grid-cols-1 gap-6 py-6 pt-0">
 
-          <div className="space-y-4 w-full">
+          <div className="space-y-2 w-full ">
             <img
               className="w-full h-[30rem] object-cover"
 
@@ -44,7 +44,7 @@ const News = () => {
               {newsMapData?.get(1)?.title}
 
             </div>
-            <div className="font-medium">By {newsMapData?.get(1)?.user} :</div>
+            <div className="text-sm">By {newsMapData?.get(1)?.user} :</div>
             <p className="line-clamp-4">
               {newsMapData?.get(1)?.details}
 
@@ -61,10 +61,10 @@ const News = () => {
         </div>
       }
 
-      <div className="grid gap-6 md:grid-cols-[18rem_auto] py-6 ">
-        <div>
+      <div className="grid gap-6 md:grid-cols-[18rem_auto] py-6  ">
+        <div className="space-y-2">
           {
-            newsMapData ? <Link href={`/news/${newsMapData?.get(2)?._id}`} className="mb-8">
+            newsMapData ? <Link href={`/news/${newsMapData?.get(2)?._id}`} className="space-y-1">
               <img
                 className="w-full rounded-md h-[13.5rem]"
                 src={newsMapData?.get(2)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
@@ -74,7 +74,7 @@ const News = () => {
                 {newsMapData?.get(2)?.title}
 
               </div>
-              <div className="font-semibold ">{newsMapData?.get(2)?.user}</div>
+              <div className="text-sm ">{newsMapData?.get(2)?.user}</div>
               <p className="font-medium line-clamp-4">
                 {newsMapData?.get(2)?.details}{" "}
               </p>
@@ -86,24 +86,26 @@ const News = () => {
             </div>
           }
           {
-            newsMapData ? <Link href={`/news/${newsMapData?.get(3)?._id}`} className="mb-8">
-              <img
-                className="w-full rounded-md h-[13.5rem]"
-                src={newsMapData?.get(3)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
-                alt=""
-              />
-              <div className="font-bold pt-2 text-black text-xl">
-                {newsMapData?.get(3)?.title}
+            newsMapData ? <div className=" mt-8">
+              <Link href={`/news/${newsMapData?.get(3)?._id}`} className="mb-8 space-y-1">
+                <img
+                  className="w-full rounded-md h-[13.5rem]"
+                  src={newsMapData?.get(3)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+                  alt=""
+                />
+                <div className="font-bold pt-2 text-black text-xl">
+                  {newsMapData?.get(3)?.title}
 
-              </div>
-              <div className="font-semibold "> {newsMapData?.get(3)?.user}</div>
-              <p className="font-medium line-clamp-4">
-                {newsMapData?.get(3)?.details}{" "}
-                {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
+                </div>
+                <div className="text-sm "> {newsMapData?.get(3)?.user}</div>
+                <p className="font-medium line-clamp-4">
+                  {newsMapData?.get(3)?.details}{" "}
+                  {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
               qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
               nihil assumenda sed{" "} */}
-              </p>
-            </Link> : <div class="mb-8 animate-pulse space-y-2">
+                </p>
+              </Link>
+            </div> : <div class="mb-8 animate-pulse space-y-2">
               <div class="w-full rounded-md h-[13.5rem] bg-gray-200"></div>
               <div class="font-bold pt-2 text-black text-xl">
                 <div class="h-4 bg-gray-200 w-3/4"></div>
@@ -122,14 +124,14 @@ const News = () => {
 
         </div>
         {
-          newsMapData ? <Link href={`/news/${newsMapData?.get(4)?._id}`} className=" space-y-3">
+          newsMapData ? <Link href={`/news/${newsMapData?.get(4)?._id}`} className=" space-y-1">
             <img
               className="w-full rounded-md h-[20rem]"
               src={newsMapData?.get(4)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
               alt=""
             />
             <div className="font-semibold text-xl"> {newsMapData?.get(4)?.title}</div>
-            <div className="font-semibold"> {newsMapData?.get(4)?.user}</div>
+            <div className="text-sm"> {newsMapData?.get(4)?.user}</div>
             <p className="font-medium line-clamp-3">
               {newsMapData?.get(4)?.details}{" "}
               {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
@@ -152,7 +154,7 @@ const News = () => {
               {newsMapData?.get(5)?.title}
 
             </div>
-            <span className="font-semibold text-lg"> {newsMapData?.get(5)?.user}{" "}</span>
+            <span className="text-sm"> {newsMapData?.get(5)?.user}{" "}</span>
             <p className="font-medium line-clamp-4">
               {newsMapData?.get(5)?.details}{" "}
               {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
@@ -181,9 +183,9 @@ const News = () => {
       {/* News */}
       <div className="grid grid-cols-1 gap-6 py-6">
         {
-          newsMapData ? <Link href={`/news/${newsMapData?.get(6)?._id}`} className="space-y-4 w-full">
+          newsMapData ? <Link href={`/news/${newsMapData?.get(6)?._id}`} className="space-y-1 w-full">
             <img
-              className="w-full h-[30rem] object-cover"
+              className="w-full h-[30rem] object-cover mb-3"
               src={newsMapData?.get(6)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
               alt=""
             />
@@ -194,7 +196,7 @@ const News = () => {
 
               }
             </div>
-            <div className="font-medium">By {
+            <div className="text-sm">By {
               newsMapData?.get(6)?.user
 
             }:</div>
@@ -219,9 +221,9 @@ const News = () => {
       </div>
       <div className="grid grid-cols-1 gap-6 py-6">
         {
-          newsMapData ? <Link href={`/news/${newsMapData?.get(7)?._id}`} className="space-y-4 w-full">
+          newsMapData ? <Link href={`/news/${newsMapData?.get(7)?._id}`} className="space-y-1 w-full">
             <img
-              className="w-full h-[30rem] object-cover"
+              className="w-full h-[30rem] object-cover mb-3"
               src={newsMapData?.get(7)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
               alt=""
             />

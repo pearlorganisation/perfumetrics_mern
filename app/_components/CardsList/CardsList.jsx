@@ -12,10 +12,10 @@ const CardsList = ({ reviewData, length, data }) => {
             <div className={`bg-white ${style.shadowE} flex justify-start items-center gap-3 cursor-pointer p-3`}>
               <div className="h-20 rounded w-[5rem]"><img className="object-cover w-16" src={item?.banner || item?.imgUrl} alt="" /></div>
 
-              <div className="w-[12rem]">
+              <div className="w-[12rem] space-y-1">
                 <h3 className="text-xl font-semibold">{item?.title}</h3>
-                <p className="text-xs line-clamp-3">{item?.description}</p>
-                <div className="flex justify-end items-center gap-2 "><span className="text-yellow-700 text-sm !font-thin">{item?.reviewBy} </span>
+                <p className="text-sm line-clamp-3">{item?.description}</p>
+                <div className="flex justify-end items-center gap-2 "><span className="text-yellow-700 text-xs">{item?.reviewBy} </span>
                   <div className="bg-pink-500 rounded-full size-6 grid place-items-center">
                     <FaUser className="text-white" />
                   </div></div>

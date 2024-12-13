@@ -73,10 +73,10 @@ const BestSale = () => {
           <div className="w-full relative  grid place-items-center">
             <img
               className="h-[100%] translate-y-0 w-full "
-              src="https://images.unsplash.com/photo-1605619082574-e92eee603b95?q=80&w=2081&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1734002362/DiscoverW_u0ifc6.jpg"
               alt=""
             />
-            <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50">
+            {/* <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50">
               <h1 className="text-pink-500 text-xl md:text-2xl lg:text-3xl font-bold">
                 DISCOVER
               </h1>
@@ -86,7 +86,7 @@ const BestSale = () => {
               <button className="w-[8rem] py-2 rounded border border-pink-500 mt-8 text-white">
                 <Link href="/login">SHOP NOW</Link>
               </button>
-            </div>
+            </div> */}
           </div>
           <div className="flex flex-col justify-between w-full ">
             <span className="text-2xl font-semibold pb-3 h-10">
@@ -152,29 +152,30 @@ const BestSale = () => {
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-4 w-full py-6 px-5 md:px-0">
-          {Array(2)
-            .fill(true)
-            .map((item) => {
-              return (
-                <div className="w-full">
-                  <div className="relative">
-                    <img
-                      className="w-full h-64 object-cover"
-                      src="https://plus.unsplash.com/premium_photo-1667662655276-b3751fbbe107?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D"
-                      alt="Best for Men's Style"
-                    />
-                    <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50">
-                      <h1 className="text-pink-500 text-xl md:text-2xl lg:text-3xl font-bold">
-                        DISCOVER
-                      </h1>
-                      <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold mt-2">
-                        BEST FOR MEN'S STYLE
-                      </h2>
-                    </div>
-                  </div>
+          {[
+            "https://res.cloudinary.com/dznz3eqe8/image/upload/v1732796272/20241122_123618_0000_lchvdf.jpg",
+            `https://res.cloudinary.com/dznz3eqe8/image/upload/v1732796285/20241122_123618_0001_ypzx1b.jpg`,
+          ].map((item) => {
+            return (
+              <div className="w-full">
+                <div className="relative">
+                  <img
+                    className="w-full h-64 object-cover"
+                    src={item}
+                    alt="Best for Men's Style"
+                  />
+                  {/* <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50">
+                    <h1 className="text-pink-500 text-xl md:text-2xl lg:text-3xl font-bold">
+                      DISCOVER
+                    </h1>
+                    <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold mt-2">
+                      BEST FOR MEN'S STYLE
+                    </h2>
+                  </div> */}
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
         </div>
       </div>
       <LogoGrid />

@@ -41,7 +41,7 @@ const CommentLikeDisLike = memo(({ item }) => {
 
   // Determine if the user has liked or disliked this comment
   const userVote =
-    userHistoryData[`${item?._id}`]?.vote || -99; // 1 for like, -1 for dislike, 0 for no action
+    userHistoryData?.[`${item?._id}`]?.vote || -99; // 1 for like, -1 for dislike, 0 for no action
 
   async function postAnVoteForComment(currVote) {
     if (!user) {

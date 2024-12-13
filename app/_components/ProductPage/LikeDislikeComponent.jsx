@@ -3,7 +3,6 @@ import { IoHeart } from 'react-icons/io5';
 import Image from 'next/image';
 import axios from 'axios';
 import { userStore } from '@/store/userStore';
-import { useRouter } from 'next/navigation';
 
 const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
     const { user, isUserLoggedIn } = userStore();
@@ -58,7 +57,7 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
 
 
     return (
-        <div className="flex justify-start  md:mt-6 ">
+        <div className="flex justify-center  mt-6  ">
             <div
                 onClick={handleLike}
                 className="w-fit cursor-pointer grid place-items-center gap-1"
