@@ -64,21 +64,7 @@ const RatingResult = ({ productId }) => {
             )
             .join(""); // Join the array into a single string
     };
-    // const updateRating = (p1, p2) => {
-    //     if (user?._id) {
-    //         console.log(user, "user")
-    //         let obj = {}
-    //         obj[toCamelCase(p1?.name)] = toCamelCase(p2?.name)
-    //         console.log(obj, "obj")
-    //         updateReviewByUserId({ userId: user?._id, ...obj })
-    //         setRateData(prev => {
-    //             return { userId: user?._id, ...obj }
-    //         })
-    //     } else {
-    //         toast.info("Please Login First...")
-    //     }
 
-    // }
 
 
     const updateRating = useDebouncedCallback((p1, p2) => {
@@ -324,7 +310,7 @@ const RatingResult = ({ productId }) => {
 
 
     return (
-        <div className='grid md:grid-cols-2 gap-10 md:gap-20  w-full'>
+        <div className='grid md:grid-cols-2 gap-10 md:gap-20  w-full px-12 md:px-0'>
             {
                 ratingData?.map((item, ind) => {
                     return <div className='grid'>

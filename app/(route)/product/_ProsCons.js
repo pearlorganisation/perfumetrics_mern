@@ -79,9 +79,9 @@ const ProsCons = () => {
   return (
     <>
       <div className="grid grid-col-2 items-center bg-white md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
-        <div className="grid md:grid-cols-2 py-3 gap-10 justify-center  w-full ">
+        <div className="grid md:grid-cols-2 py-3 gap-10 justify-center  w-full md:px-0 px-10 ">
           <div className="md:p-4 lg:border-r border-gray-300 grid bg-[#f0fff1]">
-            <div className=" w-full ">
+            <div className=" w-full   ">
               <div className="text-[#2e6e6a] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
                 <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
                   <FaCrown /> PROS
@@ -91,9 +91,9 @@ const ProsCons = () => {
                 {prosNconsData?.pros?.map((item) => (
                   <li
                     key={item._id}
-                    className="flex items-center space-x-3 my-2"
+                    className="flex items-start space-x-3 my-2"
                   >
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 ">
                       <span
                         onClick={() =>
                           user?._id
@@ -109,7 +109,7 @@ const ProsCons = () => {
                           historyMap.get(item._id)?.vote === 1
                             ? "ring-4 ring-pink-500/70 rounded-full"
                             : ""
-                        } flex flex-col justify-center items-center`}
+                        } flex flex-col justify-center items-center `}
                       >
                         <CiHeart size={20} className="text-pink-300" />
                         <span className="text-sm">{item.likesVote}</span>

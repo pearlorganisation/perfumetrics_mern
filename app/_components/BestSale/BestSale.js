@@ -1,8 +1,32 @@
-import React from "react";
+"use client";
+import React, { useEffect, useMemo, useState } from "react";
 import LogoGrid from "./LogoGrid";
 import Link from "next/link";
+import axios from "axios";
+import ct from "countries-and-timezones";
 
 const BestSale = () => {
+  const [salesData, setSalesData] = useState([]);
+  const tmz = useMemo(
+    () => Intl.DateTimeFormat().resolvedOptions().timeZone,
+    []
+  );
+  const timezone = useMemo(() => ct.getTimezone(tmz), [tmz]);
+  const [timeZoneCountry, setTimeZoneCountry] = useState(
+    timezone?.countries[0]
+  );
+
+  const getSalesOff = async () => {
+    const result = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/salesOff`
+    );
+    setSalesData(result?.data?.data);
+    console.log(result?.data?.data, "result");
+  };
+  useEffect(() => {
+    getSalesOff();
+  }, []);
+
   return (
     <div>
       <div>
@@ -12,143 +36,102 @@ const BestSale = () => {
               SALES OFF
             </span>
 
-            {Array(3)
-              .fill(true)
-              .map((item) => {
-                return (
+            {salesData?.slice(0, 3).map((item) => {
+              console.log(item);
+              if (!item?.mapOfLinks[timeZoneCountry]) return;
+              const { link, price, quantity } =
+                item?.mapOfLinks[timeZoneCountry];
+              return (
+                <Link href={link}>
                   <div className=" flex bg-white shadow-lg rounded-lg overflow-hidden p-2">
                     <div className="grid place-items-center">
                       <img
                         className="size-28 object-cover"
-                        src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D"
+                        src={item?.banner}
                         alt="Euphoria Eau De Parful"
                       />
                     </div>
                     <div className="p-4">
-                      <h2 className="text-gray-800 text-sm lg:text-lg font-semibold">
-                        Euphoria Eau De Parful Ns 100ml
+                      <h2 className="text-gray-800 text-sm lg:text-lg ">
+                        {item?.title} {quantity}
                       </h2>
                       <div className="flex items-center mt-2">
-                        <svg
-                          className="w-4 h-4 fill-current text-blue-500"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 fill-current text-blue-500"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 fill-current text-blue-500"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 fill-current text-blue-500"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 fill-current text-blue-500"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
-                        </svg>
+                        {Array.from({ length: Number(item?.rating) })?.map(
+                          (item) => {
+                            return (
+                              <svg
+                                className="w-4 h-4 fill-current text-blue-500"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
+                              </svg>
+                            );
+                          }
+                        )}
                       </div>
                       <div className="mt-3">
-                        <span className="text-gray-800 text-xl font-semibold">
-                          £105.00
-                        </span>
+                        <span className="text-gray-800 text-sm ">{price}</span>
                       </div>
                     </div>
                   </div>
-                );
-              })}
+                </Link>
+              );
+            })}
           </div>
-          <div className="w-full relative  grid place-items-center">
+          <div className="w-full relative  grid place-items-center border">
             <img
               className="h-[100%] translate-y-0 w-full "
               src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1734002362/DiscoverW_u0ifc6.jpg"
               alt=""
             />
-            {/* <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50">
-              <h1 className="text-pink-500 text-xl md:text-2xl lg:text-3xl font-bold">
-                DISCOVER
-              </h1>
-              <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold mt-2">
-                WOMEN'S STYLE
-              </h2>
-              <button className="w-[8rem] py-2 rounded border border-pink-500 mt-8 text-white">
-                <Link href="/login">SHOP NOW</Link>
-              </button>
-            </div> */}
           </div>
           <div className="flex flex-col justify-between w-full ">
             <span className="text-2xl font-semibold pb-3 h-10">
               {/* SALE OFF */}
             </span>
-            {Array(3)
-              .fill(true)
-              .map((item) => {
-                return (
+            {salesData?.slice(3, 6).map((item) => {
+              console.log(item);
+              if (!item?.mapOfLinks[timeZoneCountry]) return;
+              const { link, price, quantity } =
+                item?.mapOfLinks[timeZoneCountry];
+              return (
+                <Link href={link}>
                   <div className=" flex bg-white shadow-lg rounded-lg overflow-hidden p-2">
                     <div className="grid place-items-center">
                       <img
                         className="size-28 object-cover"
-                        src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE4fHx8ZW58MHx8fHx8"
+                        src={item?.banner}
                         alt="Euphoria Eau De Parful"
                       />
                     </div>
                     <div className="p-4">
-                      <h2 className="text-gray-800 text-lg font-semibold">
-                        Euphoria Eau De Parful Ns 100ml
+                      <h2 className="text-gray-800 text-sm  font-semibold">
+                        {item?.title}
+                        {quantity}
                       </h2>
+
                       <div className="flex items-center mt-2">
-                        <svg
-                          className="w-4 h-4 fill-current text-blue-500"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 fill-current text-blue-500"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 fill-current text-blue-500"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 fill-current text-blue-500"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
-                        </svg>
-                        <svg
-                          className="w-4 h-4 fill-current text-blue-500"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
-                        </svg>
+                        {Array.from({ length: Number(item?.rating) })?.map(
+                          (item) => {
+                            return (
+                              <svg
+                                className="w-4 h-4 fill-current text-blue-500"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
+                              </svg>
+                            );
+                          }
+                        )}
                       </div>
                       <div className="mt-3">
-                        <span className="text-gray-800 text-xl font-semibold">
-                          £105.00
-                        </span>
+                        <span className="text-gray-800 text-sm">{price}</span>
                       </div>
                     </div>
                   </div>
-                );
-              })}
+                </Link>
+              );
+            })}
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-4 w-full py-6 px-5 md:px-0">
@@ -164,14 +147,6 @@ const BestSale = () => {
                     src={item}
                     alt="Best for Men's Style"
                   />
-                  {/* <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50">
-                    <h1 className="text-pink-500 text-xl md:text-2xl lg:text-3xl font-bold">
-                      DISCOVER
-                    </h1>
-                    <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold mt-2">
-                      BEST FOR MEN'S STYLE
-                    </h2>
-                  </div> */}
                 </div>
               </div>
             );

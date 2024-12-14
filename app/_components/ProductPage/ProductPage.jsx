@@ -138,8 +138,8 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     </div>
 
                     <div className="flex flex-col items-center gap-4 ">
-                        <div className="  w-fit py-6 md:py-0">
-                            <img className="w-[80%]" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
+                        <div className="  w-fit py-6 md:py-0 size-20  px-12">
+                            <img className="w-full h-full object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
                         </div>
                         <div className="flex flex-wrap w-full justify-center">
                             <PieChart mainAccords={data?.data?.mainAccords} />
@@ -201,7 +201,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                             <div className="p-2 absolute -top-5 left-[50%] bg-white">
                                 <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
                             </div>
-                            <p className='text-justify md:text-left text-sm '>
+                            <p className='text-justify md:text-left text-sm font-normal'>
 
                                 {data?.data?.description}
                             </p>
@@ -248,7 +248,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
 
             {/* Fragrance Notes starts */}
             <div className="mt-14">
-                <div className="w-full relative grid place-items-center mb-14">
+                <div className="w-full relative grid place-items-center mb-6">
                     <div className="h-[2px] w-[70%] bg-black absolute"></div>
                     <h2 className="text-xl  md:text-3xl font-medium bg-white px-2 md:px-4 z-30">
                         Fragrance Notes

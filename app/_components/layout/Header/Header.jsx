@@ -22,6 +22,12 @@ export default function Example() {
   const [perfumeDropDown, setPerfumeDropDown] = useState(false);
   const [reveiwDropDown, setReviewDropDown] = useState(false);
 
+  const [showEmail, setShowEmail] = useState(false);
+
+  const getInitials = (name) => {
+    return name.slice(0, 2).toUpperCase();
+  };
+
   const getAllBrands = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/brand/menu`,
@@ -122,16 +128,31 @@ export default function Example() {
           <div className="flex justify-end space-x-3 w-full">
             {isUserLoggedIn ? (
               <div className="space-x-3 flex py-2">
-                <span className="font-medium text-lg flex items-center gap-2">
-                  <FaRegUserCircle size={25} />
-                  {user?.userName}
-                </span>
+                <div className="flex items-center space-x-3 relative">
+                  <div
+                    className="w-10 h-10 relative  rounded-full bg-pink-500 flex items-center justify-center text-white font-bold cursor-pointer transition-all duration-300 ease-in-out"
+                    onMouseEnter={() => setShowEmail(true)}
+                    onMouseLeave={() => setShowEmail(false)}
+                  >
+                    {user ? getInitials(user.userName) : 'GU'}
+                    {showEmail && user && (
+                      <div className=" bg-black/70 font-normal absolute -bottom-[2.8rem]  p-2 rounded-md shadow-lg z-10 transition-opacity duration-300 ease-in-out">
+                        {user.userName}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* <span className="font-medium text-sm md:text-lg text-gray-800">
+                    {user?.userName || 'Guest'}
+                  </span> */}
+                </div>
                 <button
-                  onClick={() => logout()}
+                  onClick={logout}
                   type="button"
-                  className="bg-pink-500 px-6 py-2 rounded-md text-white flex justify-center items-center space-x-1.5 p-1.5"
+                  className="bg-pink-500 hover:bg-pink-600 text-white font-medium rounded-md transition duration-300 ease-in-out flex items-center space-x-2 px-3 py-2 md:px-4 md:py-2"
                 >
-                  <CiLogout /> <span>Logout</span>
+                  <CiLogout className="w-4 h-4 md:w-5 md:h-5" />
+                  <span className="hidden sm:inline">Logout</span>
                 </button>
               </div>
             ) : (

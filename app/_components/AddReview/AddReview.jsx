@@ -58,7 +58,7 @@ const AddReview = () => {
 
     return (
         <>
-            <form className="grid gap-2">
+            <form className="grid gap-2  pt-3">
                 <div className=" text-xl md:text-3xl font-medium pl-1 relative grid place-items-center mt-8 mb-4 md:my-8">
                     <div className="absolute w-full border"></div>
                     <div className="z-20 bg-white px-3 py-2">Add Your Review</div>
