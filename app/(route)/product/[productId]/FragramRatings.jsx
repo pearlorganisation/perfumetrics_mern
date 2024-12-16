@@ -81,7 +81,7 @@ const FragramRatings = ({ data, country }) => {
                   preserveAspectRatio="xMidYMid meet"
                 >
                   <circle
-                    className="text-gray-300"
+                    className="text-amber-500"
                     strokeWidth="8"
                     stroke="currentColor"
                     fill="transparent"
@@ -90,7 +90,7 @@ const FragramRatings = ({ data, country }) => {
                     cy="64"
                   />
                   <circle
-                    className="text-orange-500"
+                    className="text-amber-500"
                     strokeWidth="8"
                     strokeDasharray="301.6"
                     strokeDashoffset="60.3"

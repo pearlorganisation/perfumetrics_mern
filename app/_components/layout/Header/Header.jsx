@@ -136,7 +136,7 @@ export default function Example() {
                   >
                     {user ? getInitials(user.userName) : 'GU'}
                     {showEmail && user && (
-                      <div className=" bg-black/70 font-normal absolute -bottom-[2.8rem]  p-2 rounded-md shadow-lg z-10 transition-opacity duration-300 ease-in-out">
+                      <div className=" bg-black/70 text-nowrap font-normal absolute -bottom-[2.8rem]  p-2 rounded-md shadow-lg z-10 transition-opacity duration-300 ease-in-out">
                         {user.userName}
                       </div>
                     )}

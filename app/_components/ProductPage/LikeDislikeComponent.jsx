@@ -4,9 +4,11 @@ import Image from 'next/image';
 import axios from 'axios';
 import { userStore } from '@/store/userStore';
 import { toast } from 'sonner';
+import { FaSpinner } from 'react-icons/fa';
 
 const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
     const { user, isUserLoggedIn } = userStore();
+    const [isLoading, setIsLoading] = useState(false)
     const [likeDisLikeData, setLikeDisLike] = useState({})
     const [userHistory, setUserHistory] = useState(null)
 
@@ -28,14 +30,19 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
         setLikeDisLike(result?.data?.data)
     }
     const likeDislike = async (userVote) => {
+        setIsLoading(true)
         try {
             const result = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/votePerfume`, {
                 userId: user?._id, perfumeId: productId, userVote
             })
+            setIsLoading(false)
+
             getLikeDisLike()
 
         } catch (error) {
             console.log(error)
+            setIsLoading(false)
+
         }
     }
 
@@ -69,7 +76,7 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
                     size={38}
                 />
                 <div className="h-1 w-full bg-pink-400"></div>
-                <span>{likeDisLikeData?.likes} Likes</span>
+                <span>{isLoading ? <FaSpinner className="animate-spin text-red-500" size={22} /> : likeDisLikeData?.likes + ` Likes`}</span>
             </div>
 
             <div
@@ -84,7 +91,7 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
                     alt=""
                 />
                 <div className="h-1 w-full bg-pink-400"></div>
-                <span>{likeDisLikeData?.dislike} DisLikes</span>
+                <span>{isLoading ? <FaSpinner className="animate-spin text-red-500" size={22} /> : likeDisLikeData?.dislike + ` DisLikes`} </span>
             </div>
         </div>
     );
