@@ -32,6 +32,7 @@ import {
 } from "next/font/google";
 import PerfumeCarousel from './PerfumeCarousel';
 import PerfumeCategorySlider from './PerfumeCategorySlider';
+import LoginSignUp from '../LoginSignUp/LoginSignUp';
 
 const lora = Montserrat({
     subsets: ['latin'],
@@ -111,7 +112,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
         <div className="min-h-screen container mx-auto  py-6 px-4">
             <p className="text-4xl font-medium py-6 md:mb-16 mb-0 text-center">
                 {/* {data?.data?.perfume}{" "} */}
-                <h1 className={`text-2xl md:w-[70%] md:text-left md:text-4xl font-semibold ${lora.className}`}>{data?.data?.perfume}</h1>
+                <h1 className={`text-2xl md:w-[70%] md:text-left md:text-4xl font-semibold ${lora.className}`}>{data?.data?.perfume?.split('for')[0]} <span className='text-pink-400 text-xl md:text-3xl font-normal'>
+                    {data?.data?.perfume?.split('for').length > 1 ? `for` + data?.data?.perfume?.split('for')[1] : ''}
+                </span></h1>
             </p>
             <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_18rem]">
                 <div className="grid md:grid-cols-[55%_45%]  ">
@@ -148,24 +151,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                 </div>
 
                 <div className=" space-y-14 hidden md:block">
-                    {
-                        !isUserLoggedIn ? <div className="border-2 border-pink-500 rounded grid place-items-center py-4 gap-2">
-                            <div className="text-xl md:text-2xl font-semibold">Register</div>
-                            <div className="space-x-4">
-                                <button className="w-[8rem] py-2 rounded border border-pink-500">
-                                    <Link href="/login">Login</Link>
-                                </button>
-                                <button className="w-[8rem] py-2 rounded border border-pink-500">
-                                    <Link href="/signUp">Register</Link>
-                                </button>
-                            </div>
-                            <button className="bg-[#1777F2] font-medium text-white px-4 py-2 rounded flex justify-center items-center gap-2">
-                                {" "}
-                                <FaFacebookF />
-                                Login
-                            </button>
-                        </div> : <div></div>
-                    }
+                    <LoginSignUp />
                     {
                         globalBanner && <div className="h-[20rem]  border rounded-md overflow-hidden">
 
@@ -303,7 +289,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                             <img
                                                                 src={el.image}
                                                                 alt={el.name}
-                                                                className="w-12 sm:h-12 md:w-20 md:h-20"
+                                                                className="w-12 sm:h-12 md:w-16 md:h-16"
                                                             />
                                                             <p className='text-base md:text-lg'>{el.name}</p>
                                                         </div>
@@ -324,7 +310,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-12 sm:h-12 md:w-20 md:h-20"
+                                                            className="w-12 sm:h-12 md:w-16 md:h-16"
                                                         />
                                                         <p className='text-base md:text-lg'>{el.name}</p>
                                                     </div>
@@ -345,7 +331,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-12 sm:h-12 md:w-20 md:h-20"
+                                                            className="w-12 sm:h-12 md:w-16 md:h-16"
                                                         />
                                                         <p className='text-base md:text-lg'>{el.name}</p>
                                                     </div>

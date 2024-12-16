@@ -3,6 +3,7 @@ import { IoHeart } from 'react-icons/io5';
 import Image from 'next/image';
 import axios from 'axios';
 import { userStore } from '@/store/userStore';
+import { toast } from 'sonner';
 
 const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
     const { user, isUserLoggedIn } = userStore();
@@ -40,12 +41,13 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
 
     const handleLike = useCallback(() => {
         // alert("hello")
-        likeDislike(1);
+        isUserLoggedIn ? likeDislike(1) : toast.info("Please Login First...");
     }, [likeDislike]);
 
     const handleDislike = useCallback(() => {
         // alert("hello")
-        likeDislike(-1);
+        isUserLoggedIn ? likeDislike(-1) : toast.info("Please Login First...");
+
     }, [likeDislike]);
     useEffect(() => {
         getLikeDisLike()

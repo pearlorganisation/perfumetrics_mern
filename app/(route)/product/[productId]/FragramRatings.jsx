@@ -6,6 +6,9 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import FragramSlider from "./FragranceSlider";
 import FragranceSlider from "./FragranceSlider";
+import { IoMdMale } from "react-icons/io";
+import { IoMdFemale } from "react-icons/io";
+import { IoMaleFemale } from "react-icons/io5";
 
 const FragramRatings = ({ data, country }) => {
   const { productId } = useParams();
@@ -173,10 +176,13 @@ const FragramRatings = ({ data, country }) => {
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center text-sm md:text-2xl font-bold">
                   {data?.gender === "M" && (
-                    <UserIcon className="w-6 h-6 md:w-8 md:h-8" />
+                    <IoMdMale className="w-6 h-6 md:w-8 md:h-8" />
                   )}
-                  {data?.gender !== "M" && (
-                    <XIcon className="w-6 h-6 md:w-8 md:h-8" />
+                  {data?.gender === "F" && (
+                    <IoMdFemale className="w-6 h-6 md:w-8 md:h-8" />
+                  )}
+                  {data?.gender === "O" && (
+                    <IoMaleFemale />
                   )}
                 </div>
               </div>
