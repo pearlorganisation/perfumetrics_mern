@@ -26,7 +26,7 @@ export default async function Home() {
     <div className="py-1 px-0">
       <Banner />
       <div className="flex justify-center ">
-        <div className="container mx-auto ">
+        <div className="lg:w-[55% container mx-auto ">
           <PopularBrands />
           <PerfumeSection length={7} reviewSidebar={sidebarReview} />
           <Gallery />

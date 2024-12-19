@@ -66,32 +66,46 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
 
 
     return (
-        <div className="flex justify-center  mt-6  ">
+        <div className="flex justify-center   mt-6  ">
             <div
                 onClick={handleLike}
-                className="w-fit cursor-pointer grid place-items-center gap-1"
+                className="w-full cursor-pointer grid place-items-center gap-1"
             >
-                <IoHeart
-                    className={`${((userHistory?.get(productId)?.vote === 1) ? 'ring-4 ring-pink-500' : '')} border-2 size-12 border-black rounded-full p-1 text-pink-300`}
-                    size={38}
-                />
+                <div className='relative'>
+                    {
+                        isLoading ? <div className='absolute w-full h-full border-t-2 animate-spin rounded-full border-pink-500'>
+
+                        </div> : ''
+                    }
+                    <IoHeart
+                        className={`${((userHistory?.get(productId)?.vote === 1) ? 'ring-2 ring-pink-500' : '')}  border-2 size-12 border-black rounded-full p-1 text-pink-300`}
+                        size={38}
+                    />
+                </div>
                 <div className="h-1 w-full bg-pink-400"></div>
-                <span>{isLoading ? <FaSpinner className="animate-spin text-red-500" size={22} /> : likeDisLikeData?.likes + ` Likes`}</span>
+                <div className='w-full flex justify-center gap-1 '><div className='w-fit h-6 '> {isLoading ? <FaSpinner className="animate-spin text-red-500" size={18} /> : (100 || 0)} </div> Likes</div>
             </div>
 
             <div
                 onClick={handleDislike}
-                className="w-fit cursor-pointer grid place-items-center gap-1 ml-10"
+                className="w-full  cursor-pointer grid place-items-center gap-1 ml-10 space-y-1"
             >
-                <Image
-                    className={`${((userHistory?.get(productId)?.vote === -1) ? 'ring-4 ring-pink-500' : '')} border-2 size-12 border-black rounded-full`}
-                    src="/likes.svg"
-                    width={50}
-                    height={50}
-                    alt=""
-                />
+                <div className='relative'>
+                    {
+                        isLoading ? <div className='absolute w-full h-full border-t-2 animate-spin rounded-full border-pink-500'>
+
+                        </div> : ''
+                    }
+                    <Image
+                        className={`${((userHistory?.get(productId)?.vote === -1) ? 'ring-4 ring-pink-500' : '')} ${(isLoading ? 'ring-4 ring-pink-500' : '')} border-2 size-12 border-black rounded-full`}
+                        src="/likes.svg"
+                        width={50}
+                        height={50}
+                        alt=""
+                    />
+                </div>
                 <div className="h-1 w-full bg-pink-400"></div>
-                <span>{isLoading ? <FaSpinner className="animate-spin text-red-500" size={22} /> : likeDisLikeData?.dislike + ` DisLikes`} </span>
+                <div className='w-full flex justify-center gap-1 '><div className='w-fit h-6 '> {isLoading ? <FaSpinner className="animate-spin text-red-500" size={18} /> : (likeDisLikeData?.dislike || 0)} </div> DisLikes </div>
             </div>
         </div>
     );

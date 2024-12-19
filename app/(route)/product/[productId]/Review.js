@@ -48,14 +48,14 @@ async function Review({ commentsData, perfumeId }) {
               <div className="bg-[#fafaf6] shadow rounded-lg p-6 border border-[#83a6c4]">
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500">
+                    <div className="w-8 h-8 md:w-12 md:h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500">
                       <img src={item?.logo} />
                     </div>
                   </div>
 
                   <div className="flex-1">
-                    <div className="flex justify-between items-center">
-                      <h4 className="text-lg font-semibold text-[#008b92]">
+                    <div className="flex flex-wrap gap-2 justify-between items-center">
+                      <h4 className="text-sm md:text-lg font-semibold text-[#008b92]">
                         {item?.title}
                       </h4>
                       <span className="text-sm text-gray-500">
@@ -65,20 +65,9 @@ async function Review({ commentsData, perfumeId }) {
                       </span>
                     </div>
 
-                    <p className="mt-2 text-gray-700">{item?.description}</p>
-                    {/* <div className="mt-4 flex space-x-4">
-                      <button className="flex items-center space-x-2 text-gray-500 hover:text-gray-700">
-                        <SlLike className="text-pink-500" />
-                      </button>
-                      <button className="flex items-center space-x-2 text-gray-500 hover:text-gray-700">
-                        <SlDislike />
-                      </button> */}
-
-                    {/* <button className="flex items-center space-x-2 text-gray-500 hover:text-gray-700">
-                        <MdShare />
-                        <span>Share</span>
-                      </button> */}
-                    {/* </div> */}
+                    <p className="mt-2 text-sm text-gray-700">
+                      {item?.description}
+                    </p>
 
                     <CommentLikeDisLike item={item} />
                   </div>

@@ -63,7 +63,9 @@ export default function Example() {
             {isMenuOpen && (
               <div className="w-64 bg-gray-100 p-4 rounded-lg shadow-md absolute top-[2.3rem] z-10 -left-4">
                 <ul className="space-y-2 !font-normal">
-                  <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                  <li
+
+                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <div
                       onMouseEnter={() => {
                         setReviewDropDown(true);
@@ -75,7 +77,9 @@ export default function Example() {
                       {reveiwDropDown && <ReviewDropdown />}
                     </div>
                   </li>
-                  <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                  <li
+
+                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <div
                       onMouseEnter={() => {
                         setPerfumeDropDown(true);
@@ -96,7 +100,11 @@ export default function Example() {
                       }
                     </div>
                   </li>
-                  <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                  <li
+                    onClick={() => {
+                      setIsMenuOpen(!isMenuOpen)
+                    }}
+                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <Link
                       href="/sale/BEST SALES"
                       className="block text-lg  text-gray-800"
@@ -104,7 +112,11 @@ export default function Example() {
                       BEST SALES
                     </Link>
                   </li>
-                  <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                  <li
+                    onClick={() => {
+                      setIsMenuOpen(!isMenuOpen)
+                    }}
+                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <Link
                       href="/category/MEN'S STYLE"
                       className="block text-lg  text-gray-800"
@@ -112,7 +124,11 @@ export default function Example() {
                       MEN'S STYLE
                     </Link>
                   </li>
-                  <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                  <li
+                    onClick={() => {
+                      setIsMenuOpen(!isMenuOpen)
+                    }}
+                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <Link
                       href="/category/WOMEN'S STYLE"
                       className="block text-lg  text-gray-800"
@@ -250,66 +266,7 @@ export default function Example() {
             </Link>
           </div>
         </div>
-        {/* {isMenuOpen && (
-          <div className="lg:hidden flex flex-col gap-4 px-6">
-            {isUserLoggedIn ? (
-              <div className="flex flex-col items-center space-y-3">
-                <span className="font-medium text-lg flex items-center gap-2">
-                  <FaRegUserCircle size={25} />
-                  {user?.userName}
-                </span>
-                <button
-                  onClick={() => logout()}
-                  type="button"
-                  className="bg-pink-500 px-6 py-2 rounded-md text-white"
-                >
-                  Logout
-                </button>
-              </div>
-            ) : (
-              <div className="flex flex-col items-center gap-4">
-                <Link
-                  href="/login"
-                  className="font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
-                >
-                  Login
-                </Link>
-                <Link
-                  href="/signUp"
-                  className="text-gray-500 font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
-                >
-                  Register
-                </Link>
-              </div>
-            )}
-            <div className="flex flex-col items-center gap-4 font-semibold text-lg">
-              <Link
-                href="/types"
-                className="hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                WRITE A REVIEW
-              </Link>
-              <Link
-                href="/perfumes"
-                className="hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                PERFUMES
-              </Link>
-              <Link
-                href="/aboutus"
-                className="hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                ABOUT US
-              </Link>
-              <Link
-                href="/contactus"
-                className="hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                CONTACT US
-              </Link>
-            </div>
-          </div>
-        )} */}
+
       </nav>
     </header>
   );

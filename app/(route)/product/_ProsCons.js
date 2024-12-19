@@ -82,7 +82,7 @@ const ProsCons = () => {
         <div className="grid md:grid-cols-2 py-3 gap-10 justify-center  w-full md:px-0 px-10 ">
           <div className="md:p-4 lg:border-r border-gray-300 grid bg-[#f0fff1]">
             <div className=" w-full   ">
-              <div className="text-[#2e6e6a] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
+              <div className="text-[#2e6e6a] font-semibold text-center mx-auto md:w-[15rem] py-4 text-xl">
                 <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
                   <FaCrown /> PROS
                 </p>
@@ -105,13 +105,19 @@ const ProsCons = () => {
                               })
                             : toast.info("Please Login First...")
                         }
-                        className={`${
-                          historyMap.get(item._id)?.vote === 1
-                            ? "ring-4 ring-pink-500/70 rounded-full"
-                            : ""
-                        } flex flex-col justify-center items-center `}
+                        className={` flex flex-col justify-center items-center `}
                       >
-                        <CiHeart size={20} className="text-pink-300" />
+                        <div
+                          className={`
+                          ${
+                            historyMap.get(item._id)?.vote === 1
+                              ? "ring-4 ring-pink-500/70 rounded-full"
+                              : ""
+                          }
+                          `}
+                        >
+                          <CiHeart size={20} className="text-pink-300" />
+                        </div>
                         <span className="text-sm">{item.likesVote}</span>
                       </span>
                       <span
@@ -125,26 +131,32 @@ const ProsCons = () => {
                               })
                             : toast.info("Please Login First...")
                         }
-                        className={`${
-                          historyMap.get(item._id)?.vote === -1
-                            ? "ring-4 ring-pink-500/70 rounded-full"
-                            : ""
-                        } flex flex-col justify-center items-center`}
+                        className={` flex flex-col justify-center items-center`}
                       >
-                        <FaHeartBroken className="text-[#f34949]" />
+                        <div
+                          className={`
+                          ${
+                            historyMap.get(item._id)?.vote === -1
+                              ? "ring-4 ring-pink-500/70 rounded-full"
+                              : ""
+                          }
+                          p-[2px]`}
+                        >
+                          <FaHeartBroken className="text-[#f34949]" />
+                        </div>
                         <span className="text-sm">{item.disLikesVote}</span>
                       </span>
                     </div>
-                    <span>{item.title}</span>
+                    <span className="text-sm">{item.title}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          <div className="p-4 grid  bg-[#fff5f5]">
+          <div className="md:p-4 grid  bg-[#fff5f5]">
             <div className="">
-              <div className="text-[#ec5151] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
+              <div className="text-[#ec5151] font-semibold text-center mx-auto md:w-[15rem] py-4 text-xl">
                 <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
                   <FaCrown /> CONS
                 </p>
@@ -167,13 +179,20 @@ const ProsCons = () => {
                               })
                             : toast.info("Please Login First...")
                         }
-                        className={`${
-                          historyMap.get(item._id)?.vote === 1
-                            ? "ring-4 ring-pink-500/70 rounded-full"
-                            : ""
-                        } flex flex-col justify-center items-center`}
+                        className={` flex flex-col justify-center items-center`}
                       >
-                        <CiHeart size={20} className="text-pink-300" />
+                        <div
+                          className={`
+                          ${
+                            historyMap.get(item._id)?.vote === 1
+                              ? "ring-4 ring-pink-500/70 rounded-full"
+                              : ""
+                          }
+                          `}
+                        >
+                          <CiHeart size={20} className="text-pink-300" />
+                        </div>
+
                         <span className="text-sm">{item.likesVote}</span>
                       </span>
                       <span
@@ -187,17 +206,23 @@ const ProsCons = () => {
                               })
                             : toast.info("Please Login First...")
                         }
-                        className={`${
-                          historyMap.get(item._id)?.vote === -1
-                            ? "ring-4 ring-pink-500/70 rounded-full"
-                            : ""
-                        } flex flex-col justify-center items-center`}
+                        className={` flex flex-col justify-center items-center`}
                       >
-                        <FaHeartBroken className="text-[#f34949]" />
+                        <div
+                          className={`
+                          ${
+                            historyMap.get(item._id)?.vote === -1
+                              ? "ring-4 ring-pink-500/70 rounded-full"
+                              : ""
+                          }
+                          p-[2px]`}
+                        >
+                          <FaHeartBroken className="text-[#f34949]" />
+                        </div>
                         <span className="text-sm">{item.disLikesVote}</span>
                       </span>
                     </div>
-                    <span>{item.title}</span>
+                    <span className="text-sm">{item.title}</span>
                   </li>
                 ))}
               </ul>
@@ -206,8 +231,8 @@ const ProsCons = () => {
         </div>
       </div>
 
-      <p className="md:text-left  text-sm text-blue-500 italic text-justify font-normal">
-        <span className="font-semibold text-base text-black"> Note:</span> The
+      <p className="md:text-left  text-xs text-blue-500/70 italic text-justify font-normal">
+        <span className="font-medium text-sm text-[#6B859E]"> Note:</span> The
         pros and cons listed on this page have been generated using the
         artificial intelligence system, which analyzes product reviews submitted
         by our members. While we strive to provide accurate and helpful

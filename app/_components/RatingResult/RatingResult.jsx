@@ -328,68 +328,71 @@ const RatingResult = ({ productId }) => {
 
 
     return (
-        <div className='grid md:grid-cols-2 gap-10 md:gap-20  w-full px-4 sm:px-8 md:px-0'>
-            {
-                ratingData?.map((item, ind) => {
-                    return <div className='grid'>
-                        <div className="font-semibold grid place-items-center text-sm sm:text-lg py-2 text-[#2071B2] capitalize">
-                            <span>{item?.icon}</span>
-                            <h3 className='text-black'>{item?.name}</h3>
-                        </div>
-                        <div className='flex justify-around gap-2 md:gap-x-5'>
-                            {
-                                item.status.map((stats, idx) => {
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-10 md:gap-16 w-[90%] mx-auto md:mx-0 md:w-full px-4 sm:px-8 lg:px-12 ">
+            {ratingData?.map((item, ind) => (
+                <div key={ind} className="flex flex-col gap-4">
+                    {/* Header Section */}
+                    <div className="font-semibold grid place-items-center text-center text-sm sm:text-lg py-2 text-[#2071B2] capitalize">
+                        <span className="text-2xl sm:text-3xl">{item?.icon}</span>
+                        <h3 className="text-black text-sm sm:text-base">{item?.name}</h3>
+                    </div>
 
-                                    return <div className="cursor-pointer grid place-items-center font-medium relative capitalize">
-                                        <div
-                                            className={`absolute w-full h-full bg-transparent   `}
-                                        ></div>
-                                        {/* {stats?.icon} */}
-                                        <div className={` ${stats?.isUserSelected
-                                            ? "text-pink-400"
-                                            : "backdrop-grayscale"
-                                            } text-xs sm:text-base text-nowrap `}> {stats?.name}</div>
-                                    </div>
-                                })
-                            }
-                        </div>
+                    {/* Status Section */}
+                    <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+                        {item.status.map((stats, idx) => (
+                            <div
+                                key={idx}
+                                className="cursor-pointer grid place-items-center font-medium relative capitalize"
+                            >
+                                <div className="absolute w-full h-full bg-transparent"></div>
+                                <div
+                                    className={`${stats?.isUserSelected ? "text-pink-400" : "backdrop-grayscale"
+                                        } text-xs sm:text-sm text-nowrap`}
+                                >
+                                    {stats?.name}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Range Input */}
+                    <div className="w-full flex justify-center">
                         <input
-                            className="w-full h-[10px]"
+                            className="w-full h-[12px] sm:h-[14px] md:h-[16px] rounded-md cursor-pointer"
                             min={1}
                             max={5}
                             step={1}
-                            // disabled
                             type="range"
                             onChange={(e) => {
-                                updateRating(item, item.status[e.target.value - 1])
+                                updateRating(item, item.status[e.target.value - 1]);
                                 setEmoji(e.target.value);
                             }}
-                            name=""
-                            id=""
                         />
-                        <div className="space-y-2">
-                            {
-                                item?.status.map(sta => {
-                                    return <div className="grid grid-cols-[7rem_auto] gap-1">
-                                        <span className="text-wrap font-medium capitalize w-[6rem] text-sm sm:text-base">{sta.name}</span>
-                                        <div className=' w-[50%] md:w-full flex justify-start items-center gap-3'>
-                                            <span>{sta.num}</span>
-                                            <div className='bg-slate-300 relative w-full rounded-3xl md:h-[7px] h-[5px]'>
-                                                <div style={{ width: `${sta.num}%` }} className="bg-pink-300 absolute rounded-3xl md:h-[7px] h-[5px]"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                })
-                            }
-
-
-
-
-                        </div>
                     </div>
-                })
-            }
+
+                    {/* Status Details Section */}
+                    <div className="space-y-3">
+                        {item?.status.map((sta, idx) => (
+                            <div key={idx} className="grid grid-cols-[8rem_auto] gap-2">
+                                <span className=" text-[#6B859E] capitalize text-nowrap w-[6rem] text-xs sm:text-sm">
+                                    {sta.name}
+                                </span>
+                                <div className="w-full flex items-center gap-3">
+                                    <span className="text-sm sm:text-base">{sta.num}</span>
+                                    <div className="bg-slate-300 relative w-[60%] md:w-full rounded-3xl h-[6px] sm:h-[8px]">
+                                        <div
+                                            style={{ width: `${sta.num}%` }}
+                                            className="bg-pink-300 absolute rounded-3xl h-[6px] sm:h-[8px]"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
         </div>
+
     )
 }
 

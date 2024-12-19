@@ -111,28 +111,14 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
     return (
         <div className="min-h-screen container mx-auto  py-6 px-4">
             <p className="text-4xl font-medium py-6 md:mb-16 mb-0 text-center">
-                {/* {data?.data?.perfume}{" "} */}
-                <h1 className={`text-2xl md:w-[70%] md:text-left md:text-4xl font-semibold ${lora.className}`}>{data?.data?.perfume?.split('for')[0]} <span className='text-pink-400 text-xl md:text-3xl font-normal'>
+                <h1 className={`text-2xl md:w-[70%] md:text-left md:text-4xl font-medium ${lora.className}`}>{data?.data?.perfume?.split('for')[0]} <span className='text-pink-400 text-xl md:text-3xl font-normal'>
                     {data?.data?.perfume?.split('for').length > 1 ? `for` + data?.data?.perfume?.split('for')[1] : ''}
                 </span></h1>
             </p>
             <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_18rem]">
                 <div className="grid md:grid-cols-[55%_45%]  ">
                     <div className=" ">
-                        {/* <img src={data?.data?.banner} alt="img" srcset="" /> */}
-                        {/* <Image
-                src="https://res.cloudinary.com/dnixhctcf/image/upload/v1721022071/Design%20Destination/nmviowb6pwjlhli0f3nz.png"
-                width={500}
-                height={300}
-                alt="Description"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              /> */}
                         <div className="w-full  grid place-items-left ">
-                            {/* <img
-                  src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTx9i5DBcQkjbErPnz2sW4ykIsR66GdgUbTwxahsuFDhg1o5Z1HQBanzufmDf605qhNqlrLF1eOti2Pd9IW1xsmFLuSQly7QSFrBAMrSEh8X-qxtvgNDn5x"
-                  alt="img"
-                  srcset=""
-                /> */}
                             <img src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
                         </div>
                         {
@@ -141,7 +127,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     </div>
 
                     <div className="flex flex-col items-center gap-4 ">
-                        <div className="  w-fit py-6 md:py-0 size-20  px-12">
+                        <div className="  w-fit  py-6 md:py-0 size-14 px-12">
                             <img className="w-full h-full object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
                         </div>
                         <div className="flex flex-wrap w-full justify-center">
@@ -180,27 +166,19 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     </div>
                     <Feedback />
                     {/* detail start */}
-                    <div className="space-y-6">
-                        <div className="text-base text-justify md:text-left">{data?.data?.details}</div>
+                    <div className="space-y-12  pt-3 ">
+                        <div className="text-base text-justify md:text-left text-[#6B859E]">{data?.data?.details}</div>
 
-                        <div className="relative border-t-2 py-6">
+                        <div className="relative border-t-2 pt-10 py-6">
                             <div className="p-2 absolute -top-5 left-[50%] bg-white">
                                 <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
                             </div>
-                            <p className='text-justify md:text-left text-sm font-normal'>
+                            <p className='text-justify md:text-left text-sm font-normal text-[#6B859E]/70'>
 
                                 {data?.data?.description}
                             </p>
                         </div >
-                        {/* <div className="relative border-b-2 py-4 text-[#138B92]">
-                            <span className="text-[#A2ADC4]">
-                                {" "}
-                                Read about this perfume in other languages:
-                            </span>{" "}
-                            Deutsch, Español, Français, Čeština, Italiano, Русский, Polski,
-                            Português, Ελληνικά, 汉语, Nederlands, Srpski, Română, العربية,
-                            Українська, Монгол, עברית.
-                        </div> */}
+
                     </div >
                     {/* detail ends */}
 
@@ -289,9 +267,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                             <img
                                                                 src={el.image}
                                                                 alt={el.name}
-                                                                className="w-12 sm:h-12 md:w-16 md:h-16"
+                                                                className="w-8 sm:w-12 h-8 sm:h-12 md:w-16 md:h-16"
                                                             />
-                                                            <p className='text-base md:text-lg'>{el.name}</p>
+                                                            <p className='text-xs sm:text-base md:text-lg'>{el.name}</p>
                                                         </div>
                                                     );
                                                 })}
@@ -310,9 +288,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-12 sm:h-12 md:w-16 md:h-16"
+                                                            className="w-8 sm:w-12 h-8 sm:h-12 md:w-16 md:h-16"
                                                         />
-                                                        <p className='text-base md:text-lg'>{el.name}</p>
+                                                        <p className='text-xs sm:text-base md:text-lg'>{el.name}</p>
                                                     </div>
                                                 );
                                             })}
@@ -331,9 +309,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-12 sm:h-12 md:w-16 md:h-16"
+                                                            className="w-8 sm:w-12 h-8 sm:h-12 md:w-16 md:h-16"
                                                         />
-                                                        <p className='text-base md:text-lg'>{el.name}</p>
+                                                        <p className='text-xs sm:text-base md:text-lg'>{el.name}</p>
                                                     </div>
                                                 );
                                             })}
