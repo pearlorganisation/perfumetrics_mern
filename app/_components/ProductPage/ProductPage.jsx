@@ -100,7 +100,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
     const mapOfLinks = data?.data?.mapOfLinks || {};
     const companiesList = mapOfLinks[timeZoneCountry]?.companiesList || [];
     setPurchaseLinks(companiesList);
-    console.log("timeZoneCountry", timeZoneCountry);
+    // console.log("timeZoneCountry", timeZoneCountry);
   }, [timeZoneCountry]);
 
   // Run effects only when dependencies change

@@ -4,7 +4,7 @@ import React from "react";
 
 export default function page({ params }) {
   const { rName } = params;
-  console.log(params);
+  // console.log(params);
   return (
     <div>
       {rName === "writeAreview" ? <WriteAReview /> : <RequestAReview />}

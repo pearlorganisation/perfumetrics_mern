@@ -39,12 +39,43 @@ import "./style.css";
 // import ProductPage from "@/app/_components/ProductPage/ProductPage";
 import dynamic from "next/dynamic";
 import Loader from "@/app/_components/Loader/Loader";
+import chalk from "chalk";
 
 // Client Components:
 
 const ProductPage = lazy(() =>
   import("@/app/_components/ProductPage/ProductPage")
 );
+
+export async function generateMetadata({ params }) {
+  try {
+    const res = await getPerfumeById(params.productId);
+    console.log(chalk.bgYellow("Hey im here ", JSON.stringify(res)));
+
+    if (res.length === 0) {
+      return {
+        title: "Not Found",
+        description: "The page you are looking for does not exists.",
+      };
+    }
+
+    return {
+      openGraph: {
+        title: res?.data.perfume,
+        description: res?.data?.details,
+        images: res.data.banner,
+      },
+      title: res?.data?.perfume,
+      keywords: ["Shashank", "Ish", "here"],
+    };
+  } catch (err) {
+    console.log("Error Occured !!", err);
+    return {
+      title: "Not Found",
+      description: "The page you are looking for does not exists.",
+    };
+  }
+}
 
 const page = async ({ params }) => {
   const { productId } = params;

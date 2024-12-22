@@ -43,7 +43,7 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
   }));
 
   async function reviewSubmission(payload) {
-    console.log(payload, "payload");
+    // console.log(payload, "payload");
     try {
       setLoading(true);
       const response = await fetch(
@@ -62,7 +62,7 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
         toast.success("Submitted!!", { position: "top-center" });
         modalRef.current.close();
         setLoading(false);
-        console.log(data, "Data");
+        // console.log(data, "Data");
       } else {
         toast.error(data.message, { position: "top-center" });
         setLoading(false);
@@ -97,7 +97,7 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
         }
       })
     );
-    console.log("finalData", finalData);
+    // console.log("finalData", finalData);
     const validateObjectFields = (obj) => {
       for (const [key, value] of Object.entries(obj)) {
         if (!value || value === "") {

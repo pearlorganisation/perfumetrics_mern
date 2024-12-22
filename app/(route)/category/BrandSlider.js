@@ -43,9 +43,6 @@ const BrandSlider = () => {
   useEffect(() => {
     getAllBrands();
   }, []);
-  useEffect(() => {
-    console.log(brandsData?.length);
-  }, [brandsData]);
 
   const handleBrands = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams);

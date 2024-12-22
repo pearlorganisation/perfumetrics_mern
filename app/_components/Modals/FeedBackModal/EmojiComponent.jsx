@@ -1,33 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const EmojiComponent = ({ res, handleChanges }) => {
   const [emoji, setEmoji] = useState(1); // Initialize emoji state with a default value
   useEffect(() => {
-
-    console.log(res[emoji - 1], "res")
-    handleChanges(res[emoji - 1]?.name)
-
-
-
-
-  }, [emoji])
-
+    // console.log(res[emoji - 1], "res")
+    handleChanges(res[emoji - 1]?.name);
+  }, [emoji]);
 
   return (
-    <div className='flex  flex-col justify-between '>
-      <div className='flex text-left gap-3 md:gap-4 lg:gap-6 mx-2 '>
+    <div className="flex  flex-col justify-between ">
+      <div className="flex text-left gap-3 md:gap-4 lg:gap-6 mx-2 ">
         {res.map((item, idx) => (
-          <div key={idx} className="cursor-pointer grid place-items-center font-medium text-[#105955] relative">
+          <div
+            key={idx}
+            className="cursor-pointer grid place-items-center font-medium text-[#105955] relative"
+          >
             <div
-              className={`absolute w-full h-full bg-transparent ${idx + 1 === Number(emoji) ? "backdrop-grayscale-0" : "backdrop-grayscale"
-                }`}
+              className={`absolute w-full h-full bg-transparent ${
+                idx + 1 === Number(emoji)
+                  ? "backdrop-grayscale-0"
+                  : "backdrop-grayscale"
+              }`}
             ></div>
             <div className="text-2xl text-center">{item.icons}</div>
-            <div className='text-sm text-center line-clamp-1'>{item.name}</div>
+            <div className="text-sm text-center line-clamp-1">{item.name}</div>
           </div>
         ))}
       </div>
-      <div className='w-full mx-2 text-green-400'>
+      <div className="w-full mx-2 text-green-400">
         <input
           className="w-full  "
           min={1}

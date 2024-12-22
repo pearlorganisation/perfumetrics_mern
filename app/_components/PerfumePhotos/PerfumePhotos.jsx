@@ -11,10 +11,9 @@ import "swiper/css/navigation";
 // import './styles.css';
 
 // import required modules
-import { Keyboard, Navigation, Pagination } from "swiper/modules";
+import { Keyboard, Navigation } from "swiper/modules";
 
 const PerfumePhotos = ({ data }) => {
-  console.log(data, "data");
   return (
     <Swiper
       slidesPerView={4}

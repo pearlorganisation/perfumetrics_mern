@@ -1,6 +1,12 @@
 import React from "react";
 import Image from "next/image";
+import { Description } from "@headlessui/react";
 
+export const metadata = {
+  title: {
+    absolute: "About Us",
+  },
+};
 const AboutUs = () => {
   return (
     <>
