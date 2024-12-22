@@ -1,3 +1,13 @@
+async function getAllPerfume() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume`,
+    {
+      cache: "no-cache",
+    }
+  );
+  const data = await response.json();
+  return data;
+}
 async function getPerfumeById(perfumeId) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/${perfumeId}`,
@@ -49,31 +59,62 @@ const ProductPage = lazy(() =>
 
 export async function generateMetadata({ params }) {
   try {
-    const res = await getPerfumeById(params.productId);
-    console.log(chalk.bgYellow("Hey im here ", JSON.stringify(res)));
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const res = await getPerfumeById(params?.productId);
 
-    if (res.length === 0) {
+    if (!res || !res.data || Object.keys(res.data).length === 0) {
       return {
         title: "Not Found",
-        description: "The page you are looking for does not exists.",
+        description: "The page you are looking for does not exist.",
       };
     }
 
+    const { perfume, details, banner, _id, slug, gallery } = res.data;
+
+    const gallerImages =
+      gallery.length == 0 ? [] : gallery?.map((img) => img.path);
+
     return {
-      openGraph: {
-        title: res?.data.perfume,
-        description: res?.data?.details,
-        images: res.data.banner,
+      metadataBase: new URL(`${baseUrl}`),
+      alternates: {
+        canonical: `${baseUrl}/api/v1/perfume/${slug}`,
+        languages: {
+          "en-US": "/en-US",
+          "de-DE": "/de-DE",
+        },
       },
-      title: res?.data?.perfume,
-      keywords: ["Shashank", "Ish", "here"],
+      title: perfume || "Perfume Details",
+      description: details || "Explore our collection of exclusive perfumes.",
+      keywords: ["Perfume", "Fragrance", "Luxury"],
+      openGraph: {
+        title: perfume || "Perfume Details",
+        description: details || "Explore our collection of exclusive perfumes.",
+        images: [banner, ...gallerImages] || [],
+      },
     };
   } catch (err) {
-    console.log("Error Occured !!", err);
+    console.error("Error Occurred in Metadata Generation:", err);
     return {
       title: "Not Found",
-      description: "The page you are looking for does not exists.",
+      description: "The page you are looking for does not exist.",
     };
+  }
+}
+
+export async function generateStaticParams() {
+  try {
+    const result = await getAllPerfume();
+
+    if (!Array.isArray(result.data)) {
+      throw new Error(`Invalid Data Format Received ${typeof result?.data}`);
+    }
+    return result.data.map((perfume) => ({
+      slug: perfume?.slug || "Slug Not Found",
+    }));
+  } catch (err) {
+    console.log(
+      chalk.bgBlueBright("Something Went Wrong !!", JSON.stringify(err))
+    );
   }
 }
 
@@ -85,7 +126,7 @@ const page = async ({ params }) => {
 
   const sidebarReview = await getSiderbarReviews();
 
-  console.log(data, "data");
+  // console.log(data, "data");
   // console.log(totalRatings, "Ratings perfumme !!!!");
 
   return (
