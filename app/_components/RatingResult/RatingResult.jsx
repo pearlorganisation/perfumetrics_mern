@@ -395,6 +395,7 @@ const RatingResult = ({ productId }) => {
                             onChange={(e) => {
                                 updateRating(item, item.status[e.target.value - 1]);
                                 setEmoji(e.target.value);
+                                
                             }}
                         />
                     </div>
