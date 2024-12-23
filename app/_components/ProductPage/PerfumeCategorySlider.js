@@ -37,7 +37,7 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
 
         return (
           <SwiperSlide
-            className=" !flex !justify-center !items-center"
+            className=" !flex !justify-center h-full !items-center mt-10"
             key={index}
           >
             <Link
@@ -50,7 +50,7 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
               <div className="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 ">
                 <div className="h-48 bg-whtie flex items-center justify-center">
                   <img
-                    className="h-48 object-cover"
+                    className="h-48 object-contain"
                     src={item?.banner}
                     alt=""
                   />

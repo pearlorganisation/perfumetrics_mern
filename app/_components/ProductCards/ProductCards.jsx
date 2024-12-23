@@ -11,13 +11,14 @@ const ProductCards = ({ data }) => {
             key={index} // Add key to avoid React warnings
           >
             <div
-              className="relative w-full max-w-[200px] sm:max-w-[240px] h-[280px] sm:h-[320px] mx-auto border-2 border-pink-500 rounded-md overflow-hidden transition-transform transform hover:scale-105"
+              className="relative  mx-auto border-2 border-pink-500 rounded-md overflow-hidden transition-transform transform hover:scale-105"
             >
               <img
                 src={e?.banner || e?.imgUrl}
                 alt="Product Image"
-                className="absolute h-full w-full object-cover"
+                className="w-full h-[200px] sm:h-[150px] md:h-[20rem] object-contain max-w-xs mx-auto p-2"
               />
+
             </div>
           </Link>
         ))}

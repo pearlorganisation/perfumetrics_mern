@@ -325,6 +325,14 @@ const RatingResult = ({ productId }) => {
         }
     }, [user])
 
+    const [defaultRange, setDefaulRange] = useState({
+        longevity: 0,
+        priceValue: 0,
+        gender: 0,
+        sillage: 0
+
+    })
+
 
 
     return (
@@ -362,6 +370,7 @@ const RatingResult = ({ productId }) => {
                             min={1}
                             max={5}
                             step={1}
+                            defaultValue=''
                             type="range"
                             onChange={(e) => {
                                 updateRating(item, item.status[e.target.value - 1]);
@@ -369,6 +378,7 @@ const RatingResult = ({ productId }) => {
                             }}
                         />
                     </div>
+                    {/* <RangeInput key={ } item={ } setEmoji={ } updateRating={ } /> */}
 
                     {/* Status Details Section */}
                     <div className="space-y-3">
@@ -398,3 +408,5 @@ const RatingResult = ({ productId }) => {
 
 
 export default RatingResult
+
+

@@ -116,10 +116,10 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                 </span></h1>
             </p>
             <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_18rem]">
-                <div className="grid md:grid-cols-[55%_45%]  ">
+                <div className="grid md:grid-cols-[40%_60%]  ">
                     <div className=" ">
                         <div className="w-full  grid place-items-left ">
-                            <img src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
+                            <img className='h-[20rem]  md:w-full mx-auto object-contain' src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
                         </div>
                         {
                             <LikeDislikeComponent key={1} data={data} historyMap={historyMap} productId={productId} likeDislike={likeDislike} />
@@ -127,8 +127,8 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     </div>
 
                     <div className="flex flex-col items-center gap-4 ">
-                        <div className="  w-fit  py-6 md:py-0 size-14 px-12">
-                            <img className="w-full h-full object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
+                        <div className="  w-fit  py-6 md:py-0  px-12">
+                            <img className="w-full  size-24 md:size-32 object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
                         </div>
                         <div className="flex flex-wrap w-full justify-center">
                             <PieChart mainAccords={data?.data?.mainAccords} />
@@ -167,13 +167,13 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     <Feedback />
                     {/* detail start */}
                     <div className="space-y-12  pt-3 ">
-                        <div className="text-base text-justify md:text-left text-[#6B859E]">{data?.data?.details}</div>
+                        <div className="text-base text-justify md:text-left text-slate-700">{data?.data?.details}</div>
 
                         <div className="relative border-t-2 pt-10 py-6">
                             <div className="p-2 absolute -top-5 left-[50%] bg-white">
                                 <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
                             </div>
-                            <p className='text-justify md:text-left text-sm font-normal text-[#6B859E]/70'>
+                            <p className='text-justify md:text-left text-sm font-normal text-slate-600'>
 
                                 {data?.data?.description}
                             </p>
@@ -339,7 +339,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     <div>
 
                     </div>
-                    <div className="grid">
+                    <div className="grid h-[18rem]">
                         <PerfumeCategorySlider perfumeCategories={perfumeCategories} timeZoneCountry={timeZoneCountry} />
 
                     </div >

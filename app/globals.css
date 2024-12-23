@@ -37,7 +37,7 @@ html {
 }
 
 .reviewScroll {
-  width: 341px;
+  max-width: 320px;
 }
 
 @media (min-width: 665px) {

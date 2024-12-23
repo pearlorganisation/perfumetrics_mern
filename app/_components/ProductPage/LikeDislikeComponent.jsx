@@ -83,7 +83,7 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
                     />
                 </div>
                 <div className="h-1 w-full bg-pink-400"></div>
-                <div className='w-full flex justify-center gap-1 '><div className='w-fit h-6 '> {isLoading ? <FaSpinner className="animate-spin text-red-500" size={18} /> : (100 || 0)} </div> Likes</div>
+                <div className='w-full flex justify-center gap-1 '><div className='w-fit h-6 '> {isLoading ? <FaSpinner className="animate-spin text-red-500" size={18} /> : (likeDisLikeData?.likes || 0)} </div> Likes</div>
             </div>
 
             <div

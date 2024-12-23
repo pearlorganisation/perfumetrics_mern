@@ -36,14 +36,14 @@ const PopularBrands = () => {
 
   return (
     <>
-      <div className="container mx-auto max-w-[100%] md:max-w-[90%]">
+      <div className="container mx-auto max-w-[100%] md:max-w-[90%] ">
         <div className="p-5 my-0 md:my-10">
           <div className="text-center">
             {/* <div className="inline-block relative pb-5">
               <h1 className="text-3xl font-medium">Popular Brands</h1>
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-[#F8306C]"></div>
             </div> */}
-            <div className={`flex gap-x-6 md:gap-0 overflow-x-auto py-2 md:py-8 px-2  w-full ${style.custom_scrollbar}`}>
+            <div className={`flex gap-x-7 justify-start items-center overflow-x-auto py-2 md:py-8 px-2  w-full ${style.custom_scrollbar}`}>
 
               {popularPerfumeData && popularPerfumeData.map((item, index) => {
                 return (
@@ -53,7 +53,7 @@ const PopularBrands = () => {
                       <div className=" mx-auto h-[120px] w-[120px] xl:w-[150px] xl:h-[150px] lg:w-[150px] lg:h-[150px] rounded-full overflow-hidden shadow-[0_0_0_2px#f193c4] md:shadow-[0_0_0_4px#f193c4] flex-shrink-0">
                         <img
                           src={item.banner}
-                          className="w-full h-full object-cover p-1 rounded-full "
+                          className="md:w-full md:h-full h-[100px] w-[100px] lg:h-[130px] lg:w-[130px] mx-auto object-contain p-1  "
                         />
                       </div>
 

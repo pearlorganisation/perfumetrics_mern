@@ -56,8 +56,8 @@ const PieChart = ({ mainAccords }) => {
     }, [mainAccords]);
 
     return (
-        <div className='p-2 w-full  flex flex-col justify-center'>
-            <div className='max-w-[14rem] m-auto'>
+        <div className='p-2 w-[70%] mx-auto  flex flex-col justify-center'>
+            <div className=' m-auto'>
                 <h1 className='text-center font-bold'>Main Accords </h1>
                 <canvas ref={chartRef} style={{ width: "200px", height: "200px" }} />
             </div>
