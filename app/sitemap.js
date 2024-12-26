@@ -1,5 +1,5 @@
 import chalk from "chalk";
-export const revalidate = 15; // revalidate at most every hour
+export const revalidate = 15; // revalidate at most every 15 mili second
 function formatDate(dateString) {
   const date = new Date(dateString);
 

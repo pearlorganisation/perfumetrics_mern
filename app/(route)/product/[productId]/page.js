@@ -101,22 +101,7 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export async function generateStaticParams() {
-  try {
-    const result = await getAllPerfume();
 
-    if (!Array.isArray(result.data)) {
-      throw new Error(`Invalid Data Format Received ${typeof result?.data}`);
-    }
-    return result.data.map((perfume) => ({
-      slug: perfume?.slug || "Slug Not Found",
-    }));
-  } catch (err) {
-    console.log(
-      chalk.bgBlueBright("Something Went Wrong !!", JSON.stringify(err))
-    );
-  }
-}
 
 const page = async ({ params }) => {
   const { productId } = params;
