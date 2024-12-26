@@ -63,7 +63,7 @@ const Gallery = () => {
       <div className="px-8 md:px-8 leafBg relative mt-10">
         <div className="p-5">
           <div className="grid place-items-center relative mb-6">
-            <h1 className="text-3xl font-medium px-4 md:px-8 md:py-3 bg-white z-40">
+            <h1 className="text-xl md:text-3xl font-medium px-4 md:px-8 md:py-3 bg-white z-40">
               Fragram Gallery
             </h1>
             <div className="absolute w-full h-[2px] bg-slate-500"></div>

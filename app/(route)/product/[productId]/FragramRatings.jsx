@@ -31,10 +31,10 @@ const FragramRatings = ({ data, country }) => {
       <div>
         <div className="flex flex-col items-center  md:space-y-8">
           <div className="grid place-items-center relative w-full mt-20 mb-0 md:mb-8">
-            <h2 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
+            <h2
+              className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
               Fragram Ratings
             </h2>
-            <div className="absolute w-full h-[2px] bg-slate-500"></div>
           </div>
           <div className="grid grid-cols-3 gap-8">
             <div className="flex flex-col items-center">
@@ -267,12 +267,12 @@ const FragramRatings = ({ data, country }) => {
           </button>
         </div>
         {data && (
-          <div className=" mt-12">
-            <div className="grid place-items-center relative w-full">
-              <h2 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
+          <div className=" mt-12 space-y-8">
+            <div className="grid place-items-start relative w-full">
+              <h2
+                className="text-xl md:text-3xl font-extrabold bg-white">
                 Fragrams
               </h2>
-              <div className="absolute w-full h-[2px] bg-slate-500"></div>
             </div>
 
             <div className="grid  gap-8">

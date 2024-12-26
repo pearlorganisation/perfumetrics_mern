@@ -15,7 +15,7 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
       spaceBetween={30}
       slidesPerView={1}
       navigation
-      pagination={{ clickable: true }}
+      // pagination={{ clickable: true }}
       breakpoints={{
         640: {
           slidesPerView: 2,
@@ -37,7 +37,7 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
 
         return (
           <SwiperSlide
-            className=" !flex !justify-center !items-center"
+            className=" !flex !justify-center h-full  !items-center mt-10"
             key={index}
           >
             <Link
@@ -50,13 +50,53 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
               <div className="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 ">
                 <div className="h-48 bg-whtie flex items-center justify-center">
                   <img
-                    className="h-48 object-cover"
+                    className="h-48 object-contain"
                     src={item?.banner}
                     alt=""
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="text-base font-semibold text-blue-600">
+                  <h3 className="text-base font-semibold text-blue-600 line-clamp-1">
+                    {item?.perfumeName}
+                  </h3>
+                  <div className="mt-2 space-x-2">
+                    <span className="text-xl font-bold text-gray-900">
+                      {price || 0}
+                    </span>
+                    <span className="text-gray-600">{quantity || "90ml"}</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </SwiperSlide>
+        );
+      })}
+      {perfumeCategories?.map((item, index) => {
+        if (!item?.mapOfLinks[timeZoneCountry]) return;
+        const { link, price, quantity } = item?.mapOfLinks[timeZoneCountry];
+
+        return (
+          <SwiperSlide
+            className=" !flex !justify-center h-full  !items-center mt-10"
+            key={index}
+          >
+            <Link
+              href={
+                link ||
+                "https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png"
+              }
+              target="_blank"
+            >
+              <div className="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 ">
+                <div className="h-48 bg-whtie flex items-center justify-center">
+                  <img
+                    className="h-48 object-contain"
+                    src={item?.banner}
+                    alt=""
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-base font-semibold text-blue-600 line-clamp-1">
                     {item?.perfumeName}
                   </h3>
                   <div className="mt-2 space-x-2">
