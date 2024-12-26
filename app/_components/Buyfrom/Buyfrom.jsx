@@ -18,10 +18,10 @@ const Buyfrom = ({ links }) => {
     <div className="flex flex-col items-left justify-left bg-white text-left w-full">
       {
         links?.map(item => {
-          return <div className="mt-4 md:flex md:items-left md:justify-left h-20">
+          return <div className="mt-4 md:flex justify-start h-20  gap-3">
             <a
               href={`${item?.link}`}
-              className="text-blue-500 flex  hover:underline underline text-xl md:text-3xl w-full"
+              className="text-blue-500   hover:underline underline text-sm md:text-xl"
               target="_blank"
               rel="noreferrer"
             >
@@ -29,16 +29,9 @@ const Buyfrom = ({ links }) => {
               {` Search on ${item?.company}`}
             </a>
 
-            <div className='relative w-full'>
-              {/* <Image
-              src={Amazon_India_logo.src}
-              alt="Amazon"
-              className=" ml-2"
-              priority
-              width={220}
-              height={180}
-            /> */}
+            <div className='pt-1'>
 
+              999
             </div>
 
           </div>
@@ -46,29 +39,7 @@ const Buyfrom = ({ links }) => {
       }
 
 
-      {/* <div className="my-4">or</div>
 
-      <div className="mb-4 mb:flex mb:items-left mb:justify-left h-20 grid grid-cols-2">
-        <a
-          href="https://www.ebay.com"
-          className="text-blue-500 hover:underline text-2xl"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Buy it online{' '}
-          <span className="text-blue-700 font-bold">15 items</span> on
-        </a>
-        <Image
-          src={right_now_ebay.src}
-          alt="Emay"
-          className=" ml-2"
-          priority
-          width={110}
-          height={180}
-        />
-      </div>
-
-      <div className="text-gray-500">Sponsored</div> */}
     </div>
   );
 }

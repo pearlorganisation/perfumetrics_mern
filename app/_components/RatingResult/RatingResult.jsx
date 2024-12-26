@@ -49,6 +49,7 @@ const RatingResult = ({ productId }) => {
         const result = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${productId}`, { ...payload })
         getReviewByUserId()
         getTotalRatings(productId)
+        getTotalRatingsAnalyst(productId)
         console.log(result, "Reslt")
     }
     const [emoji, setEmoji] = useState(1)
@@ -147,7 +148,9 @@ const RatingResult = ({ productId }) => {
             status: [
                 {
                     name: 'Very Weak',
-                    isUserSelected: user ? modifyStr(result?.longevity) === 'veryweak' : modifyStr(perfumeAnalytics?.longevity.k) === 'veryweak' ? true : false,
+                    isUserSelected: user
+                        ? (modifyStr(result?.longevity || 'null') === 'veryweak' ? true : false)
+                        : modifyStr(perfumeAnalytics?.longevity.k) === 'veryweak',
                     num: perfumeRatings?.longevity?.veryWeak,
                     icon: (
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
@@ -158,7 +161,9 @@ const RatingResult = ({ productId }) => {
                 },
                 {
                     name: 'Weak',
-                    isUserSelected: user ? modifyStr(result?.longevity) === 'weak' : modifyStr(perfumeAnalytics?.longevity.k) === 'veryweak' ? true : false,
+                    isUserSelected: user
+                        ? (modifyStr(result?.longevity || 'null') === 'weak' ? true : false)
+                        : modifyStr(perfumeAnalytics?.longevity.k) === 'weak',
                     num: perfumeRatings?.longevity?.weak,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
@@ -167,7 +172,9 @@ const RatingResult = ({ productId }) => {
                 },
                 {
                     name: 'Moderate',
-                    isUserSelected: user ? modifyStr(result?.longevity) === 'moderate' : modifyStr(perfumeAnalytics?.longevity.k) === 'moderate' ? true : false,
+                    isUserSelected: user
+                        ? (modifyStr(result?.longevity || 'null') === 'moderate' ? true : false)
+                        : modifyStr(perfumeAnalytics?.longevity.k) === 'moderate',
                     num: perfumeRatings?.longevity?.moderate,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
@@ -176,7 +183,9 @@ const RatingResult = ({ productId }) => {
                 },
                 {
                     name: 'Long Lasting',
-                    isUserSelected: user ? modifyStr(result?.longevity) === 'longlasting' : modifyStr(perfumeAnalytics?.longevity.k) === 'longlasting' ? true : false,
+                    isUserSelected: user
+                        ? (modifyStr(result?.longevity || 'null') === 'longlasting' ? true : false)
+                        : modifyStr(perfumeAnalytics?.longevity.k) === 'longlasting',
                     num: perfumeRatings?.longevity?.longLasting,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 8L10 12" stroke="#555" stroke-width="2" />
@@ -186,7 +195,9 @@ const RatingResult = ({ productId }) => {
                 },
                 {
                     name: 'Eternal',
-                    isUserSelected: user ? modifyStr(result?.longevity) === 'eternal' : modifyStr(perfumeAnalytics?.longevity.k) === 'eternal' ? true : false,
+                    isUserSelected: user
+                        ? (modifyStr(result?.longevity || 'null') === 'eternal' ? true : false)
+                        : modifyStr(perfumeAnalytics?.longevity.k) === 'eternal',
                     num: perfumeRatings?.longevity?.eternal,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 10L10 10" stroke="#333" stroke-width="2" />
@@ -205,28 +216,38 @@ const RatingResult = ({ productId }) => {
             status: [
                 {
                     name: 'Intimate',
-                    isUserSelected: user ? modifyStr(result?.sillage) === 'intimate' : modifyStr(perfumeAnalytics?.sillage.k) === 'intimate' ? true : false,
+                    isUserSelected: user
+                        ? (modifyStr(result?.sillage || 'null') === 'intimate' ? true : false)
+                        : modifyStr(perfumeAnalytics?.sillage.k) === 'intimate',
                     num: perfumeRatings?.sillage?.intimate
                 },
                 {
                     name: 'No Vote',
-                    isUserSelected: user ? modifyStr(result?.sillage) === 'novote' : modifyStr(perfumeAnalytics?.sillage.k) === 'novote' ? true : false,
-                    num: perfumeRatings?.sillage?.noVote
+                    isUserSelected: user
+                        ? (modifyStr(result?.sillage || 'null') === 'novote' ? true : false)
+                        : modifyStr(perfumeAnalytics?.sillage.k) === 'novote',
+                    num: perfumeRatings?.sillage?.noVote,
                 },
 
                 {
                     name: 'Moderate',
-                    isUserSelected: user ? modifyStr(result?.sillage) === 'moderate' : modifyStr(perfumeAnalytics?.sillage.k) === 'moderate' ? true : false,
+                    isUserSelected: user
+                        ? (modifyStr(result?.sillage || 'null') === 'moderate' ? true : false)
+                        : modifyStr(perfumeAnalytics?.sillage.k) === 'moderate',
                     num: perfumeRatings?.sillage?.moderate
                 },
                 {
                     name: 'Strong',
-                    isUserSelected: user ? modifyStr(result?.sillage) === 'strong' : modifyStr(perfumeAnalytics?.sillage.k) === 'strong' ? true : false,
+                    isUserSelected: user
+                        ? (modifyStr(result?.sillage || 'null') === 'strong' ? true : false)
+                        : modifyStr(perfumeAnalytics?.sillage.k) === 'strong',
                     num: perfumeRatings?.sillage?.strong
                 },
                 {
                     name: 'Enormous',
-                    isUserSelected: user ? modifyStr(result?.sillage) === 'enormous' : modifyStr(perfumeAnalytics?.sillage.k) === 'enormous' ? true : false,
+                    isUserSelected: user
+                        ? (modifyStr(result?.sillage || 'null') === 'enormous' ? true : false)
+                        : modifyStr(perfumeAnalytics?.sillage.k) === 'enormous',
                     num: perfumeRatings?.sillage?.enormous
                 }
             ]
@@ -239,31 +260,37 @@ const RatingResult = ({ productId }) => {
             status: [
                 {
                     name: 'Way Over Priced',
-                    isUserSelected: user ? modifyStr(result?.priceValue) === 'wayoverpriced' : modifyStr(perfumeAnalytics?.priceValue.k) === 'wayoverpriced' ? true : false,
+                    isUserSelected: user
+                        ? (modifyStr(result?.priceValue || 'null') === 'wayoverpriced' ? true : false)
+                        : modifyStr(perfumeAnalytics?.priceValue.k) === 'wayoverpriced',
                     num: perfumeRatings?.priceValue?.wayOverPriced
                 },
                 {
                     name: 'Over Priced',
-                    isUserSelected: user ? modifyStr(result?.priceValue) === 'overpriced' : modifyStr(perfumeAnalytics?.priceValue.k) === 'overpriced' ? true : false,
-
+                    isUserSelected: user
+                        ? (modifyStr(result?.priceValue || 'null') === 'overpriced' ? true : false)
+                        : modifyStr(perfumeAnalytics?.priceValue.k) === 'overpriced',
                     num: perfumeRatings?.priceValue?.overPriced
                 },
                 {
                     name: 'Ok',
-                    isUserSelected: user ? modifyStr(result?.priceValue) === 'ok' : modifyStr(perfumeAnalytics?.priceValue.k) === 'ok' ? true : false,
-
+                    isUserSelected: user
+                        ? (modifyStr(result?.priceValue || 'null') === 'ok' ? true : false)
+                        : modifyStr(perfumeAnalytics?.priceValue.k) === 'ok',
                     num: perfumeRatings?.priceValue?.ok
                 },
                 {
                     name: 'Good Value',
-                    isUserSelected: user ? modifyStr(result?.priceValue) === 'goodvalue' : modifyStr(perfumeAnalytics?.priceValue.k) === 'goodvalue' ? true : false,
-
+                    isUserSelected: user
+                        ? (modifyStr(result?.priceValue || 'null') === 'goodvalue' ? true : false)
+                        : modifyStr(perfumeAnalytics?.priceValue.k) === 'goodvalue',
                     num: perfumeRatings?.priceValue?.goodValue
                 },
                 {
                     name: 'Great Value',
-                    isUserSelected: user ? modifyStr(result?.priceValue) === 'greatvalue' : modifyStr(perfumeAnalytics?.priceValue.k) === 'greatvalue' ? true : false,
-
+                    isUserSelected: user
+                        ? (modifyStr(result?.priceValue || 'null') === 'greatvalue' ? true : false)
+                        : modifyStr(perfumeAnalytics?.priceValue.k) === 'greatvalue',
                     num: perfumeRatings?.priceValue?.greatValue
                 }
             ]
@@ -278,39 +305,41 @@ const RatingResult = ({ productId }) => {
                 {
                     name: 'Female',
                     // isUserSelected: modifyStr(result?.gender) === 'female',
-                    isUserSelected: user ? modifyStr(result?.gender) === 'female' : modifyStr(perfumeAnalytics?.gender.k) === 'female' ? true : false,
-
+                    isUserSelected: user
+                        ? (modifyStr(result?.gender || 'null') === 'female' ? true : false)
+                        : modifyStr(perfumeAnalytics?.gender.k) === 'female',
                     num: perfumeRatings?.gender?.female
                 },
                 {
                     name: 'More Female',
-                    // isUserSelected: modifyStr(result?.gender) === 'morefemale',
-                    isUserSelected: user ? modifyStr(result?.gender) === 'morefemale' : modifyStr(perfumeAnalytics?.gender.k) === 'morefemale' ? true : false,
-
+                    isUserSelected: user
+                        ? (modifyStr(result?.gender || 'null') === 'morefemale' ? true : false)
+                        : modifyStr(perfumeAnalytics?.gender.k) === 'morefemale',
 
                     num: perfumeRatings?.gender?.moreFemale
                 },
                 {
                     name: 'Unisex',
-                    isUserSelected: modifyStr(result?.gender) === 'unisex',
-                    isUserSelected: user ? modifyStr(result?.gender) === 'unisex' : modifyStr(perfumeAnalytics?.gender.k) === 'unisex' ? true : false,
+                    isUserSelected: user
+                        ? (modifyStr(result?.gender || 'null') === 'unisex' ? true : false)
+                        : modifyStr(perfumeAnalytics?.gender.k) === 'unisex',
 
 
                     num: perfumeRatings?.gender?.unisex
                 },
                 {
                     name: 'More Male',
-                    isUserSelected: modifyStr(result?.gender) === 'moremale',
-                    isUserSelected: user ? modifyStr(result?.gender) === 'moremale' : modifyStr(perfumeAnalytics?.gender.k) === 'moremale' ? true : false,
-
+                    isUserSelected: user
+                        ? (modifyStr(result?.gender || 'null') === 'moremale' ? true : false)
+                        : modifyStr(perfumeAnalytics?.gender.k) === 'moremale',
 
                     num: perfumeRatings?.gender?.moreMale
                 },
                 {
                     name: 'Male',
-                    isUserSelected: modifyStr(result?.gender) === 'male',
-                    isUserSelected: user ? modifyStr(result?.gender) === 'male' : modifyStr(perfumeAnalytics?.gender.k) === 'male' ? true : false,
-
+                    isUserSelected: user
+                        ? (modifyStr(result?.gender || 'null') === 'male' ? true : false)
+                        : modifyStr(perfumeAnalytics?.gender.k) === 'male',
 
                     num: perfumeRatings?.gender?.male
 
@@ -336,7 +365,7 @@ const RatingResult = ({ productId }) => {
 
 
     return (
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-10 md:gap-16 w-[90%] mx-auto md:mx-0 md:w-full px-4 sm:px-8 lg:px-12 ">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-10 md:gap-16 w-full mx-auto md:mx-0 md:w-full px-4 sm:px-8 lg:px-12 ">
             {ratingData?.map((item, ind) => (
                 <div key={ind} className="flex flex-col gap-4">
                     {/* Header Section */}
@@ -346,7 +375,7 @@ const RatingResult = ({ productId }) => {
                     </div>
 
                     {/* Status Section */}
-                    <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+                    <div className="flex  justify-center gap-3 sm:gap-4 h-full">
                         {item.status.map((stats, idx) => (
                             <div
                                 key={idx}
@@ -355,7 +384,7 @@ const RatingResult = ({ productId }) => {
                                 <div className="absolute w-full h-full bg-transparent"></div>
                                 <div
                                     className={`${stats?.isUserSelected ? "text-pink-400" : "backdrop-grayscale"
-                                        } text-xs sm:text-sm text-nowrap`}
+                                        } text-xs sm:text-[12px] font-bold text-wrap text-center`}
                                 >
                                     {stats?.name}
                                 </div>
@@ -375,6 +404,7 @@ const RatingResult = ({ productId }) => {
                             onChange={(e) => {
                                 updateRating(item, item.status[e.target.value - 1]);
                                 setEmoji(e.target.value);
+
                             }}
                         />
                     </div>

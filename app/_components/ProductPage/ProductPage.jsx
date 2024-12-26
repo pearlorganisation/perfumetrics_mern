@@ -28,15 +28,15 @@ import ct from 'countries-and-timezones';
 import { userLikeDislikeHistoryStore } from '@/store/userLikeDislikeHistoryStore';
 import LikeDislikeComponent from './LikeDislikeComponent';
 import {
-    Montserrat
+    Roboto
 } from "next/font/google";
 import PerfumeCarousel from './PerfumeCarousel';
 import PerfumeCategorySlider from './PerfumeCategorySlider';
 import LoginSignUp from '../LoginSignUp/LoginSignUp';
 
-const lora = Montserrat({
+const lora = Roboto({
     subsets: ['latin'],
-    weight: ['400', '700'],
+    weight: ['100', '300', '400', '500', '700'],
 });
 
 
@@ -110,16 +110,16 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
 
     return (
         <div className="min-h-screen container mx-auto  py-6 px-4">
-            <p className="text-4xl font-medium py-6 md:mb-16 mb-0 text-center">
-                <h1 className={`text-2xl md:w-[70%] md:text-left md:text-4xl font-medium ${lora.className}`}>{data?.data?.perfume?.split('for')[0]} <span className='text-pink-400 text-xl md:text-3xl font-normal'>
+            <p className="text-4xl font-medium py-6  mb-0 text-center">
+                <h1 className={`text-2xl md:w-[70%] md:text-left md:text-[40px] leading-[48px] font-medium ${lora.className}`}>{data?.data?.perfume?.split('for')[0]} <span className='text-pink-400 text-xl md:text-3xl font-normal'>
                     {data?.data?.perfume?.split('for').length > 1 ? `for` + data?.data?.perfume?.split('for')[1] : ''}
                 </span></h1>
             </p>
-            <div className=" gap-x-10 gap-y-14 grid lg:grid-cols-[auto_18rem]">
+            <div className=" gap-x-10 gap-y-14 grid gap-4 lg:grid-cols-[auto_25rem]">
                 <div className="grid md:grid-cols-[40%_60%]  ">
                     <div className=" ">
                         <div className="w-full  grid place-items-left ">
-                            <img className='h-[20rem]  md:w-full mx-auto object-contain' src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
+                            <img className='h-[28rem]  md:w-full mx-auto object-contain' src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
                         </div>
                         {
                             <LikeDislikeComponent key={1} data={data} historyMap={historyMap} productId={productId} likeDislike={likeDislike} />
@@ -139,10 +139,10 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                 <div className=" space-y-14 hidden md:block">
                     <LoginSignUp />
                     {
-                        globalBanner && <div className="h-[20rem]  border rounded-md overflow-hidden">
+                        globalBanner && <div className="h-[20rem] flex justify-start items-start  rounded-md overflow-hidden">
 
                             <img
-                                className="h-full mx-auto"
+                                className="h-full w-full object-contain"
                                 // src="https://img.pikbest.com/origin/06/25/40/84bpIkbEsTgk3.jpg!sw800"
                                 src={`${globalBanner?.item[0]?.path}`}
                                 alt=""
@@ -152,7 +152,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
 
                 </div>
             </div>
-            <div className=" gap-x-10 gap-y-14 grid  lg:grid-cols-[auto_18.3rem] py-8">
+            <div className=" gap-x-10 gap-y-14 grid gap-4  lg:grid-cols-[auto_25rem] py-8">
                 <div className="space-y-8">
                     <div className="grid md:grid-cols-[60%_40%] gap-y-4 md:gap-y-0">
                         <div className="space-y-12 w-full flex flex-col justify-center items-center ">
@@ -166,14 +166,14 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     </div>
                     <Feedback />
                     {/* detail start */}
-                    <div className="space-y-12  pt-3 ">
-                        <div className="text-base text-justify md:text-left text-slate-700">{data?.data?.details}</div>
+                    <div className="space-y-7  pt-3 ">
+                        <div className="text-[16px] leading-[25px] font-normal text-justify md:text-left text-slate-700">{data?.data?.details}</div>
 
-                        <div className="relative border-t-2 pt-10 py-6">
+                        <div className="relative border-t-2 pt-7 py-6">
                             <div className="p-2 absolute -top-5 left-[50%] bg-white">
-                                <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
+                                {/* <FaQuoteLeft size={20} className=" text-[#83a6c4]" /> */}
                             </div>
-                            <p className='text-justify md:text-left text-sm font-normal text-slate-600'>
+                            <p className='text-justify md:text-left text-[16px] font-light italic text-slate-600'>
 
                                 {data?.data?.description}
                             </p>
@@ -187,11 +187,12 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     {/* pros n cons */}
                 </div >
                 <div className='hidden md:block'>
-                    <div className="w-full  flex flex-col gap-10">
-                        <div className=" w-full text-center py-4 shadow-lg">
-                            <h2 className="text-xl md:text-2xl  font-semibold ">
+                    <div className="w-full  flex flex-col gap-5 ">
+                        <div className=" w-full text-left flex justify-between">
+                            <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
                                 Perfume Reviews
                             </h2>
+                            <button className='font-medium text-[14px] text-[#EA92B6]' type="button">Write a Review</button>
                         </div>
                         <CardsList reviewData={sidebarReview} length={7} />
                     </div>
@@ -199,10 +200,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
             </div>
             {/* Perfume Photos starts */}
             <div className="mt-4 md:py-14 ">
-                <div className="w-full relative grid place-items-center mb-14">
-                    <div className="h-[2px] w-full bg-black absolute"></div>
+                <div className="w-full relative grid place-items-center mb-10">
                     <h2
-                        className="text-xl md:text-3xl font-medium bg-white px-4 z-30">
+                        className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
                         Perfume Photos
                     </h2>
                 </div>
@@ -213,8 +213,8 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
             {/* Fragrance Notes starts */}
             <div className="mt-14">
                 <div className="w-full relative grid place-items-center mb-6">
-                    <div className="h-[2px] w-[70%] bg-black absolute"></div>
-                    <h2 className="text-xl  md:text-3xl font-medium bg-white px-2 md:px-4 z-30">
+                    <h2
+                        className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
                         Fragrance Notes
                     </h2>
                 </div>
@@ -331,9 +331,11 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
             {/* Related Fragram ends */}
 
             {/*Ya perfume categories starts */}
-            <div className=" grid lg:grid-cols-[auto_18rem]">
+            <div className=" grid gap-4 lg:grid-cols-[auto_25rem]">
                 <div className="md:space-y-6 md:px-6">
-                    <h2 className="text-2xl md:text-3xl text-center md:text-left text-black-500 font-medium  mb-8">
+                    <h2
+
+                        className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
                         Yeah Perfume Categories
                     </h2>
                     <div>
@@ -346,17 +348,17 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     {data && <FragramRatings data={data.data?.ratingFragrams} country={timeZoneCountry} />}
                     <div className="grid gap-5 container ">
                         <div className="grid place-items-center relative mt-12">
-                            <h2 className="text-xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
-                                Rating/Results{" "}
+                            <h2
+                                className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
+                                Rating Results{" "}
                             </h2>
-                            <div className="absolute w-full h-[2px] bg-slate-500"></div>
                         </div>
 
 
                         <RatingResult productId={productId} />
 
                     </div>
-                    <div className="space-y-5">
+                    <div className="">
                         <AddReview />
 
                     </div>
