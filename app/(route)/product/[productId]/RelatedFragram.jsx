@@ -57,15 +57,15 @@ const
                   return;
                 return (
                   <Link href={item?.mapOfLinks[country] || 'https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png'} target="_blank">
-                    <div className="shadowE cursor-pointer ml-5 p-1">
-                      <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px]  overflow-hidden mx-auto">
+                    <div className="shadowE cursor-pointer ml-5 p-1 border-2 w-[10rem]">
+                      <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px] overflow-hidden mx-auto">
                         <img
                           src={item.banner}
                           className="w-full h-full object-cover "
                         />
                       </div>
                       <div className="flex flex-col justify-center items-center font-medium py-2">
-                        <span>{item?.perfumeName}</span>
+                        <span className="line-clamp-1">{item?.perfumeName}</span>
                         <span className="text-teal-500 line-clamp-1">{item?.brand?.brand}</span>
                       </div>
                     </div>
