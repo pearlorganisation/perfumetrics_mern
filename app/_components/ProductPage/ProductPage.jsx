@@ -135,7 +135,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
 
                     <div className="flex flex-col items-center gap-4 ">
                         <div className="  w-fit  py-6 md:py-0  px-12">
-                            <img className="w-full  size-24 md:size-32 object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
+                            <img className="w-full  size-16  md:size-32 object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
                         </div>
                         <div className="flex flex-wrap w-full justify-center">
                             {/* <PieChart mainAccords={data?.data?.mainAccords} /> */}
@@ -175,13 +175,13 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     <Feedback />
                     {/* detail start */}
                     <div className="space-y-7  pt-3 ">
-                        <div className="text-[16px] leading-[25px] font-normal text-justify md:text-left text-slate-700">{data?.data?.details}</div>
+                        <div className="!text-[16px] !leading-[25px] !font-normal text-justify md:text-left text-slate-700">{data?.data?.details}</div>
 
                         <div className="relative border-t-2 pt-7 py-6">
                             <div className="p-2 absolute -top-5 left-[50%] bg-white">
                                 {/* <FaQuoteLeft size={20} className=" text-[#83a6c4]" /> */}
                             </div>
-                            <p className='text-justify md:text-left text-[16px] font-light italic text-slate-600'>
+                            <p className='text-justify md:text-left !text-[16px] !leading-[21px] !font-light italic text-slate-600'>
 
                                 {data?.data?.description}
                             </p>

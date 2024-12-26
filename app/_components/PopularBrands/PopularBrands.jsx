@@ -46,7 +46,7 @@ const PopularBrands = () => {
 
                   <section className=" h-[200px] w-[200px] md:h-[200px] md:w-[200px]  flex flex-col justify-center items-center ">
                     <Link href={`/product/${item?._id}`}>
-                      <div className=" mx-auto h-[120px] w-[120px] xl:w-[150px] xl:h-[150px] lg:w-[150px] lg:h-[150px] border-2 border-red-500 rounded-full overflow-hidden shadow-[0_0_0_2px#f193c4] md:shadow-[0_0_0_4px#f193c4] flex-shrink-0 grid place-items-center">
+                      <div className=" mx-auto h-[120px] w-[120px] xl:w-[150px] xl:h-[150px] lg:w-[150px] lg:h-[150px]  rounded-full overflow-hidden shadow-[0_0_0_2px#f193c4] md:shadow-[0_0_0_4px#f193c4] flex-shrink-0 grid place-items-center">
                         <img
                           src={item.banner}
                           className="size-full mx-auto rounded-full object-cover "

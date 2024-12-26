@@ -30,16 +30,14 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
           spaceBetween: 30,
         },
       }}
+      className=""
     >
       {perfumeCategories?.map((item, index) => {
         if (!item?.mapOfLinks[timeZoneCountry]) return;
         const { link, price, quantity } = item?.mapOfLinks[timeZoneCountry];
 
         return (
-          <SwiperSlide
-            className=" !flex !justify-center h-full  !items-center mt-10"
-            key={index}
-          >
+          <SwiperSlide className=" !size-52" key={index}>
             <Link
               href={
                 link ||
@@ -47,60 +45,20 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
               }
               target="_blank"
             >
-              <div className="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 ">
-                <div className="h-48 bg-whtie flex items-center justify-center">
+              <div className="max-w-xs mx-auto bg-white rounded-lg  cursor-pointer space-y-2">
+                <div className="relative h-32 md:h-48 bg-whtie flex items-center justify-center p-1">
                   <img
-                    className="h-48 object-contain"
+                    className=" !object-contain absolute  w-full h-full"
                     src={item?.banner}
                     alt=""
                   />
                 </div>
-                <div className="p-4">
-                  <h3 className="text-base font-semibold text-blue-600 line-clamp-1">
+                <div className="">
+                  <h3 className="text-xs md:text-base font-semibold text-blue-600 line-clamp-1">
                     {item?.perfumeName}
                   </h3>
-                  <div className="mt-2 space-x-2">
-                    <span className="text-xl font-bold text-gray-900">
-                      {price || 0}
-                    </span>
-                    <span className="text-gray-600">{quantity || "90ml"}</span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </SwiperSlide>
-        );
-      })}
-      {perfumeCategories?.map((item, index) => {
-        if (!item?.mapOfLinks[timeZoneCountry]) return;
-        const { link, price, quantity } = item?.mapOfLinks[timeZoneCountry];
-
-        return (
-          <SwiperSlide
-            className=" !flex !justify-center h-full  !items-center mt-10"
-            key={index}
-          >
-            <Link
-              href={
-                link ||
-                "https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png"
-              }
-              target="_blank"
-            >
-              <div className="max-w-xs mx-auto bg-white rounded-lg shadowE cursor-pointer p-2 ">
-                <div className="h-48 bg-whtie flex items-center justify-center">
-                  <img
-                    className="h-48 object-contain"
-                    src={item?.banner}
-                    alt=""
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-base font-semibold text-blue-600 line-clamp-1">
-                    {item?.perfumeName}
-                  </h3>
-                  <div className="mt-2 space-x-2">
-                    <span className="text-xl font-bold text-gray-900">
+                  <div className="space-y-3">
+                    <span className=" text-sm md:text-xl font-bold text-gray-900">
                       {price || 0}
                     </span>
                     <span className="text-gray-600">{quantity || "90ml"}</span>

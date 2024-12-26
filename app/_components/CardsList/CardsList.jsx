@@ -8,8 +8,8 @@ const CardsList = ({ reviewData, length, data }) => {
     <div className="w-full flex flex-col gap-2 rounded-md">
       {Array.isArray(reviewData) && reviewData.length > 0 &&
         reviewData?.slice(0, length).map((item) => (
-          <Link className={` ${style.shadowE} p-1 w-full`} href={`/product/${item?.perfumeId}`}>
-            <div className={`bg-white flex justify-start gap-3 items-center  cursor-pointer`}>
+          <Link className={` ${style.shadowE} bg-[#FBFBFB] p-1 w-full`} href={`/product/${item?.perfumeId}`}>
+            <div className={` flex justify-start gap-3 items-center  cursor-pointer`}>
               <div className=" rounded size-[64px] "><img className="object-cover size-full" src={item?.banner || item?.imgUrl} alt="" /></div>
 
               <div className="w-[12rem] flex flex-col justify-center ">

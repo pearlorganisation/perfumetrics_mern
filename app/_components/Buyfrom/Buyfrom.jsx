@@ -30,7 +30,7 @@ const Buyfrom = ({ links }) => {
 
             <div className='pt-1'>
 
-              999
+
             </div>
           </div>
 
