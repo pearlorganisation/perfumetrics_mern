@@ -3,36 +3,32 @@
 import React, { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import axios from 'axios'
+import axios from "axios";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
 // Import required modules
 import { Navigation, Pagination } from "swiper/modules";
-import style from './style.module.css'
+import style from "./style.module.css";
 import Link from "next/link";
 
 const PopularBrands = () => {
-  const [popularPerfumeData, setPopularPerfumeData] = useState(null)
+  const [popularPerfumeData, setPopularPerfumeData] = useState(null);
 
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/recent`, {
-      headers: {
-        'Content-Type': 'application/json',
-        // Note: Adding `Access-Control-Allow-Origin` here does NOT solve CORS issues on the client side
-      },
-    }).then((res) => {
-      setPopularPerfumeData(res.data.data)
-    }).catch((err) => console.log(err))
-  }, [])
-
-
-  useEffect(() => {
-    console.log("popularPerfumeData", popularPerfumeData);
-  }, [popularPerfumeData])
-
-  console.log("PopularBrands component rendered", popularPerfumeData);
+    axios
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/recent`, {
+        headers: {
+          "Content-Type": "application/json",
+          // Note: Adding `Access-Control-Allow-Origin` here does NOT solve CORS issues on the client side
+        },
+      })
+      .then((res) => {
+        setPopularPerfumeData(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <>
@@ -63,6 +59,15 @@ const PopularBrands = () => {
                 );
               })}
 
+              {/* <div className="mt-4 line-clamp-2 text-center">
+                          <b>{item.perfume}</b>
+                          <br />
+                          By {item?.brand?.brand || "redo"}
+                        </div>
+                      </Link>
+                    </section>
+                  );
+                })} */}
             </div>
           </div>
         </div>

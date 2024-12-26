@@ -44,7 +44,7 @@ const CustomerFeedbackModal = forwardRef((props, ref) => {
   }));
 
   async function reviewSubmission(payload) {
-    console.log(payload, "payload");
+    // console.log(payload, "payload");
     try {
       setLoading(true)
       const response = await fetch(

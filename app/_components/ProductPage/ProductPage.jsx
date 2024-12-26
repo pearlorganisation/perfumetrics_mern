@@ -1,38 +1,45 @@
-"use client"
-import React, { useEffect, useState, useMemo, useCallback } from 'react'
-import PieChart from '../DoughnutGraph/DoughnutGraph';
-import Buyfrom from '../Buyfrom/Buyfrom';
-import VideoBox from '../VideoBox/VideoBox';
-import Feedback from '../Feedback/Feedback';
-import ProsCons from '@/app/(route)/product/_ProsCons';
-import CardsList from '../CardsList/CardsList';
-import PerfumePhotos from '../PerfumePhotos/PerfumePhotos';
-import Image from 'next/image';
-import RelatedFragram from '@/app/(route)/product/[productId]/RelatedFragram';
-import FragramRatings from '@/app/(route)/product/[productId]/FragramRatings';
-import RatingResult from '../RatingResult/RatingResult';
-import AddReview from '../AddReview/AddReview';
+"use client";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
+// import PieChart from "../DoughnutGraph/DoughnutGraph";
+import Buyfrom from "../Buyfrom/Buyfrom";
+import VideoBox from "../VideoBox/VideoBox";
+import Feedback from "../Feedback/Feedback";
+import ProsCons from "@/app/(route)/product/_ProsCons";
+import CardsList from "../CardsList/CardsList";
+import PerfumePhotos from "../PerfumePhotos/PerfumePhotos";
+import Image from "next/image";
+import RelatedFragram from "@/app/(route)/product/[productId]/RelatedFragram";
+import FragramRatings from "@/app/(route)/product/[productId]/FragramRatings";
+// import RatingResult from "../RatingResult/RatingResult";
+const RatingResult = dynamic(() => import("../RatingResult/RatingResult"), {
+    loading: () => <p>Loading Rating</p>,
+});
+const PieChartComponent = dynamic(
+    () => import("../DoughnutGraph/DoughnutGraph"),
+    {
+        loading: () => <p>Loading Rating</p>,
+    }
+);
+const AddReview = dynamic(() => import("../AddReview/AddReview"), {
+    loading: () => <p>Loading Review</p>,
+});
+const LikeDislikeComponent = dynamic(() => import("./LikeDislikeComponent"), {
+    loading: () => <p>Loading Likes Dislikes</p>,
+});
+// import AddReview from "../AddReview/AddReview";
 // import Review from '@/app/(route)/product/[productId]/Review';
-import { GiFruitBowl } from "react-icons/gi";
-import { FaLongArrowAltUp } from "react-icons/fa";
 import { FaQuoteLeft } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
-import { IoHeart } from "react-icons/io5";
-import { FaPlay } from "react-icons/fa";
-import Link from 'next/link';
-import { userStore } from '@/store/userStore';
-import axios from 'axios';
-import { useParams, useRouter } from 'next/navigation';
-import { RiCentosLine } from 'react-icons/ri';
-import ct from 'countries-and-timezones';
-import { userLikeDislikeHistoryStore } from '@/store/userLikeDislikeHistoryStore';
-import LikeDislikeComponent from './LikeDislikeComponent';
-import {
-    Roboto
-} from "next/font/google";
-import PerfumeCarousel from './PerfumeCarousel';
-import PerfumeCategorySlider from './PerfumeCategorySlider';
-import LoginSignUp from '../LoginSignUp/LoginSignUp';
+import { userStore } from "@/store/userStore";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import ct from "countries-and-timezones";
+import { userLikeDislikeHistoryStore } from "@/store/userLikeDislikeHistoryStore";
+// import LikeDislikeComponent from "./LikeDislikeComponent";
+import { Roboto } from "next/font/google";
+// import PerfumeCarousel from './PerfumeCarousel';
+import PerfumeCategorySlider from "./PerfumeCategorySlider";
+import LoginSignUp from "../LoginSignUp/LoginSignUp";
+import dynamic from "next/dynamic";
 
 const lora = Roboto({
     subsets: ['latin'],
@@ -131,7 +138,8 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                             <img className="w-full  size-24 md:size-32 object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
                         </div>
                         <div className="flex flex-wrap w-full justify-center">
-                            <PieChart mainAccords={data?.data?.mainAccords} />
+                            {/* <PieChart mainAccords={data?.data?.mainAccords} /> */}
+                            <PieChartComponent mainAccords={data?.data?.mainAccords} />
                         </div>
                     </div>
                 </div>

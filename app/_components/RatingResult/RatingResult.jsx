@@ -439,4 +439,3 @@ const RatingResult = ({ productId }) => {
 
 export default RatingResult
 
-

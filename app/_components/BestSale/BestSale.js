@@ -21,7 +21,7 @@ const BestSale = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/salesOff`
     );
     setSalesData(result?.data?.data);
-    console.log(result?.data?.data, "result");
+    // console.log(result?.data?.data, "result");
   };
   useEffect(() => {
     getSalesOff();

@@ -41,10 +41,10 @@ export default function Example() {
     return data;
   };
 
-  useEffect(() => {
-    console.log(user, "from header");
-    console.log(isUserLoggedIn, "isUserLoggedIn");
-  }, [isUserLoggedIn]);
+  // useEffect(() => {
+  //   console.log(user, "from header");
+  //   console.log(isUserLoggedIn, "isUserLoggedIn");
+  // }, [isUserLoggedIn]);
   useEffect(() => {
     getAllBrands();
   }, [isUserLoggedIn]);
@@ -63,9 +63,7 @@ export default function Example() {
             {isMenuOpen && (
               <div className="w-64 bg-gray-100 p-4 rounded-lg shadow-md absolute top-[2.3rem] z-10 -left-4">
                 <ul className="space-y-2 !font-normal">
-                  <li
-
-                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                  <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <div
                       onMouseEnter={() => {
                         setReviewDropDown(true);
@@ -77,9 +75,7 @@ export default function Example() {
                       {reveiwDropDown && <ReviewDropdown />}
                     </div>
                   </li>
-                  <li
-
-                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                  <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <div
                       onMouseEnter={() => {
                         setPerfumeDropDown(true);
@@ -102,9 +98,10 @@ export default function Example() {
                   </li>
                   <li
                     onClick={() => {
-                      setIsMenuOpen(!isMenuOpen)
+                      setIsMenuOpen(!isMenuOpen);
                     }}
-                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
+                  >
                     <Link
                       href="/sale/BEST SALES"
                       className="block text-lg  text-gray-800"
@@ -114,9 +111,10 @@ export default function Example() {
                   </li>
                   <li
                     onClick={() => {
-                      setIsMenuOpen(!isMenuOpen)
+                      setIsMenuOpen(!isMenuOpen);
                     }}
-                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
+                  >
                     <Link
                       href="/category/MEN'S STYLE"
                       className="block text-lg  text-gray-800"
@@ -126,9 +124,10 @@ export default function Example() {
                   </li>
                   <li
                     onClick={() => {
-                      setIsMenuOpen(!isMenuOpen)
+                      setIsMenuOpen(!isMenuOpen);
                     }}
-                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
+                  >
                     <Link
                       href="/category/WOMEN'S STYLE"
                       className="block text-lg  text-gray-800"
@@ -150,7 +149,7 @@ export default function Example() {
                     onMouseEnter={() => setShowEmail(true)}
                     onMouseLeave={() => setShowEmail(false)}
                   >
-                    {user ? getInitials(user.userName) : 'GU'}
+                    {user ? getInitials(user.userName) : "GU"}
                     {showEmail && user && (
                       <div className=" bg-black/70 text-nowrap font-normal absolute -bottom-[2.8rem]  p-2 rounded-md shadow-lg z-10 transition-opacity duration-300 ease-in-out">
                         {user.userName}
@@ -197,7 +196,11 @@ export default function Example() {
               </Link>
             </div>
             <div className="w-72 lg:ml-96">
-              <IoSearch size={30} className="flex md:hidden ms-auto text-white" onClick={() => setisSearchOpen((prev) => !prev)} />
+              <IoSearch
+                size={30}
+                className="flex md:hidden ms-auto text-white"
+                onClick={() => setisSearchOpen((prev) => !prev)}
+              />
               <input
                 type="text"
                 placeholder="Search reviews"
@@ -206,12 +209,13 @@ export default function Example() {
             </div>
           </div>
           <div>
-            {isSearchOpen && <input
-              type="text"
-              placeholder="Search reviews"
-              className="w-full rounded-full p-4 h-[30px] focus:outline-none shadow-[0_0_1px_1px#d1d1d1] flex md:hidden absolute left-0 top-[2.5rem]"
-            />}
-
+            {isSearchOpen && (
+              <input
+                type="text"
+                placeholder="Search reviews"
+                className="w-full rounded-full p-4 h-[30px] focus:outline-none shadow-[0_0_1px_1px#d1d1d1] flex md:hidden absolute left-0 top-[2.5rem]"
+              />
+            )}
           </div>
         </div>
         <div className="w-full hidden md:flex justify-center lg:justify-between items-center px-6">
@@ -266,7 +270,6 @@ export default function Example() {
             </Link>
           </div>
         </div>
-
       </nav>
     </header>
   );

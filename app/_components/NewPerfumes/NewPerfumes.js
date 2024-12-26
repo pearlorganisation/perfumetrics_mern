@@ -100,14 +100,14 @@ const NewPerfumes = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/newArrival`
     );
     setNewArrival(result?.data?.data);
-    console.log(result?.data?.data, "NewArrival");
+    // console.log(result?.data?.data, "NewArrival");
   };
   const getCelebrityPerfume = async () => {
     const result = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/celebrityPerfumes?limit=4`
     );
     setCelebrityPerfume(result?.data?.data);
-    console.log(result?.data?.data, "Celebrity Perfume");
+    // console.log(result?.data?.data, "Celebrity Perfume");
   };
   useEffect(() => {
     getNewArrival();

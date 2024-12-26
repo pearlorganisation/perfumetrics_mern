@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
 import BrandFilter from "../BrandFilter";
 import Image from "next/image";
-import { Menu } from "lucide-react";
 
 export default function InteractivePerfumePage() {
   const { brandId } = useParams();
