@@ -1,0 +1,20 @@
+name: Trigger on Push to Master
+
+on:
+  push:
+    branches:
+      - shashank-code2  # Trigger this workflow on push to the 'master' branch
+
+jobs:
+  push-operation:
+    runs-on: ubuntu-latest  # Use a virtual machine with Ubuntu to run the job
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3  # This step checks out your code from the repository
+
+      - name: Run push operation
+        run: |
+          echo "Changes have been pushed to the master branch."
+          # Here, you can add any commands you need. For example, a custom push or deploy operation:
+          # git push origin master  (or any other command you want to execute)
