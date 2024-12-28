@@ -10,14 +10,16 @@ const PieChartComponent = ({ mainAccords }) => {
 
   return (
     <>
-      <PieChart width={200} height={200}>
+      <PieChart
+        className=" !size-[20rem] overflow-visible"
+        width={200} height={200}>
         <Pie
           data={data}
           dataKey="value"
           nameKey="name"
           cx="50%"
           cy="50%"
-          outerRadius={80}
+          outerRadius={70}
           fill="#8884d8"
         >
           {data.map((_, index) => (
@@ -26,7 +28,7 @@ const PieChartComponent = ({ mainAccords }) => {
         </Pie>
         <Tooltip />
       </PieChart>
-      <div className="flex flex-wrap justify-center gap-3 items-center  py-8">
+      <div className="flex flex-wrap justify-center gap-3 max-w-sm items-center  py-8">
         {mainAccords?.map((el) => {
           return (
             <div

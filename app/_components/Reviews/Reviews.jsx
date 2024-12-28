@@ -33,8 +33,8 @@ const Reviews = async ({ reviewSidebar, length }) => {
   const commentsData = await comments()
 
   return (
-    <div className="container mx-auto mt-10">
-      <div className="w-full grid lg:grid-cols-[auto_20rem] gap-x-4 px-6 md:px-10 py-3 md:py-10">
+    <div className="mx-auto mt-10 ">
+      <div className="w-full gap-x-4 px-6 md:px-10 ">
         <div className="w-full">
           <div class="grid place-items-center relative mb-10">
             <h1 class="text-2xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
@@ -45,7 +45,7 @@ const Reviews = async ({ reviewSidebar, length }) => {
 
           <div class=" space-y-4 w-full overflow-hidden">
             <div
-              className={`flex justify-start items-center space-x-4 overflow-x-auto py-8 px-2 w-full  mx-auto ${style.custom_scrollbar} reviewScroll`}
+              className={`flex justify-start items-center space-x-4 overflow-x-auto py-8 px-2 w-full  mx-auto ${style.custom_scrollbar} lg:max-w-[620px] xl:max-w-[750px]`}
             >
 
               {
@@ -98,11 +98,7 @@ const Reviews = async ({ reviewSidebar, length }) => {
             </div>
           </div>
         </div>
-        <div className="hidden md:block">
-          <div className="mt-[8.1rem] ml-[31px]">
-            <CardsList reviewData={reviewSidebar} length={length} />
-          </div>
-        </div>
+
       </div>
       <NewPerfumes />
     </div>

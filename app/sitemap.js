@@ -34,12 +34,12 @@ export default async function siteMap() {
     const allPerfumesData = responseData?.data || [];
 
     console.log(
-      chalk.bgYellow("This is perfume data in sitemap", allPerfumesData.length)
+      chalk.bgYellow("This is perfume data in sitemap", allPerfumesData?.length)
     );
     // Map perfumes to URLs and last modified dates
     const allPerfumes = allPerfumesData?.map((post) => {
       return {
-        url: `${baseUrl}/api/v1/perfume/${post?._id}`,
+        url: `${baseUrl}/product/${post?.slug}`,
         lastModified: formatDate(post?.updatedAt || "2024-12-21T10:39:05.105Z"),
       };
     });

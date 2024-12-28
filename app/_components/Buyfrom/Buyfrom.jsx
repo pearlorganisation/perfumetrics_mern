@@ -15,6 +15,7 @@ const Buyfrom = ({ links }) => {
   };
 
   return (
+
     <div className="flex flex-col items-left justify-left bg-white text-left w-full">
       {
         links?.map(item => {
@@ -30,8 +31,9 @@ const Buyfrom = ({ links }) => {
 
             <div className='pt-1'>
 
-
+              <img className="h-14" src={item?.companyImage} alt={item?.company} />
             </div>
+            {item?.price}
           </div>
 
         })}
@@ -42,3 +44,5 @@ const Buyfrom = ({ links }) => {
 };
 
 export default Buyfrom;
+
+

@@ -66,7 +66,7 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
 
 
   return (
-    <div className="flex justify-center text-xs   mt-6  ">
+    <div className="flex  justify-center text-xs   mt-6  ">
       <div
         onClick={handleLike}
         className="w-full cursor-pointer grid place-items-center gap-1"
@@ -82,7 +82,7 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
             size={38}
           />
         </div>
-        <div className="h-1 w-full bg-pink-400"></div>
+        <div className="h-1 w-[40%] bg-pink-400"></div>
         <div className='w-full flex justify-center gap-1 '><div className='w-fit h-6 '> {isLoading ? <FaSpinner className="animate-spin text-red-500" size={18} /> : (likeDisLikeData?.likes || 0)} </div> Likes</div>
       </div>
 
@@ -104,7 +104,7 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
             alt=""
           />
         </div>
-        <div className="h-1 w-full bg-pink-400"></div>
+        <div className="h-1 w-[40%] bg-pink-400"></div>
         <div className='w-full flex justify-center gap-1 '><div className='w-fit h-6 '> {isLoading ? <FaSpinner className="animate-spin text-red-500" size={18} /> : (likeDisLikeData?.dislike || 0)} </div> DisLikes </div>
       </div>
     </div>

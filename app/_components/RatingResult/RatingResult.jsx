@@ -413,8 +413,8 @@ const RatingResult = ({ productId }) => {
                     {/* Status Details Section */}
                     <div className="space-y-3">
                         {item?.status.map((sta, idx) => (
-                            <div key={idx} className="grid grid-cols-[8rem_auto] gap-2">
-                                <span className=" text-[#6B859E] capitalize text-nowrap w-[6rem] text-xs sm:text-sm">
+                            <div key={idx} className="grid grid-cols-[6rem_auto]">
+                                <span className=" text-[#6B859E] capitalize text-wrap w-[6rem] text-xs sm:text-sm">
                                     {sta.name}
                                 </span>
                                 <div className="w-full flex items-center gap-3">

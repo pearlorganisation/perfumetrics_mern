@@ -122,11 +122,11 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     {data?.data?.perfume?.split('for').length > 1 ? `for` + data?.data?.perfume?.split('for')[1] : ''}
                 </span></h1>
             </p>
-            <div className=" gap-x-10 gap-y-14 grid gap-4 lg:grid-cols-[auto_25rem]">
+            <div className=" gap-x-10 gap-y-14 grid gap-4 lg:grid-cols-[auto_18rem] mt-8">
                 <div className="grid md:grid-cols-[40%_60%]  ">
                     <div className=" ">
                         <div className="w-full  grid place-items-left ">
-                            <img className='h-[28rem]  md:w-full mx-auto object-contain' src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
+                            <img className='h-[20rem] md:h-[28rem]  md:w-full mx-auto object-contain ' src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
                         </div>
                         {
                             <LikeDislikeComponent key={1} data={data} historyMap={historyMap} productId={productId} likeDislike={likeDislike} />
@@ -135,16 +135,16 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
 
                     <div className="flex flex-col items-center gap-4 ">
                         <div className="  w-fit  py-6 md:py-0  px-12">
-                            <img className="w-full  size-16  md:size-32 object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
+                            <img className="w-full  size-12  md:size-44 object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
                         </div>
-                        <div className="flex flex-wrap w-full justify-center">
+                        <div className="flex flex-wrap w-full justify-center overflow-visible">
                             {/* <PieChart mainAccords={data?.data?.mainAccords} /> */}
                             <PieChartComponent mainAccords={data?.data?.mainAccords} />
                         </div>
                     </div>
                 </div>
 
-                <div className=" space-y-14 hidden md:block">
+                <div className=" space-y-8 hidden md:block">
                     <LoginSignUp />
                     {
                         globalBanner && <div className="h-[20rem] flex justify-start items-start  rounded-md overflow-hidden">
@@ -160,7 +160,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
 
                 </div>
             </div>
-            <div className=" gap-x-10 gap-y-14 grid gap-4  lg:grid-cols-[auto_25rem] py-8">
+            <div className=" gap-x-10 gap-y-14 grid gap-4  lg:grid-cols-[auto_18rem] py-8">
                 <div className="space-y-8">
                     <div className="grid md:grid-cols-[60%_40%] gap-y-4 md:gap-y-0">
                         <div className="space-y-12 w-full flex flex-col justify-center items-center ">
@@ -195,7 +195,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     {/* pros n cons */}
                 </div >
                 <div className='hidden md:block'>
-                    <div className="w-full  flex flex-col gap-5 ">
+                    <div className="w-full  flex flex-col gap-5   ">
                         <div className=" w-full text-left flex justify-between">
                             <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
                                 Perfume Reviews
@@ -258,12 +258,12 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                 <Image
                                     src={"/PerfumeBottle.svg"}
                                     height={400}
-                                    width={450}
+                                    width={400}
                                     alt=""
                                 />
                                 <div className="absolute   flex flex-col -translate-x-3 max-w-[20rem] md:max-w-[16rem] gap-1 md:gap-4">
                                     <div className="flex flex-col gap-3 justify-center items-center flex-wrap ">
-                                        <p className="text-center font-bold text-xs md:text-base">Top Notes</p>
+                                        <p className="text-center font-bold text-xs md:text-sm">Top Notes</p>
                                         <div className="flex gap-3 text-sm">
                                             {data?.data?.topNote &&
                                                 data?.data?.topNote.map((el) => {
@@ -275,9 +275,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                             <img
                                                                 src={el.image}
                                                                 alt={el.name}
-                                                                className="w-8 sm:w-12 h-8 sm:h-12 md:w-16 md:h-16"
+                                                                className="w-8 sm:w-12 h-8 sm:h-12 md:w-14 md:h-14"
                                                             />
-                                                            <p className='text-xs sm:text-base md:text-lg'>{el.name}</p>
+                                                            <p className='text-xs sm:text-base md:text-base'>{el.name}</p>
                                                         </div>
                                                     );
                                                 })}
@@ -296,9 +296,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-8 sm:w-12 h-8 sm:h-12 md:w-16 md:h-16"
+                                                            className="w-8 sm:w-12 h-8 sm:h-12 md:w-14 md:h-14"
                                                         />
-                                                        <p className='text-xs sm:text-base md:text-lg'>{el.name}</p>
+                                                        <p className='text-xs sm:text-base md:text-base'>{el.name}</p>
                                                     </div>
                                                 );
                                             })}
@@ -317,9 +317,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-8 sm:w-12 h-8 sm:h-12 md:w-16 md:h-16"
+                                                            className="w-8 sm:w-12 h-8 sm:h-12 md:w-14 md:h-14"
                                                         />
-                                                        <p className='text-xs sm:text-base md:text-lg'>{el.name}</p>
+                                                        <p className='text-xs sm:text-base md:text-base'>{el.name}</p>
                                                     </div>
                                                 );
                                             })}
@@ -339,7 +339,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
             {/* Related Fragram ends */}
 
             {/*Ya perfume categories starts */}
-            <div className=" grid gap-4 lg:grid-cols-[auto_25rem]">
+            <div className=" grid gap-4 lg:grid-cols-[auto_18rem]">
                 <div className="md:space-y-6 md:px-6">
                     <h2
 
@@ -371,8 +371,8 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
 
                     </div>
                 </div >
-                <div className='hidden md:block'>
-                    <CardsList reviewData={sidebarReview} length={7} />
+                <div className='hidden md:block  '>
+                    {/* <CardsList reviewData={sidebarReview} length={7} /> */}
                 </div>
             </div>
             {/*Ya perfume categories ends */}

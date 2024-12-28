@@ -13,8 +13,8 @@ const LogoGrid = () => {
         <div className="grid sm:grid-cols-2  justify-center  items-center  gap-12 md:grid-cols-3  xl:grid-cols-none xl:flex xl:justify-between">
           {logos?.map((item) => {
             return (
-              <a href="#" className="flex justify-center items-center">
-                <img className=" w-full h-[5rem]" src={item} alt="" />
+              <a href="#" className="flex justify-center items-center border">
+                <img className=" w-[91px] h-[63px]" src={item} alt="" />
               </a>
             );
           })}

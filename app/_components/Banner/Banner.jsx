@@ -1,16 +1,25 @@
+import { Poppins, Protest_Strike } from "next/font/google";
 import Link from "next/link";
 import React from "react";
+const protest_strike = Protest_Strike({
+  subsets: ['latin'],
+  weight: ['400'],
+});
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400'],
+});
 
 const HeroSection = () => {
   return (
-    <div className="relative bg-gray-50">
+    <div className={`relative bg-gray-50 ${protest_strike?.className}`}>
       <div className="container mx-auto px-4 py-16 lg:py-24 flex flex-col lg:flex-row items-center">
         {/* Text Content */}
         <div className="lg:w-1/2 text-center lg:text-left">
-          <h1 className="text-3xl font-extrabold leading-tight sm:text-6xl lg:text-7xl text-gray-800">
+          <h1 className="!font-normal leading-tight sm:text-5xl lg:text-[80px] text-gray-800">
             Awaken Your Senses
           </h1>
-          <p className="mt-6 text-base sm:text-xl text-gray-600 max-w-lg mx-auto lg:mx-0">
+          <p className={`${poppins.className} mt-6 text-base sm:text-[20px] font-normal text-gray-600 max-w-lg mx-auto lg:mx-0`}>
             Dive into the world of luxurious perfumes, where timeless elegance
             meets captivating scents. Discover your perfect match today.
           </p>
@@ -18,14 +27,14 @@ const HeroSection = () => {
             <Link
               href={`/category/MEN'S STYLE`}
             >
-              <button className=" px-8 py-3 bg-pink-500 text-white font-semibold rounded-lg shadow-lg hover:bg-pink-600 transition transform hover:scale-105">
+              <button className={`${poppins.className} px-8 py-2 bg-pink-500 text-white font-semibold rounded-lg shadow-lg hover:bg-pink-600 transition transform hover:scale-105`}>
                 Explore Men's
               </button>
             </Link>
             <Link
               href={`/category/WOMEN'S STYLE`}
             >
-              <button className="  px-8 py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-lg hover:bg-gray-300 transition transform hover:scale-105">
+              <button className={`${poppins.className}  px-8 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-lg hover:bg-gray-300 transition transform hover:scale-105`}>
                 Explore Women's
               </button>
 

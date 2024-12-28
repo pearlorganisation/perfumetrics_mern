@@ -13,6 +13,7 @@ async function getSiderbarReviews() {
 import Banner from "./_components/Banner/Banner";
 import BestPerfumes from "./_components/BestPerfumes/BestPerfumes";
 import BestSale from "./_components/BestSale/BestSale";
+import CardsList from "./_components/CardsList/CardsList";
 import Gallery from "./_components/Gallery/Gallery";
 import News from "./_components/News/News";
 import PerfumeSection from "./_components/PerfumeSection/PerfumeSection";
@@ -29,11 +30,27 @@ export default async function Home() {
         <div className="lg:w-[55% container mx-auto ">
           <PopularBrands />
           <PerfumeSection length={7} reviewSidebar={sidebarReview} />
-          <Gallery />
-          <Reviews length={14} reviewSidebar={sidebarReview} />
-          <BestSale />
-          {/* <News /> */}
-          {/* <BestPerfumes /> */}
+          <div className="w-full grid lg:grid-cols-[auto_20rem] lg:gap-y-0 gap-8 px-8 md:px-0 py-10 gap-y-12">
+            <div>
+              <Gallery />
+              <Reviews length={14} reviewSidebar={sidebarReview} />
+              <BestSale />
+            </div>
+            <div className="space-y-5">
+              <div className=" w-full text-left flex justify-between">
+                <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
+                  Perfume Reviews
+                </h2>
+                <button
+                  className="font-medium text-[14px] text-[#EA92B6]"
+                  type="button"
+                >
+                  Write a Review
+                </button>
+              </div>
+              <CardsList reviewData={sidebarReview} length={14} />
+            </div>
+          </div>
         </div>
       </div>
     </div>

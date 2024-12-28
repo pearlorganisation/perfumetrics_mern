@@ -3,6 +3,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import parse from 'html-react-parser';
 import Link from "next/link";
+import { Poppins } from "next/font/google";
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '700'],
+});
 
 const News = () => {
   const [newsData, setNewsData] = useState([])
@@ -23,7 +28,7 @@ const News = () => {
   }, [newsData])
 
   return (
-    <div className="space-y-4">
+    <div className={`space-y-4 ${poppins?.className}`}>
       <div class="grid place-items-center relative mb-6">
         <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">News </h1>
         <div class="absolute w-full h-[2px] bg-slate-500"></div>
@@ -40,12 +45,12 @@ const News = () => {
               alt=""
             />
 
-            <div className="font-medium text-3xl text-black">
+            <div className="font-semibold text-3xl text-black">
               {newsMapData?.get(1)?.title}
 
             </div>
-            <div className="text-sm">By {newsMapData?.get(1)?.user} :</div>
-            <p className="line-clamp-4">
+            <div className="text-[14px] font-light text-[#1777F2]">By {newsMapData?.get(1)?.user} :</div>
+            <p className="line-clamp-4 text-[16px] font-normal">
               {newsMapData?.get(1)?.details}
 
             </p>
@@ -70,12 +75,12 @@ const News = () => {
                 src={newsMapData?.get(2)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
                 alt=""
               />
-              <div className="font-bold pt-2 text-black text-xl">
+              <div className="font-semibold pt-2 text-black text-xl">
                 {newsMapData?.get(2)?.title}
 
               </div>
-              <div className="text-sm ">{newsMapData?.get(2)?.user}</div>
-              <p className="font-medium line-clamp-4">
+              <div className="text-[14px] font-light text-[#1777F2] ">{newsMapData?.get(2)?.user}</div>
+              <p className="line-clamp-4 text-[16px] font-normal">
                 {newsMapData?.get(2)?.details}{" "}
               </p>
             </Link> : <div class="mb-8 animate-pulse space-y-2">
@@ -97,8 +102,8 @@ const News = () => {
                   {newsMapData?.get(3)?.title}
 
                 </div>
-                <div className="text-sm "> {newsMapData?.get(3)?.user}</div>
-                <p className="font-medium line-clamp-4">
+                <div className="text-[14px] font-light text-[#1777F2] "> {newsMapData?.get(3)?.user}</div>
+                <p className="line-clamp-4 text-[16px] font-normal">
                   {newsMapData?.get(3)?.details}{" "}
                   {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
               qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
@@ -131,8 +136,8 @@ const News = () => {
               alt=""
             />
             <div className="font-semibold text-xl"> {newsMapData?.get(4)?.title}</div>
-            <div className="text-sm"> {newsMapData?.get(4)?.user}</div>
-            <p className="font-medium line-clamp-3">
+            <div className="text-[14px] font-light text-[#1777F2]"> {newsMapData?.get(4)?.user}</div>
+            <p className="line-clamp-4 text-[16px] font-normal">
               {newsMapData?.get(4)?.details}{" "}
               {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
               qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
@@ -154,8 +159,8 @@ const News = () => {
               {newsMapData?.get(5)?.title}
 
             </div>
-            <span className="text-sm"> {newsMapData?.get(5)?.user}{" "}</span>
-            <p className="font-medium line-clamp-4">
+            <span className="text-[14px] font-light text-[#1777F2]"> {newsMapData?.get(5)?.user}{" "}</span>
+            <p className="line-clamp-4 text-[16px] font-normal">
               {newsMapData?.get(5)?.details}{" "}
               {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
               qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
@@ -196,11 +201,11 @@ const News = () => {
 
               }
             </div>
-            <div className="text-sm">By {
+            <div className="text-[14px] font-light text-[#1777F2]">By {
               newsMapData?.get(6)?.user
 
             }:</div>
-            <p className="line-clamp-4">
+            <p className="line-clamp-4 text-[16px] font-normal">
               {
                 newsMapData?.get(6)?.
                   details
@@ -236,13 +241,13 @@ const News = () => {
 
               }
             </div>
-            <div className="font-medium">By
+            <div className="text-[14px] font-light text-[#1777F2]">By
               {
                 newsMapData?.get(7)?.
                   user
 
               }:</div>
-            <p className="line-clamp-4">
+            <p className="line-clamp-4 text-[16px] font-normal">
 
               {
                 newsMapData?.get(7)?.

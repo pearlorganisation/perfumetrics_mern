@@ -20,8 +20,8 @@ const FollowUs = () => {
 
         <div className='space-y-8'>
             <div className='px-3 space-y-5'>
-                <div className='text-black grid place-items-center relative max-w-6xl mx-auto '>
-                    <div className='text-xl md:text-3xl font-semibold z-50 bg-white px-6 py-4'>FOLLOW US ON PINTEREST</div>
+                <div className='text-black grid place-items-center relative mx-auto '>
+                    <div className='text-xl md:text-[36px] font-bold z-50 bg-white px-6 py-4'>FOLLOW US ON PINTEREST</div>
                     <div className='absolute w-full h-[2px] bg-slate-400'></div>
                 </div>
                 <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-1'>

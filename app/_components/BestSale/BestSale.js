@@ -30,12 +30,14 @@ const BestSale = () => {
   return (
     <div>
       <div>
+        <div class="grid place-items-center relative w-full ">
+          <h1 class="text-xl md:text-[36px] -translate-y-1 font-bold px-6 md:px-8 pt-3 bg-white z-40">
+            SALES OFF
+          </h1>
+          <div class="absolute w-full h-[2px] bg-slate-500"></div>
+        </div>
         <div className="grid lg:grid-cols-3 place-items-center gap-3 py-5">
           <div className="w-full flex flex-col justify-between ">
-            <span className="text-2xl font-semibold pb-3 border-b-2">
-              SALES OFF
-            </span>
-
             {salesData?.slice(0, 3).map((item) => {
               console.log(item);
               if (!item?.mapOfLinks[timeZoneCountry]) return;
@@ -52,7 +54,7 @@ const BestSale = () => {
                       />
                     </div>
                     <div className="p-4">
-                      <h2 className="text-gray-800 text-sm lg:text-lg ">
+                      <h2 className="text-gray-800 text-sm lg:text-[16px] font-normal line-clamp-1">
                         {item?.title} {quantity}
                       </h2>
                       <div className="flex items-center mt-2">
@@ -70,7 +72,9 @@ const BestSale = () => {
                         )}
                       </div>
                       <div className="mt-3">
-                        <span className="text-gray-800 text-sm ">{price}</span>
+                        <span className="text-gray-800 text-[12px] font-normal ">
+                          {price}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -85,10 +89,7 @@ const BestSale = () => {
               alt=""
             />
           </div>
-          <div className="flex flex-col justify-between w-full ">
-            <span className="text-2xl font-semibold pb-3 h-10">
-              {/* SALE OFF */}
-            </span>
+          <div className="w-full flex flex-col justify-between ">
             {salesData?.slice(3, 6).map((item) => {
               console.log(item);
               if (!item?.mapOfLinks[timeZoneCountry]) return;
@@ -105,11 +106,9 @@ const BestSale = () => {
                       />
                     </div>
                     <div className="p-4">
-                      <h2 className="text-gray-800 text-sm  font-semibold">
-                        {item?.title}
-                        {quantity}
+                      <h2 className="text-gray-800 text-sm lg:text-[16px] font-normal line-clamp-1 ">
+                        {item?.title} {quantity}
                       </h2>
-
                       <div className="flex items-center mt-2">
                         {Array.from({ length: Number(item?.rating) })?.map(
                           (item) => {
@@ -125,7 +124,9 @@ const BestSale = () => {
                         )}
                       </div>
                       <div className="mt-3">
-                        <span className="text-gray-800 text-sm">{price}</span>
+                        <span className="text-gray-800 text-[12px] font-normal ">
+                          {price}
+                        </span>
                       </div>
                     </div>
                   </div>

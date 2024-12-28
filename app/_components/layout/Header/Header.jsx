@@ -13,8 +13,14 @@ import { CiLogout } from "react-icons/ci";
 import Dropdown from "../../Dropdown/Dropdown";
 import ReviewDropdown from "../../Dropdown/ReviewDropdown";
 import { IoMenuSharp } from "react-icons/io5";
+import { Nunito } from "next/font/google";
 
+const nunito = Nunito({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '700'],
+});
 export default function Example() {
+
   const { user, isUserLoggedIn, logout } = userStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setisSearchOpen] = useState(false);
@@ -50,7 +56,7 @@ export default function Example() {
   }, [isUserLoggedIn]);
 
   return (
-    <header className="block relative bg-white shadow-[0_1px_2px#d1d1d1]">
+    <header className={`${nunito.className} block relative bg-white shadow-[0_1px_2px#d1d1d1]`}>
       <nav className="w-full relative flex sm:justify-center flex-col gap-0 pt-0">
         <div className="flex justify-end items-center  px-3">
           <div className="flex flex-col relative md:hidden">
@@ -62,7 +68,7 @@ export default function Example() {
             </button>
             {isMenuOpen && (
               <div className="w-64 bg-gray-100 p-4 rounded-lg shadow-md absolute top-[2.3rem] z-10 -left-4">
-                <ul className="space-y-2 !font-normal">
+                <ul className="space-y-2 !font-extrabold !text-[20px] !italic">
                   <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <div
                       onMouseEnter={() => {
@@ -104,7 +110,7 @@ export default function Example() {
                   >
                     <Link
                       href="/sale/BEST SALES"
-                      className="block text-lg  text-gray-800"
+                      className="block  text-gray-800"
                     >
                       BEST SALES
                     </Link>
@@ -117,7 +123,7 @@ export default function Example() {
                   >
                     <Link
                       href="/category/MEN'S STYLE"
-                      className="block text-lg  text-gray-800"
+                      className="block   text-gray-800"
                     >
                       MEN'S STYLE
                     </Link>
@@ -130,7 +136,7 @@ export default function Example() {
                   >
                     <Link
                       href="/category/WOMEN'S STYLE"
-                      className="block text-lg  text-gray-800"
+                      className="block   text-gray-800"
                     >
                       WOMEN'S STYLE
                     </Link>
@@ -219,7 +225,7 @@ export default function Example() {
           </div>
         </div>
         <div className="w-full hidden md:flex justify-center lg:justify-between items-center px-6">
-          <div className="flex justify-center mx-auto gap-3 md:gap-8 lg:gap-12 font-semibold text-[10px] sm:text-base md:text-lg lg:text-xl">
+          <div className="flex justify-center mx-auto gap-3 md:gap-8 lg:gap-12  !font-extrabold !text-[20px] !italic">
             <div
               onMouseEnter={() => {
                 setReviewDropDown(true);
