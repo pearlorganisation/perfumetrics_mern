@@ -105,9 +105,9 @@ const FollowUs = () => {
                         </div>
                     </div>
                 </div>
-                <div className='bg-[#ededed]'>
+                <div className='bg-pink-500 '>
                     <div className='container mx-auto items-center lg:flex justify-center py-3 '>
-                        <p className='text-xs text-gray-500'>© 1999 - 2024 perfumetrics International Ltd | Privacy Policy | Terms of Use</p>
+                        <p className='text-xs text-white text-center'>© 1999 - 2024 perfumetrics International Ltd | Privacy Policy | Terms of Use</p>
                     </div>
                 </div>
             </div>

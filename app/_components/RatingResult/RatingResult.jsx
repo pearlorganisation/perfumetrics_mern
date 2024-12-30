@@ -419,7 +419,7 @@ const RatingResult = ({ productId }) => {
                                 </span>
                                 <div className="w-full flex items-center gap-3">
                                     <span className="text-sm sm:text-base">{sta.num}</span>
-                                    <div className="bg-slate-300 relative w-[60%] md:w-full rounded-3xl h-[6px] sm:h-[8px]">
+                                    <div className="bg-slate-300 relative w-[80%] md:w-full rounded-3xl h-[6px] sm:h-[8px]">
                                         <div
                                             style={{ width: `${sta.num}%` }}
                                             className="bg-pink-300 absolute rounded-3xl h-[6px] sm:h-[8px]"

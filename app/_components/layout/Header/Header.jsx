@@ -194,14 +194,15 @@ export default function Example() {
             )}
           </div>
         </div>
-        <div className="w-full bg-pink-300 px-4 py-1 relative">
+        <div className="w-full bg-pink-300 px-4 py-2 relative">
           <div className=" mx-auto flex justify-between items-center lg:ml-96">
             <div className="flex items-center ml-[7rem] lg:ml-[25rem]">
               <Link href="/" className="">
-                <Image src={logo} width={280} height={50} alt="img" />
+
+                <Image src='/PerfumetricsLogo.png' width={280} height={150} alt="img" />
               </Link>
             </div>
-            <div className="w-72 lg:ml-96">
+            {/* <div className="w-72 lg:ml-96">
               <IoSearch
                 size={30}
                 className="flex md:hidden ms-auto text-white"
@@ -212,7 +213,7 @@ export default function Example() {
                 placeholder="Search reviews"
                 className="w-full rounded-full p-4 h-[30px] focus:outline-none shadow-[0_0_1px_1px#d1d1d1] relative hidden md:block"
               />
-            </div>
+            </div> */}
           </div>
           <div>
             {isSearchOpen && (

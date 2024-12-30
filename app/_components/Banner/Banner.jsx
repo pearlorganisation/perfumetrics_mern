@@ -1,22 +1,23 @@
-import { Poppins, Protest_Strike } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Link from "next/link";
 import React from "react";
-const protest_strike = Protest_Strike({
-  subsets: ['latin'],
-  weight: ['400'],
-});
+// const protest_strike = Protest_Strike({
+//   subsets: ['latin'],
+//   weight: ['400'],
+// });
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400'],
 });
 
 const HeroSection = () => {
+  // ${protest_strike?.className}
   return (
-    <div className={`relative bg-gray-50 ${protest_strike?.className}`}>
+    <div className={`relative bg-gray-50 `}>
       <div className="container mx-auto px-4 py-16 lg:py-24 flex flex-col lg:flex-row items-center">
         {/* Text Content */}
         <div className="lg:w-1/2 text-center lg:text-left">
-          <h1 className="!font-normal leading-tight sm:text-5xl lg:text-[80px] text-gray-800">
+          <h1 className="!font-normal leading-tight text-5xl lg:text-[80px] text-gray-800">
             Awaken Your Senses
           </h1>
           <p className={`${poppins.className} mt-6 text-base sm:text-[20px] font-normal text-gray-600 max-w-lg mx-auto lg:mx-0`}>
@@ -49,10 +50,10 @@ const HeroSection = () => {
           <img
             src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1733984224/static_hero_primary_Now_And_Then_2_aynsff.webp"
             alt="Hero Perfume Bottle"
-            className="relative z-10 rounded-lg shadow-2xl  w-full max-w-md transition transform hover:scale-105"
+            className="relative z-10 rounded-lg shadow-2xl  md:w-full w-60 md:max-w-md transition transform hover:scale-105"
           />
         </div>
-        <div className="mt-8 w-full  flex md:hidden justify-center lg:justify-start space-x-4">
+        <div className="mt-8 w-full  flex md:hidden justify-center lg:justify-start space-x-4 text-base font-light">
           <Link
             href={`/category/MEN'S STYLE`}
           >

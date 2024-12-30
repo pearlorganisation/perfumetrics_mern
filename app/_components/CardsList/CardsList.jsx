@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const CardsList = ({ reviewData, length, data }) => {
   return (
-    <div className="w-full flex flex-col gap-2 rounded-md ">
+    <div className="w-full flex flex-col gap-2 rounded-md  ">
       {Array.isArray(reviewData) && reviewData.length > 0 &&
         reviewData?.slice(0, length).map((item) => (
           <Link target="_blank" className={` ${style.shadowE} bg-[#FBFBFB] p-1 w-full`} href={`${item?.productUrl}`}>

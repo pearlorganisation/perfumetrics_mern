@@ -67,7 +67,7 @@ const News = () => {
       }
 
       <div className="grid gap-6 md:grid-cols-[18rem_auto] py-6  ">
-        <div className="space-y-2">
+        <div className="space-y-12">
           {
             newsMapData ? <Link href={`/news/${newsMapData?.get(2)?._id}`} className="space-y-1">
               <img
@@ -129,7 +129,7 @@ const News = () => {
 
         </div>
         {
-          newsMapData ? <Link href={`/news/${newsMapData?.get(4)?._id}`} className=" space-y-1">
+          newsMapData ? <Link href={`/news/${newsMapData?.get(4)?._id}`} className=" space-y-1  mt-5 md:top-0 ">
             <img
               className="w-full rounded-md h-[20rem]"
               src={newsMapData?.get(4)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
@@ -153,7 +153,7 @@ const News = () => {
 
       </div>
       {
-        newsMapData ? <Link href={`/news/${newsMapData?.get(5)?._id}`} className="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8 border-gray-400">
+        newsMapData ? <Link href={`/news/${newsMapData?.get(5)?._id}`} className="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8   border-gray-400">
           <div>
             <div className="font-bold pt-2 text-black text-xl">
               {newsMapData?.get(5)?.title}
@@ -168,7 +168,7 @@ const News = () => {
             </p>
           </div>
           <img
-            className="w-full h-[20rem] object-cover"
+            className="w-full h-[20rem] md:mt-0 mt-4 object-cover"
             src={newsMapData?.get(5)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
             alt=""
           />

@@ -135,7 +135,7 @@ const BestSale = () => {
             })}
           </div>
         </div>
-        <div className="flex flex-col md:flex-row gap-4 w-full py-6 px-5 md:px-0">
+        <div className="flex flex-col md:flex-row gap-4 w-full py-6 px-5 md:px-0 mt md:mt-0">
           {[
             "https://res.cloudinary.com/dznz3eqe8/image/upload/v1732796272/20241122_123618_0000_lchvdf.jpg",
             `https://res.cloudinary.com/dznz3eqe8/image/upload/v1732796285/20241122_123618_0001_ypzx1b.jpg`,

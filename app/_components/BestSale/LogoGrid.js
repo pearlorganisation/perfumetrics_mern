@@ -2,18 +2,20 @@ import React from "react";
 
 const LogoGrid = () => {
   const logos = [
-    `https://t1.gstatic.com/images?q=tbn:ANd9GcQtj9Um9w50KiJTC7FH5BrRQAmB_oB9s4yRf5y4FH6T_Rpo93p3`,
-    `https://customisation.club/cdn/shop/products/calvin-klein-emblem_iron_on_c2a13244-96fc-4105-970a-6f2659eced0e_530x@2x.jpg?v=1682789693`,
-    `https://d1csarkz8obe9u.cloudfront.net/posterpreviews/perfume-logo-design-template-ff1935b52ff631dab8ec18b3eb308f0f_screen.jpg?ts=1666687681`,
-    `https://t3.ftcdn.net/jpg/04/01/72/28/360_F_401722870_Xio5WyZiS2Z0mwHzIll2R4mocKUWLnKj.jpg`,
+    `/PerfumeLogo.png`,
+    `/PerfumeLogo2.png`,
+    `/PerfumeLogo3.png`,
+    `/PerfumeLogo1.png`,
+    `/PerfumeLogo4.png`,
+    `/PerfumeLogo6.png`,
   ];
   return (
-    <section className="py-12 border-t-2 ">
+    <section className="pb-6 pt-12 border-t-2  ">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid sm:grid-cols-2  justify-center  items-center  gap-12 md:grid-cols-3  xl:grid-cols-none xl:flex xl:justify-between">
           {logos?.map((item) => {
             return (
-              <a href="#" className="flex justify-center items-center border">
+              <a href="#" className="flex justify-center items-center">
                 <img className=" w-[91px] h-[63px]" src={item} alt="" />
               </a>
             );

@@ -12,11 +12,15 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
   return (
     <Swiper
       modules={[Navigation, Pagination]}
-      spaceBetween={30}
+      spaceBetween={10}
       slidesPerView={1}
       navigation
-      // pagination={{ clickable: true }}
+      pagination={{ clickable: true }}
       breakpoints={{
+        480: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+        },
         640: {
           slidesPerView: 2,
           spaceBetween: 20,
@@ -33,11 +37,11 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
       className=""
     >
       {perfumeCategories?.map((item, index) => {
-        if (!item?.mapOfLinks[timeZoneCountry]) return;
+        if (!item?.mapOfLinks[timeZoneCountry]) return null;
         const { link, price, quantity } = item?.mapOfLinks[timeZoneCountry];
 
         return (
-          <SwiperSlide className=" !size-52" key={index}>
+          <SwiperSlide className="!max-w-full" key={index}>
             <Link
               href={
                 link ||
@@ -45,23 +49,25 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
               }
               target="_blank"
             >
-              <div className="max-w-xs mx-auto bg-white rounded-lg  cursor-pointer space-y-2">
-                <div className="relative h-32 md:h-48 bg-whtie flex items-center justify-center p-1">
+              <div className="max-w-xs mx-auto bg-white rounded-lg cursor-pointer p-4">
+                <div className="relative h-40 md:h-52 flex items-center justify-center p-1">
                   <img
-                    className=" !object-contain absolute  w-full h-full"
+                    className="object-contain w-full h-[2rem] md:h-full rounded-lg"
                     src={item?.banner}
-                    alt=""
+                    alt={item?.perfumeName || "Perfume"}
                   />
                 </div>
-                <div className="">
-                  <h3 className="text-xs md:text-base font-semibold text-blue-600 line-clamp-1">
+                <div className="text-center mt-3">
+                  <h3 className="text-sm md:text-base font-semibold text-blue-600 line-clamp-1">
                     {item?.perfumeName}
                   </h3>
-                  <div className="space-y-3">
-                    <span className=" text-sm md:text-xl font-bold text-gray-900">
-                      {price || 0}
+                  <div className="mt-2">
+                    <span className="text-sm md:text-lg font-bold text-gray-900">
+                      {price || "0"}
                     </span>
-                    <span className="text-gray-600">{quantity || "90ml"}</span>
+                    <span className="text-gray-600 ml-2">
+                      {quantity || "90ml"}
+                    </span>
                   </div>
                 </div>
               </div>

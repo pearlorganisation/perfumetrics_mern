@@ -32,7 +32,7 @@ async function Review({ commentsData, perfumeId }) {
   const { user } = userStore();
 
   return (
-    <div className="grid gap-3 pt-3">
+    <div className="grid gap-3 pt-3 mt-5  md:mt-0">
       <div className="text-3xl font-medium pl-1 relative grid place-items-center">
         {" "}
         <div className="absolute w-full border "></div>{" "}

@@ -45,12 +45,12 @@ const Reviews = async ({ reviewSidebar, length }) => {
 
           <div class=" space-y-4 w-full overflow-hidden">
             <div
-              className={`flex justify-start items-center space-x-4 overflow-x-auto py-8 px-2 w-full  mx-auto ${style.custom_scrollbar} lg:max-w-[620px] xl:max-w-[750px]`}
+              className={`flex justify-start items-center space-x-4 overflow-x-auto py-8 px-2 w-full  mx-auto ${style.custom_scrollbar}  lg:max-w-[620px] xl:max-w-[750px]`}
             >
 
               {
                 commentsData?.map((_, index) => {
-                  return <Link href={`/product/${_?.perfumeId}`} key={index} className="min-w-[15rem] md:w-full grid grid-cols-1 sm:grid-cols-1 gap-4 border flex-shrink-0">
+                  return <Link href={`${_?.productUrl}`} key={index} className="md:min-w-[15rem] md:w-full grid grid-cols-1 sm:grid-cols-1 gap-4 border flex-shrink-0">
                     <div className="w-full  mx-auto bg-white p-4 border-2 border-pink-500  shadow-lg ">
                       <div className="grid place-items-center mb-6 relative">
                         <div className="absolute w-16 h-16 -translate-y-4 rounded-full overflow-hidden border-2 border-pink-500">

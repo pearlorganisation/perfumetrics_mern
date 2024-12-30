@@ -19,7 +19,7 @@ const Buyfrom = ({ links }) => {
     <div className="flex flex-col items-left justify-left bg-white text-left w-full">
       {
         links?.map(item => {
-          return <div className="mt-4 md:flex justify-start h-20  gap-3">
+          return <div className="mt-4 md:flex items-center justify-start h-20  gap-3">
             <a
               href={`${item?.link}`}
               className="text-blue-500   hover:underline underline text-sm md:text-xl"

@@ -85,7 +85,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
     // Set purchase links when data changes
     useEffect(() => {
         const mapOfLinks = data?.data?.mapOfLinks || {};
-        const companiesList = mapOfLinks[timeZoneCountry]?.companiesList || [];
+        const companiesList = mapOfLinks[timeZoneCountry] || [];
         setPurchaseLinks(companiesList);
         console.log("timeZoneCountry", timeZoneCountry)
     }, [timeZoneCountry]);
@@ -118,93 +118,99 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
     return (
         <div className="min-h-screen container mx-auto  py-6 px-4">
             <p className="text-4xl font-medium py-6  mb-0 text-center">
-                <h1 className={`text-2xl md:w-[70%] md:text-left md:text-[40px] leading-[48px] font-medium ${lora.className}`}>{data?.data?.perfume?.split('for')[0]} <span className='text-pink-400 text-xl md:text-3xl font-normal'>
+                <h1 className={`text-2xl text-left md:w-[70%] md:text-left md:text-[40px] leading-[48px] font-medium ${lora.className}`}>{data?.data?.perfume?.split('for')[0]} <span className='text-pink-400 text-xl md:text-3xl font-normal'>
                     {data?.data?.perfume?.split('for').length > 1 ? `for` + data?.data?.perfume?.split('for')[1] : ''}
                 </span></h1>
             </p>
             <div className=" gap-x-10 gap-y-14 grid gap-4 lg:grid-cols-[auto_18rem] mt-8">
-                <div className="grid md:grid-cols-[40%_60%]  ">
-                    <div className=" ">
-                        <div className="w-full  grid place-items-left ">
-                            <img className='h-[20rem] md:h-[28rem]  md:w-full mx-auto object-contain ' src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
+                <div className="space-y-6">
+                    <div className="grid md:grid-cols-[40%_60%]  ">
+                        <div className=" ">
+                            <div className="w-full  grid place-items-left ">
+                                <img className='h-[20rem] md:h-[28rem]  md:w-full mx-auto object-contain ' src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
+                            </div>
+                            {
+                                <LikeDislikeComponent key={1} data={data} historyMap={historyMap} productId={productId} likeDislike={likeDislike} />
+                            }
                         </div>
-                        {
-                            <LikeDislikeComponent key={1} data={data} historyMap={historyMap} productId={productId} likeDislike={likeDislike} />
-                        }
-                    </div>
 
-                    <div className="flex flex-col items-center gap-4 ">
-                        <div className="  w-fit  py-6 md:py-0  px-12">
-                            <img className="w-full  size-12  md:size-44 object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
-                        </div>
-                        <div className="flex flex-wrap w-full justify-center overflow-visible">
-                            {/* <PieChart mainAccords={data?.data?.mainAccords} /> */}
-                            <PieChartComponent mainAccords={data?.data?.mainAccords} />
+                        <div className="flex flex-col items-center gap-3 ">
+                            <div className="  w-fit  md:mb-0  md:mt-0 md:py-0   px-12 border-2">
+                                <img className="w-full  size-20  md:size-40 object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
+                            </div>
+                            <div className="flex flex-wrap w-full justify-center overflow-visible pb-8">
+                                {/* <PieChart mainAccords={data?.data?.mainAccords} /> */}
+                                <PieChartComponent mainAccords={data?.data?.mainAccords} />
+                            </div>
                         </div>
                     </div>
+                    <div className="space-y-8">
+                        <div className="grid md:grid-cols-[60%_40%] gap-y-4 md:gap-y-0">
+                            <div className="space-y-12 w-full flex flex-col justify-center items-center ">
+
+                                {purchaseLinks?.length > 0 && <Buyfrom links={purchaseLinks} />}
+
+                            </div>
+                            {
+                                data?.data?.video && <VideoBox videoD={data?.data?.video} />
+                            }
+                        </div>
+                        <Feedback />
+                        {/* detail start */}
+                        <div className="space-y-7  pt-3 ">
+                            <div className="!text-[16px] !leading-[25px] !font-normal text-justify md:text-left text-slate-700">{data?.data?.details}</div>
+
+                            <div className="relative border-t-2 pt-7 py-6">
+                                <div className="p-2 absolute -top-5 left-[50%] bg-white">
+                                    {/* <FaQuoteLeft size={20} className=" text-[#83a6c4]" /> */}
+                                </div>
+                                <p className='text-justify md:text-left !text-[16px] !leading-[21px] !font-light italic text-slate-600'>
+
+                                    {data?.data?.description}
+                                </p>
+                            </div >
+
+                        </div >
+                        {/* detail ends */}
+
+                        {/* pros n cons */}
+                        {<ProsCons />}
+                        {/* pros n cons */}
+                    </div >
                 </div>
 
-                <div className=" space-y-8 hidden md:block">
-                    <LoginSignUp />
-                    {
-                        globalBanner && <div className="h-[20rem] flex justify-start items-start  rounded-md overflow-hidden">
+                <div className=" space-y-3">
+                    <div className=" space-y-8 hidden md:block">
+                        <LoginSignUp />
+                        {
+                            globalBanner && <div className="h-[20rem] flex justify-start items-start  rounded-md overflow-hidden">
 
-                            <img
-                                className="h-full w-full object-contain"
-                                // src="https://img.pikbest.com/origin/06/25/40/84bpIkbEsTgk3.jpg!sw800"
-                                src={`${globalBanner?.item[0]?.path}`}
-                                alt=""
-                            />
+                                <img
+                                    className="h-full w-full object-contain"
+                                    // src="https://img.pikbest.com/origin/06/25/40/84bpIkbEsTgk3.jpg!sw800"
+                                    src={`${globalBanner?.item[0]?.path}`}
+                                    alt=""
+                                />
+                            </div>
+                        }
+
+                    </div>
+                    <div className='hidden md:block'>
+                        <div className="w-full  flex flex-col gap-5   ">
+                            <div className=" w-full text-left flex justify-between">
+                                <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
+                                    Perfume Reviews
+                                </h2>
+                                <button className='font-medium text-[14px] text-[#EA92B6]' type="button">Write a Review</button>
+                            </div>
+                            <CardsList reviewData={sidebarReview} length={7} />
                         </div>
-                    }
-
+                    </div>
                 </div>
             </div>
             <div className=" gap-x-10 gap-y-14 grid gap-4  lg:grid-cols-[auto_18rem] py-8">
-                <div className="space-y-8">
-                    <div className="grid md:grid-cols-[60%_40%] gap-y-4 md:gap-y-0">
-                        <div className="space-y-12 w-full flex flex-col justify-center items-center ">
 
-                            {purchaseLinks?.length > 0 && <Buyfrom links={purchaseLinks} />}
 
-                        </div>
-                        {
-                            data?.data?.video && <VideoBox videoD={data?.data?.video} />
-                        }
-                    </div>
-                    <Feedback />
-                    {/* detail start */}
-                    <div className="space-y-7  pt-3 ">
-                        <div className="!text-[16px] !leading-[25px] !font-normal text-justify md:text-left text-slate-700">{data?.data?.details}</div>
-
-                        <div className="relative border-t-2 pt-7 py-6">
-                            <div className="p-2 absolute -top-5 left-[50%] bg-white">
-                                {/* <FaQuoteLeft size={20} className=" text-[#83a6c4]" /> */}
-                            </div>
-                            <p className='text-justify md:text-left !text-[16px] !leading-[21px] !font-light italic text-slate-600'>
-
-                                {data?.data?.description}
-                            </p>
-                        </div >
-
-                    </div >
-                    {/* detail ends */}
-
-                    {/* pros n cons */}
-                    {<ProsCons />}
-                    {/* pros n cons */}
-                </div >
-                <div className='hidden md:block'>
-                    <div className="w-full  flex flex-col gap-5   ">
-                        <div className=" w-full text-left flex justify-between">
-                            <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
-                                Perfume Reviews
-                            </h2>
-                            <button className='font-medium text-[14px] text-[#EA92B6]' type="button">Write a Review</button>
-                        </div>
-                        <CardsList reviewData={sidebarReview} length={7} />
-                    </div>
-                </div>
             </div>
             {/* Perfume Photos starts */}
             <div className="mt-4 md:py-14 ">
@@ -340,7 +346,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
 
             {/*Ya perfume categories starts */}
             <div className=" grid gap-4 lg:grid-cols-[auto_18rem]">
-                <div className="md:space-y-6 md:px-6">
+                <div className="space-y-8 md:space-y-6 md:px-6">
                     <h2
 
                         className="text-xl md:text-3xl font-extrabold bg-white px-4 ">

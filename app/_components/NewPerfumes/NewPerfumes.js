@@ -150,9 +150,9 @@ const NewPerfumes = () => {
                 })}
             </div>
           </div>
-          <div className="space-y-6 px-3">
+          <div className="space-y-6 px-3 !mt-12  md:mt-0">
             <div class="grid place-items-center relative ">
-              <h1 class="text-xl md:text-[36px] font-bold px-6 md:px-8 pt-3 bg-white z-40">
+              <h1 class="text-xl md:text-[36px] font-bold px-6 md:px-8 md:pt-3 bg-white z-40">
                 Celebrity Perfumes
               </h1>
               <div class="absolute w-full h-[2px] bg-slate-500"></div>

@@ -30,13 +30,13 @@ export default async function Home() {
         <div className="lg:w-[55% container mx-auto ">
           <PopularBrands />
           <PerfumeSection length={7} reviewSidebar={sidebarReview} />
-          <div className="w-full grid lg:grid-cols-[auto_20rem] lg:gap-y-0 gap-8 px-8 md:px-0 py-10 gap-y-12">
+          <div className="w-full grid lg:grid-cols-[auto_20rem] ">
             <div>
               <Gallery />
               <Reviews length={14} reviewSidebar={sidebarReview} />
               <BestSale />
             </div>
-            <div className="space-y-5">
+            <div className="space-y-5 hidden md:block">
               <div className=" w-full text-left flex justify-between">
                 <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
                   Perfume Reviews

@@ -156,24 +156,24 @@ const Feedback = () => {
         <>
             <CustomerFeedbackModal ref={modalRef} />
             <div className='font-medium text-[16px]'>  Perfume rating 3.96 out of 5 with 102 votes</div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-6 place-items-center">
 
                 {/* Reaction Section */}
-                <div className="grid grid-cols-5 gap-4 w-full">
+                <div className="grid grid-cols-5 gap-3 w-full">
                     {reaction?.map((item, index) => (
                         <div
                             key={index}
                             onClick={handleOpeningModal}
                             className="cursor-pointer font-medium text-pink-400 relative grid place-items-center space-y-2"
                         >
-                            <div className="size-[40px]">{item?.icons}</div>
+                            <div className=" md:size-[40px] ">{item?.icons}</div>
                             <div
-                                className="block text-[10px] sm:text-xs font-medium text-nowrap"
+                                className="hidden md:block text-[10px] sm:text-xs font-medium text-nowrap"
                                 style={{ color: item?.color }}
                             >
                                 {item?.name}
                             </div>
-                            <div className="h-1 md:h-[6px] border overflow-hidden rounded-lg w-full bg-slate-300">
+                            <div className="h-1 hidden md:block md:h-[6px] border overflow-hidden rounded-lg w-full bg-slate-300">
                                 <div
                                     style={{
                                         width: `${item.indi}%`,
@@ -187,21 +187,21 @@ const Feedback = () => {
                 </div>
 
                 {/* Season Section */}
-                <div className="grid grid-cols-6 gap-4 w-full">
+                <div className="grid grid-cols-6 gap-3 w-full">
                     {season?.map((item, index) => (
                         <div
                             key={index}
                             onClick={handleOpeningModal}
                             className="cursor-pointer font-medium text-pink-400 relative grid place-items-center space-y-2"
                         >
-                            <div className="size-[40px]">{item?.icons}</div>
+                            <div className=" md:size-[40px] ">{item?.icons}</div>
                             <div
-                                className="block text-[10px] sm:text-xs font-medium text-nowrap"
+                                className="hidden md:block text-[10px] sm:text-xs font-medium text-nowrap"
                                 style={{ color: item?.color }}
                             >
                                 {item?.name}
                             </div>
-                            <div className="h-1 md:h-[6px] border overflow-hidden rounded-lg w-full bg-slate-300">
+                            <div className="h-1 hidden md:block md:h-[6px] border overflow-hidden rounded-lg w-full bg-slate-300">
                                 <div
                                     style={{
                                         width: "50%",
