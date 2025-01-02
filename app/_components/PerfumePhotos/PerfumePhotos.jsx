@@ -1,82 +1,53 @@
-"use client"
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+"use client";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 
 // Import Swiper styles
-import 'swiper/css';
-
-import 'swiper/css/navigation';
-
-// import './styles.css';
-
-// import required modules
-import { Keyboard, Navigation, Pagination } from 'swiper/modules';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const PerfumePhotos = ({ data }) => {
-    console.log(data, "data")
-    return (
+  console.log(data, "data");
 
+  return (
+    <Swiper
+      modules={[Navigation, Pagination]}
+      spaceBetween={10}
+      slidesPerView={1}
+      navigation
+      pagination={{ clickable: true }}
+      breakpoints={{
+        480: {
+          slidesPerView: 2,
+          spaceBetween: 15,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 30,
+        },
+      }}
+    >
+      {data?.map((item, idx) => (
+        <SwiperSlide key={idx}>
+          <div className="flex justify-center items-center h-[180px] border rounded-lg bg-neutral-200">
+            <img
+              className="object-contain w-full h-full"
+              src={item?.path}
+              alt={`Perfume ${idx + 1}`}
+            />
+          </div>
+        </SwiperSlide>
+      ))}
 
+    </Swiper>
+  );
+};
 
-        <Swiper
-            slidesPerView={4}
-            spaceBetween={0}
-            grabCursor={true}
-            pagination={{
-                clickable: true,
-            }}
-            breakpoints={{
-                769: {
-                    slidesPerView: 3,
-                    slidesPerGroup: 1,
-                    spaceBetween: 5
-                },
-                310: {
-                    slidesPerView: 2,
-                    spaceBetween: 1
-                },
-            }}
+export default PerfumePhotos;
 
-            navigation={true}
-            // pagination={{
-            //   clickable: true,
-            // }}
-            modules={[Keyboard, Navigation]}
-            className="mySwiper"
-        >
-
-            {/* <div className="flex gap-4 relative"> */}
-
-            {data
-                ?.map((item) => {
-                    return (
-                        <SwiperSlide className='border '>
-                            <img className="size-24 object-cover" src={item?.path} alt="" />
-                        </SwiperSlide>
-
-                    );
-                })}
-            {/* </div> */}
-
-        </Swiper>
-
-        //     <Swiper
-        //     spaceBetween={50}
-        //     slidesPerView={3}
-        //     onSlideChange={() => console.log('slide change')}
-        //     onSwiper={(swiper) => console.log(swiper)}
-        //   >
-        //     <SwiperSlide>Slide 1</SwiperSlide>
-        //     <SwiperSlide>Slide 2</SwiperSlide>
-        //     <SwiperSlide>Slide 3</SwiperSlide>
-        //     <SwiperSlide>Slide 4</SwiperSlide>
-        //     ...
-        //   </Swiper>
-
-
-
-    )
-}
-
-export default PerfumePhotos

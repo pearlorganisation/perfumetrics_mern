@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function page({ params }) {
-  console.log(params, "params");
+  // console.log(params, "params");
   return (
     <div className="min-h-screen  mx-auto container pt-10">
       <div className="grid place-items-center relative mb-4">

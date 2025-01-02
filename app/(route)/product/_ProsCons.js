@@ -78,22 +78,22 @@ const ProsCons = () => {
 
   return (
     <>
-      <div className="grid grid-col-2 items-center bg-white md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
-        <div className="grid lg:grid-cols-2 justify-center md:w-full sm:w-60">
-          <div className="md:p-4 lg:border-r border-gray-300 grid place-items-center bg-[#f0fff1]">
-            <div className="mt-4">
-              <div className="text-[#2e6e6a] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
-                <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
-                  <FaCrown /> PROS
+      <div className="grid grid-col-2 items-center bg-white py-6 md:py-0 md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
+        <div className="grid md:grid-cols-2  gap-10 justify-center  w-full md:px-0 px-10  ">
+          <div className=" lg:border-r border-gray-300 grid">
+            <div className=" w-full  ">
+              <div className="text-center mx-auto w-[70%] md:w-[15rem] text-xl mb-10 ">
+                <p className="border bg-[#1BBE98] border-black font-normal text-white flex justify-center items-center px-12 py-3 gap-3">
+                  PROS
                 </p>
               </div>
               <ul>
                 {prosNconsData?.pros?.map((item) => (
                   <li
                     key={item._id}
-                    className="flex items-center space-x-3 my-2"
+                    className="flex items-start space-x-3 my-2"
                   >
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 ">
                       <span
                         onClick={() =>
                           user?._id
@@ -105,14 +105,20 @@ const ProsCons = () => {
                               })
                             : toast.info("Please Login First...")
                         }
-                        className={`${
-                          historyMap.get(item._id)?.vote === 1
-                            ? "ring-4 ring-pink-500/70 rounded-full"
-                            : ""
-                        } flex flex-col justify-center items-center`}
+                        className={` flex flex-col justify-center items-center `}
                       >
-                        <CiHeart size={24} className="text-pink-300" />
-                        <span>{item.likesVote}</span>
+                        <div
+                          className={`
+                          ${
+                            historyMap.get(item._id)?.vote === 1
+                              ? "ring-4 ring-pink-500/70 rounded-full"
+                              : ""
+                          }
+                          `}
+                        >
+                          <img className="size-4" src="/Like.png" alt="" />
+                        </div>
+                        <span className="text-xs">{item.likesVote}</span>
                       </span>
                       <span
                         onClick={() =>
@@ -125,28 +131,36 @@ const ProsCons = () => {
                               })
                             : toast.info("Please Login First...")
                         }
-                        className={`${
-                          historyMap.get(item._id)?.vote === -1
-                            ? "ring-4 ring-pink-500/70 rounded-full"
-                            : ""
-                        } flex flex-col justify-center items-center`}
+                        className={` flex flex-col justify-center items-center`}
                       >
-                        <FaHeartBroken size={22} className="text-[#f34949]" />
-                        <span>{item.disLikesVote}</span>
+                        <div
+                          className={`
+                          ${
+                            historyMap.get(item._id)?.vote === -1
+                              ? "ring-4 ring-pink-500/70 rounded-full"
+                              : ""
+                          }
+                          p-[2px]`}
+                        >
+                          <img className="size-4" src="/DisLike.png" alt="" />
+                        </div>
+                        <span className="text-xs">{item.disLikesVote}</span>
                       </span>
                     </div>
-                    <span>{item.title}</span>
+                    <span className="font-normal text-[12px] text-wrap w-full">
+                      {item.title}
+                    </span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          <div className="p-4 grid place-items-center bg-[#fff5f5]">
-            <div className="mt-4">
-              <div className="text-[#ec5151] font-semibold text-center mx-auto w-[15rem] py-4 text-xl">
-                <p className="border border-black flex justify-center items-center px-12 py-3 gap-3">
-                  <FaCrown /> CONS
+          <div className=" grid ">
+            <div className="">
+              <div className="  text-center mx-auto w-[70%] md:w-[15rem]  text-xl mb-10">
+                <p className="border border-black bg-[#E96D6D] text-white font-normal text-[20px] flex justify-center items-center px-12 py-3 gap-3">
+                  CONS
                 </p>
               </div>
               <ul>
@@ -167,14 +181,21 @@ const ProsCons = () => {
                               })
                             : toast.info("Please Login First...")
                         }
-                        className={`${
-                          historyMap.get(item._id)?.vote === 1
-                            ? "ring-4 ring-pink-500/70 rounded-full"
-                            : ""
-                        } flex flex-col justify-center items-center`}
+                        className={` flex flex-col justify-center items-center`}
                       >
-                        <CiHeart size={24} className="text-pink-300" />
-                        <span>{item.likesVote}</span>
+                        <div
+                          className={`
+                          ${
+                            historyMap.get(item._id)?.vote === 1
+                              ? "ring-4 ring-pink-500/70 rounded-full"
+                              : ""
+                          }
+                          `}
+                        >
+                          <img className="size-4" src="/Like.png" alt="" />
+                        </div>
+
+                        <span className="text-xs">{item.likesVote}</span>
                       </span>
                       <span
                         onClick={() =>
@@ -187,17 +208,25 @@ const ProsCons = () => {
                               })
                             : toast.info("Please Login First...")
                         }
-                        className={`${
-                          historyMap.get(item._id)?.vote === -1
-                            ? "ring-4 ring-pink-500/70 rounded-full"
-                            : ""
-                        } flex flex-col justify-center items-center`}
+                        className={` flex flex-col justify-center items-center`}
                       >
-                        <FaHeartBroken size={22} className="text-[#f34949]" />
-                        <span>{item.disLikesVote}</span>
+                        <div
+                          className={`
+                          ${
+                            historyMap.get(item._id)?.vote === -1
+                              ? "ring-4 ring-pink-500/70 rounded-full"
+                              : ""
+                          }
+                          p-[2px]`}
+                        >
+                          <img className="size-4" src="/DisLike.png" alt="" />
+                        </div>
+                        <span className="text-xs">{item.disLikesVote}</span>
                       </span>
                     </div>
-                    <span>{item.title}</span>
+                    <span className="font-normal text-[12px] text-wrap w-full">
+                      {item.title}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -205,19 +234,16 @@ const ProsCons = () => {
           </div>
         </div>
       </div>
-      <div className="relative border-t-2 pt-4">
-        <div className="p-2 absolute -top-5 left-[50%] bg-white">
-          <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
-        </div>
-      </div>
-      <p className="md:text-left text-blue-600 text-base mt-4 text-justify">
-        Note: The pros and cons listed on this page have been generated using
-        the artificial intelligence system, which analyzes product reviews
-        submitted by our members. While we strive to provide accurate and
-        helpful information, we cannot guarantee the complete accuracy or
-        reliability of the AI-generated pros and cons. Please read the full
-        reviews and consider your own needs and preferences before making a
-        purchasing decision.
+
+      <p className="md:text-left  text-xs text-[#51799C] italic text-justify font-normal">
+        <span className="font-bold text-[14px] text-[#0A0A0A]"> Note:</span> The
+        pros and cons listed on this page have been generated using the
+        artificial intelligence system, which analyzes product reviews submitted
+        by our members. While we strive to provide accurate and helpful
+        information, we cannot guarantee the complete accuracy or reliability of
+        the AI-generated pros and cons. Please read the full reviews and
+        consider your own needs and preferences before making a purchasing
+        decision.
       </p>
     </>
   );

@@ -100,14 +100,14 @@ const NewPerfumes = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/newArrival`
     );
     setNewArrival(result?.data?.data);
-    console.log(result?.data?.data, "NewArrival");
+    // console.log(result?.data?.data, "NewArrival");
   };
   const getCelebrityPerfume = async () => {
     const result = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/celebrityPerfumes?limit=4`
     );
     setCelebrityPerfume(result?.data?.data);
-    console.log(result?.data?.data, "Celebrity Perfume");
+    // console.log(result?.data?.data, "Celebrity Perfume");
   };
   useEffect(() => {
     getNewArrival();
@@ -116,74 +116,49 @@ const NewPerfumes = () => {
 
   return (
     <>
-      <div className="pb-12 container grid gap-x-12 lg:grid-cols-[70%_20%] w-full mt-8">
-        <div className="hidden lg:block">
-          <div className="p-5">
-            <div className="text-center">
-              <div className="grid place-items-center relative">
-                <h1 className="text-3xl font-medium px-8 py-3 bg-white z-40">
-                  New Perfumes
-                </h1>
-                <div className="absolute w-full h-[2px] bg-slate-500"></div>
-              </div>
-              <div className="p-10">
-                <Swiper
-                  slidesPerView={2}
-                  breakpoints={{
-                    640: {
-                      slidesPerView: 4,
-                      spaceBetween: 20,
-                    },
-                    768: {
-                      slidesPerView: 5,
-                      spaceBetween: 40,
-                    },
-                    1024: {
-                      slidesPerView: 6,
-                      spaceBetween: 50,
-                    },
-                  }}
-                  modules={[Pagination]}
-                  className="mySwiper"
-                >
-                  {Array.isArray(newArrival) &&
-                    newArrival.length > 0 &&
-                    newArrival?.map((item, index) => {
-                      return (
-                        <SwiperSlide
-                          key={index}
-                          className="grid place-items-center p-2   md:!w-auto"
-                        >
-                          <a href={item?.link} target="_blank">
-                            <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px] overflow-hidden">
-                              <img
-                                src={item?.banner || item.imgUrl}
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                            <div className="flex flex-col justify-center items-center font-medium py-2">
-                              <span>{item?.perfumeName}</span>
-                              <span className="text-teal-500">
-                                {item?.brand?.brand}
-                              </span>
-                            </div>
-                          </a>
-                        </SwiperSlide>
-                      );
-                    })}
-                </Swiper>
-              </div>
+      <div className="pb-12  container grid gap-x-12 lg:grid-cols-1 w-full  ">
+        <div className="block space-y-5">
+          <div className="text-center space-y-6">
+            <div className="grid place-items-center relative">
+              <h1 class="text-xl md:text-[36px] font-bold px-6 md:px-8 pt-3 bg-white z-40">
+                New Perfumes
+              </h1>
+              <div className="absolute w-[90%] h-[2px] bg-slate-500"></div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 pt-6  ">
+              {Array.isArray(newArrival) &&
+                newArrival.length > 0 &&
+                newArrival?.slice(0, 4)?.map((item, index) => {
+                  return (
+                    <a href={item?.link} target="_blank">
+                      <div className="  mx-auto">
+                        <img
+                          src={item?.banner || item.imgUrl}
+                          className="w-full h-36 object-contain "
+                        />
+                      </div>
+                      <div className="flex flex-col justify-center items-center font-medium py-2">
+                        <span className="line-clamp-1 text-[16px] font-medium">
+                          {item?.perfumeName}
+                        </span>
+                        <span className="text-teal-500 text-[16px] font-medium ">
+                          {item?.brand?.brand}
+                        </span>
+                      </div>
+                    </a>
+                  );
+                })}
             </div>
           </div>
-          <div className="space-y-3 px-3 mt-1888888888">
-            <div class="grid place-items-center relative mt-8 mb-10">
-              <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">
+          <div className="space-y-6 px-3 !mt-12  md:mt-0">
+            <div class="grid place-items-center relative ">
+              <h1 class="text-xl md:text-[36px] font-bold px-6 md:px-8 md:pt-3 bg-white z-40">
                 Celebrity Perfumes
               </h1>
               <div class="absolute w-full h-[2px] bg-slate-500"></div>
             </div>
             <div className="text-3xl text-center md:text-left md:text-5xl font-bold"></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6  pt-6">
               {celebrityPerfume?.map((blog, index) => {
                 return (
                   <Link href={`/celebrityPerfumeBlog/${blog?._id}`}>
@@ -194,18 +169,18 @@ const NewPerfumes = () => {
                       <img
                         src={blog.banner}
                         alt={blog.title}
-                        className="w-full h-48 object-cover"
+                        className="w-full h-48 object-contain border"
                       />
                       <div className="p-4">
-                        <h3 className="text-lg font-semibold mb-2 text-gray-800 line-clamp-2">
+                        <h3 className="text-[16px] font-medium mb-2 text-gray-800 line-clamp-1">
                           {blog?.title}
                         </h3>
-                        <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                          {/* {parse(blog?.content || "")} */}
+                        {/* <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                          {parse(blog?.content || "")}
                           {blog?.content}
-                        </p>
-                        <button className="w-full text-black py-2 px-4 rounded  transition duration-300">
-                          Read More
+                        </p> */}
+                        <button className="w-full hover:text-blue-800 text-xs md:text-base  text-black py-2 px-4 rounded  transition duration-300">
+                          Read More...
                         </button>
                       </div>
                     </div>

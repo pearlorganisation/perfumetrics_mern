@@ -20,32 +20,32 @@ const FollowUs = () => {
 
         <div className='space-y-8'>
             <div className='px-3 space-y-5'>
-                <div className='text-black grid place-items-center relative max-w-6xl mx-auto '>
-                    <div className='text-sm sm:text-xl md:text-3xl font-semibold z-50 bg-white px-6 py-4'>FOLLOW US ON INSTAGRAM</div>
+                <div className='text-black grid place-items-center relative mx-auto '>
+                    <div className='text-xl md:text-[36px] font-bold z-50 bg-white px-6 py-4'>FOLLOW US ON PINTEREST</div>
                     <div className='absolute w-full h-[2px] bg-slate-400'></div>
                 </div>
                 <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-1'>
 
                     {
                         [
-                            `https://images.unsplash.com/photo-1595425959632-34f2822322ce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
+                            `https://png.pngtree.com/thumb_back/fh260/background/20210831/pngtree-perfume-hand-spraying-perfume-on-black-background-image_769461.jpg`,
                             `https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
                             `https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
                             `https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
                             `https://images.unsplash.com/photo-1595425959632-34f2822322ce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
-                            `https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
+                            `https://png.pngtree.com/thumb_back/fh260/background/20240124/pngtree-several-pretty-perfume-bottles-with-reflections-on-a-black-background-image_2959612.png`,
                             `https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
-                            `https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
+                            `https://png.pngtree.com/thumb_back/fh260/background/20241023/pngtree-blue-perfume-bottle-on-beach-image_16441274.jpg`,
                         ].map((img, index, array) => {
                             const isLastTwoItems = index >= array.length - 2;
                             return <div className={`h-[12rem] w-full ${isLastTwoItems ? 'hidden md:block' : ''}`}>
-                                <img className='w-full h-full' src={img} alt="" />
+                                <img className='w-full h-full object-cover' src={img} alt="" />
                             </div>
                         })
                     }
                 </div>
             </div>
-            <div className='bg-pink-500'>
+            {/* <div className='bg-pink-500'>
                 <div className='grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 place-items-center gap-4 md:gap-6 container mx-auto md:divide-x-2 py-12'>
                     <div className='flex w-full md:w-auto  justify-center gap-[3rem]  md:gap-2 px-8'><FaTruckMoving className='text-white-400 ' size={40} />
                         <div className='font-semibold flex flex-col text-white text-xs lg:text-sm'>FREE DELIVERY <span>From 275 AED</span></div>
@@ -66,7 +66,7 @@ const FollowUs = () => {
                     <div className='hidden md:flex w-full md:w-auto  justify-center gap-[3rem]  md:gap-2 px-8'><BsFillTelephoneFill className='text-white-400' size={40} />
                         <div className='font-semibold flex flex-col text-white text-xs lg:text-sm'>FREE DELIVERY <span>From 275 AED</span></div></div>
                 </div>
-            </div>
+            </div> */}
 
             <div className='footerWarp waveBg'>
 
@@ -105,9 +105,9 @@ const FollowUs = () => {
                         </div>
                     </div>
                 </div>
-                <div className='bg-[#ededed]'>
+                <div className='bg-pink-500 '>
                     <div className='container mx-auto items-center lg:flex justify-center py-3 '>
-                        <p className='text-xs text-gray-500'>© 1999 - 2024 perfumetrics International Ltd | Privacy Policy | Terms of Use</p>
+                        <p className='text-xs text-white text-center'>© 1999 - 2024 perfumetrics International Ltd | Privacy Policy | Terms of Use</p>
                     </div>
                 </div>
             </div>

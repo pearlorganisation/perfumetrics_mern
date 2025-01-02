@@ -7,7 +7,7 @@ export default async function Page({ params }) {
     `${process.env.NEXT_PUBLIC_API_URL}/api/v1/celebrityPerfumes`,
     { cache: "no-store" }
   ).then((res) => res?.json());
-  console.log(posts, "posts");
+  // console.log(posts, "posts");
 
   //function to format date
   function formatDate(isoDateString) {

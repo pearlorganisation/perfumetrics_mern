@@ -59,9 +59,8 @@ const AddReview = () => {
     return (
         <>
             <form className="grid gap-2">
-                <div className="text-3xl font-medium pl-1 relative grid place-items-center mt-24 mb-12">
-                    <div className="absolute w-full border"></div>
-                    <div className="z-20 bg-white px-3 py-2">Add Your Review</div>
+                <div className=" text-xl md:text-3xl font-medium pl-1 relative grid place-items-center mt-8 md:mt-4 mb-4 md:my-8">
+                    <div className="z-20 font-bold text-[32px] bg-white px-3 py-2">Add Your Review</div>
                 </div>
                 <textarea
                     className="resize-none border-2 px-3 py-2 outline-none rounded-md border-gray-400 h-[10rem]"
@@ -73,7 +72,7 @@ const AddReview = () => {
                 ></textarea>
                 <div className="flex gap-2">
                     <label
-                        className="flex px-3 md:px-6 text-sm font-medium py-[4px] md:py-3 bg-gray-300 w-fit rounded-md justify-center items-center gap-3"
+                        className="flex px-3 md:px-6 text-sm font-medium py-[4px] md:py-3 bg-gray-300 w-fit rounded-[9px] justify-center items-center gap-3"
                         htmlFor="image"
                     >
                         Upload Images <IoMdAdd size={25} />
@@ -89,7 +88,7 @@ const AddReview = () => {
                     {loading ? (
                         <button
                             type="button"
-                            className="flex px-6 font-medium py-3 bg-gray-300 w-fit rounded-md justify-center items-center gap-3"
+                            className="flex px-6 font-medium py-3 bg-gray-300 w-fit rounded-[9px] justify-center items-center gap-3"
                         >
                             Loading...
                         </button>
@@ -100,7 +99,7 @@ const AddReview = () => {
 
                                 user?._id ? handleComment() : toast.info("Please Login First!!", { position: 'top-center' })
                             }}
-                            className="flex px-6 text-sm font-medium py-3 bg-gray-300 w-fit rounded-md justify-center items-center gap-3"
+                            className="flex px-6 text-sm font-medium py-3 bg-[#6EF0A4] w-fit rounded-[9px] justify-center items-center gap-3"
                         >
                             Submit
                         </button>

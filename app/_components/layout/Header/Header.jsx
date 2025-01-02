@@ -13,14 +13,26 @@ import { CiLogout } from "react-icons/ci";
 import Dropdown from "../../Dropdown/Dropdown";
 import ReviewDropdown from "../../Dropdown/ReviewDropdown";
 import { IoMenuSharp } from "react-icons/io5";
+import { Nunito } from "next/font/google";
 
+const nunito = Nunito({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '700'],
+});
 export default function Example() {
+
   const { user, isUserLoggedIn, logout } = userStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setisSearchOpen] = useState(false);
   const [brands, setBrands] = useState([]);
   const [perfumeDropDown, setPerfumeDropDown] = useState(false);
   const [reveiwDropDown, setReviewDropDown] = useState(false);
+
+  const [showEmail, setShowEmail] = useState(false);
+
+  const getInitials = (name) => {
+    return name.slice(0, 2).toUpperCase();
+  };
 
   const getAllBrands = async () => {
     const response = await fetch(
@@ -35,16 +47,16 @@ export default function Example() {
     return data;
   };
 
-  useEffect(() => {
-    console.log(user, "from header");
-    console.log(isUserLoggedIn, "isUserLoggedIn");
-  }, [isUserLoggedIn]);
+  // useEffect(() => {
+  //   console.log(user, "from header");
+  //   console.log(isUserLoggedIn, "isUserLoggedIn");
+  // }, [isUserLoggedIn]);
   useEffect(() => {
     getAllBrands();
   }, [isUserLoggedIn]);
 
   return (
-    <header className="block relative bg-white shadow-[0_1px_2px#d1d1d1]">
+    <header className={`${nunito.className} block relative bg-white shadow-[0_1px_2px#d1d1d1]`}>
       <nav className="w-full relative flex sm:justify-center flex-col gap-0 pt-0">
         <div className="flex justify-end items-center  px-3">
           <div className="flex flex-col relative md:hidden">
@@ -56,7 +68,7 @@ export default function Example() {
             </button>
             {isMenuOpen && (
               <div className="w-64 bg-gray-100 p-4 rounded-lg shadow-md absolute top-[2.3rem] z-10 -left-4">
-                <ul className="space-y-2 font-semibold">
+                <ul className="space-y-2 !font-extrabold !text-[20px] !italic">
                   <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
                     <div
                       onMouseEnter={() => {
@@ -90,26 +102,41 @@ export default function Example() {
                       }
                     </div>
                   </li>
-                  <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                  <li
+                    onClick={() => {
+                      setIsMenuOpen(!isMenuOpen);
+                    }}
+                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
+                  >
                     <Link
                       href="/sale/BEST SALES"
-                      className="block text-lg font-medium text-gray-800"
+                      className="block  text-gray-800"
                     >
                       BEST SALES
                     </Link>
                   </li>
-                  <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                  <li
+                    onClick={() => {
+                      setIsMenuOpen(!isMenuOpen);
+                    }}
+                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
+                  >
                     <Link
                       href="/category/MEN'S STYLE"
-                      className="block text-lg font-medium text-gray-800"
+                      className="block   text-gray-800"
                     >
                       MEN'S STYLE
                     </Link>
                   </li>
-                  <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+                  <li
+                    onClick={() => {
+                      setIsMenuOpen(!isMenuOpen);
+                    }}
+                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
+                  >
                     <Link
                       href="/category/WOMEN'S STYLE"
-                      className="block text-lg font-medium text-gray-800"
+                      className="block   text-gray-800"
                     >
                       WOMEN'S STYLE
                     </Link>
@@ -122,16 +149,31 @@ export default function Example() {
           <div className="flex justify-end space-x-3 w-full">
             {isUserLoggedIn ? (
               <div className="space-x-3 flex py-2">
-                <span className="font-medium text-lg flex items-center gap-2">
-                  <FaRegUserCircle size={25} />
-                  {user?.userName}
-                </span>
+                <div className="flex items-center space-x-3 relative">
+                  <div
+                    className="w-10 h-10 relative  rounded-full bg-pink-500 flex items-center justify-center text-white font-bold cursor-pointer transition-all duration-300 ease-in-out"
+                    onMouseEnter={() => setShowEmail(true)}
+                    onMouseLeave={() => setShowEmail(false)}
+                  >
+                    {user ? getInitials(user.userName) : "GU"}
+                    {showEmail && user && (
+                      <div className=" bg-black/70 text-nowrap font-normal absolute -bottom-[2.8rem]  p-2 rounded-md shadow-lg z-10 transition-opacity duration-300 ease-in-out">
+                        {user.userName}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* <span className="font-medium text-sm md:text-lg text-gray-800">
+                    {user?.userName || 'Guest'}
+                  </span> */}
+                </div>
                 <button
-                  onClick={() => logout()}
+                  onClick={logout}
                   type="button"
-                  className="bg-pink-500 px-6 py-2 rounded-md text-white flex justify-center items-center space-x-1.5 p-1.5"
+                  className="bg-pink-500 hover:bg-pink-600 text-white font-medium rounded-md transition duration-300 ease-in-out flex items-center space-x-2 px-3 py-2 md:px-4 md:py-2"
                 >
-                  <CiLogout /> <span>Logout</span>
+                  <CiLogout className="w-4 h-4 md:w-5 md:h-5" />
+                  <span className="hidden sm:inline">Logout</span>
                 </button>
               </div>
             ) : (
@@ -152,33 +194,39 @@ export default function Example() {
             )}
           </div>
         </div>
-        <div className="w-full bg-pink-300 px-4 py-1 relative">
+        <div className="w-full bg-pink-300 px-4 py-2 relative">
           <div className=" mx-auto flex justify-between items-center lg:ml-96">
             <div className="flex items-center ml-[7rem] lg:ml-[25rem]">
               <Link href="/" className="">
-                <Image src={logo} width={280} height={50} alt="img" />
+
+                <Image src='/PerfumetricsLogo.png' width={280} height={150} alt="img" />
               </Link>
             </div>
-            <div className="w-72 lg:ml-96">
-              <IoSearch size={30} className="flex md:hidden ms-auto text-white" onClick={() => setisSearchOpen((prev) => !prev)} />
+            {/* <div className="w-72 lg:ml-96">
+              <IoSearch
+                size={30}
+                className="flex md:hidden ms-auto text-white"
+                onClick={() => setisSearchOpen((prev) => !prev)}
+              />
               <input
                 type="text"
                 placeholder="Search reviews"
                 className="w-full rounded-full p-4 h-[30px] focus:outline-none shadow-[0_0_1px_1px#d1d1d1] relative hidden md:block"
               />
-            </div>
+            </div> */}
           </div>
           <div>
-            {isSearchOpen && <input
-              type="text"
-              placeholder="Search reviews"
-              className="w-full rounded-full p-4 h-[30px] focus:outline-none shadow-[0_0_1px_1px#d1d1d1] flex md:hidden absolute left-0 top-[2.5rem]"
-            />}
-
+            {isSearchOpen && (
+              <input
+                type="text"
+                placeholder="Search reviews"
+                className="w-full rounded-full p-4 h-[30px] focus:outline-none shadow-[0_0_1px_1px#d1d1d1] flex md:hidden absolute left-0 top-[2.5rem]"
+              />
+            )}
           </div>
         </div>
         <div className="w-full hidden md:flex justify-center lg:justify-between items-center px-6">
-          <div className="flex justify-center mx-auto gap-3 md:gap-8 lg:gap-12 font-semibold text-[10px] sm:text-base md:text-lg lg:text-xl">
+          <div className="flex justify-center mx-auto gap-3 md:gap-8 lg:gap-12  !font-extrabold !text-[20px] !italic">
             <div
               onMouseEnter={() => {
                 setReviewDropDown(true);
@@ -229,66 +277,6 @@ export default function Example() {
             </Link>
           </div>
         </div>
-        {/* {isMenuOpen && (
-          <div className="lg:hidden flex flex-col gap-4 px-6">
-            {isUserLoggedIn ? (
-              <div className="flex flex-col items-center space-y-3">
-                <span className="font-medium text-lg flex items-center gap-2">
-                  <FaRegUserCircle size={25} />
-                  {user?.userName}
-                </span>
-                <button
-                  onClick={() => logout()}
-                  type="button"
-                  className="bg-pink-500 px-6 py-2 rounded-md text-white"
-                >
-                  Logout
-                </button>
-              </div>
-            ) : (
-              <div className="flex flex-col items-center gap-4">
-                <Link
-                  href="/login"
-                  className="font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
-                >
-                  Login
-                </Link>
-                <Link
-                  href="/signUp"
-                  className="text-gray-500 font-semibold hover:text-pink-500 cursor-pointer transition duration-300"
-                >
-                  Register
-                </Link>
-              </div>
-            )}
-            <div className="flex flex-col items-center gap-4 font-semibold text-lg">
-              <Link
-                href="/types"
-                className="hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                WRITE A REVIEW
-              </Link>
-              <Link
-                href="/perfumes"
-                className="hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                PERFUMES
-              </Link>
-              <Link
-                href="/aboutus"
-                className="hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                ABOUT US
-              </Link>
-              <Link
-                href="/contactus"
-                className="hover:text-pink-500 cursor-pointer transition duration-300"
-              >
-                CONTACT US
-              </Link>
-            </div>
-          </div>
-        )} */}
       </nav>
     </header>
   );

@@ -23,28 +23,54 @@ const Dummy = ({ data, gender, totalPages }) => {
         <h1 className="text-center block md:hidden  uppercase text-lg md:text-2xl lg:text-4xl font-serif mb-6">
           Fragrances for {gender}
         </h1>
-        <picture>
-          <source
-            media="(max-width: 640px)"
-            srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1730184304/perfumeBanner_ihazup_t2hcc3.png"
-          />
-          <source
-            media="(max-width: 1024px)"
-            srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1730184304/perfumeBanner_ihazup_t2hcc3.png"
-          />
-          <source
-            media="(min-width: 1025px)"
-            srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1730184304/perfumeBanner_ihazup_t2hcc3.png"
-          />
-          <Image
-            className="object-cover mx-auto"
-            src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1730184304/perfumeBanner_ihazup_t2hcc3.png"
-            alt="Banner"
-            layout="responsive"
-            width={1920}
-            height={620}
-          />
-        </picture>
+
+        {gender === `WOMEN'S STYLE` ? (
+          <picture>
+            <source
+              media="(max-width: 640px)"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1733741029/promo-banner-with-premium-perfume_1419-2233_awgsgc.jpg"
+            />
+            <source
+              media="(max-width: 1024px)"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1733741029/promo-banner-with-premium-perfume_1419-2233_awgsgc.jpg"
+            />
+            <source
+              media="(min-width: 1025px)"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1733741029/promo-banner-with-premium-perfume_1419-2233_awgsgc.jpg"
+            />
+            <Image
+              className="object-cover mx-auto"
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1733741029/promo-banner-with-premium-perfume_1419-2233_awgsgc.jpg"
+              alt="Banner 2"
+              layout="responsive"
+              width={1920}
+              height={620}
+            />
+          </picture>
+        ) : (
+          <picture>
+            <source
+              media="(max-width: 640px)"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1733739182/perfume_brand_egra0f.avif"
+            />
+            <source
+              media="(max-width: 1024px)"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1733739182/perfume_brand_egra0f.avif"
+            />
+            <source
+              media="(min-width: 1025px)"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1733739182/perfume_brand_egra0f.avif"
+            />
+            <Image
+              className="object-cover mx-auto"
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1733739182/perfume_brand_egra0f.avif"
+              alt="Banner"
+              layout="responsive"
+              width={1920}
+              height={620}
+            />
+          </picture>
+        )}
       </div>
 
       <div className="max-w-[1580px] w-full mx-auto py-8 md:py-12 space-y-8">
