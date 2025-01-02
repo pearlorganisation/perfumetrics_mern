@@ -1,10 +1,10 @@
-import { Poppins } from "next/font/google";
+import { Poppins, Protest_Strike } from "next/font/google";
 import Link from "next/link";
 import React from "react";
-// const protest_strike = Protest_Strike({
-//   subsets: ['latin'],
-//   weight: ['400'],
-// });
+const protest_strike = Protest_Strike({
+  subsets: ['latin'],
+  weight: ['400'],
+});
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400'],
@@ -13,7 +13,7 @@ const poppins = Poppins({
 const HeroSection = () => {
   // ${protest_strike?.className}
   return (
-    <div className={`relative bg-gray-50 `}>
+    <div className={`relative bg-gray-50 ${protest_strike?.className}`}>
       <div className="container mx-auto px-4 py-16 lg:py-24 flex flex-col lg:flex-row items-center">
         {/* Text Content */}
         <div className="lg:w-1/2 text-center lg:text-left">

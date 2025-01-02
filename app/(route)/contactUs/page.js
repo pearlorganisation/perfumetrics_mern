@@ -1,15 +1,33 @@
 "use client";
 
+import axios from "axios";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 const ContactUs = () => {
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data);
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/contact-us`,
+        {
+          ...data,
+        }
+      );
+      toast.success("Successfully Submitted!");
+      reset();
+    } catch (error) {
+      console.log(error);
+      toast.error("Error!");
+    }
+  };
   const contactMethods = [
     {
       icon: (
@@ -106,7 +124,7 @@ const ContactUs = () => {
                 <label className="font-medium text-black">Full name</label>
                 <input
                   type="text"
-                  {...register("fullName", { required: true })}
+                  {...register("name", { required: true })}
                   className="w-full mt-2 px-3 py-2 text-gray-500 outline-none border border-slate focus:border-pink-600 shadow-sm"
                 />
                 {errors.fullName && (

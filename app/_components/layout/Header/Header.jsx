@@ -195,11 +195,11 @@ export default function Example() {
           </div>
         </div>
         <div className="w-full bg-pink-300 px-4 py-2 relative">
-          <div className=" mx-auto flex justify-between items-center lg:ml-96">
-            <div className="flex items-center ml-[7rem] lg:ml-[25rem]">
+          <div className=" mx-auto grid place-items-center">
+            <div className="flex items-center ">
               <Link href="/" className="">
 
-                <Image src='/PerfumetricsLogo.png' width={280} height={150} alt="img" />
+                <Image src='/PerfumetricsLogo.png' className="w-40 md:w-[90%]" width={280} height={150} alt="img" />
               </Link>
             </div>
             {/* <div className="w-72 lg:ml-96">
