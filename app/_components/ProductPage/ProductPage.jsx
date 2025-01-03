@@ -28,7 +28,6 @@ const LikeDislikeComponent = dynamic(() => import("./LikeDislikeComponent"), {
 });
 // import AddReview from "../AddReview/AddReview";
 // import Review from '@/app/(route)/product/[productId]/Review';
-import { FaQuoteLeft } from "react-icons/fa";
 import { userStore } from "@/store/userStore";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -40,6 +39,7 @@ import { Roboto } from "next/font/google";
 import PerfumeCategorySlider from "./PerfumeCategorySlider";
 import LoginSignUp from "../LoginSignUp/LoginSignUp";
 import dynamic from "next/dynamic";
+import { FaQuoteLeft } from "react-icons/fa6";
 
 const lora = Roboto({
     subsets: ['latin'],
@@ -115,6 +115,8 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
     }, [user?._id, productId, router]);
 
 
+
+
     return (
         <div className="min-h-screen container mx-auto  py-6 px-4">
             <p className="text-4xl font-medium py-6  mb-0 text-center">
@@ -135,7 +137,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                         </div>
 
                         <div className="flex flex-col items-center gap-3 ">
-                            <div className="  w-fit  md:mb-0  md:mt-0 md:py-0   px-12 border-2">
+                            <div className="  w-fit  md:mb-0  md:mt-0 md:py-0   px-12">
                                 <img className="w-full  size-20  md:size-40 object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
                             </div>
                             <div className="flex flex-wrap w-full justify-center overflow-visible pb-8">
@@ -149,7 +151,6 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                             <div className="space-y-12 w-full flex flex-col justify-center items-center ">
 
                                 {purchaseLinks?.length > 0 && <Buyfrom links={purchaseLinks} />}
-
                             </div>
                             {
                                 data?.data?.video && <VideoBox videoD={data?.data?.video} />
@@ -160,11 +161,11 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                         <div className="space-y-7  pt-3 ">
                             <div className="!text-[16px] !leading-[25px] !font-normal text-justify md:text-left text-slate-700">{data?.data?.details}</div>
 
-                            <div className="relative border-t-2 pt-7 py-6">
+                            <div className="relative border-y-2 pt-7 py-6">
                                 <div className="p-2 absolute -top-5 left-[50%] bg-white">
-                                    {/* <FaQuoteLeft size={20} className=" text-[#83a6c4]" /> */}
+                                    <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
                                 </div>
-                                <p className='text-justify md:text-left !text-[16px] !leading-[21px] !font-light italic text-slate-600'>
+                                <p className='text-justify md:text-left !text-[13px] !leading-[21px] !font-light italic text-slate-600'>
 
                                     {data?.data?.description}
                                 </p>
@@ -267,23 +268,23 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                     width={400}
                                     alt=""
                                 />
-                                <div className="absolute   flex flex-col -translate-x-3 max-w-[20rem] md:max-w-[16rem] gap-1 md:gap-4">
+                                <div className="absolute   flex flex-col -translate-x-3 max-w-[20rem] md:max-w-[16rem] gap-4">
                                     <div className="flex flex-col gap-3 justify-center items-center flex-wrap ">
                                         <p className="text-center font-bold text-xs md:text-sm">Top Notes</p>
-                                        <div className="flex gap-3 text-sm">
+                                        <div className="flex gap-3 flex-wrap justify-center">
                                             {data?.data?.topNote &&
                                                 data?.data?.topNote.map((el) => {
                                                     return (
                                                         <div
                                                             key={el._id}
-                                                            className=" flex flex-col  justify-center items-center "
+                                                            className=" flex flex-col justify-center items-center "
                                                         >
                                                             <img
                                                                 src={el.image}
                                                                 alt={el.name}
-                                                                className="w-8 sm:w-12 h-8 sm:h-12 md:w-14 md:h-14"
+                                                                className="w-8 sm:w-12 md:h-12"
                                                             />
-                                                            <p className='text-xs sm:text-base md:text-base'>{el.name}</p>
+                                                            <p className='text-xs '>{el.name}</p>
                                                         </div>
                                                     );
                                                 })}
@@ -292,7 +293,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
 
                                     <div className="flex flex-col gap-3 justify-center items-center flex-wrap">
                                         <p className="text-center font-bold text-xs md:text-base">Middle Notes</p>
-                                        <div className="flex gap-3">
+                                        <div className="flex gap-3 flex-wrap justify-center">
                                             {data.data?.middleNote.map((el) => {
                                                 return (
                                                     <div
@@ -302,9 +303,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-8 sm:w-12 h-8 sm:h-12 md:w-14 md:h-14"
+                                                            className="w-8 sm:w-12 md:h-12"
                                                         />
-                                                        <p className='text-xs sm:text-base md:text-base'>{el.name}</p>
+                                                        <p className='text-xs '>{el.name}</p>
                                                     </div>
                                                 );
                                             })}
@@ -313,7 +314,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
 
                                     <div className="flex flex-col gap-3 justify-center items-center flex-wrap">
                                         <p className="text-center font-bold text-xs md:text-base">Base Notes</p>
-                                        <div className="flex gap-3">
+                                        <div className="flex gap-3 flex-wrap justify-center">
                                             {data.data?.baseNote.map((el) => {
                                                 return (
                                                     <div
@@ -323,12 +324,14 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                         <img
                                                             src={el.image}
                                                             alt={el.name}
-                                                            className="w-8 sm:w-12 h-8 sm:h-12 md:w-14 md:h-14"
+                                                            className="w-8 sm:w-12 md:h-12"
                                                         />
-                                                        <p className='text-xs sm:text-base md:text-base'>{el.name}</p>
+                                                        <p className='text-xs '>{el.name}</p>
                                                     </div>
                                                 );
                                             })}
+
+
                                         </div>
                                     </div>
                                 </div>

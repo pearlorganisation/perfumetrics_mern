@@ -33,7 +33,7 @@ async function PerfumeSection({ reviewSidebar, length }) {
 
   return (
     <>
-      <div className="w-full grid lg:grid-cols-[auto_20rem] lg:gap-y-0 gap-8 px-8 md:px-0 py-10">
+      <div className="w-full grid  lg:gap-y-0 gap-8 px-8 md:px-0 py-10">
         <div className="w-full  flex flex-col gap-4">
           <div className="grid place-items-center relative mb-8">
             <h1 className="text-lg md:text-[36px] text-nowrap font-bold px-8 py-3 bg-white z-40 relative   text-center ">
@@ -43,36 +43,7 @@ async function PerfumeSection({ reviewSidebar, length }) {
           </div>
           {<ProductCards data={data} />}
         </div>
-        <div className="space-y-4 mt-[6.6rem]  hidden md:block">
-          <LoginSignUp />
-          <div className="grid place-items-center border border-pink-500 h-40 overflow-hidden">
-            {gVideo?.item && (
-              <div className="grid place-items-center relative bg-slate-100  md:h-[12rem] md:w-[90%] border overflow-hidden">
-                <iframe
-                  src={gVideo?.item[0]?.path}
-                  width="100%"
-                  height="100%"
-                ></iframe>
-              </div>
-            )}
-          </div>
-          <div className="w-full  flex flex-col gap-4">
-            {/* <div className="border-0 border-pink-500 w-full text-center py-4">
-              <span className="text-xl md:text-2xl  font-semibold ">
-                Perfume Reviews
-              </span>
-            </div> */}
-            {/* <div className="grid place-items-center relative mb-2 mt-6">
-              <div className=" w-full text-left flex justify-between">
-                <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
-                  Perfume Reviews
-                </h2>
-                <button className='font-medium text-[14px] text-[#EA92B6]' type="button">Write a Review</button>
-              </div>
-            </div>
-            <CardsList reviewData={reviewSidebar} length={length} /> */}
-          </div>
-        </div>
+
       </div>
     </>
   );

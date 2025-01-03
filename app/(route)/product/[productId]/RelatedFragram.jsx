@@ -40,7 +40,7 @@ const
     }, [])
     return (
 
-      perfumeData?.length > 0 ? <div className="hidden lg:block mb-20">
+      perfumeData?.length > 0 ? <div className="block mb-20">
         <div className="p-5">
           <div className="text-left">
             <div className="grid place-items-start relative pb-5">
@@ -50,7 +50,7 @@ const
               </h1>
             </div>
 
-            <div className="flex gap-4 flex-wrap relative">
+            <div className="grid grid-cols-2 md:grid-cols-4  relative">
               {perfumeData?.filter((it, idx) => idx < 8)?.map((item, index) => {
 
                 if (!item.mapOfLinks[country])
@@ -61,7 +61,7 @@ const
                       <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px] overflow-hidden mx-auto">
                         <img
                           src={item.banner}
-                          className="w-full h-full object-cover "
+                          className="w-full size-36 !object-contain "
                         />
                       </div>
                       <div className="flex flex-col justify-center items-center font-medium py-2">

@@ -79,7 +79,7 @@ const ProsCons = () => {
   return (
     <>
       <div className="grid grid-col-2 items-center bg-white py-6 md:py-0 md:p-6 border border-gray-200 rounded-lg shadow-md mt-12">
-        <div className="grid md:grid-cols-2  gap-10 justify-center  w-full md:px-0 px-10  ">
+        <div className="grid md:grid-cols-2  gap-10 justify-center  w-full py-0 md:py-5 md:px-0 px-10  ">
           <div className=" lg:border-r border-gray-300 grid">
             <div className=" w-full  ">
               <div className="text-center mx-auto w-[70%] md:w-[15rem] text-xl mb-10 ">

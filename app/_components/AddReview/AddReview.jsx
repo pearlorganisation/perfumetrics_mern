@@ -71,7 +71,7 @@ const AddReview = () => {
                     rows="10"
                 ></textarea>
                 <div className="flex gap-2">
-                    <label
+                    {/* <label
                         className="flex px-3 md:px-6 text-sm font-medium py-[4px] md:py-3 bg-gray-300 w-fit rounded-[9px] justify-center items-center gap-3"
                         htmlFor="image"
                     >
@@ -84,7 +84,7 @@ const AddReview = () => {
                         type="file"
                         name="image"
                         id="image"
-                    />
+                    /> */}
                     {loading ? (
                         <button
                             type="button"

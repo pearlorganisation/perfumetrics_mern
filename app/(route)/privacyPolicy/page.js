@@ -1,10 +1,19 @@
-import React from "react";
-export const metadata = {
-  title: {
-    absolute: "Privacy Policy",
-  },
-};
+"use client";
+import Link from "next/link";
+import React, { useEffect } from "react";
+// export const metadata = {
+//   title: {
+//     absolute: "Privacy Policy",
+//   },
+// };
 export default function page() {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Optional: 'smooth' or 'auto'
+    });
+  }, []);
+
   return (
     <div className="bg-gray-100 min-h-screen py-10">
       <div className="container mx-auto px-4">
@@ -197,9 +206,9 @@ export default function page() {
         </p>
         <p className="text-gray-700 mb-4">
           Contact Page:{" "}
-          <a href="/contact" className="text-blue-500 underline">
+          <Link href="/contactUs" className="text-blue-500 underline">
             Link to contact page
-          </a>
+          </Link>
         </p>
 
         <p className="text-gray-700 mb-4">
