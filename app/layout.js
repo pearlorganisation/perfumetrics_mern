@@ -6,7 +6,6 @@ import {
   Montserrat,
 } from "next/font/google";
 import "./globals.css";
-import siteMap from "./sitemap";
 import Footer from "./_components/layout/Footer/Footer";
 import Header from "./_components/layout/Header/Header";
 import { Toaster } from "sonner";
@@ -18,7 +17,7 @@ const poppins = Poppins({ weight: "500", subsets: ["latin"] });
 const montserrat = Montserrat({ weight: "300", subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL("https://https://perfumetrics.com"),
+  metadataBase: new URL("https://perfumetrics.com"),
   keywords: ["Perfume", "Perfumetrics", "India", "UK", "US"],
   title: {
     default: "Perfumetrics",
