@@ -17,8 +17,8 @@ function formatDate(dateString) {
   return date.toLocaleString("en-US", options); // Format date as "Monday, December 21, 2024, 10:39:05 AM UTC"
 }
 export default async function siteMap() {
+  const baseUrlFrontend = process.env.NEXT_PUBLIC_FRONTEND_URL;
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-
   try {
     // Fetch perfumes data
     const response = await fetch(`${baseUrl}/api/v1/perfume`);
@@ -39,7 +39,7 @@ export default async function siteMap() {
     // Map perfumes to URLs and last modified dates
     const allPerfumes = allPerfumesData?.map((post) => {
       return {
-        url: `${baseUrl}/product/${post?.slug}`,
+        url: `${baseUrlFrontend}/product/${post?.slug}`,
         lastModified: formatDate(post?.updatedAt || "2024-12-21T10:39:05.105Z"),
       };
     });
@@ -47,7 +47,7 @@ export default async function siteMap() {
     // Return sitemap structure
     return [
       {
-        url: baseUrl,
+        url: baseUrlFrontend,
         lastModified: new Date(),
       },
       ...allPerfumes,
