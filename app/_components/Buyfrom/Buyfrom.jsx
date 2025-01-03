@@ -8,7 +8,7 @@ const Buyfrom = ({ links }) => {
   const [selectedTab, setSelectedTab] = useState("amazon");
   // console.log(links, "links")
 
-  // console.log("Amazon_India_logo", links);
+  console.log("Amazon_India_logo", links);
 
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
@@ -26,12 +26,12 @@ const Buyfrom = ({ links }) => {
               target="_blank"
               rel="noreferrer"
             >
-              {` Search on ${item?.company}`}
+              {` Search on ${item?.company?.companyName}`}
             </a>
 
             <div className='pt-1'>
 
-              <img className="h-14" src={item?.companyImage} alt={item?.company} />
+              <img className="h-14" src={item?.company?.imageUrl} alt={item?.company?.companyName} />
             </div>
             {item?.price}
           </div>
