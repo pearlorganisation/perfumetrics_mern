@@ -1,9 +1,9 @@
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 
 const PieChartComponent = ({ mainAccords }) => {
-  const COLORS = mainAccords.map((accord) => accord.color);
+  const COLORS = mainAccords?.map((accord) => accord.color);
 
-  const data = mainAccords.map((accord) => ({
+  const data = mainAccords?.map((accord) => ({
     name: accord.name,
     value: accord.percentage,
   }));
@@ -22,7 +22,7 @@ const PieChartComponent = ({ mainAccords }) => {
           outerRadius={70}
           fill="#8884d8"
         >
-          {data.map((_, index) => (
+          {data?.map((_, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index]} />
           ))}
         </Pie>

@@ -8,7 +8,7 @@ const Buyfrom = ({ links }) => {
   const [selectedTab, setSelectedTab] = useState("amazon");
   // console.log(links, "links")
 
-  console.log("Amazon_India_logo", links);
+  // console.log("Amazon_India_logo", links);
 
   const handleTabChange = (tab) => {
     setSelectedTab(tab);

@@ -1,10 +1,10 @@
 import { Poppins, Protest_Strike } from "next/font/google";
 import Link from "next/link";
 import React from "react";
-const protest_strike = Protest_Strike({
-  subsets: ['latin'],
-  weight: ['400'],
-});
+// const protest_strike = Protest_Strike({
+//   subsets: ['latin'],
+//   weight: ['400'],
+// });
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400'],
@@ -13,7 +13,7 @@ const poppins = Poppins({
 const HeroSection = () => {
   // ${protest_strike?.className}
   return (
-    <div className={`relative bg-gray-50 ${protest_strike?.className}`}>
+    <div className={`relative bg-gray-50 `}>
       <div className="container mx-auto px-4 py-16 lg:py-24 flex flex-col lg:flex-row items-center">
         {/* Text Content */}
         <div className="lg:w-1/2 text-center lg:text-left">
@@ -50,7 +50,7 @@ const HeroSection = () => {
           <img
             src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1733984224/static_hero_primary_Now_And_Then_2_aynsff.webp"
             alt="Hero Perfume Bottle"
-            className="relative z-10 rounded-lg shadow-2xl  md:w-full w-72 md:max-w-md transition transform hover:scale-105"
+            className="relative z-0 rounded-lg shadow-2xl  md:w-full w-72 md:max-w-md transition transform hover:scale-105"
           />
         </div>
         <div className="mt-8 w-full  flex md:hidden justify-center lg:justify-start space-x-4 text-base font-light">

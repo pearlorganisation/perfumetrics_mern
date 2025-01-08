@@ -25,7 +25,7 @@ export default function CelebrityPerfume() {
       setNewsData(post?.data);
       setNewsLoading(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setNewsLoading(false);
     }
   };
@@ -38,7 +38,7 @@ export default function CelebrityPerfume() {
       setSideBarData(response?.data?.data);
       setSideBarLoading(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setSideBarLoading(false);
     }
   }
@@ -47,10 +47,10 @@ export default function CelebrityPerfume() {
     getSingleNews();
     getSiderbarReviews();
   }, []);
-  useEffect(() => {
-    console.log(newsData, "sideBarData");
-    console.log(sideBarData, "sideBarData");
-  }, [newsData, sideBarData]);
+  // useEffect(() => {
+  //   console.log(newsData, "sideBarData");
+  //   console.log(sideBarData, "sideBarData");
+  // }, [newsData, sideBarData]);
 
   function formatDate(isoDateString) {
     const date = new Date(isoDateString);

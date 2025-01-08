@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const PerfumePhotos = ({ data }) => {
-  console.log(data, "data");
+  // console.log(data, "data");
 
   return (
     <Swiper
@@ -37,7 +37,7 @@ const PerfumePhotos = ({ data }) => {
         <SwiperSlide key={idx}>
           <div className="flex justify-center items-center h-[180px] border rounded-lg bg-neutral-200">
             <img
-              className="object-contain w-full h-full"
+              className="!object-contain w-full h-full"
               src={item?.path}
               alt={`Perfume ${idx + 1}`}
             />

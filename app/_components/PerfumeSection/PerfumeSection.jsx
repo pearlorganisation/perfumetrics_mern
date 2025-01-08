@@ -1,12 +1,22 @@
 async function getPerfumes() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/topRatedPerfume`,
-    {
-      cache: "no-store",
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/topRatedPerfume`,
+      {
+        cache: "no-store",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
     }
-  );
-  const data = await response.json();
-  return data;
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch perfumes:", error);
+    throw error;
+  }
 }
 
 async function getGlobalVideo() {

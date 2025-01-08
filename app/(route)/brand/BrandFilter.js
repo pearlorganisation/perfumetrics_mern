@@ -67,8 +67,8 @@ const BrandFilter = () => {
           <div className="px-4 py-6 w-full">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Brands</h2>
             <ul className="space-y-2">
-              {brandsData?.map((brand) => (
-                <li key={brand}>
+              {brandsData?.map((brand, idx) => (
+                <li key={brand?._id}>
                   <button
                     onClick={() => {
                       setSelectedBrand(brand?._id);
@@ -116,7 +116,7 @@ const BrandFilter = () => {
                   </h2>
                   <ul className="space-y-2">
                     {brandsData?.map((brand) => (
-                      <li key={brand}>
+                      <li key={brand?._id}>
                         <button
                           onClick={() => {
                             setSelectedBrand(brand?._id);

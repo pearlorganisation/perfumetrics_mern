@@ -28,46 +28,48 @@ const Dummy = ({ data, gender, totalPages }) => {
           <picture>
             <source
               media="(max-width: 640px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1733741029/promo-banner-with-premium-perfume_1419-2233_awgsgc.jpg"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1736147858/dctpl3pfgpdrsddvzyel.jpg"
             />
             <source
               media="(max-width: 1024px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1733741029/promo-banner-with-premium-perfume_1419-2233_awgsgc.jpg"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1736147858/dctpl3pfgpdrsddvzyel.jpg"
             />
             <source
               media="(min-width: 1025px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1733741029/promo-banner-with-premium-perfume_1419-2233_awgsgc.jpg"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1736147858/dctpl3pfgpdrsddvzyel.jpg"
             />
             <Image
               className="object-cover mx-auto"
-              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1733741029/promo-banner-with-premium-perfume_1419-2233_awgsgc.jpg"
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1736147858/dctpl3pfgpdrsddvzyel.jpg"
               alt="Banner 2"
               layout="responsive"
               width={1920}
               height={620}
+              priority
             />
           </picture>
         ) : (
           <picture>
             <source
               media="(max-width: 640px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1733739182/perfume_brand_egra0f.avif"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1736147858/ljxcxvh7abpnrojzkcsl.jpg"
             />
             <source
               media="(max-width: 1024px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1733739182/perfume_brand_egra0f.avif"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1736147858/ljxcxvh7abpnrojzkcsl.jpg"
             />
             <source
               media="(min-width: 1025px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1733739182/perfume_brand_egra0f.avif"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1736147858/ljxcxvh7abpnrojzkcsl.jpg"
             />
             <Image
               className="object-cover mx-auto"
-              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1733739182/perfume_brand_egra0f.avif"
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1736147858/ljxcxvh7abpnrojzkcsl.jpg"
               alt="Banner"
               layout="responsive"
               width={1920}
               height={620}
+              priority
             />
           </picture>
         )}
@@ -98,13 +100,13 @@ const Dummy = ({ data, gender, totalPages }) => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3  2xl:grid-cols-4 gap-6 md:gap-8">
               {Array.isArray(data) && data?.length > 0 ? (
                 data?.map((fragrance, index) => (
-                  <Link href={`/product/${fragrance?._id}`}>
+                  <Link key={index} href={`/product/${fragrance?.slug}`}>
                     <div key={index} className="space-y-2 min-h-[10rem] ">
                       <div className="text-center flex flex-col gap-3 p-4 justify-between shadow-[0px_0px_8px_0px_#00000040] rounded-[16px] overflow-hidden">
                         <img
                           src={fragrance?.banner}
                           alt={fragrance?.perfume}
-                          className="w-full h-[150px] sm:h-[150px] md:h-[20rem] object-fill max-w-xs mx-auto"
+                          className="w-full h-[150px] sm:h-[150px] md:h-[20rem] object-contain max-w-xs mx-auto"
                         />
                       </div>
                       <div className="flex justify-center gap-3 items-center flex-col">
@@ -113,14 +115,16 @@ const Dummy = ({ data, gender, totalPages }) => {
                           New
                         </span>
                       )} */}
-                        <h2 className="text-lg mt-2 font-serif line-clamp-1">
+                        <h2 className="text-base md:text-lg mt-2 font-serif line-clamp-1 px-2">
                           {fragrance?.perfume}
                         </h2>
                         <p className="text-gray-500 mt-1">{fragrance?.price}</p>
                       </div>
                       <div className="grid place-items-center">
-                        <button className="group shadow-[0px_0px_8px_0px_#00000040] mx-auto rounded-[16px] relative group overflow-hidden bg-white px-3 py-1 text-black">
-                          <span className="relative z-10">Read More</span>
+                        <button className="group shadow-[0px_0px_8px_0px_#00000040] text-sm  md:text-base mx-auto rounded-[16px] relative group overflow-hidden bg-white px-3 py-1 text-black">
+                          <span className="relative z-10 text-nowrap line-clamp-1">
+                            Read More
+                          </span>
                         </button>
                       </div>
                     </div>

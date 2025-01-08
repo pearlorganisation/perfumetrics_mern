@@ -14,8 +14,10 @@ import axios from "axios";
 import { useRouter, useParams } from "next/navigation";
 import { toast } from "sonner";
 import { FaQuoteLeft } from "react-icons/fa";
+import perfumeMetaData from "@/store/perfumeMetaData";
 
 const ProsCons = () => {
+  const { id, setId, clearId } = perfumeMetaData();
   const router = useRouter();
   const [historyMap, setHistoryMap] = useState(new Map());
   const [prosNconsData, setProsNconsData] = useState(null);
@@ -57,7 +59,7 @@ const ProsCons = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/voteProsCons`,
         voteData
       );
-      getProsCons(productId);
+      getProsCons(id);
       fetchUserHistory(user?._id);
     } catch (error) {
       console.error("Error submitting vote:", error);
@@ -65,16 +67,16 @@ const ProsCons = () => {
   };
 
   useEffect(() => {
-    if (productId && user?._id) {
-      getProsCons(productId);
+    if (id && user?._id) {
+      getProsCons(id);
       fetchUserHistory(user._id);
     }
-  }, [getProsCons, fetchUserHistory, productId, user]);
+  }, [getProsCons, fetchUserHistory, id, user]);
   useEffect(() => {
-    if (productId) {
-      getProsCons(productId);
+    if (id) {
+      getProsCons(id);
     }
-  }, [productId]);
+  }, [id]);
 
   return (
     <>

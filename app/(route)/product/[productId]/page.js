@@ -10,7 +10,7 @@ async function getAllPerfume() {
 }
 async function getPerfumeById(perfumeId) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/${perfumeId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/slug/${perfumeId}`,
     {
       cache: "no-cache",
     }
@@ -21,7 +21,7 @@ async function getPerfumeById(perfumeId) {
 }
 async function getPerfumeBySlug(slug) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/slug?slug=${slug||''}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/slug?slug=${slug || ""}`,
     {
       cache: "no-cache",
     }
@@ -61,6 +61,7 @@ import "./style.css";
 import dynamic from "next/dynamic";
 import Loader from "@/app/_components/Loader/Loader";
 import chalk from "chalk";
+import ScrollToTop from "@/app/_components/ScrollToTop/ScrollToTop";
 
 // Client Components:
 
@@ -80,7 +81,7 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    const { perfume, details, banner, slug, gallery,keywords } = res.data;
+    const { perfume, details, banner, slug, gallery, keywords } = res.data;
 
     const gallerImages =
       gallery.length == 0 ? [] : gallery?.map((img) => img.path);
@@ -96,7 +97,9 @@ export async function generateMetadata({ params }) {
       },
       title: perfume || "Perfume Details",
       description: details || "Explore our collection of exclusive perfumes.",
-      keywords: (keywords?.toString())?.replace(/,/g, ' ')||"Something Went Wrong With Keywords !!",
+      keywords:
+        keywords?.toString()?.replace(/,/g, " ") ||
+        "Something Went Wrong With Keywords !!",
       openGraph: {
         title: perfume || "Perfume Details",
         description: details || "Explore our collection of exclusive perfumes.",
@@ -112,23 +115,18 @@ export async function generateMetadata({ params }) {
   }
 }
 
-
-
 const page = async ({ params }) => {
   const { productId } = params;
-  
+
   const dataProsCons = await getProsCons(productId);
   const data = await getPerfumeById(productId);
-  // const data = await getPerfumeBySlug(productId);
 
   const sidebarReview = await getSiderbarReviews();
-
-  // console.log(data, "data");
-  // console.log(totalRatings, "Ratings perfumme !!!!");
 
   return (
     <>
       {/* feedback form  */}
+      <ScrollToTop />
       <Suspense
         fallback={
           <div className="">

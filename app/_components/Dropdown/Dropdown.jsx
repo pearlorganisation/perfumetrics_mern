@@ -13,9 +13,7 @@ const Dropdown = ({ brands, setPerfumeDropDown }) => {
             <div
 
                 className='absolute hidden  text-black divide-x-2  top-[2.8rem] bg-white z-50  w-[25rem] md:grid grid-cols-2'>
-
-
-                <div className=' shadow-lg max-h-[35rem] overflow-auto'>
+                <div className=' shadow-lg max-h-[50vh] overflow-auto'>
                     {
                         brands.map(item => {
                             return <Link
@@ -29,11 +27,11 @@ const Dropdown = ({ brands, setPerfumeDropDown }) => {
                         })
                     }
                 </div>
-                <div className='max-h-[35rem] overflow-auto shadow-lg'>
+                <div className='max-h-[50vh] overflow-auto shadow-lg'>
                     {
                         subData.length > 0 && subData?.map(item => {
                             return <Link
-                                href={`/product/${item?._id}`}
+                                href={`/product/${item?.slug}`}
                             >
                                 <div className='text-sm px-4 w-full py-2 hover:bg-black/10'>{item?.perfume}</div>
                             </Link>
@@ -43,11 +41,11 @@ const Dropdown = ({ brands, setPerfumeDropDown }) => {
 
             </div>
             {
-                index === 0 && <div className='block md:hidden fixed left-0 w-full bg-white top-0 z-30 h-screen overflow-scroll'>
+                index === 0 && <div className='block md:hidden fixed left-0 w-full bg-white top-0 z-30 h-screen overflow-scroll '>
                     <div onClick={() => {
                         setPerfumeDropDown(false)
                     }}><IoArrowBackOutline className='text-xl size-6 m-1' /></div>
-                    <div className=' w-full'>
+                    <div className=' w-full '>
                         {
                             brands.map(item => {
                                 return <Link

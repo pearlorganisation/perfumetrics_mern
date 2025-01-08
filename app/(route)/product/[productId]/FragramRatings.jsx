@@ -3,14 +3,20 @@
 import axios from "axios";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FragramSlider from "./FragranceSlider";
 import FragranceSlider from "./FragranceSlider";
 import { IoMdMale } from "react-icons/io";
 import { IoMdFemale } from "react-icons/io";
 import { IoMaleFemale } from "react-icons/io5";
+import perfumeMetaData from "@/store/perfumeMetaData";
+import { userStore } from "@/store/userStore";
+import CustomerFeedbackModal from "@/app/_components/Modals/FeedBackModal/CustomerFeedbackModal";
 
 const FragramRatings = ({ data, country }) => {
+  const { id, setId, clearId } = perfumeMetaData();
+  const { isUserLoggedIn } = userStore();
+
   const { productId } = useParams();
   const [fragramsData, setFragramsData] = useState([]);
 
@@ -19,15 +25,29 @@ const FragramRatings = ({ data, country }) => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/fragrams?perfumeId=${productId}`
     );
     setFragramsData(result?.data?.data);
-    console.log(result?.data?.data, "fragramsData");
+    // console.log(result?.data?.data, "fragramsData");
   };
   useEffect(() => {
-    getFragrams(productId);
-  }, []);
+    if (id) {
+      getFragrams(id);
 
-  console.log("Frgaram rating ", data);
+    }
+  }, [id]);
+
+  function handleOpeningModal() {
+    if (!isUserLoggedIn) {
+      toast.info('Please Login First...')
+      router.push(`/login?returnUrl=pd`);
+    }
+    else modalRef.current.open();
+  }
+
+  const modalRef = useRef();
+
+  // console.log("Frgaram rating ", data);
   return (
     <>
+      <CustomerFeedbackModal ref={modalRef} />
       <div>
         <div className="flex flex-col items-center  md:space-y-8">
           <div className="grid place-items-center relative w-full mt-20 mb-0 md:mb-8">
@@ -262,7 +282,9 @@ const FragramRatings = ({ data, country }) => {
               <h3 className="mt-2 font-semibold">Overall</h3>
             </div>
           </div>
-          <button className="px-6 py-2 mt-8 text-lg font-semibold text-white bg-pink-500 rounded-md">
+          <button
+            onClick={handleOpeningModal}
+            className="px-6 py-2 mt-8 text-lg font-semibold text-white bg-pink-500 rounded-md">
             Rate Fragram
           </button>
         </div>

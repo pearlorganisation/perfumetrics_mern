@@ -14,7 +14,7 @@ export const userHistory = create(
           const result = await axios.get(
             `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/userHistory/${userId}`
           );
-          console.log(result, "userHistory");
+          // console.log(result, "userHistory");
           const mapObj = {};
           result?.data?.data?.commentsVote?.forEach((el) => {
             mapObj[el?.commentId] = el;

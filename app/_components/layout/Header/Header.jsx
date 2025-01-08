@@ -74,11 +74,12 @@ export default function Example() {
                       onMouseEnter={() => {
                         setReviewDropDown(true);
                       }}
+
                       onMouseLeave={() => setReviewDropDown(false)}
                       className="hover:text-pink-500 text-gray-800 cursor-pointer transition duration-300 text-nowrap relative"
                     >
                       WRITE A REVIEW
-                      {reveiwDropDown && <ReviewDropdown />}
+                      {reveiwDropDown && <ReviewDropdown setIsMenuOpen={setIsMenuOpen} />}
                     </div>
                   </li>
                   <li className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
@@ -101,19 +102,6 @@ export default function Example() {
                         // perfumeDropDown && <MegaMenu data={brands} />
                       }
                     </div>
-                  </li>
-                  <li
-                    onClick={() => {
-                      setIsMenuOpen(!isMenuOpen);
-                    }}
-                    className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
-                  >
-                    <Link
-                      href="/sale/BEST SALES"
-                      className="block  text-gray-800"
-                    >
-                      BEST SALES
-                    </Link>
                   </li>
                   <li
                     onClick={() => {
@@ -257,12 +245,7 @@ export default function Example() {
               }
             </div>
 
-            <Link
-              href="/sale/BEST SALES"
-              className="hover:text-pink-500 cursor-pointer transition duration-300 py-3 text-nowrap"
-            >
-              BEST SALES
-            </Link>
+
             <Link
               href="/category/MEN'S STYLE"
               className="hover:text-pink-500 cursor-pointer transition duration-300 py-3 text-nowrap"

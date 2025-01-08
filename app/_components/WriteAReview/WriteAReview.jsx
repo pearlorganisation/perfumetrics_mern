@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-
 const WriteAReview = () => {
     const { user, isUserLoggedIn } = userStore();
     const [isLoading, setLoading] = useState(false);
@@ -48,6 +47,7 @@ const WriteAReview = () => {
 
     const handleRemoveImage = (index) => {
         setSelectedImages((prevImages) => prevImages.filter((_, i) => i !== index));
+        setImageFile((prevFiles) => Array.from(prevFiles).filter((_, i) => i !== index));
     };
 
     useEffect(() => {
@@ -63,10 +63,10 @@ const WriteAReview = () => {
 
             {/* Left side image */}
             <div className="flex flex-col-reverse items-center md:flex-row w-full max-w-4xl bg-white shadow-lg rounded-lg p-6">
-                {/* Right side illustration (add the image here) */}
+                {/* Right side illustration */}
                 <div className="order-2 md:order-none block md:w-1/2 relative">
                     <Image
-                        src={`https://res.cloudinary.com/dznz3eqe8/image/upload/v1730198850/love-potion-concept-illustration_114360-4648_clx6v7.jpg`} // Update the path to match your imported image
+                        src={`https://res.cloudinary.com/dznz3eqe8/image/upload/v1730198850/love-potion-concept-illustration_114360-4648_clx6v7.jpg`}
                         alt="Illustration"
                         layout="responsive"
                         width={500}
@@ -76,7 +76,6 @@ const WriteAReview = () => {
                 </div>
                 {/* Form Section */}
                 <div className="w-full md:w-1/2 space-y-6 px-4">
-
                     {/* Brand */}
                     <div>
                         <input
@@ -88,7 +87,7 @@ const WriteAReview = () => {
                                 maxLength: { value: 50, message: "Brand must be less than 50 characters" }
                             })}
                             placeholder="Brands"
-                            className={`w-full border border-pink-300 rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-200`}
+                            className="w-full border border-pink-300 rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-200"
                         />
                         {errors.brand && <p className="text-red-500 text-xs mt-1">{errors.brand.message}</p>}
                     </div>
@@ -104,7 +103,7 @@ const WriteAReview = () => {
                                 maxLength: { value: 100, message: "Perfume name must be less than 100 characters" }
                             })}
                             placeholder="Perfume Name"
-                            className={`w-full border border-pink-300 rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-200`}
+                            className="w-full border border-pink-300 rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-200"
                         />
                         {errors.perfumeName && <p className="text-red-500 text-xs mt-1">{errors.perfumeName.message}</p>}
                     </div>
@@ -120,7 +119,7 @@ const WriteAReview = () => {
                             })}
                             placeholder="Write Description"
                             rows="4"
-                            className={`w-full border border-pink-300 rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-200`}
+                            className="w-full border border-pink-300 rounded-md px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-200"
                         />
                         {errors.description && <p className="text-red-500 text-xs mt-1">{errors.description.message}</p>}
                     </div>
@@ -151,30 +150,43 @@ const WriteAReview = () => {
                             </label>
                         </div>
                     </div>
+
+                    {/* Image Preview */}
+                    <div className="grid grid-cols-3 gap-4 mt-4">
+                        {selectedImages.map((image, index) => (
+                            <div key={index} className="relative">
+                                <img src={image} alt={`Preview ${index}`} className="size-48 object-contain rounded-md" />
+                                <button
+                                    type="button"
+                                    onClick={() => handleRemoveImage(index)}
+                                    className="absolute top-1 right-1 bg-red-500 text-white p-1 rounded-full text-xs"
+                                >
+                                    X
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+
                     <div className="mt-6 grid place-items-center">
-                        {
-                            isLoading ? <button
+                        {isLoading ? (
+                            <button
                                 type="button"
                                 disabled={isLoading}
-                                className="bg-pink-500  text-white px-6 py-2 rounded-lg hover:bg-pink-600 transition duration-200"
+                                className="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-pink-600 transition duration-200"
                             >
                                 Loading...
-                            </button> : <button
+                            </button>
+                        ) : (
+                            <button
                                 type="submit"
-                                className="bg-pink-500  text-white px-6 py-2 rounded-lg hover:bg-pink-600 transition duration-200"
+                                className="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-pink-600 transition duration-200"
                             >
                                 Submit
                             </button>
-                        }
-
+                        )}
                     </div>
                 </div>
-
-
             </div>
-
-            {/* Submit Button */}
-
         </form>
     );
 };

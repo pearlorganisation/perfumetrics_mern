@@ -10,7 +10,6 @@ export const userStore = create(
       error: null,
       loading: false,
       login: async ({ userName, pin }) => {
-        console.log("Zustand");
         set({ loading: true, error: null });
         try {
           const response = await fetch(

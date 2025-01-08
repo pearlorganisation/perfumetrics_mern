@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { FaPlay } from "react-icons/fa";
 
 const VideoBox = ({ videoD }) => {
-    console.log(videoD, "videoDG")
+    // console.log(videoD, "videoDG")
     const [video, setVideo] = useState(false)
 
     return (

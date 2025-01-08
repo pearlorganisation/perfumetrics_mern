@@ -18,7 +18,7 @@ function formatDate(dateString) {
 }
 export default async function siteMap() {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-
+  const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
   try {
     // Fetch perfumes data
     const response = await fetch(`${baseUrl}/api/v1/perfume`);
@@ -33,13 +33,13 @@ export default async function siteMap() {
     // Extract perfumes data
     const allPerfumesData = responseData?.data || [];
 
-    console.log(
-      chalk.bgYellow("This is perfume data in sitemap", allPerfumesData?.length)
-    );
+    // console.log(
+    //   chalk.bgYellow("This is perfume data in sitemap", allPerfumesData?.length)
+    // );
     // Map perfumes to URLs and last modified dates
     const allPerfumes = allPerfumesData?.map((post) => {
       return {
-        url: `${baseUrl}/product/${post?.slug}`,
+        url: `${frontendUrl}/product/${post?.slug}`,
         lastModified: formatDate(post?.updatedAt || "2024-12-21T10:39:05.105Z"),
       };
     });
@@ -47,7 +47,7 @@ export default async function siteMap() {
     // Return sitemap structure
     return [
       {
-        url: baseUrl,
+        url: frontendUrl,
         lastModified: new Date(),
       },
       ...allPerfumes,

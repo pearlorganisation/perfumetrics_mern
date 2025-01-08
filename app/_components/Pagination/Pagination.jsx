@@ -28,26 +28,26 @@ export default function Pagination({ totalPages }) {
     };
 
     return (
-        <div className="max-w-screen-xl mx-auto mt-12 px-4 text-gray-600 md:px-8">
+        <div className="max-w-screen-xl mx-auto mt-12  text-gray-600 md:px-8">
             <div className="flex items-center justify-between text-sm text-gray-600 font-medium">
                 {/* Previous Button */}
                 <button
                     onClick={handlePrevious}
-                    className={`px-4 py-2 border border-pink-500 rounded-lg duration-150 hover:bg-pink-50 ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`md:px-4 px-2 py-1 md:py-2 border border-pink-500 rounded-lg duration-150 hover:bg-pink-50 ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
                     disabled={currentPage === 1}
                 >
                     Previous
                 </button>
 
                 {/* Page indicator */}
-                <div>
+                <div className="text-xs md:text-base">
                     Page {currentPage} of {totalPages}
                 </div>
 
                 {/* Next Button */}
                 <button
                     onClick={handleNext}
-                    className={`px-4 py-2 border border-pink-500 rounded-lg duration-150 hover:bg-pink-50 ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`md:px-4 px-2 py-1 md:py-2 border border-pink-500 rounded-lg duration-150 hover:bg-pink-50 ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
                     disabled={currentPage === totalPages}
                 >
                     Next

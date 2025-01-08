@@ -42,12 +42,12 @@ function PerfumeSection() {
         categoryName === "WOMEN'S%20STYLE" ? "female" : "male"
       }?Page=${p || 1}&Search=${
         q || ""
-      }&Limit=10&Select=banner perfume updatedAt ${
+      }&Limit=10&Select=banner slug perfume updatedAt ${
         brandId ? `&BrandId=${brandId}` : ""
       }`
     );
     setGenderData(result?.data);
-    console.log(result?.data, "genderData");
+    // console.log(result?.data, "genderData");
   };
   useEffect(() => {
     getGenderData();

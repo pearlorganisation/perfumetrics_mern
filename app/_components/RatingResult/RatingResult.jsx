@@ -11,46 +11,50 @@ import { toast } from 'sonner';
 import { useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from "use-debounce";
 import { RiWindyFill } from 'react-icons/ri';
+import perfumeMetaData from '@/store/perfumeMetaData';
 
 
 const RatingResult = ({ productId }) => {
+    const { id, setId, clearId } = perfumeMetaData();
     const { user } = userStore();
     const [result, setResult] = useState([])
     const [perfumeRatings, setPerfumeRatings] = useState([])
     const [rateData, setRateData] = useState({});
     const [perfumeAnalytics, setPerfumeAnalytics] = useState(null);
 
-    console.log("Fetched User !!", user);
+    // console.log("Fetched User !!", user);
     async function getTotalRatings(perfumeId) {
         const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${perfumeId}`)
-        console.log(result)
+        // console.log(result)
         setPerfumeRatings(result?.data?.data)
     }
     async function getTotalRatingsAnalyst(perfumeId) {
         const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/review-analytics/${perfumeId}`)
-        console.log("getTotalRatingsAnalyst", result.data)
+        // console.log("getTotalRatingsAnalyst", result.data)
         setPerfumeAnalytics(result?.data?.data)
     }
     useEffect(() => {
-        getTotalRatings(productId);
-        getTotalRatingsAnalyst(productId);
-    }, [])
+        if (id) {
+            getTotalRatings(id);
+            getTotalRatingsAnalyst(id);
+        }
+    }, [id])
 
 
 
     const getReviewByUserId = async () => {
         const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/review/user/${user?._id}`)
-        console.log(result, "Reslt")
+        // console.log(result, "Reslt")
         setResult(result?.data?.data[0])
     }
     const updateReviewByUserId = async (payload) => {
-        console.log(productId, "productid")
-        console.log(payload, "payload")
-        const result = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${productId}`, { ...payload })
+        // console.log(id, "id")
+        // console.log(payload, "payload")
+        const result = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${id}`, { ...payload })
         getReviewByUserId()
-        getTotalRatings(productId)
-        getTotalRatingsAnalyst(productId)
-        console.log(result, "Reslt")
+        getTotalRatings(id)
+        getTotalRatingsAnalyst(id)
+        // console.log(result, "Reslt")
     }
     const [emoji, setEmoji] = useState(1)
     const modifyStr = (str) => {
@@ -78,10 +82,10 @@ const RatingResult = ({ productId }) => {
 
     const updateRating = useDebouncedCallback((p1, p2) => {
         if (user?._id) {
-            console.log(user, "user")
+            // console.log(user, "user")
             let obj = {}
             obj[toCamelCase(p1?.name)] = toCamelCase(p2?.name)
-            console.log(obj, "obj")
+            // console.log(obj, "obj")
             updateReviewByUserId({ userId: user?._id, ...obj })
             setRateData(prev => {
                 return { userId: user?._id, ...obj }

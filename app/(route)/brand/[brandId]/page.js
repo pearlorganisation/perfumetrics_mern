@@ -3,7 +3,6 @@ import axios from "axios";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
-import BrandFilter from "../BrandFilter";
 import Image from "next/image";
 
 export default function InteractivePerfumePage() {
@@ -85,30 +84,30 @@ export default function InteractivePerfumePage() {
             ) : Array.isArray(brandsPerfume?.perfumes) &&
               brandsPerfume?.perfumes?.length ? (
               brandsPerfume?.perfumes?.map((perfume) => (
-                <div key={perfume.id} className="space-y-2 min-h-[10rem] ">
-                  <div className="text-center flex flex-col gap-3 p-4 justify-between shadow-[0px_0px_8px_0px_#00000040] rounded-[16px] overflow-hidden">
-                    <img
-                      src={perfume?.banner}
-                      alt={perfume?.perfume}
-                      className="w-full h-[150px] sm:h-[150px] md:h-[20rem] object-contain max-w-xs mx-auto"
-                    />
-                  </div>
-                  <div className="flex justify-center gap-3 items-center flex-col">
-                    <h2 className="text-base sm:text-lg mt-2 font-serif line-clamp-1">
-                      {perfume?.perfume}
-                    </h2>
-                    <p className="text-gray-600 text-base sm:text-lg dark:text-gray-400 mb-2">
-                      {perfume.brand?.brand}
-                    </p>
-                  </div>
-                  <div className="grid place-items-center">
-                    <Link href={`/product/${perfume?._id}`}>
+                <Link key={perfume.id} href={`/product/${perfume?.slug}`}>
+                  <div className="space-y-2 min-h-[10rem] ">
+                    <div className="text-center flex flex-col gap-3 p-4 justify-between shadow-[0px_0px_8px_0px_#00000040] rounded-[16px] overflow-hidden">
+                      <img
+                        src={perfume?.banner}
+                        alt={perfume?.perfume}
+                        className="w-full h-[150px] sm:h-[150px] md:h-[20rem] object-contain max-w-xs mx-auto"
+                      />
+                    </div>
+                    <div className="flex justify-center gap-3 items-center flex-col">
+                      <h2 className="text-base sm:text-lg mt-2 font-serif line-clamp-1 px-2">
+                        {perfume?.perfume}
+                      </h2>
+                      <p className="text-gray-600 text-base sm:text-lg dark:text-gray-400 mb-2">
+                        {perfume.brand?.brand}
+                      </p>
+                    </div>
+                    <div className="grid place-items-center">
                       <button className="group shadow-[0px_0px_8px_0px_#00000040] mx-auto rounded-[16px] relative group overflow-hidden bg-white px-3 py-1 text-black">
                         <span className="relative z-10">Read More</span>
                       </button>
-                    </Link>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))
             ) : (
               <div className="flex flex-col justify-center items-center col-span-4">

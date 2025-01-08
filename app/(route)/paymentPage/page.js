@@ -34,8 +34,8 @@ export default function PaymentPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission
-    console.log("Transaction ID:", transactionId);
-    console.log("Selected File:", selectedFile);
+    // console.log("Transaction ID:", transactionId);
+    // console.log("Selected File:", selectedFile);
   };
 
   return (

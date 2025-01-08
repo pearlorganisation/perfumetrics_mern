@@ -63,9 +63,9 @@ export default function News() {
     <div className="min-h-screen py-4 px-2 lg:px-0">
       {/* Blog Post */}
       <div className="container mx-auto grid lg:grid-cols-[auto_20rem] gap-4">
-        <div className="font-bold text-3xl lg:text-4xl leading-[3rem] lg:leading-[4rem] mb-4 pl-4 lg:col-span-2">
-          News Blog
-        </div>
+        <h2 className="font-bold text-3xl lg:text-4xl leading-[3rem] lg:leading-[4rem] pl-4 lg:col-span-2">
+          {newsData?.data?.title}
+        </h2>
         {newsLoading ? (
           <div class="animate-pulse grid grid-cols-1 gap-6 py-6 pt-0">
             <div class="space-y-4 w-full">
@@ -85,9 +85,7 @@ export default function News() {
                 alt="Blog Post"
                 className="w-fit lg:max-w-4xl  lg:h-[30rem] rounded-lg mb-6 object-contain"
               />
-              <h2 className="text-2xl font-bold mb-4">
-                {newsData?.data?.title}
-              </h2>
+
               <p className="text-gray-600 mb-2">
                 By <span className="font-semibold">{newsData?.data?.user}</span>{" "}
                 on{" "}
@@ -99,8 +97,8 @@ export default function News() {
               <p className="mb-4 font-medium">{newsData?.data?.details}</p>
             </article>
 
-            <section className="bg-gray-50 rounded-lg ">
-              <div className="text-wrap">
+            <section className="rounded-lg">
+              <div className="text-wrap mt-8">
                 {parse(newsData?.data?.description || "")}
               </div>
             </section>
@@ -148,7 +146,7 @@ export default function News() {
 
           <div className="w-full flex flex-col gap-5">
             <div className="w-full text-center py-4 relative grid place-items-center">
-              <hr className="border absolute w-full" />
+              {/* <hr className="border absolute w-full" /> */}
               <div className="text-xl md:text-2xl font-semibold bg-white z-10 px-3">
                 Perfume Reviews
               </div>

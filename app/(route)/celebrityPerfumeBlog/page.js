@@ -41,12 +41,12 @@ export default async function Page({ params }) {
                   className="w-full h-48 object-contain"
                 />
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold mb-2 text-gray-800">
+                  <h3 className="text-lg font-semibold mb-2 line-clamp-2 text-gray-800">
                     {blog.title}
                   </h3>
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                  {/* <p className="text-sm text-gray-600 mb-4 line-clamp-2">
                     {blog.content}
-                  </p>
+                  </p> */}
                   <button className="w-full text-black py-2 px-4 rounded  transition duration-300">
                     Read More
                   </button>

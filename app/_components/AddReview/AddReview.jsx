@@ -1,5 +1,6 @@
 "use client"
 import Review from '@/app/(route)/product/[productId]/Review';
+import perfumeMetaData from '@/store/perfumeMetaData';
 import { userStore } from '@/store/userStore';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
@@ -8,15 +9,20 @@ import { toast } from 'sonner';
 
 const AddReview = () => {
     const [loading, setLoading] = useState(false);
+    const { id: productId, setId, clearId } = perfumeMetaData();
 
     const { user } = userStore();
-    const { productId } = useParams();
+    // const { productId } = useParams();
     const [comment, setComment] = useState('');
     const [files, setFiles] = useState([]);
     const [commentsData, setCommentsData] = useState([]);
 
     // UseCallback to prevent re-creation of the handleComment function on every render
     const handleComment = useCallback(async () => {
+        if (comment.trim() == '') {
+            toast.error("Please Enter Comment!")
+            return
+        }
         const formData = new FormData();
         for (let i = 0; i < files.length; i++) {
             formData.append('gallery', files[i]);

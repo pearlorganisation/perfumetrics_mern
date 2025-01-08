@@ -13,6 +13,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import { useParams } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
+import perfumeMetaData from "@/store/perfumeMetaData";
 
 
 
@@ -20,7 +21,8 @@ import Link from "next/link";
 
 const
   RelatedFragram = ({ country }) => {
-    const { productId } = useParams()
+
+    const { id: productId, setId, clearId } = perfumeMetaData();
     const [isLoading, setIsLoading] = useState(false)
     const [perfumeData, setPerfumeData] = useState(null);
     const getRelatedFragram = (perfumeId) => {
@@ -36,8 +38,10 @@ const
         });
     }
     useEffect(() => {
-      getRelatedFragram(productId)
-    }, [])
+      if (productId) {
+        getRelatedFragram(productId)
+      }
+    }, [productId])
     return (
 
       perfumeData?.length > 0 ? <div className="block mb-20">

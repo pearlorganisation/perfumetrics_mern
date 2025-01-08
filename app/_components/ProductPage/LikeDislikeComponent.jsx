@@ -5,9 +5,11 @@ import axios from 'axios';
 import { userStore } from '@/store/userStore';
 import { toast } from 'sonner';
 import { FaSpinner } from 'react-icons/fa';
+import perfumeMetaData from '@/store/perfumeMetaData';
 
 const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
   const { user, isUserLoggedIn } = userStore();
+  const { id, setId, clearId } = perfumeMetaData();
   const [isLoading, setIsLoading] = useState(false)
   const [likeDisLikeData, setLikeDisLike] = useState({})
   const [userHistory, setUserHistory] = useState(null)
@@ -25,8 +27,8 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
 
 
   const getLikeDisLike = async () => {
-    const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/like-dislike/${productId}`,)
-    console.log(result?.data?.data, "getLikeDisLike")
+    const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/like-dislike/${id}`,)
+    // console.log(result?.data?.data, "getLikeDisLike")
     setLikeDisLike(result?.data?.data)
   }
   const likeDislike = async (userVote) => {
@@ -57,9 +59,12 @@ const LikeDislikeComponent = React.memo(({ historyMap, productId, data }) => {
 
   }, [likeDislike]);
   useEffect(() => {
-    getLikeDisLike()
+    if (id) {
+      getLikeDisLike()
+
+    }
     if (user) perfumeUserHistory(user._id);
-  }, [user])
+  }, [user, id])
   useEffect(() => {
     if (user) perfumeUserHistory(user._id);
   }, [user, likeDisLikeData])

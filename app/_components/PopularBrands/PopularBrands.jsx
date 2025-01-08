@@ -109,7 +109,7 @@ const PopularBrands = () => {
           <div className="flex space-x-4 min-w-max gap-0 md:gap-6">
             {popularPerfumeData && popularPerfumeData.map((fragrance, index) => (
               <Link
-                href={`/product/${fragrance?._id}`}
+                href={`/product/${fragrance?.slug}`}
                 key={index} className="flex-none w-[160px]">
                 <div
                   className={`relative rounded-full p-1  border-[6px] border-pink-500 transition-transform duration-300 `}
@@ -118,7 +118,7 @@ const PopularBrands = () => {
                     <img
                       src={fragrance.banner}
                       alt={`${fragrance?.brand?.brand} by ${fragrance?.brand?.brand}`}
-                      className="w-32 h-32 object-contain rounded-full"
+                      className="w-32 h-32 object-contain rounded-full bg-white mx-auto"
                     />
                   </div>
                 </div>

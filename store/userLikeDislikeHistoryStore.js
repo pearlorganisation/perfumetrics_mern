@@ -14,7 +14,7 @@ export const userLikeDislikeHistoryStore = create(
           const result = await axios.get(
             `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/userHistory/${userId}`
           );
-          console.log(result, "userHistory");
+          // console.log(result, "userHistory");
 
           const { cons, pros, perfumeMarkedVoted } = result?.data?.data;
           const userHistoryMap = new Map();
@@ -35,7 +35,7 @@ export const userLikeDislikeHistoryStore = create(
             });
           }
 
-          console.log("abhishek bhai ", userHistoryMap);
+          // console.log("abhishek bhai ", userHistoryMap);
           set({
             userLikeDislikeHistory: userHistoryMap,
             isUserLoggedIn: true,

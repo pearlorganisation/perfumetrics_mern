@@ -15,7 +15,7 @@ const News = () => {
   const getNews = async () => {
     const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/news`)
     setNewsData(result?.data?.data)
-    console.log(result?.data?.data, "result News")
+    // console.log(result?.data?.data, "result News")
   }
   useEffect(() => {
     getNews()

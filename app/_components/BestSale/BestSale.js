@@ -39,7 +39,7 @@ const BestSale = () => {
         <div className="grid lg:grid-cols-3 place-items-center gap-3 py-5">
           <div className="w-full flex flex-col justify-between ">
             {salesData?.slice(0, 3).map((item) => {
-              console.log(item);
+              // console.log(item);
               if (!item?.mapOfLinks[timeZoneCountry]) return;
               const { link, price, quantity } =
                 item?.mapOfLinks[timeZoneCountry];
@@ -91,7 +91,7 @@ const BestSale = () => {
           </div>
           <div className="w-full flex flex-col justify-between ">
             {salesData?.slice(3, 6).map((item) => {
-              console.log(item);
+              // console.log(item);
               if (!item?.mapOfLinks[timeZoneCountry]) return;
               const { link, price, quantity } =
                 item?.mapOfLinks[timeZoneCountry];

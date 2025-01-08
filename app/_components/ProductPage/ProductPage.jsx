@@ -40,6 +40,7 @@ import PerfumeCategorySlider from "./PerfumeCategorySlider";
 import LoginSignUp from "../LoginSignUp/LoginSignUp";
 import dynamic from "next/dynamic";
 import { FaQuoteLeft } from "react-icons/fa6";
+import perfumeMetaData from "@/store/perfumeMetaData";
 
 const lora = Roboto({
     subsets: ['latin'],
@@ -48,6 +49,8 @@ const lora = Roboto({
 
 
 const ProductPage = ({ data, sidebarReview, productId }) => {
+
+    const { id, setId, clearId } = perfumeMetaData();
     const { getUserLikeDisLikeHistory, userLikeDislikeHistory } = userLikeDislikeHistoryStore();
     const [purchaseLinks, setPurchaseLinks] = useState([]);
     const router = useRouter();
@@ -62,9 +65,9 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
     const [historyMap, setHistorMap] = useState(new Map()); // Initialize with an empty Map
 
     // Fetch perfume categories and global banner
-    const fetchPerfumeData = useCallback(async (perfumeId) => {
+    const fetchPerfumeData = useCallback(async (id) => {
         const [perfumeRes, bannerRes] = await Promise.all([
-            axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfumeCategories?perfumeId=${perfumeId}`),
+            axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfumeCategories?perfumeId=${id}`),
             axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/globalData?itemType=banner`)
         ]);
 
@@ -87,33 +90,38 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
         const mapOfLinks = data?.data?.mapOfLinks || {};
         const companiesList = mapOfLinks[timeZoneCountry] || [];
         setPurchaseLinks(companiesList);
-        console.log("timeZoneCountry", timeZoneCountry)
+        // console.log("timeZoneCountry", timeZoneCountry)
     }, [timeZoneCountry]);
 
     // Run effects only when dependencies change
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
         if (user) perfumeUserHistory(user._id);
     }, [user, perfumeUserHistory]);
 
     useEffect(() => {
-        if (productId) fetchPerfumeData(productId);
-    }, [productId, fetchPerfumeData]);
+        if (id) {
+            fetchPerfumeData(id);
+        }
+    }, [id]);
 
     // Like or dislike a perfume
     const likeDislike = useCallback(async (userVote) => {
         try {
             await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/votePerfume`, {
                 userId: user?._id,
-                perfumeId: productId,
+                perfumeId: id,
                 userVote
             });
             router.refresh(); // Reload the page to update data
         } catch (error) {
             console.error(error);
         }
-    }, [user?._id, productId, router]);
+    }, [user?._id, id, router]);
 
+
+    useEffect(() => {
+        setId(data?.data?._id)
+    }, [data?.data?._id])
 
 
 
@@ -132,7 +140,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                 <img className='h-[20rem] md:h-[28rem]  md:w-full mx-auto object-contain ' src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
                             </div>
                             {
-                                <LikeDislikeComponent key={1} data={data} historyMap={historyMap} productId={productId} likeDislike={likeDislike} />
+                                <LikeDislikeComponent key={1} data={data} historyMap={historyMap} productId={id} likeDislike={likeDislike} />
                             }
                         </div>
 
@@ -372,7 +380,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                         </div>
 
 
-                        <RatingResult productId={productId} />
+                        <RatingResult productId={id} />
 
                     </div>
                     <div className="">

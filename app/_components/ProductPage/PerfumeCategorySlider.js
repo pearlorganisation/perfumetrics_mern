@@ -50,7 +50,7 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
               target="_blank"
             >
               <div className="max-w-xs mx-auto bg-white rounded-lg cursor-pointer p-4">
-                <div className="relative h-40 md:h-52 flex items-center justify-center p-1">
+                <div className="relative h-40 flex items-center justify-center p-1">
                   <img
                     className="!object-contain w-full h-full rounded-lg"
                     src={item?.banner}

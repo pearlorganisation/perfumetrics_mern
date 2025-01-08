@@ -3,7 +3,7 @@ async function comments() {
     `${process.env.NEXT_PUBLIC_API_URL}/api/v1/reviewsSidebar`
   );
   const data = await response.json();
-  console.log(data, "sidebar Review")
+  // console.log(data, "sidebar Review")
   return data?.data;
 }
 import React from "react";
