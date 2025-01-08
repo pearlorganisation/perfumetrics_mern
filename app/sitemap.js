@@ -22,19 +22,27 @@ export default async function siteMap() {
   try {
     // Fetch perfumes data
     const response = await fetch(`${baseUrl}/api/v1/perfume`);
+    const newsRes =  await fetch(`${baseUrl}/api/v1/news`);
+    const brandRes =  await fetch(`${baseUrl}/api/v1/brand`);
 
+    if(!newsRes.ok)
+      throw new Error("Failed to fetch News data");
     if (!response.ok) {
-      throw new Error("Failed to fetch perfumes data");
+      throw new Error("Failed to fetch Perfumes data");
     }
+
+    
 
     // Parse response body as JSON
     const responseData = await response.json();
-
+    const responseNews = await newsRes.json();
+    const responseBrand = await brandRes.json();
     // Extract perfumes data
     const allPerfumesData = responseData?.data || [];
-
+    const allNewsData  = responseNews?.data ||[];
+    const allBrandData  = responseBrand?.data ||[];
     console.log(
-      chalk.bgYellow("This is perfume data in sitemap", allPerfumesData?.length)
+      chalk.bgYellow("This is news data in sitemap",allPerfumesData.length )
     );
     // Map perfumes to URLs and last modified dates
     const allPerfumes = allPerfumesData?.map((post) => {
@@ -43,6 +51,22 @@ export default async function siteMap() {
         lastModified: formatDate(post?.updatedAt || "2024-12-21T10:39:05.105Z"),
       };
     });
+    
+    const allNews = allNewsData?.map((news)=>{
+      return {
+        url:`${baseUrlFrontend}/news/${news?.slug}`,
+        lastModified: formatDate(news?.updatedAt || "2024-12-21T10:39:05.105Z"),
+
+      };
+    })
+    
+    const allBrands = allBrandData?.map((brand)=>{
+      return {
+        url:`${baseUrlFrontend}/brand/${brand?.slug}`,
+        lastModified: formatDate(brand?.updatedAt || "2024-12-21T10:39:05.105Z"),
+
+      };
+    })
 
     // Return sitemap structure
     return [
@@ -50,7 +74,9 @@ export default async function siteMap() {
         url: baseUrlFrontend,
         lastModified: new Date(),
       },
+      ...allNews,
       ...allPerfumes,
+      ...allBrands
     ];
   } catch (error) {
     console.error("Error generating sitemap:", error);

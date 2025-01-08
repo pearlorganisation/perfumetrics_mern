@@ -21,56 +21,36 @@ const FragranceSlider = ({ fragramsData, country }) => {
     return `${day}-${month}-${year}`;
   }
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {fragramsData?.map((item, index) => {
-        console.log(item, "item");
         if (!item?.mapOfLinks[country]) return null;
         return (
-          <div className="w-48 h-28 grid grid-cols-[35%_auto] p-2 gap-2 shadow">
-            <div className="relative border bg-neutral-100 ">
+          <Link
+            key={index}
+            href={
+              item?.mapOfLinks[country] ||
+              "https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png"
+            }
+            target="_blank"
+            className="grid grid-cols-[40%_auto] p-4 gap-3 shadow-lg rounded-lg hover:shadow-xl transition-shadow"
+          >
+            <div className="relative border bg-neutral-100 rounded-md overflow-hidden">
               <img
-                className="h-full object-contain absolute"
+                className="h-full object-contain absolute w-full"
                 src={item?.banner}
                 alt=""
               />
-            </div>{" "}
-            <div className="flex flex-col ">
-              <span className="line-clamp-1">{item?.title}</span>
-              <span className="text-[12px]">{item?.postBy}</span>
-              <time className="text-xs">
+            </div>
+            <div className="flex flex-col justify-between">
+              <span className="line-clamp-1 text-base font-semibold">
+                {item?.title}
+              </span>
+              <span className="text-sm text-gray-600">{item?.postBy}</span>
+              <time className="text-xs text-gray-500">
                 {formatDateToShort(item?.updatedAt)}
               </time>
             </div>
-          </div>
-          // <div className="w-40  bg-white rounded-lg border-2 border-red-600  ">
-          //   <div className="flex items-start gap-4">
-          //     {/* Product Images */}
-          //     <div className="flex gap-1">
-          //       <div className="w-12 h-16 bg-black rounded-md">
-          //         <img
-          //           className="size-full object-contain"
-          //           src={item?.banner}
-          //           alt=""
-          //         />
-          //       </div>
-          //     </div>
-
-          //     {/* Product Info */}
-          //     <div className="flex flex-col">
-          //       <div className="flex items-center gap-2">
-          //         <h2 className="text-lg font-medium">Fogg</h2>
-          //         <span className="w-2 h-2 rounded-full bg-emerald-500" />
-          //       </div>
-
-          //       <div className="flex flex-col text-sm text-gray-500">
-          //         <span>by {item?.postBy}</span>
-          //         <time className="text-xs">
-          //           {formatDateToShort(item?.updatedAt)}
-          //         </time>
-          //       </div>
-          //     </div>
-          //   </div>
-          // </div>
+          </Link>
         );
       })}
     </div>

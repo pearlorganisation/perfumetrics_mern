@@ -98,33 +98,33 @@ const Dummy = ({ data, gender, totalPages }) => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3  2xl:grid-cols-4 gap-6 md:gap-8">
               {Array.isArray(data) && data?.length > 0 ? (
                 data?.map((fragrance, index) => (
-                  <div key={index} className="space-y-2 min-h-[10rem] ">
-                    <div className="text-center flex flex-col gap-3 p-4 justify-between shadow-[0px_0px_8px_0px_#00000040] rounded-[16px] overflow-hidden">
-                      <img
-                        src={fragrance?.banner}
-                        alt={fragrance?.perfume}
-                        className="w-full h-[150px] sm:h-[150px] md:h-[20rem] object-fill max-w-xs mx-auto"
-                      />
-                    </div>
-                    <div className="flex justify-center gap-3 items-center flex-col">
-                      {/* {isDataNew(fragrance?.updatedAt) && (
+                  <Link href={`/product/${fragrance?._id}`}>
+                    <div key={index} className="space-y-2 min-h-[10rem] ">
+                      <div className="text-center flex flex-col gap-3 p-4 justify-between shadow-[0px_0px_8px_0px_#00000040] rounded-[16px] overflow-hidden">
+                        <img
+                          src={fragrance?.banner}
+                          alt={fragrance?.perfume}
+                          className="w-full h-[150px] sm:h-[150px] md:h-[20rem] object-fill max-w-xs mx-auto"
+                        />
+                      </div>
+                      <div className="flex justify-center gap-3 items-center flex-col">
+                        {/* {isDataNew(fragrance?.updatedAt) && (
                         <span className="block text-gray-600 text-sm mt-2 uppercase">
                           New
                         </span>
                       )} */}
-                      <h2 className="text-lg mt-2 font-serif line-clamp-1">
-                        {fragrance?.perfume}
-                      </h2>
-                      <p className="text-gray-500 mt-1">{fragrance?.price}</p>
-                    </div>
-                    <div className="grid place-items-center">
-                      <Link href={`/product/${fragrance?._id}`}>
+                        <h2 className="text-lg mt-2 font-serif line-clamp-1">
+                          {fragrance?.perfume}
+                        </h2>
+                        <p className="text-gray-500 mt-1">{fragrance?.price}</p>
+                      </div>
+                      <div className="grid place-items-center">
                         <button className="group shadow-[0px_0px_8px_0px_#00000040] mx-auto rounded-[16px] relative group overflow-hidden bg-white px-3 py-1 text-black">
                           <span className="relative z-10">Read More</span>
                         </button>
-                      </Link>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 ))
               ) : (
                 <div className="w-full h-full text-center col-span-4">

@@ -31,7 +31,7 @@ const BestSale = () => {
     <div>
       <div>
         <div class="grid place-items-center relative w-full ">
-          <h1 class="text-xl md:text-[36px] -translate-y-1 font-bold px-6 md:px-8 pt-3 bg-white z-40">
+          <h1 class="text-3xl md:text-[36px] -translate-y-1 font-bold px-6 md:px-8 pt-3 bg-white z-40">
             SALES OFF
           </h1>
           <div class="absolute w-full h-[2px] bg-slate-500"></div>
@@ -54,7 +54,7 @@ const BestSale = () => {
                       />
                     </div>
                     <div className="p-4">
-                      <h2 className="text-gray-800 text-sm lg:text-[16px] font-normal line-clamp-1">
+                      <h2 className="text-gray-800 text-sm lg:text-[16px] font-bold line-clamp-1">
                         {item?.title} {quantity}
                       </h2>
                       <div className="flex items-center mt-2">
@@ -106,7 +106,7 @@ const BestSale = () => {
                       />
                     </div>
                     <div className="p-4">
-                      <h2 className="text-gray-800 text-sm lg:text-[16px] font-normal line-clamp-1 ">
+                      <h2 className="text-gray-800 text-sm lg:text-[16px] font-bold line-clamp-1 ">
                         {item?.title} {quantity}
                       </h2>
                       <div className="flex items-center mt-2">

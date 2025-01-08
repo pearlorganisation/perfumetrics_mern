@@ -28,7 +28,7 @@ const PieChartComponent = ({ mainAccords }) => {
         </Pie>
         <Tooltip />
       </PieChart>
-      <div className="flex flex-wrap justify-center gap-3 max-w-sm items-center  border-2">
+      <div className="flex flex-wrap justify-center gap-3 max-w-sm items-center">
         {mainAccords?.map((el) => {
           return (
             <div

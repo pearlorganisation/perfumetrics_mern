@@ -50,21 +50,21 @@ const HeroSection = () => {
           <img
             src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1733984224/static_hero_primary_Now_And_Then_2_aynsff.webp"
             alt="Hero Perfume Bottle"
-            className="relative z-10 rounded-lg shadow-2xl  md:w-full w-60 md:max-w-md transition transform hover:scale-105"
+            className="relative z-10 rounded-lg shadow-2xl  md:w-full w-72 md:max-w-md transition transform hover:scale-105"
           />
         </div>
         <div className="mt-8 w-full  flex md:hidden justify-center lg:justify-start space-x-4 text-base font-light">
           <Link
             href={`/category/MEN'S STYLE`}
           >
-            <button className=" w-full px-3 py-3 text-sm bg-pink-500 text-white font-semibold rounded-lg shadow-lg hover:bg-pink-600 transition transform hover:scale-105">
+            <button className=" w-[10rem] px-3 py-3 text-sm bg-pink-500 text-white font-semibold rounded-lg shadow-lg hover:bg-pink-600 transition transform hover:scale-105">
               Explore Men's
             </button>
           </Link>
           <Link
             href={`/category/WOMEN'S STYLE`}
           >
-            <button className=" w-full  px-3 py-3 text-sm bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-lg hover:bg-gray-300 transition transform hover:scale-105">
+            <button className=" w-[10rem]  px-3 py-3 text-sm bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-lg hover:bg-gray-300 transition transform hover:scale-105">
               Explore Women's
             </button>
 

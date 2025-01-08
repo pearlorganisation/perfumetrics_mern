@@ -26,8 +26,8 @@ export const userStore = create(
 
           if (!response.ok) {
             // console.log(await response.json());
-            const errMessage =  await response.json();
-            throw new Error("Login failed: "+errMessage?.message);
+            const errMessage = await response.json();
+            throw new Error("Login failed: " + errMessage?.message);
           }
 
           const user = await response.json();

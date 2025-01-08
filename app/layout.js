@@ -6,7 +6,6 @@ import {
   Montserrat,
 } from "next/font/google";
 import "./globals.css";
-import siteMap from "./sitemap";
 import Footer from "./_components/layout/Footer/Footer";
 import Header from "./_components/layout/Header/Header";
 import { Toaster } from "sonner";
