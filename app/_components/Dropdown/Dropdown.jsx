@@ -17,7 +17,7 @@ const Dropdown = ({ brands, setPerfumeDropDown }) => {
                     {
                         brands.map(item => {
                             return <Link
-                                href={`/brand/${item?.brand}`}
+                                href={`/brand/${item?.slug}`}
                             // href={`#`}
                             >
                                 <div onMouseOver={() => {

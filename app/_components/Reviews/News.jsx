@@ -35,7 +35,7 @@ const News = () => {
       </div>
       <div className="flex justify-between  items-center text-lg md:text-4xl font-medium"></div>
       {
-        newsMapData ? <Link href={`/news/${newsMapData?.get(1)?._id}`} className="grid grid-cols-1 gap-6 py-6 pt-0">
+        newsMapData ? <Link href={`/news/${newsMapData?.get(1)?.slug}`} className="grid grid-cols-1 gap-6 py-6 pt-0">
 
           <div className="space-y-2 w-full ">
             <img
@@ -69,7 +69,7 @@ const News = () => {
       <div className="grid gap-6 md:grid-cols-[18rem_auto] py-6  ">
         <div className="space-y-12">
           {
-            newsMapData ? <Link href={`/news/${newsMapData?.get(2)?._id}`} className="space-y-1">
+            newsMapData ? <Link href={`/news/${newsMapData?.get(2)?.slug}`} className="space-y-1">
               <img
                 className="w-full rounded-md h-[13.5rem]"
                 src={newsMapData?.get(2)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
@@ -92,7 +92,7 @@ const News = () => {
           }
           {
             newsMapData ? <div className=" mt-8">
-              <Link href={`/news/${newsMapData?.get(3)?._id}`} className="mb-8 space-y-1">
+              <Link href={`/news/${newsMapData?.get(3)?.slug}`} className="mb-8 space-y-1">
                 <img
                   className="w-full rounded-md h-[13.5rem]"
                   src={newsMapData?.get(3)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
@@ -129,7 +129,7 @@ const News = () => {
 
         </div>
         {
-          newsMapData ? <Link href={`/news/${newsMapData?.get(4)?._id}`} className=" space-y-1  mt-5 md:top-0 ">
+          newsMapData ? <Link href={`/news/${newsMapData?.get(4)?.slug}`} className=" space-y-1  mt-5 md:top-0 ">
             <img
               className="w-full rounded-md h-[20rem]"
               src={newsMapData?.get(4)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
@@ -153,7 +153,7 @@ const News = () => {
 
       </div>
       {
-        newsMapData ? <Link href={`/news/${newsMapData?.get(5)?._id}`} className="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8   border-gray-400">
+        newsMapData ? <Link href={`/news/${newsMapData?.get(5)?.slug}`} className="grid md:grid-cols-[40%_auto] gap-3 border-y-2 py-8   border-gray-400">
           <div>
             <div className="font-bold pt-2 text-black text-xl">
               {newsMapData?.get(5)?.title}
@@ -188,7 +188,7 @@ const News = () => {
       {/* News */}
       <div className="grid grid-cols-1 gap-6 py-6">
         {
-          newsMapData ? <Link href={`/news/${newsMapData?.get(6)?._id}`} className="space-y-1 w-full">
+          newsMapData ? <Link href={`/news/${newsMapData?.get(6)?.slug}`} className="space-y-1 w-full">
             <img
               className="w-full h-[30rem] object-cover mb-3"
               src={newsMapData?.get(6)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
@@ -226,7 +226,7 @@ const News = () => {
       </div>
       <div className="grid grid-cols-1 gap-6 py-6">
         {
-          newsMapData ? <Link href={`/news/${newsMapData?.get(7)?._id}`} className="space-y-1 w-full">
+          newsMapData ? <Link href={`/news/${newsMapData?.get(7)?.slug}`} className="space-y-1 w-full">
             <img
               className="w-full h-[30rem] object-cover mb-3"
               src={newsMapData?.get(7)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}

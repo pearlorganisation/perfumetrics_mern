@@ -60,22 +60,7 @@ export default async function Home() {
                     </div>
                   )}
                 </div>
-                <div className="w-full  flex flex-col gap-4">
-                  {/* <div className="border-0 border-pink-500 w-full text-center py-4">
-              <span className="text-xl md:text-2xl  font-semibold ">
-                Perfume Reviews
-              </span>
-            </div> */}
-                  {/* <div className="grid place-items-center relative mb-2 mt-6">
-              <div className=" w-full text-left flex justify-between">
-                <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
-                  Perfume Reviews
-                </h2>
-                <button className='font-medium text-[14px] text-[#EA92B6]' type="button">Write a Review</button>
-              </div>
-            </div>
-            <CardsList reviewData={reviewSidebar} length={length} /> */}
-                </div>
+                <div className="w-full  flex flex-col gap-4"></div>
               </div>
               <div className=" w-full text-left flex justify-between">
                 <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">

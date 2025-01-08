@@ -15,7 +15,7 @@ export default function InteractivePerfumePage() {
     setIsLoading(true);
     try {
       const result = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/brand/single/${brandName}`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/brand/slug/${brandName}`
       );
       setBrandsPerfume(result?.data);
     } catch (error) {
