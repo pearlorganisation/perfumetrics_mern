@@ -17,40 +17,75 @@ function formatDate(dateString) {
   return date.toLocaleString("en-US", options); // Format date as "Monday, December 21, 2024, 10:39:05 AM UTC"
 }
 export default async function siteMap() {
+  const baseUrlFrontend = process.env.NEXT_PUBLIC_FRONTEND_URL;
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-  const frontendUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
   try {
     // Fetch perfumes data
     const response = await fetch(`${baseUrl}/api/v1/perfume`);
+    const newsRes = await fetch(`${baseUrl}/api/v1/news`);
+    const brandRes = await fetch(`${baseUrl}/api/v1/brand`);
 
+    if (!newsRes.ok) throw new Error("Failed to fetch News data");
     if (!response.ok) {
-      throw new Error("Failed to fetch perfumes data");
+      throw new Error("Failed to fetch Perfumes data");
     }
 
     // Parse response body as JSON
     const responseData = await response.json();
-
+    const responseNews = await newsRes.json();
+    const responseBrand = await brandRes.json();
     // Extract perfumes data
     const allPerfumesData = responseData?.data || [];
-
-    // console.log(
-    //   chalk.bgYellow("This is perfume data in sitemap", allPerfumesData?.length)
-    // );
+    const allNewsData = responseNews?.data || [];
+    const allBrandData = responseBrand?.data || [];
+    console.log(
+      chalk.bgYellow("This is news data in sitemap", allPerfumesData.length)
+    );
     // Map perfumes to URLs and last modified dates
     const allPerfumes = allPerfumesData?.map((post) => {
       return {
-        url: `${frontendUrl}/product/${post?.slug}`,
+        url: `${baseUrlFrontend}/product/${post?.slug}`,
         lastModified: formatDate(post?.updatedAt || "2024-12-21T10:39:05.105Z"),
+      };
+    });
+
+    const allNews = allNewsData?.map((news) => {
+      return {
+        url: `${baseUrlFrontend}/news/${news?.slug}`,
+        lastModified: formatDate(news?.updatedAt || "2024-12-21T10:39:05.105Z"),
+      };
+    });
+
+    const allBrands = allBrandData?.map((brand) => {
+      return {
+        url: `${baseUrlFrontend}/brand/${brand?.slug}`,
+        lastModified: formatDate(
+          brand?.updatedAt || "2024-12-21T10:39:05.105Z"
+        ),
       };
     });
 
     // Return sitemap structure
     return [
       {
-        url: frontendUrl,
+        url: baseUrlFrontend,
         lastModified: new Date(),
       },
+      {
+        url: `${baseUrlFrontend}/category/womens-style`,
+      },
+      {
+        url: `${baseUrlFrontend}/category/mens-style`,
+      },
+      {
+        url: `${baseUrlFrontend}/review/writeAreview`,
+      },
+      {
+        url: `${baseUrlFrontend}/review/requestAreview`,
+      },
+      ...allNews,
       ...allPerfumes,
+      ...allBrands,
     ];
   } catch (error) {
     console.error("Error generating sitemap:", error);
