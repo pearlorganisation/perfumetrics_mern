@@ -88,7 +88,7 @@ export async function generateMetadata({ params }) {
     return {
       metadataBase: new URL(`${baseUrl}`),
       alternates: {
-        canonical: `${baseUrl}/api/v1/perfume/${slug}`,
+        canonical: `${baseUrl}/product/${slug}`,
         languages: {
           "en-US": "/en-US",
           "de-DE": "/de-DE",

@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { IoIosTimer } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { BiSolidDollarCircle } from "react-icons/bi";
@@ -139,6 +139,104 @@ const RatingResult = ({ productId }) => {
 
 
     ]
+    const calculateDefaultLongevity = (nameOfVote) => {
+        const switchToggler = modifyStr(nameOfVote)?.toLowerCase();
+        console.log("switchToggler",switchToggler);
+
+        switch (switchToggler) {
+            case 'longevity': {
+                if (user?._id) {
+                    const longevity = modifyStr(result?.longevity || 'null');
+    
+                    if (longevity.toLowerCase() === 'veryweak') return 1;
+                    if (longevity.toLowerCase() === 'weak') { console.log("Yah hooo ") ; return 2;}
+                    if (longevity.toLowerCase() === 'moderate') return 3;
+                    if (longevity.toLowerCase() === 'longlasting') return 4;
+                    if (longevity.toLowerCase() === 'eternal') return 5;
+                } else {
+                    const longevity = modifyStr(perfumeAnalytics?.longevity?.k||'null');
+                    console.log("we were here amnnnn!!", longevity);
+    
+                    if (longevity.toLowerCase() == 'veryweak') return 1;
+                    if (longevity.toLowerCase() == 'weak') return 2;
+                    if (longevity.toLowerCase() == 'moderate') return 3;
+                    if (longevity.toLowerCase() == 'longlasting') return 4;
+                    if (longevity.toLowerCase() == 'eternal') return 5;
+                }
+                return 5;
+            }
+            case 'sillage': {
+                if (user?._id) {
+                    const sillage =  modifyStr(result?.sillage || 'null');
+    
+                    if (sillage.toLowerCase() === 'intimate') return 1;
+                    if (sillage.toLowerCase() === 'novote') return 2;
+                    if (sillage.toLowerCase() === 'moderate') return 3;
+                    if (sillage.toLowerCase() === 'strong') return 4;
+                    if (sillage.toLowerCase() === 'enormous') return 5;
+                } else {
+                    const sillage = modifyStr(perfumeAnalytics?.sillage.k||'null');
+                    console.log("we were here amnnnn!!", sillage);
+                    if (sillage.toLowerCase() === 'intimate') return 1;
+                    if (sillage.toLowerCase() === 'novote') return 2;
+                    if (sillage.toLowerCase() === 'moderate') return 3;
+                    if (sillage.toLowerCase() === 'strong') return 4;
+                    if (sillage.toLowerCase() === 'enormous') return 5;
+                }
+                return 5
+            }
+            case 'pricevalue': {
+                // console.log("we were here amnnnn pricevalue !!",modifyStr(nameOfVote));
+
+                if (user?._id) {
+                    const priceValue =  modifyStr(result?.priceValue || 'null');
+
+                    if (priceValue.toLowerCase() == 'wayoverpriced') return 1;
+                    if (priceValue.toLowerCase() == 'overpriced') return 2;
+                    if (priceValue.toLowerCase() == 'ok') return 3;
+                    if (priceValue.toLowerCase() == 'goodvalue') return 4;
+                    if (priceValue.toLowerCase() == 'greatvalue') return 5;
+                } else {
+                    const priceValue = modifyStr(perfumeAnalytics?.priceValue.k||'null');
+                    console.log("we were here amnnnn!!", priceValue);
+
+                    if (priceValue.toLowerCase() == 'wayoverpriced') return 1;
+                    if (priceValue.toLowerCase() == 'overpriced') return 2;
+                    if (priceValue.toLowerCase() == 'ok') return 3;
+                    if (priceValue.toLowerCase() == 'goodvalue') return 4;
+                    if (priceValue.toLowerCase() == 'greatvalue') return 5;
+                }
+                return 5
+            }
+            case 'gender': {
+                console.log("Processing gender:", switchToggler);
+    
+                if (user?._id) {
+                    const gender = modifyStr(result?.gender || 'null');
+                    console.log("Gender for user:", gender);
+    
+                    if (gender.toLowerCase() === 'female') return 1;
+                    if (gender.toLowerCase() === 'morefemale') return 2; // Corrected duplicate
+                    if (gender.toLowerCase() === 'unisex') return 3;
+                    if (gender.toLowerCase() === 'moremale') return 4;
+                    if (gender.toLowerCase() === 'male') return 5;
+                } else {
+                    const gender = modifyStr(perfumeAnalytics?.gender?.k || 'null');
+                    console.log("Gender from analytics:", gender);
+    
+                    if (gender.toLowerCase() === 'female') return 1;
+                    if (gender.toLowerCase() === 'morefemale') return 2; // Corrected duplicate
+                    if (gender.toLowerCase() === 'unisex') return 3;
+                    if (gender.toLowerCase() === 'moremale') return 4;
+                    if (gender.toLowerCase() === 'male') return 5;
+                }
+                return 5;
+            }
+            default:
+                return null; // Default fallback
+        }
+    };
+
     const ratingData = [
         {
             name: 'LONGEVITY',
@@ -151,6 +249,7 @@ const RatingResult = ({ productId }) => {
                     isUserSelected: user
                         ? (modifyStr(result?.longevity || 'null') === 'veryweak' ? true : false)
                         : modifyStr(perfumeAnalytics?.longevity.k) === 'veryweak',
+                    
                     num: perfumeRatings?.longevity?.veryWeak,
                     icon: (
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
@@ -164,7 +263,7 @@ const RatingResult = ({ productId }) => {
                     isUserSelected: user
                         ? (modifyStr(result?.longevity || 'null') === 'weak' ? true : false)
                         : modifyStr(perfumeAnalytics?.longevity.k) === 'weak',
-                    num: perfumeRatings?.longevity?.weak,
+                                 num: perfumeRatings?.longevity?.weak,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
                         <circle cx="10" cy="10" r="5" fill="#aaa" />
@@ -175,6 +274,7 @@ const RatingResult = ({ productId }) => {
                     isUserSelected: user
                         ? (modifyStr(result?.longevity || 'null') === 'moderate' ? true : false)
                         : modifyStr(perfumeAnalytics?.longevity.k) === 'moderate',
+                    
                     num: perfumeRatings?.longevity?.moderate,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
@@ -186,6 +286,7 @@ const RatingResult = ({ productId }) => {
                     isUserSelected: user
                         ? (modifyStr(result?.longevity || 'null') === 'longlasting' ? true : false)
                         : modifyStr(perfumeAnalytics?.longevity.k) === 'longlasting',
+                    
                     num: perfumeRatings?.longevity?.longLasting,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 8L10 12" stroke="#555" stroke-width="2" />
@@ -198,7 +299,7 @@ const RatingResult = ({ productId }) => {
                     isUserSelected: user
                         ? (modifyStr(result?.longevity || 'null') === 'eternal' ? true : false)
                         : modifyStr(perfumeAnalytics?.longevity.k) === 'eternal',
-                    num: perfumeRatings?.longevity?.eternal,
+                                       num: perfumeRatings?.longevity?.eternal,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 10L10 10" stroke="#333" stroke-width="2" />
                         <circle cx="10" cy="10" r="8" fill="#333" />
@@ -296,7 +397,7 @@ const RatingResult = ({ productId }) => {
             ]
         },
         {
-            name: 'GENDER ',
+            name: 'GENDER',
             icon: <IoMaleFemale className='text-slate-400' size={32} />,
 
             results: results,
@@ -308,7 +409,7 @@ const RatingResult = ({ productId }) => {
                     isUserSelected: user
                         ? (modifyStr(result?.gender || 'null') === 'female' ? true : false)
                         : modifyStr(perfumeAnalytics?.gender.k) === 'female',
-                    num: perfumeRatings?.gender?.female
+                    num: perfumeRatings?.gender?.female,
                 },
                 {
                     name: 'More Female',
@@ -354,13 +455,7 @@ const RatingResult = ({ productId }) => {
         }
     }, [user])
 
-    const [defaultRange, setDefaulRange] = useState({
-        longevity: 0,
-        priceValue: 0,
-        gender: 0,
-        sillage: 0
 
-    })
 
 
 
@@ -394,21 +489,20 @@ const RatingResult = ({ productId }) => {
 
                     {/* Range Input */}
                     <div className="w-full flex justify-center">
-                        <input
+                       {<input
                             className="w-full h-[12px] sm:h-[14px] md:h-[16px] rounded-md cursor-pointer"
                             min={1}
                             max={5}
                             step={1}
-                            defaultValue=''
+                            value={parseInt(calculateDefaultLongevity(item.name.toLowerCase()))}
                             type="range"
                             onChange={(e) => {
                                 updateRating(item, item.status[e.target.value - 1]);
                                 setEmoji(e.target.value);
 
                             }}
-                        />
+                        />}
                     </div>
-                    {/* <RangeInput key={ } item={ } setEmoji={ } updateRating={ } /> */}
 
                     {/* Status Details Section */}
                     <div className="space-y-3">
