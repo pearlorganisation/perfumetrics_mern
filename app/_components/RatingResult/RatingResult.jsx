@@ -11,50 +11,46 @@ import { toast } from 'sonner';
 import { useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from "use-debounce";
 import { RiWindyFill } from 'react-icons/ri';
-import perfumeMetaData from '@/store/perfumeMetaData';
 
 
 const RatingResult = ({ productId }) => {
-    const { id, setId, clearId } = perfumeMetaData();
     const { user } = userStore();
     const [result, setResult] = useState([])
     const [perfumeRatings, setPerfumeRatings] = useState([])
     const [rateData, setRateData] = useState({});
     const [perfumeAnalytics, setPerfumeAnalytics] = useState(null);
 
-    // console.log("Fetched User !!", user);
+    console.log("Fetched User !!", user);
     async function getTotalRatings(perfumeId) {
         const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${perfumeId}`)
-        // console.log(result)
+        console.log(result)
         setPerfumeRatings(result?.data?.data)
     }
     async function getTotalRatingsAnalyst(perfumeId) {
         const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/review-analytics/${perfumeId}`)
-        // console.log("getTotalRatingsAnalyst", result.data)
+        console.log("getTotalRatingsAnalyst", result.data)
         setPerfumeAnalytics(result?.data?.data)
     }
     useEffect(() => {
-        if (id) {
-            getTotalRatings(id);
-            getTotalRatingsAnalyst(id);
-        }
-    }, [id])
+        getTotalRatings(productId);
+        getTotalRatingsAnalyst(productId);
+    }, [])
 
 
 
     const getReviewByUserId = async () => {
-        const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/review/user/${user?._id}`)
-        // console.log(result, "Reslt")
-        setResult(result?.data?.data[0])
+        const result = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/review/user/${user?._id}?productId=${productId}`)
+        console.log(result, "Reslt")
+        setResult(result?.data?.data)
     }
     const updateReviewByUserId = async (payload) => {
-        // console.log(id, "id")
-        // console.log(payload, "payload")
-        const result = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${id}`, { ...payload })
+        console.log(productId, "productid")
+        console.log(payload, "payload")
+        const result = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/productReviewCount/${productId}`, { ...payload })
         getReviewByUserId()
-        getTotalRatings(id)
-        getTotalRatingsAnalyst(id)
-        // console.log(result, "Reslt")
+        getTotalRatings(productId)
+        getTotalRatingsAnalyst(productId)
+        console.log(result, "Reslt")
     }
     const [emoji, setEmoji] = useState(1)
     const modifyStr = (str) => {
@@ -82,10 +78,10 @@ const RatingResult = ({ productId }) => {
 
     const updateRating = useDebouncedCallback((p1, p2) => {
         if (user?._id) {
-            // console.log(user, "user")
+            console.log(user, "user")
             let obj = {}
             obj[toCamelCase(p1?.name)] = toCamelCase(p2?.name)
-            // console.log(obj, "obj")
+            console.log(obj, "obj")
             updateReviewByUserId({ userId: user?._id, ...obj })
             setRateData(prev => {
                 return { userId: user?._id, ...obj }
@@ -153,8 +149,8 @@ const RatingResult = ({ productId }) => {
                 {
                     name: 'Very Weak',
                     isUserSelected: user
-                        ? (modifyStr(result?.longevity || 'null') === 'veryweak' ? true : false)
-                        : modifyStr(perfumeAnalytics?.longevity.k) === 'veryweak',
+                        ? (modifyStr(result?.longevity?.toLowerCase()) === 'veryweak' ? true : false)
+                        : modifyStr(perfumeAnalytics?.longevity?.k)?.toLowerCase() === 'veryweak' ?true:false,
                     num: perfumeRatings?.longevity?.veryWeak,
                     icon: (
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
@@ -166,8 +162,8 @@ const RatingResult = ({ productId }) => {
                 {
                     name: 'Weak',
                     isUserSelected: user
-                        ? (modifyStr(result?.longevity || 'null') === 'weak' ? true : false)
-                        : modifyStr(perfumeAnalytics?.longevity.k) === 'weak',
+                        ? (modifyStr(result?.longevity?.toLowerCase()) === 'weak' ? true : false)
+                        : modifyStr(perfumeAnalytics?.longevity?.k)?.toLowerCase() === 'weak' ?true:false,
                     num: perfumeRatings?.longevity?.weak,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
@@ -177,8 +173,8 @@ const RatingResult = ({ productId }) => {
                 {
                     name: 'Moderate',
                     isUserSelected: user
-                        ? (modifyStr(result?.longevity || 'null') === 'moderate' ? true : false)
-                        : modifyStr(perfumeAnalytics?.longevity.k) === 'moderate',
+                        ? (modifyStr(result?.longevity?.toLowerCase()) === 'moderate' ? true : false)
+                        : modifyStr(perfumeAnalytics?.longevity?.k)?.toLowerCase() === 'moderate' ?true:false,
                     num: perfumeRatings?.longevity?.moderate,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 4L10 16" stroke="#aaa" stroke-width="2" />
@@ -188,8 +184,8 @@ const RatingResult = ({ productId }) => {
                 {
                     name: 'Long Lasting',
                     isUserSelected: user
-                        ? (modifyStr(result?.longevity || 'null') === 'longlasting' ? true : false)
-                        : modifyStr(perfumeAnalytics?.longevity.k) === 'longlasting',
+                        ? (modifyStr(result?.longevity?.toLowerCase()) === 'longlasting' ? true : false)
+                        : modifyStr(perfumeAnalytics?.longevity?.k)?.toLowerCase() === 'longlasting'?true:false,
                     num: perfumeRatings?.longevity?.longLasting,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 8L10 12" stroke="#555" stroke-width="2" />
@@ -199,9 +195,9 @@ const RatingResult = ({ productId }) => {
                 },
                 {
                     name: 'Eternal',
-                    isUserSelected: user
-                        ? (modifyStr(result?.longevity || 'null') === 'eternal' ? true : false)
-                        : modifyStr(perfumeAnalytics?.longevity.k) === 'eternal',
+                    isUserSelected: user?._id
+                        ? (modifyStr(result?.longevity?.toLowerCase()) === 'eternal' ? true : false)
+                        : (modifyStr(perfumeAnalytics?.longevity?.k)?.toLowerCase() === 'eternal' ? true:false),
                     num: perfumeRatings?.longevity?.eternal,
                     icon: (<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M10 10L10 10" stroke="#333" stroke-width="2" />
@@ -221,37 +217,37 @@ const RatingResult = ({ productId }) => {
                 {
                     name: 'Intimate',
                     isUserSelected: user
-                        ? (modifyStr(result?.sillage || 'null') === 'intimate' ? true : false)
-                        : modifyStr(perfumeAnalytics?.sillage.k) === 'intimate',
+                        ? (modifyStr(result?.sillage?.toLowerCase()) === 'intimate' ? true : false)
+                        : modifyStr(perfumeAnalytics?.sillage?.k)?.toLowerCase() === 'intimate' ?true:false,
                     num: perfumeRatings?.sillage?.intimate
                 },
                 {
                     name: 'No Vote',
                     isUserSelected: user
-                        ? (modifyStr(result?.sillage || 'null') === 'novote' ? true : false)
-                        : modifyStr(perfumeAnalytics?.sillage.k) === 'novote',
+                        ? (modifyStr(result?.sillage?.toLowerCase()) === 'novote' ? true : false)
+                        : modifyStr(perfumeAnalytics?.sillage?.k)?.toLowerCase() === 'novote'?true:false,
                     num: perfumeRatings?.sillage?.noVote,
                 },
 
                 {
                     name: 'Moderate',
                     isUserSelected: user
-                        ? (modifyStr(result?.sillage || 'null') === 'moderate' ? true : false)
-                        : modifyStr(perfumeAnalytics?.sillage.k) === 'moderate',
+                        ? (modifyStr(result?.sillage?.toLowerCase()) === 'moderate' ? true : false)
+                        : modifyStr(perfumeAnalytics?.sillage?.k)?.toLowerCase() === 'moderate'?true:false,
                     num: perfumeRatings?.sillage?.moderate
                 },
                 {
                     name: 'Strong',
                     isUserSelected: user
-                        ? (modifyStr(result?.sillage || 'null') === 'strong' ? true : false)
-                        : modifyStr(perfumeAnalytics?.sillage.k) === 'strong',
+                        ? (modifyStr(result?.sillage?.toLowerCase()) === 'strong' ? true : false)
+                        : modifyStr(perfumeAnalytics?.sillage?.k)?.toLowerCase() === 'strong'?true:false,
                     num: perfumeRatings?.sillage?.strong
                 },
                 {
                     name: 'Enormous',
                     isUserSelected: user
-                        ? (modifyStr(result?.sillage || 'null') === 'enormous' ? true : false)
-                        : modifyStr(perfumeAnalytics?.sillage.k) === 'enormous',
+                        ? (modifyStr(result?.sillage?.toLowerCase()) === 'enormous' ? true : false)
+                        : modifyStr(perfumeAnalytics?.sillage?.k)?.toLowerCase() === 'enormous'?true:false,
                     num: perfumeRatings?.sillage?.enormous
                 }
             ]
@@ -265,42 +261,42 @@ const RatingResult = ({ productId }) => {
                 {
                     name: 'Way Over Priced',
                     isUserSelected: user
-                        ? (modifyStr(result?.priceValue || 'null') === 'wayoverpriced' ? true : false)
-                        : modifyStr(perfumeAnalytics?.priceValue.k) === 'wayoverpriced',
+                        ? (modifyStr(result?.priceValue?.toLowerCase()) === 'wayoverpriced' ? true : false)
+                        : modifyStr(perfumeAnalytics?.priceValue?.k)?.toLowerCase() === 'wayoverpriced'?true:false,
                     num: perfumeRatings?.priceValue?.wayOverPriced
                 },
                 {
                     name: 'Over Priced',
                     isUserSelected: user
-                        ? (modifyStr(result?.priceValue || 'null') === 'overpriced' ? true : false)
-                        : modifyStr(perfumeAnalytics?.priceValue.k) === 'overpriced',
+                        ? (modifyStr(result?.priceValue?.toLowerCase()) === 'overpriced' ? true : false)
+                        : modifyStr(perfumeAnalytics?.priceValue?.k)?.toLowerCase() === 'overpriced'?true:false,
                     num: perfumeRatings?.priceValue?.overPriced
                 },
                 {
                     name: 'Ok',
                     isUserSelected: user
-                        ? (modifyStr(result?.priceValue || 'null') === 'ok' ? true : false)
-                        : modifyStr(perfumeAnalytics?.priceValue.k) === 'ok',
+                        ? (modifyStr(result?.priceValue?.toLowerCase()) === 'ok' ? true : false)
+                        : modifyStr(perfumeAnalytics?.priceValue?.k)?.toLowerCase() === 'ok'?true:false,
                     num: perfumeRatings?.priceValue?.ok
                 },
                 {
                     name: 'Good Value',
                     isUserSelected: user
-                        ? (modifyStr(result?.priceValue || 'null') === 'goodvalue' ? true : false)
-                        : modifyStr(perfumeAnalytics?.priceValue.k) === 'goodvalue',
+                        ? (modifyStr(result?.priceValue?.toLowerCase()) === 'goodvalue' ? true : false)
+                        : modifyStr(perfumeAnalytics?.priceValue?.k)?.toLowerCase() === 'goodvalue'?true:false,
                     num: perfumeRatings?.priceValue?.goodValue
                 },
                 {
                     name: 'Great Value',
                     isUserSelected: user
-                        ? (modifyStr(result?.priceValue || 'null') === 'greatvalue' ? true : false)
-                        : modifyStr(perfumeAnalytics?.priceValue.k) === 'greatvalue',
+                        ? (modifyStr(result?.priceValue?.toLowerCase()) === 'greatvalue' ? true : false)
+                        : modifyStr(perfumeAnalytics?.priceValue?.k)?.toLowerCase() === 'greatvalue'?true:false,
                     num: perfumeRatings?.priceValue?.greatValue
                 }
             ]
         },
         {
-            name: 'GENDER ',
+            name: 'GENDER',
             icon: <IoMaleFemale className='text-slate-400' size={32} />,
 
             results: results,
@@ -310,23 +306,23 @@ const RatingResult = ({ productId }) => {
                     name: 'Female',
                     // isUserSelected: modifyStr(result?.gender) === 'female',
                     isUserSelected: user
-                        ? (modifyStr(result?.gender || 'null') === 'female' ? true : false)
-                        : modifyStr(perfumeAnalytics?.gender.k) === 'female',
+                        ? (modifyStr(result?.gender?.toLowerCase()) === 'female' ? true : false)
+                        : modifyStr(perfumeAnalytics?.gender?.k)?.toLowerCase() === 'female'?true:false,
                     num: perfumeRatings?.gender?.female
                 },
                 {
                     name: 'More Female',
                     isUserSelected: user
-                        ? (modifyStr(result?.gender || 'null') === 'morefemale' ? true : false)
-                        : modifyStr(perfumeAnalytics?.gender.k) === 'morefemale',
+                        ? (modifyStr(result?.gender?.toLowerCase()) === 'morefemale' ? true : false)
+                        : modifyStr(perfumeAnalytics?.gender?.k)?.toLowerCase() === 'morefemale'?true:false,
 
                     num: perfumeRatings?.gender?.moreFemale
                 },
                 {
                     name: 'Unisex',
                     isUserSelected: user
-                        ? (modifyStr(result?.gender || 'null') === 'unisex' ? true : false)
-                        : modifyStr(perfumeAnalytics?.gender.k) === 'unisex',
+                        ? (modifyStr(result?.gender?.toLowerCase()) === 'unisex' ? true : false)
+                        : modifyStr(perfumeAnalytics?.gender?.k)?.toLowerCase() === 'unisex'?true:false,
 
 
                     num: perfumeRatings?.gender?.unisex
@@ -334,16 +330,16 @@ const RatingResult = ({ productId }) => {
                 {
                     name: 'More Male',
                     isUserSelected: user
-                        ? (modifyStr(result?.gender || 'null') === 'moremale' ? true : false)
-                        : modifyStr(perfumeAnalytics?.gender.k) === 'moremale',
+                        ? (modifyStr(result?.gender?.toLowerCase()) === 'moremale' ? true : false)
+                        : modifyStr(perfumeAnalytics?.gender?.k)?.toLowerCase() === 'moremale'?true:false,
 
                     num: perfumeRatings?.gender?.moreMale
                 },
                 {
                     name: 'Male',
                     isUserSelected: user
-                        ? (modifyStr(result?.gender || 'null') === 'male' ? true : false)
-                        : modifyStr(perfumeAnalytics?.gender.k) === 'male',
+                        ? (modifyStr(result?.gender?.toLowerCase()) === 'male' ? true : false)
+                        : modifyStr(perfumeAnalytics?.gender?.k)?.toLowerCase() === 'male'?true:false,
 
                     num: perfumeRatings?.gender?.male
 
@@ -358,13 +354,103 @@ const RatingResult = ({ productId }) => {
         }
     }, [user])
 
-    const [defaultRange, setDefaulRange] = useState({
-        longevity: 0,
-        priceValue: 0,
-        gender: 0,
-        sillage: 0
+    const calculateDefaultLongevity = (nameOfVote) => {
+        const switchToggler = modifyStr(nameOfVote)?.toLowerCase();
+        // console.log("switchToggler",switchToggler);
 
-    })
+        switch (switchToggler) {
+            case 'longevity': {
+                if (user?._id) {
+                    const longevity = modifyStr(result?.longevity || 'null');
+    
+                    if (longevity.toLowerCase() === 'veryweak') return 1;
+                    if (longevity.toLowerCase() === 'weak') { console.log("Yah hooo ") ; return 2;}
+                    if (longevity.toLowerCase() === 'moderate') return 3;
+                    if (longevity.toLowerCase() === 'longlasting') return 4;
+                    if (longevity.toLowerCase() === 'eternal') return 5;
+                } else {
+                    const longevity = modifyStr(perfumeAnalytics?.longevity?.k||'null');
+                    // console.log("we were here amnnnn!!", longevity);
+    
+                    if (longevity.toLowerCase() == 'veryweak') return 1;
+                    if (longevity.toLowerCase() == 'weak') return 2;
+                    if (longevity.toLowerCase() == 'moderate') return 3;
+                    if (longevity.toLowerCase() == 'longlasting') return 4;
+                    if (longevity.toLowerCase() == 'eternal') return 5;
+                }
+                return 5;
+            }
+            case 'sillage': {
+                if (user?._id) {
+                    const sillage =  modifyStr(result?.sillage || 'null');
+    
+                    if (sillage.toLowerCase() === 'intimate') return 1;
+                    if (sillage.toLowerCase() === 'novote') return 2;
+                    if (sillage.toLowerCase() === 'moderate') return 3;
+                    if (sillage.toLowerCase() === 'strong') return 4;
+                    if (sillage.toLowerCase() === 'enormous') return 5;
+                } else {
+                    const sillage = modifyStr(perfumeAnalytics?.sillage.k||'null');
+                    // console.log("we were here amnnnn!!", sillage);
+                    if (sillage.toLowerCase() === 'intimate') return 1;
+                    if (sillage.toLowerCase() === 'novote') return 2;
+                    if (sillage.toLowerCase() === 'moderate') return 3;
+                    if (sillage.toLowerCase() === 'strong') return 4;
+                    if (sillage.toLowerCase() === 'enormous') return 5;
+                }
+                return 5
+            }
+            case 'pricevalue': {
+                // console.log("we were here amnnnn pricevalue !!",modifyStr(nameOfVote));
+
+                if (user?._id) {
+                    const priceValue =  modifyStr(result?.priceValue || 'null');
+
+                    if (priceValue.toLowerCase() == 'wayoverpriced') return 1;
+                    if (priceValue.toLowerCase() == 'overpriced') return 2;
+                    if (priceValue.toLowerCase() == 'ok') return 3;
+                    if (priceValue.toLowerCase() == 'goodvalue') return 4;
+                    if (priceValue.toLowerCase() == 'greatvalue') return 5;
+                } else {
+                    const priceValue = modifyStr(perfumeAnalytics?.priceValue.k||'null');
+                    // console.log("we were here amnnnn!!", priceValue);
+
+                    if (priceValue.toLowerCase() == 'wayoverpriced') return 1;
+                    if (priceValue.toLowerCase() == 'overpriced') return 2;
+                    if (priceValue.toLowerCase() == 'ok') return 3;
+                    if (priceValue.toLowerCase() == 'goodvalue') return 4;
+                    if (priceValue.toLowerCase() == 'greatvalue') return 5;
+                }
+                return 5
+            }
+            case 'gender': {
+                // console.log("Processing gender:", switchToggler);
+    
+                if (user?._id) {
+                    const gender = modifyStr(result?.gender || 'null');
+                    // console.log("Gender for user:", gender);
+    
+                    if (gender.toLowerCase() === 'female') return 1;
+                    if (gender.toLowerCase() === 'morefemale') return 2; // Corrected duplicate
+                    if (gender.toLowerCase() === 'unisex') return 3;
+                    if (gender.toLowerCase() === 'moremale') return 4;
+                    if (gender.toLowerCase() === 'male') return 5;
+                } else {
+                    const gender = modifyStr(perfumeAnalytics?.gender?.k || 'null');
+                    // console.log("Gender from analytics:", gender);
+    
+                    if (gender.toLowerCase() === 'female') return 1;
+                    if (gender.toLowerCase() === 'morefemale') return 2; // Corrected duplicate
+                    if (gender.toLowerCase() === 'unisex') return 3;
+                    if (gender.toLowerCase() === 'moremale') return 4;
+                    if (gender.toLowerCase() === 'male') return 5;
+                }
+                return 5;
+            }
+            default:
+                return null; // Default fallback
+        }
+    };
 
 
 
@@ -380,20 +466,21 @@ const RatingResult = ({ productId }) => {
 
                     {/* Status Section */}
                     <div className="flex  justify-center gap-3 sm:gap-4 h-full">
-                        {item.status.map((stats, idx) => (
+                        {item.status.map((stats, idx) => {
+                            console.log("item?.name",stats?.name,stats.isUserSelected)
+                            return <div
+                            key={idx}
+                            className="cursor-pointer grid place-items-center font-medium relative capitalize"
+                        >
+                            <div className="absolute w-full h-full bg-transparent"></div>
                             <div
-                                key={idx}
-                                className="cursor-pointer grid place-items-center font-medium relative capitalize"
+                                className={`${stats.isUserSelected ? "text-pink-400" : "backdrop-grayscale"
+                                    } text-xs sm:text-[12px] font-bold text-wrap text-center`}
                             >
-                                <div className="absolute w-full h-full bg-transparent"></div>
-                                <div
-                                    className={`${stats?.isUserSelected ? "text-pink-400" : "backdrop-grayscale"
-                                        } text-xs sm:text-[12px] font-bold text-wrap text-center`}
-                                >
-                                    {stats?.name}
-                                </div>
+                                {stats?.name}
                             </div>
-                        ))}
+                        </div>
+                        })}
                     </div>
 
                     {/* Range Input */}
@@ -403,7 +490,7 @@ const RatingResult = ({ productId }) => {
                             min={1}
                             max={5}
                             step={1}
-                            defaultValue=''
+                            value={parseInt(calculateDefaultLongevity(item?.name))||5}
                             type="range"
                             onChange={(e) => {
                                 updateRating(item, item.status[e.target.value - 1]);
