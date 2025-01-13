@@ -24,7 +24,6 @@ import BestSale from "./_components/BestSale/BestSale";
 import CardsList from "./_components/CardsList/CardsList";
 import Gallery from "./_components/Gallery/Gallery";
 import LoginSignUp from "./_components/LoginSignUp/LoginSignUp";
-import News from "./_components/News/News";
 import PerfumeSection from "./_components/PerfumeSection/PerfumeSection";
 import PopularBrands from "./_components/PopularBrands/PopularBrands";
 import Reviews from "./_components/Reviews/Reviews";

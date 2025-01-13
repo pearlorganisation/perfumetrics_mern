@@ -24,8 +24,10 @@ export default async function siteMap() {
     const response = await fetch(`${baseUrl}/api/v1/perfume`);
     const newsRes = await fetch(`${baseUrl}/api/v1/news`);
     const brandRes = await fetch(`${baseUrl}/api/v1/brand`);
+    const celebrityRes = await fetch(`${baseUrl}/api/v1/celebrityPerfumes`);
 
     if (!newsRes.ok) throw new Error("Failed to fetch News data");
+    if (!celebrityRes.ok) throw new Error("Failed to fetch News data");
     if (!response.ok) {
       throw new Error("Failed to fetch Perfumes data");
     }
@@ -34,17 +36,28 @@ export default async function siteMap() {
     const responseData = await response.json();
     const responseNews = await newsRes.json();
     const responseBrand = await brandRes.json();
+    const responseCelebrity = await celebrityRes.json();
     // Extract perfumes data
     const allPerfumesData = responseData?.data || [];
     const allNewsData = responseNews?.data || [];
     const allBrandData = responseBrand?.data || [];
+    const allCelebrityData = responseCelebrity?.data || [];
     console.log(
-      chalk.bgYellow("This is news data in sitemap", allPerfumesData.length)
+      chalk.bgYellow(
+        "This is news data in sitemap",
+        JSON.stringify(allPerfumesData?.length)
+      )
     );
     // Map perfumes to URLs and last modified dates
     const allPerfumes = allPerfumesData?.map((post) => {
       return {
         url: `${baseUrlFrontend}/product/${post?.slug}`,
+        lastModified: formatDate(post?.updatedAt || "2024-12-21T10:39:05.105Z"),
+      };
+    });
+    const allCelebrity = allCelebrityData?.map((post) => {
+      return {
+        url: `${baseUrlFrontend}/celebrityPerfumeBlog/${post?.slug}`,
         lastModified: formatDate(post?.updatedAt || "2024-12-21T10:39:05.105Z"),
       };
     });
@@ -83,9 +96,22 @@ export default async function siteMap() {
       {
         url: `${baseUrlFrontend}/review/requestAreview`,
       },
+      {
+        url: `${baseUrlFrontend}/aboutUs`,
+      },
+      {
+        url: `${baseUrlFrontend}/termsConditions`,
+      },
+      {
+        url: `${baseUrlFrontend}/privacyPolicy`,
+      },
+      {
+        url: `${baseUrlFrontend}/contactUs`,
+      },
       ...allNews,
       ...allPerfumes,
       ...allBrands,
+      ...allCelebrity,
     ];
   } catch (error) {
     console.error("Error generating sitemap:", error);

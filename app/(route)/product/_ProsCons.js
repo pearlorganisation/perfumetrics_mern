@@ -237,7 +237,7 @@ const ProsCons = () => {
         </div>
       </div>
 
-      <p className="md:text-left  text-xs text-[#51799C] italic text-justify font-normal">
+      <p className="md:text-left  text-xs text-[#51799C] italic text-justify font-normal ">
         <span className="font-bold text-[14px] text-[#0A0A0A]"> Note:</span> The
         pros and cons listed on this page have been generated using the
         artificial intelligence system, which analyzes product reviews submitted

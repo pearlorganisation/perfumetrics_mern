@@ -10,6 +10,7 @@ import PerfumePhotos from "../PerfumePhotos/PerfumePhotos";
 import Image from "next/image";
 import RelatedFragram from "@/app/(route)/product/[productId]/RelatedFragram";
 import FragramRatings from "@/app/(route)/product/[productId]/FragramRatings";
+import parse from 'html-react-parser';
 // import RatingResult from "../RatingResult/RatingResult";
 const RatingResult = dynamic(() => import("../RatingResult/RatingResult"), {
     loading: () => <p>Loading Rating</p>,
@@ -123,6 +124,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
         setId(data?.data?._id)
     }, [data?.data?._id])
 
+    const isHTML = (str) => /<\/?[a-z][\s\S]*>/i.test(str);
 
 
     return (
@@ -167,15 +169,31 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                         <Feedback />
                         {/* detail start */}
                         <div className="space-y-7  pt-3 ">
-                            <div className="!text-[16px] !leading-[25px] !font-normal text-justify md:text-left text-slate-700">{data?.data?.details}</div>
+                            <div className="!text-[16px] !leading-[25px] !font-normal text-justify md:text-left text-slate-700">
+                                {isHTML(data?.data?.details) ? (
+                                    // Parse and render HTML content
+                                    <div>{parse(data?.data?.details)}</div>
+                                ) : (
+                                    // Render plain text
+                                    <p>{data?.data?.details}</p>
+                                )}
+                                {/* {data?.data?.details} */}
+
+                            </div>
 
                             <div className="relative border-y-2 pt-7 py-6">
                                 <div className="p-2 absolute -top-5 left-[50%] bg-white">
                                     <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
                                 </div>
-                                <p className='text-justify md:text-left !text-[13px] !leading-[21px] !font-light italic text-slate-600'>
-
-                                    {data?.data?.description}
+                                <p className='text-justify md:text-left !text-[13px] !leading-[21px] !font-light italic text-slate-800'>
+                                    {isHTML(data?.data?.description) ? (
+                                        // Parse and render HTML content
+                                        <div>{parse(data?.data?.description)}</div>
+                                    ) : (
+                                        // Render plain text
+                                        <p>{data?.data?.description}</p>
+                                    )}
+                                    {/* {data?.data?.description} */}
                                 </p>
                             </div >
 
@@ -217,12 +235,12 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                     </div>
                 </div>
             </div>
-            <div className=" gap-x-10 gap-y-14 grid gap-4  lg:grid-cols-[auto_18rem] py-8">
+            {/* <div className=" gap-x-10 gap-y-14 grid gap-4  lg:grid-cols-[auto_18rem] py-8">
 
 
-            </div>
+            </div> */}
             {/* Perfume Photos starts */}
-            <div className="mt-4 md:py-14 ">
+            <div className="md:py-14 ">
                 <div className="w-full relative grid place-items-center mb-10">
                     <h2
                         className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
@@ -292,7 +310,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                                 alt={el.name}
                                                                 className="w-8 sm:w-12 md:h-12"
                                                             />
-                                                            <p className='text-xs '>{el.name}</p>
+                                                            <p className='text-xs '>{el.name?.slice(0, 5)}...</p>
                                                         </div>
                                                     );
                                                 })}
@@ -302,7 +320,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                     <div className="flex flex-col gap-3 justify-center items-center flex-wrap">
                                         <p className="text-center font-bold text-xs md:text-base">Middle Notes</p>
                                         <div className="flex gap-3 flex-wrap justify-center">
-                                            {data.data?.middleNote.map((el) => {
+                                            {data && data.data?.middleNote.map((el) => {
                                                 return (
                                                     <div
                                                         key={el._id}
@@ -313,7 +331,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                             alt={el.name}
                                                             className="w-8 sm:w-12 md:h-12"
                                                         />
-                                                        <p className='text-xs '>{el.name}</p>
+                                                        <p className='text-xs '>{el.name?.slice(0, 5)}...</p>
                                                     </div>
                                                 );
                                             })}
@@ -334,7 +352,7 @@ const ProductPage = ({ data, sidebarReview, productId }) => {
                                                             alt={el.name}
                                                             className="w-8 sm:w-12 md:h-12"
                                                         />
-                                                        <p className='text-xs '>{el.name}</p>
+                                                        <p className='text-xs '>{el.name?.slice(0, 5)}...</p>
                                                     </div>
                                                 );
                                             })}

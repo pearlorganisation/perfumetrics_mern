@@ -9,15 +9,24 @@ async function getAllPerfume() {
   return data;
 }
 async function getPerfumeById(perfumeId) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/slug/${perfumeId}`,
-    {
-      cache: "no-cache",
-    }
-  );
-  const data = await response.json();
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/slug/${perfumeId}`,
+      {
+        cache: "no-cache",
+      }
+    );
 
-  return data;
+    if (!response.ok) {
+      throw new Error("Data Not Found");
+    }
+    const data = await response.json();
+
+    return data;
+  } catch (err) {
+    // throw new Error("Data Not Found");
+    console.log("Data Not Found !!");
+  }
 }
 async function getPerfumeBySlug(slug) {
   const response = await fetch(
@@ -135,12 +144,14 @@ const page = async ({ params }) => {
           </div>
         }
       >
-        <ProductPage
-          data={data}
-          dataProsCons={dataProsCons}
-          sidebarReview={sidebarReview}
-          productId={productId}
-        />
+        {data && (
+          <ProductPage
+            data={data}
+            dataProsCons={dataProsCons}
+            sidebarReview={sidebarReview}
+            productId={productId}
+          />
+        )}
       </Suspense>
     </>
   );

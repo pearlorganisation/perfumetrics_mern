@@ -161,7 +161,10 @@ const NewPerfumes = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6  pt-6">
               {celebrityPerfume?.map((blog, index) => {
                 return (
-                  <Link key={index} href={`/celebrityPerfumeBlog/${blog?._id}`}>
+                  <Link
+                    key={index}
+                    href={`/celebrityPerfumeBlog/${blog?.slug}`}
+                  >
                     <div
                       key={index}
                       className="bg-white rounded-lg shadow-md overflow-hidden"

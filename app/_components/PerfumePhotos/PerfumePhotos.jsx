@@ -21,23 +21,24 @@ const PerfumePhotos = ({ data }) => {
       breakpoints={{
         320: {
           slidesPerView: 2,
-          spaceBetween: 15,
+          spaceBetween: 0,
         },
         768: {
           slidesPerView: 3,
-          spaceBetween: 20,
+          spaceBetween: 0,
         },
         1024: {
           slidesPerView: 4,
-          spaceBetween: 30,
+          spaceBetween: 0,
         },
       }}
+      className=" !flex !gap-2 !space-x-0"
     >
       {data?.map((item, idx) => (
-        <SwiperSlide key={idx}>
-          <div className="flex justify-center items-center h-[180px] border rounded-lg bg-neutral-200">
+        <SwiperSlide key={idx} className="mb-8">
+          <div className="flex justify-center items-center h-[200px] border rounded-lg bg-neutral-100">
             <img
-              className="!object-contain w-full h-full"
+              className="!object-cover w-full h-full"
               src={item?.path}
               alt={`Perfume ${idx + 1}`}
             />

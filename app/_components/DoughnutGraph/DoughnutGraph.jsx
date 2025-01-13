@@ -7,6 +7,7 @@ const PieChartComponent = ({ mainAccords }) => {
     name: accord.name,
     value: accord.percentage,
   }));
+  console.log(mainAccords, "mainAccords")
 
   return (
     <>
@@ -23,7 +24,7 @@ const PieChartComponent = ({ mainAccords }) => {
           fill="#8884d8"
         >
           {data?.map((_, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index]} />
+            <Cell key={`cell-${index}`} stroke={COLORS[index] == '#FFFFFF' ? "red" : 'blue'} fill={COLORS[index]} />
           ))}
         </Pie>
         <Tooltip />
@@ -35,6 +36,8 @@ const PieChartComponent = ({ mainAccords }) => {
               key={el._id}
               style={{
                 backgroundColor: `${el?.color}`,
+                border: el?.color === '#ffffff' ? '2px solid #686D76' : '',
+                color: el?.color === '#ffffff' ? ' #686D76' : ''
               }}
               className="bg-pink-500 px-3 py-1 text-center rounded-sm text-white min-w-[6rem]"
             >

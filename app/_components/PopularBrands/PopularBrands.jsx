@@ -83,6 +83,7 @@ import style from "./style.module.css";
 const PopularBrands = () => {
 
   const [popularPerfumeData, setPopularPerfumeData] = useState(null);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     axios
@@ -94,8 +95,12 @@ const PopularBrands = () => {
       })
       .then((res) => {
         setPopularPerfumeData(res.data.data);
+        setLoading(false)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setLoading(false)
+        console.log(err)
+      });
   }, []);
 
   return (
@@ -107,7 +112,18 @@ const PopularBrands = () => {
       <div className="relative">
         <div className={`overflow-x-auto ${style.custom_scrollbar} pb-4`}>
           <div className="flex space-x-4 min-w-max gap-0 md:gap-6">
-            {popularPerfumeData && popularPerfumeData.map((fragrance, index) => (
+            {loading ? Array.from({ length: 8 }).map((item) => (
+              <div key={item} className="flex flex-col items-center gap-2">
+                {/* Circular container */}
+                <div className="w-32 h-32 rounded-full bg-gray-200 animate-pulse" />
+
+                {/* Brand name skeleton */}
+                <div className="w-24 h-4 bg-gray-200 rounded animate-pulse" />
+
+                {/* Product name skeleton - making it longer than brand name */}
+                <div className="w-32 h-4 bg-gray-200 rounded animate-pulse" />
+              </div>
+            )) : popularPerfumeData && popularPerfumeData.map((fragrance, index) => (
               <Link
                 href={`/product/${fragrance?.slug}`}
                 key={index} className="flex-none w-[160px]">

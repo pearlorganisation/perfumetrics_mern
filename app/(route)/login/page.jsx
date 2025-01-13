@@ -9,7 +9,7 @@ import { toast } from "sonner"
 
 const Login = () => {
     const { user, error, loading, login, isUserLoggedIn } = userStore();
-    const {getUserHistories} = userHistory();
+    const { getUserHistories } = userHistory();
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -30,7 +30,7 @@ const Login = () => {
             else {
                 getUserHistories(user?._id);
 
-                router.push('/')
+                router.back()
             }
         }
     }, [isUserLoggedIn])
