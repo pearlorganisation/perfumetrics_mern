@@ -12,6 +12,7 @@ import Dropdown from "../../Dropdown/Dropdown";
 import ReviewDropdown from "../../Dropdown/ReviewDropdown";
 import { IoMenuSharp } from "react-icons/io5";
 import { Nunito } from "next/font/google";
+import axios from "axios";
 
 const nunito = Nunito({
   subsets: ['latin'],
@@ -33,25 +34,27 @@ export default function Example() {
   };
 
   const getAllBrands = async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/brand/menu`,
-      {
-        cache: "no-store",
-      }
-    );
-    const data = await response.json();
-    setBrands(data?.data);
-    // console.log(data, "data")
-    return data;
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/brand/menu`,
+
+      );
+
+      const data = response.data; // Axios automatically parses JSON responses
+      setBrands(data?.data);
+      // console.log(data, "data")
+      return data;
+    } catch (error) {
+      console.error("Error fetching brands:", error);
+      setBrands([]); // Optionally reset the state in case of error
+      return null; // Return null to indicate failure
+    }
   };
 
-  // useEffect(() => {
-  //   console.log(user, "from header");
-  //   console.log(isUserLoggedIn, "isUserLoggedIn");
-  // }, [isUserLoggedIn]);
+
   useEffect(() => {
     getAllBrands();
-  }, [isUserLoggedIn]);
+  }, []);
 
   return (
     <header className={`${nunito.className} block relative bg-white shadow-[0_1px_2px#d1d1d1]`}>
@@ -150,21 +153,19 @@ export default function Example() {
                 <div className="space-x-3 flex py-2">
                   <div className="flex items-center space-x-3 relative">
                     <div
-                      className="w-10 h-10 relative  rounded-full bg-pink-500 flex items-center justify-center text-white font-bold cursor-pointer transition-all duration-300 ease-in-out"
+                      className="size-8 md:w-10 md:h-10 relative  rounded-full bg-pink-500 flex items-center justify-center text-white font-bold cursor-pointer transition-all duration-300 ease-in-out"
                       onMouseEnter={() => setShowEmail(true)}
                       onMouseLeave={() => setShowEmail(false)}
                     >
                       {user ? getInitials(user.userName) : "GU"}
                       {showEmail && user && (
-                        <div className=" bg-black/70 text-nowrap font-normal absolute -bottom-[2.8rem]  p-2 rounded-md shadow-lg z-10 transition-opacity duration-300 ease-in-out">
+                        <div className=" bg-black/70 text-nowrap  font-normal absolute -bottom-[2.8rem]  p-2 rounded-md shadow-lg z-10 transition-opacity duration-300 ease-in-out">
                           {user.userName}
                         </div>
                       )}
                     </div>
 
-                    {/* <span className="font-medium text-sm md:text-lg text-gray-800">
-                    {user?.userName || 'Guest'}
-                  </span> */}
+
                   </div>
                   <button
                     onClick={logout}
@@ -179,15 +180,15 @@ export default function Example() {
                 <div className="flex gap-2">
                   <Link
                     href="/login"
-                    className="font-semibold hover:text-pink-500 cursor-pointer transition duration-300 flex justify-center items-center space-x-1.5 p-1.5"
+                    className="font-semibold text-xs md:text-base hover:text-pink-500 cursor-pointer transition duration-300 flex justify-center items-center space-x-1.5"
                   >
-                    <AiOutlineLogin /> <span>Login</span>
+                    <AiOutlineLogin className="hidden md:block" /> <span>Login</span>
                   </Link>
                   <Link
                     href="/signUp"
-                    className=" font-semibold hover:text-pink-500 cursor-pointer transition duration-300 flex justify-center items-center space-x-1.5 p-1.5"
+                    className=" font-semibold text-xs md:text-base hover:text-pink-500 cursor-pointer transition duration-300 flex justify-center items-center space-x-1.5"
                   >
-                    <FaRegUser /> <span>Register</span>
+                    <FaRegUser className="hidden md:block" /> <span>Register</span>
                   </Link>
                 </div>
               )}

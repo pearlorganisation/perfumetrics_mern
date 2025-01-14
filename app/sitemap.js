@@ -21,7 +21,7 @@ export default async function siteMap() {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   try {
     // Fetch perfumes data
-    const response = await fetch(`${baseUrl}/api/v1/perfume`);
+    const response = await fetch(`${baseUrl}/api/v1/perfume?Limit=infinite`);
     const newsRes = await fetch(`${baseUrl}/api/v1/news`);
     const brandRes = await fetch(`${baseUrl}/api/v1/brand`);
     const celebrityRes = await fetch(`${baseUrl}/api/v1/celebrityPerfumes`);
