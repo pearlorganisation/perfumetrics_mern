@@ -41,6 +41,7 @@ const AddReview = () => {
             const data = await response.json();
             setLoading(false);
             toast.success("Comment Created!!", { position: 'top-center' });
+            setComment('')
             getComments(productId); // Fetch the updated comments after submitting the form
             return data;
         } catch (error) {
@@ -56,8 +57,11 @@ const AddReview = () => {
     }, []);
 
     useEffect(() => {
-        getComments(productId);
-    }, [getComments, productId]);
+        if (productId) {
+            getComments(productId);
+
+        }
+    }, [productId]);
 
     // Memoize the Review component so it only re-renders when commentsData changes
     const memoizedReview = useMemo(() => <Review commentsData={commentsData} />, [commentsData]);

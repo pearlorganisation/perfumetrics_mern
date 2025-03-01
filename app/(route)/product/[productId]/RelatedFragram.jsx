@@ -9,8 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 // Import required modules
-import { Navigation, Pagination } from "swiper/modules";
-import { useParams } from "next/navigation";
+
 import axios from "axios";
 import Link from "next/link";
 import perfumeMetaData from "@/store/perfumeMetaData";

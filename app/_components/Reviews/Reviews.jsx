@@ -68,7 +68,7 @@ const Reviews = async ({ reviewSidebar, length }) => {
                         <div className="flex items-center">
 
                           {
-                            Array.from({ length: 5 }).map(item => {
+                            Array.from({ length: Math.floor(Math.random() * 5) + 1 }).map(item => {
                               return <svg
                                 className="w-3 h-3 md:w-5 md:h-5 text-yellow-500"
                                 fill="currentColor"

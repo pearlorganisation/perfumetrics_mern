@@ -1,20 +1,19 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { startTransition, useEffect, useOptimistic, useState } from 'react'
 import { IoIosTimer } from "react-icons/io";
-import { FaUser } from "react-icons/fa";
 import { BiSolidDollarCircle } from "react-icons/bi";
 import { IoMaleFemale } from "react-icons/io5";
 import { userStore } from '@/store/userStore';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import { toast } from 'sonner';
-import { useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from "use-debounce";
 import { RiWindyFill } from 'react-icons/ri';
+import perfumeMetaData from '@/store/perfumeMetaData';
 
 
 const RatingResult = ({ productId }) => {
     const { user } = userStore();
+    const { id, setId, clearId } = perfumeMetaData();
     const [result, setResult] = useState([])
     const [perfumeRatings, setPerfumeRatings] = useState([])
     const [rateData, setRateData] = useState({});
@@ -32,9 +31,11 @@ const RatingResult = ({ productId }) => {
         setPerfumeAnalytics(result?.data?.data)
     }
     useEffect(() => {
-        getTotalRatings(productId);
-        getTotalRatingsAnalyst(productId);
-    }, [])
+        if (productId) {
+            getTotalRatings(productId);
+            getTotalRatingsAnalyst(productId);
+        }
+    }, [productId])
 
 
 
@@ -76,7 +77,7 @@ const RatingResult = ({ productId }) => {
 
 
 
-    const updateRating = useDebouncedCallback((p1, p2) => {
+    const updateRating = (p1, p2) => {
         if (user?._id) {
             console.log(user, "user")
             let obj = {}
@@ -89,7 +90,7 @@ const RatingResult = ({ productId }) => {
         } else {
             toast.info("Please Login First...")
         }
-    }, 300);
+    }
     const results = [
         {
             name: "Very Good",
@@ -349,10 +350,10 @@ const RatingResult = ({ productId }) => {
     ]
 
     useEffect(() => {
-        if (user?._id) {
+        if (user?._id && id) {
             getReviewByUserId()
         }
-    }, [user])
+    }, [user, id])
 
     const calculateDefaultLongevity = (nameOfVote) => {
         const switchToggler = modifyStr(nameOfVote)?.toLowerCase();
@@ -484,29 +485,14 @@ const RatingResult = ({ productId }) => {
                     </div>
 
                     {/* Range Input */}
-                    <div className="w-full flex justify-center">
-                        <input
-                            className="w-full h-[12px] sm:h-[14px] md:h-[16px] rounded-md cursor-pointer"
-                            min={1}
-                            max={5}
-                            step={1}
-                            defaultValue={parseInt(calculateDefaultLongevity(item?.name)) || 5}
-                            value={parseInt(calculateDefaultLongevity(item?.name)) || 5}
-                            type="range"
-                            onChange={(e) => {
-                                updateRating(item, item.status[e.target.value - 1]);
-                                setEmoji(e.target.value);
-
-                            }}
-                        />
-                    </div>
+                    <LongevitySlider calculateDefaultLongevity={calculateDefaultLongevity} item={item} updateRating={updateRating} setEmoji={setEmoji} />
                     {/* <RangeInput key={ } item={ } setEmoji={ } updateRating={ } /> */}
 
                     {/* Status Details Section */}
                     <div className="space-y-3">
                         {item?.status.map((sta, idx) => (
-                            <div key={idx} className="grid grid-cols-[6rem_auto]">
-                                <span className=" text-[#6B859E] capitalize text-wrap w-[6rem] text-xs sm:text-sm">
+                            <div key={idx} className="grid grid-cols-[9rem_auto]">
+                                <span className=" text-[#6B859E] capitalize text-wrap w-[8rem] text-xs sm:text-sm">
                                     {sta.name}
                                 </span>
                                 <div className="w-full flex items-center gap-3">
@@ -530,3 +516,50 @@ const RatingResult = ({ productId }) => {
 
 
 export default RatingResult
+const LongevitySlider = ({ item, calculateDefaultLongevity, updateRating, setEmoji }) => {
+    // Initialize optimistic state
+    const [value, setValue] = useState(parseInt(calculateDefaultLongevity(item?.name)) || 5,
+        (prev, newLongevity) => newLongevity);
+    const [optimisticLongevity, setOptimisticLongevity] = useOptimistic(value);
+
+
+    const debouncedUpdateSliderValue = useDebouncedCallback(async (newValue) => {
+
+
+        // Optimistically update the slider's value
+
+
+        // Perform your update logic (e.g., API or local update)
+        updateRating(item, item.status[newValue - 1]);
+        setValue(newValue);
+        // Optionally handle emojis or additional state
+        setEmoji(newValue);
+    }, 300);
+
+    const handleSliderChange = (event) => {
+        const newValue = event.target.value;
+        startTransition(() => {
+            setOptimisticLongevity(newValue);
+        });
+
+        // Optimistically update state immediately
+        setValue(newValue);
+
+        // Debounced API call
+        debouncedUpdateSliderValue(newValue);
+    }
+
+    return (
+        <div className="w-full flex justify-center">
+            <input
+                className="w-full h-[12px] sm:h-[14px] md:h-[16px] rounded-md cursor-pointer"
+                min={1}
+                max={5}
+                step={1}
+                type="range"
+                value={optimisticLongevity} // Use the optimistic state value
+                onChange={handleSliderChange}
+            />
+        </div>
+    );
+};

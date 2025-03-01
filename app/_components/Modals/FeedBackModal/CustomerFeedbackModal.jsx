@@ -348,22 +348,6 @@ C38.6,81.5,36.7,83.4,36.7,85.7L36.7,85.7z"></path></svg>,
             </div>
 
             <form action="#" className='p-6  grid place-items-center'>
-              <div className='  flex items-center justify-center'>
-                <div className=' flex flex-wrap justify-center gap-3 md:gap-8 p-4 '>
-
-                  {
-                    [`I have it`, `I had it`, `I want it`].map((item, ind) => {
-                      return <div
-                        onClick={() => {
-                          setSelected(ind + 1)
-                        }}
-                        className='flex justify-start items-center gap-3 md:gap-5 cursor-pointer text-xs md:text-base'>
-                        <div className={`size-4  ${ind + 1 === selected ? 'bg-[#105955]' : 'bg-[#7B7A7A]'}   rounded-full`}></div> <span className='text-nowrap'>{item}</span>
-                      </div>
-                    })
-                  }
-                </div>
-              </div>
 
               <div className='grid md:grid-cols-2 gap-4'>
                 <div>

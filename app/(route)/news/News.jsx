@@ -6,7 +6,7 @@ import CardsList from "@/app/_components/CardsList/CardsList";
 import { RiFacebookBoxFill } from "react-icons/ri";
 import Link from "next/link";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 
 export default function News() {
@@ -59,8 +59,15 @@ export default function News() {
     return date.toLocaleDateString("en-US", options);
   }
 
+  const myRef = useRef(null);
+  const btnRef = useRef(null);
+  useEffect(() => {
+    btnRef?.current?.click()
+    console.log("clicked")
+  }, [])
+
   return (
-    <div className="min-h-screen py-4 px-2 lg:px-0">
+    <div ref={myRef} className="min-h-screen py-4 px-2 lg:px-0">
       {/* Blog Post */}
       <div className="container mx-auto grid lg:grid-cols-[auto_20rem] gap-4">
         <h2 className="font-bold text-3xl lg:text-4xl leading-[3rem] lg:leading-[4rem] pl-4 lg:col-span-2">
@@ -155,6 +162,9 @@ export default function News() {
           </div>
         </aside>
       </div>
+      <button className="hidden" ref={btnRef} onClick={() => myRef.current?.scrollIntoView()}>
+        Jump to My Section
+      </button>
     </div>
   );
 }

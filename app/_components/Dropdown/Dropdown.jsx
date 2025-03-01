@@ -15,7 +15,7 @@ const Dropdown = ({ brands, setPerfumeDropDown }) => {
                 className='absolute hidden  text-black divide-x-2  top-[2.8rem] bg-white z-50  w-[25rem] md:grid grid-cols-2'>
                 <div className=' shadow-lg max-h-[50vh] overflow-auto'>
                     {
-                        brands.map(item => {
+                        brands && brands?.map(item => {
                             return <Link
                                 href={`/brand/${item?.slug}`}
                             // href={`#`}
@@ -29,7 +29,7 @@ const Dropdown = ({ brands, setPerfumeDropDown }) => {
                 </div>
                 <div className='max-h-[50vh] overflow-auto shadow-lg'>
                     {
-                        subData.length > 0 && subData?.map(item => {
+                        subData?.length > 0 && subData?.map(item => {
                             return <Link
                                 href={`/product/${item?.slug}`}
                             >
@@ -47,7 +47,7 @@ const Dropdown = ({ brands, setPerfumeDropDown }) => {
                     }}><IoArrowBackOutline className='text-xl size-6 m-1' /></div>
                     <div className=' w-full '>
                         {
-                            brands.map(item => {
+                            brands && brands?.map(item => {
                                 return <Link
                                     href={`/brand/${item?.brand}`}
                                 // href={`#`}

@@ -1,81 +1,35 @@
-async function getAllPerfume() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume`,
-    {
-      cache: "no-cache",
-    }
-  );
-  const data = await response.json();
-  return data;
-}
 async function getPerfumeById(perfumeId) {
   try {
-    const response = await fetch(
+    const response = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/slug/${perfumeId}`,
       {
-        cache: "no-cache",
+        headers: {
+          "Cache-Control": "no-cache",
+        },
       }
     );
-
-    if (!response.ok) {
-      throw new Error("Data Not Found");
-    }
-    const data = await response.json();
-
-    return data;
+    return response.data;
   } catch (err) {
-    // throw new Error("Data Not Found");
-    console.log("Data Not Found !!");
+    console.log("Data Not Found !!", err);
   }
-}
-async function getPerfumeBySlug(slug) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/slug?slug=${slug || ""}`,
-    {
-      cache: "no-cache",
-    }
-  );
-  const data = await response.json();
-
-  return data;
-}
-
-async function getProsCons(perfumeId) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/prosCons/${perfumeId}`,
-    {
-      cache: "no-cache",
-    }
-  );
-  const data = await response.json();
-  return data;
-}
-
-async function getSiderbarReviews() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/reviewsSidebar`,
-    {
-      cache: "no-cache",
-    }
-  );
-  const data = await response.json();
-  // console.log(data, "sidebar Review")
-  return data?.data;
 }
 
 import { lazy, Suspense } from "react";
 import "./style.css";
 
 // import ProductPage from "@/app/_components/ProductPage/ProductPage";
-import dynamic from "next/dynamic";
 import Loader from "@/app/_components/Loader/Loader";
-import chalk from "chalk";
+import axios from "axios";
 import ScrollToTop from "@/app/_components/ScrollToTop/ScrollToTop";
+import dynamic from "next/dynamic";
 
 // Client Components:
 
-const ProductPage = lazy(() =>
-  import("@/app/_components/ProductPage/ProductPage")
+const ProductPage = dynamic(
+  () => import("@/app/_components/ProductPage/ProductPage"),
+  {
+    ssr: false,
+  }
 );
 
 export async function generateMetadata({ params }) {
@@ -126,34 +80,13 @@ export async function generateMetadata({ params }) {
 
 const page = async ({ params }) => {
   const { productId } = params;
-
-  const dataProsCons = await getProsCons(productId);
-  const data = await getPerfumeById(productId);
-
-  const sidebarReview = await getSiderbarReviews();
-
+  // const data = await getPerfumeById(productId);
   return (
-    <>
-      {/* feedback form  */}
-      <ScrollToTop />
-      <Suspense
-        fallback={
-          <div className="">
-            {" "}
-            <Loader />
-          </div>
-        }
-      >
-        {data && (
-          <ProductPage
-            data={data}
-            dataProsCons={dataProsCons}
-            sidebarReview={sidebarReview}
-            productId={productId}
-          />
-        )}
+    <div className="">
+      <Suspense fallback={<>Loading....</>}>
+        <ProductPage productId={productId} />
       </Suspense>
-    </>
+    </div>
   );
 };
 

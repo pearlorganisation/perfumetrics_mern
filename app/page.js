@@ -36,43 +36,45 @@ export default async function Home() {
     <div className="py-1 px-0">
       <Banner />
       <div className="flex justify-center ">
-        <div className="lg:w-[55% container mx-auto ">
+        <div className="">
           <PopularBrands />
-          <div className="w-full grid lg:grid-cols-[auto_20rem]  gap-8 ">
-            <div>
-              <PerfumeSection length={7} reviewSidebar={sidebarReview} />
-              <Gallery />
-              <Reviews length={14} reviewSidebar={sidebarReview} />
-              <BestSale />
-            </div>
-            <div className="space-y-5 hidden md:block">
-              <div className="space-y-4 mt-[8.9rem]  hidden md:block">
-                <LoginSignUp />
-                <div className="grid place-items-center border border-pink-500 h-40 overflow-hidden">
-                  {gVideo?.item && (
-                    <div className="grid place-items-center relative bg-slate-100  md:h-[12rem] md:w-[90%] border overflow-hidden">
-                      <iframe
-                        src={gVideo?.item[0]?.path}
-                        width="100%"
-                        height="100%"
-                      ></iframe>
-                    </div>
-                  )}
+          <div className="container mx-auto  ">
+            <div className="w-full grid lg:grid-cols-[auto_20rem]  gap-8 ">
+              <div>
+                <PerfumeSection length={7} reviewSidebar={sidebarReview} />
+                <Gallery />
+                <Reviews length={14} reviewSidebar={sidebarReview} />
+                <BestSale />
+              </div>
+              <div className="space-y-5 hidden md:block">
+                <div className="space-y-4 mt-[8.9rem]  hidden md:block">
+                  <LoginSignUp />
+                  <div className="grid place-items-center border border-pink-500 h-40 overflow-hidden">
+                    {gVideo?.item && (
+                      <div className="grid place-items-center relative bg-slate-100  md:h-[12rem] md:w-[90%] border overflow-hidden">
+                        <iframe
+                          src={gVideo?.item[0]?.path}
+                          width="100%"
+                          height="100%"
+                        ></iframe>
+                      </div>
+                    )}
+                  </div>
+                  <div className="w-full  flex flex-col gap-4"></div>
                 </div>
-                <div className="w-full  flex flex-col gap-4"></div>
+                <div className=" w-full text-left flex justify-between">
+                  <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
+                    Perfume Reviews
+                  </h2>
+                  <button
+                    className="font-medium text-[14px] text-[#EA92B6]"
+                    type="button"
+                  >
+                    Write a Review
+                  </button>
+                </div>
+                <CardsList reviewData={sidebarReview} length={14} />
               </div>
-              <div className=" w-full text-left flex justify-between">
-                <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
-                  Perfume Reviews
-                </h2>
-                <button
-                  className="font-medium text-[14px] text-[#EA92B6]"
-                  type="button"
-                >
-                  Write a Review
-                </button>
-              </div>
-              <CardsList reviewData={sidebarReview} length={14} />
             </div>
           </div>
         </div>

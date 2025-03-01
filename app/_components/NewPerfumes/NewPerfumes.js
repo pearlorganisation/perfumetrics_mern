@@ -170,9 +170,10 @@ const NewPerfumes = () => {
                       className="bg-white rounded-lg shadow-md overflow-hidden"
                     >
                       <img
-                        src={blog.banner}
-                        alt={blog.title}
-                        className="w-full h-48 object-contain border"
+                        src={blog?.banner}
+                        // src="https://placehold.co/175x192"
+                        alt={blog?.imageAttribute}
+                        className="w-full h-48 object-cover border"
                       />
                       <div className="p-4">
                         <h3 className="text-[16px] font-bold text-center mb-2 text-gray-800 line-clamp-1">

@@ -10,6 +10,7 @@ import Footer from "./_components/layout/Footer/Footer";
 import Header from "./_components/layout/Header/Header";
 import { Toaster } from "sonner";
 import Head from "next/head";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto_Condensed = Roboto_Condensed({ subsets: ["latin"] });
@@ -32,14 +33,42 @@ export const metadata = {
     images: [""],
   },
 };
+const GTM_ID = "GTM-5JSSKHQC";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
-        <meta name="robots" content="noindex, nofollow" />
-      </Head>
+      <head>
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
+        />
+        <meta
+          name="google-site-verification"
+          content="_u9qGtjoK7YSxFD2seZpXmiQb39522RLaXBDvlMs4YI"
+        />
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','${GTM_ID}');
+      `}
+        </Script>
+      </head>
+      {/* Google Tag Manager (noscript) */}
+
+      {/* End Google Tag Manager (noscript) */}
       <body className={`${poppins.className} h-screen`}>
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
         <Header />
         {children}
         <Footer />

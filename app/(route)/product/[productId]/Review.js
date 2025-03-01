@@ -45,7 +45,10 @@ async function Review({ commentsData, perfumeId }) {
         {commentsData && commentsData?.length > 0 ? (
           commentsData.map((item) => {
             return (
-              <div className="bg-[#fafaf6] shadow rounded-lg p-6 border border-[#83a6c4]">
+              <div
+                key={item?._id}
+                className="bg-[#fafaf6] shadow rounded-lg p-6 border border-[#83a6c4]"
+              >
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
                     <div className="w-8 h-8 md:w-12 md:h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500">
@@ -69,7 +72,7 @@ async function Review({ commentsData, perfumeId }) {
                       {item?.description}
                     </p>
 
-                    <CommentLikeDisLike item={item} />
+                    <CommentLikeDisLike key={item?._id} item={item} />
                   </div>
                 </div>
               </div>

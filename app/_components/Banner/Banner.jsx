@@ -21,8 +21,7 @@ const HeroSection = () => {
             Awaken Your Senses
           </h1>
           <p className={`${poppins.className} mt-6 text-base sm:text-[20px] font-normal text-gray-600 max-w-lg mx-auto lg:mx-0`}>
-            Dive into the world of luxurious perfumes, where timeless elegance
-            meets captivating scents. Discover your perfect match today.
+            Deep dive into the world of luxirious fragrances, where you explore expert reviews and find your perfect choice at the best price!.
           </p>
           <div className="mt-8  hidden md:flex justify-center lg:justify-start space-x-4">
             <Link

@@ -6,7 +6,7 @@ import CardsList from "@/app/_components/CardsList/CardsList";
 import { RiFacebookBoxFill } from "react-icons/ri";
 import Link from "next/link";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 
 export default function CelebrityPerfume() {
@@ -59,8 +59,15 @@ export default function CelebrityPerfume() {
     return date.toLocaleDateString("en-US", options);
   }
 
+  const myRef = useRef(null);
+  const btnRef = useRef(null);
+  useEffect(() => {
+    btnRef?.current?.click();
+    console.log("clicked");
+  }, []);
+
   return (
-    <div className="min-h-screen py-4 px-2 lg:px-0">
+    <div ref={myRef} className="min-h-screen py-4 px-2 lg:px-0">
       {/* Blog Post */}
       <div className="container mx-auto grid lg:grid-cols-[auto_20rem] gap-4">
         <div className="font-bold text-3xl lg:text-4xl leading-[3rem] lg:leading-[4rem] mb-4 pl-4 lg:col-span-2">
@@ -82,7 +89,7 @@ export default function CelebrityPerfume() {
                 src={newsData?.data?.banner}
                 width={400}
                 height={400}
-                alt="Blog Post"
+                alt={newsData?.data?.imageAttribute}
                 className="w-fit lg:max-w-4xl  lg:h-[30rem] rounded-lg mb-6 object-contain"
               />
               <h2 className="text-2xl font-bold mb-4">
@@ -130,7 +137,7 @@ export default function CelebrityPerfume() {
                 Log in
               </Link>
               <button
-                className="border-2 p-1 rounded w-full flex justify-center items-center"
+                className="border-2 p-1 invisible rounded w-full flex justify-center items-center"
                 type="button"
               >
                 <div className="bg-[#4267B2] rounded-sm text-base font-medium px-2 py-[0.15rem] text-white flex items-center">
@@ -157,6 +164,13 @@ export default function CelebrityPerfume() {
           </div>
         </aside>
       </div>
+      <button
+        className="hidden"
+        ref={btnRef}
+        onClick={() => myRef.current?.scrollIntoView()}
+      >
+        Jump to My Section
+      </button>
     </div>
   );
 }

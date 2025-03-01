@@ -41,8 +41,7 @@ export default function Example() {
       );
 
       const data = response.data; // Axios automatically parses JSON responses
-      setBrands(data?.data);
-      // console.log(data, "data")
+      setBrands(data?.data || []);
       return data;
     } catch (error) {
       console.error("Error fetching brands:", error);
@@ -59,12 +58,8 @@ export default function Example() {
   return (
     <header className={`${nunito.className} block relative bg-white shadow-[0_1px_2px#d1d1d1]`}>
       <nav className="w-full relative flex sm:justify-center flex-col gap-0 pt-0">
-        <div className="flex justify-end items-center  px-3">
 
-
-
-        </div>
-        <div className="w-full bg-pink-300 px-4 py-2 relative">
+        <div className="w-full bg-pink-300 px-4 relative">
           <div className=" mx-auto grid grid-cols-3 place-items-center  ">
             <div className="size-full flex justify-start items-center">
               <div className="flex flex-col relative md:hidden">
@@ -145,7 +140,7 @@ export default function Example() {
             <div className="flex items-center ">
               <Link href="/" className="">
 
-                <Image src='/PerfumetricsLogo.png' className="w-40 md:w-[90%]" width={280} height={150} alt="img" />
+                <Image src='/PerfumetricsLogo.png' className="w-40 md:w-[60%]" width={280} height={150} alt="img" />
               </Link>
             </div>
             <div className="flex justify-end space-x-3 w-full">

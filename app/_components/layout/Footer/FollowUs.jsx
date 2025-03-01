@@ -1,3 +1,5 @@
+
+"use client"
 import React from 'react'
 import PerfumePhotos from '../../PerfumePhotos/PerfumePhotos'
 import { FaTruckMoving } from "react-icons/fa6";
@@ -13,8 +15,25 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { toast } from 'sonner';
 
 const FollowUs = () => {
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm();
+
+    const onSubmit = async (data) => {
+        console.log("Form Data:", data);
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/newsLetter`, data)
+        reset()
+        console.log(data, "data")
+        toast.success("Success!!")
+    };
 
     return (
 
@@ -79,19 +98,45 @@ const FollowUs = () => {
                                 <Link className='hover:underline' href='/privacyPolicy'>Privacy Policy</Link>
                                 <Link className='hover:underline' href='/termsConditions'>Terms And Conditions</Link>
                                 <Link className='hover:underline' href='/aboutUs'>About Us</Link>
+                                <Link className='hover:underline' href='/contactUs'>Contact Us</Link>
                             </div>
 
                         </div>
                     </div>
                     <div className=' space-y-3 py-5 px-6 order-1'>
-                        <div className='flex gap-1'><IoMdMail className='text-pink-500' size={22} /> <span className='text-xl font-semibold'>NEWSLETTER</span></div>
-                        <p>A contemporary grooming collection intused
-                            with the inviaoratina and sensual scent of</p>
-                        <div className='space-y-2 w-full '>
-                            <div className='font-semibold text-sm pb-2'>FIND YOUR STORE</div>
-                            <input className='px-4 py-3 w-full bg-slate-300' placeholder='Enter Your First Name...' type="text" name="" id="" />
-                            <div className='w-full grid grid-cols-[auto_5rem]'><input className='px-4 py-3 w-full bg-slate-300' placeholder='Enter Your Email Address ' type="text" name="" id="" /><button className='bg-pink-500 px-5 py-3 text-white' type="button">GO</button></div>
-                        </div>
+                        <div className='flex gap-1'><IoMdMail className='text-pink-500' size={22} /> <span className='text-xl font-semibold'>COUPON LIST</span></div>
+                        <p>Get your favourite fragrances under best price, Subscribe now for coupon list.</p>
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 w-full">
+                            <div className="font-semibold text-sm pb-2">FIND BEST PRICE</div>
+
+                            {/* First Name Input */}
+                            <input
+                                className="px-4 py-3 w-full bg-slate-300"
+                                placeholder="Enter Your First Name..."
+                                type="text"
+                                {...register("name", { required: "Name is required" })}
+                            />
+                            {errors.name && <p className="text-red-500 text-xs">{errors.name.message}</p>}
+
+                            {/* Email Input & Button */}
+                            <div className="w-full grid grid-cols-[auto_5rem]">
+                                <div>
+                                    <input
+                                        className="px-4 py-3 w-full bg-slate-300"
+                                        placeholder="Enter Your Email Address"
+                                        type="email"
+                                        {...register("email", {
+                                            required: "Email is required",
+                                            pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email format" },
+                                        })}
+                                    />
+                                    {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
+                                </div>
+                                <button className="bg-pink-500 px-5 py-3 text-white" type="submit">
+                                    GO
+                                </button>
+                            </div>
+                        </form>
                     </div>
 
 

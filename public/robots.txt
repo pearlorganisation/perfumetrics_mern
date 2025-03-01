@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /https://perfumetrics.com/login/          # Disallow access to login pages
+Disallow: /https://perfumetrics.com/signUp/       # Disallow access to signUp pages
+Disallow: /https://perfumetrics.com/celebrityPerfumeBlog/tom-holand/       # Disallow access to signUp pages
+Disallow: /https://perfumetrics.com/product/3243242/       # Disallow access to signUp pages
+Disallow: /https://perfumetrics.com/news/undefined/       # Disallow access to signUp pages
+Disallow: /https://admin.perfumetrics.com/       # Disallow access to signUp pages
+
+
+User-agent: Googlebot
+Allow: /                   # Allow crawling of the entire site for Googlebot
+
+Sitemap: https://perfumetrics.com/sitemap.xml
