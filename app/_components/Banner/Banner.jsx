@@ -14,9 +14,9 @@ const HeroSection = () => {
   // ${protest_strike?.className}
   return (
     <div className={`relative bg-gray-50 `}>
-      <div className="container mx-auto px-4 py-16 lg:py-24 flex flex-col lg:flex-row items-center">
+      <div className="container mx-auto px-4 py-16 lg:py-24 flex flex-col lg:flex-row items-center justify-center ">
         {/* Text Content */}
-        <div className="lg:w-1/2 text-center lg:text-left">
+        <div className="lg:w-1/2 text-center lg:text-left ">
           <h1 className="!font-normal leading-tight text-5xl lg:text-[80px] text-gray-800">
             Awaken Your Senses
           </h1>
@@ -45,11 +45,11 @@ const HeroSection = () => {
         {/* Image */}
         <div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center relative ">
           {/* Decorative Overlay */}
-          <div className="absolute inset-0 w-[30rem] h-[30rem] bg-gradient-to-br from-purple-300 to-purple-100 rounded-full blur-3xl opacity-40"></div>
+          <div className="absolute inset-0 w-full h-[30rem] bg-gradient-to-br from-purple-300 to-purple-100 rounded-full blur-3xl opacity-40"></div>
           <img
             src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1733984224/static_hero_primary_Now_And_Then_2_aynsff.webp"
             alt="Hero Perfume Bottle"
-            className="relative z-0 rounded-lg shadow-2xl  md:w-full w-72 md:max-w-md transition transform hover:scale-105"
+            className="relative z-0 rounded-lg shadow-2xl  md:w-full w-72 md:max-w-lg transition transform hover:scale-105"
           />
         </div>
         <div className="mt-8 w-full  flex md:hidden justify-center lg:justify-start space-x-4 text-base font-light">

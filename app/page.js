@@ -38,7 +38,7 @@ export default async function Home() {
       <div className="flex justify-center ">
         <div className="">
           <PopularBrands />
-          <div className="container mx-auto  ">
+          <div className="min-h-screen mx-auto py-6 px-4 2xl:w-[1200px] xl:w-[1024px]">
             <div className="w-full grid lg:grid-cols-[auto_20rem]  gap-8 ">
               <div>
                 <PerfumeSection length={7} reviewSidebar={sidebarReview} />

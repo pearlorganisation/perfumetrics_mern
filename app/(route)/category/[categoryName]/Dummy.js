@@ -28,19 +28,19 @@ const Dummy = ({ data, gender, totalPages }) => {
           <picture>
             <source
               media="(max-width: 640px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1736147858/dctpl3pfgpdrsddvzyel.jpg"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
             />
             <source
               media="(max-width: 1024px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1736147858/dctpl3pfgpdrsddvzyel.jpg"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
             />
             <source
               media="(min-width: 1025px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1736147858/dctpl3pfgpdrsddvzyel.jpg"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
             />
             <Image
               className="object-cover mx-auto"
-              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1736147858/dctpl3pfgpdrsddvzyel.jpg"
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
               alt="Banner 2"
               layout="responsive"
               width={1920}
@@ -52,19 +52,19 @@ const Dummy = ({ data, gender, totalPages }) => {
           <picture>
             <source
               media="(max-width: 640px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1736147858/ljxcxvh7abpnrojzkcsl.jpg"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1741007117/Perf_1920_x_620_px_3_slvhme.png"
             />
             <source
               media="(max-width: 1024px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1736147858/ljxcxvh7abpnrojzkcsl.jpg"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1741007117/Perf_1920_x_620_px_3_slvhme.png"
             />
             <source
               media="(min-width: 1025px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1736147858/ljxcxvh7abpnrojzkcsl.jpg"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1741007117/Perf_1920_x_620_px_3_slvhme.png"
             />
             <Image
               className="object-cover mx-auto"
-              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1736147858/ljxcxvh7abpnrojzkcsl.jpg"
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1741007117/Perf_1920_x_620_px_3_slvhme.png"
               alt="Banner"
               layout="responsive"
               width={1920}

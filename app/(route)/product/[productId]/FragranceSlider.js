@@ -21,31 +21,44 @@ const FragranceSlider = ({ fragramsData, country }) => {
     return `${day}-${month}-${year}`;
   }
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {fragramsData?.map((item, index) => {
-        if (!item?.mapOfLinks[country]) return null;
+        console.log(item, "travis thulla");
+
+        const companiesList =
+          item?.mapOfLinks?.[country] ??
+          item?.mapOfLinks?.["US"] ??
+          (item?.mapOfLinks[Object.keys(item?.mapOfLinks)?.[0]] || []);
+
+        if (!Object.keys(item.mapOfLinks).length) return null;
+
         return (
           <Link
             key={index}
             href={
-              item?.mapOfLinks[country] ||
+              companiesList ||
               "https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png"
             }
             target="_blank"
-            className="grid grid-cols-[40%_auto] p-4 gap-3 shadow-lg rounded-lg hover:shadow-xl transition-shadow"
+            className="flex flex-col p-5 shadow-lg rounded-xl bg-white hover:shadow-xl transition-all duration-200 transform hover:scale-[1.03]"
           >
-            <div className="relative border bg-neutral-100 rounded-md overflow-hidden">
+            {/* Image Container */}
+            <div className="relative w-full h-32 bg-neutral-200 rounded-lg overflow-hidden">
               <img
-                className="h-full object-contain absolute w-full"
+                className="w-full h-full object-cover"
                 src={item?.banner}
-                alt=""
+                alt="Banner"
               />
             </div>
-            <div className="flex flex-col justify-between">
-              <span className="line-clamp-1 text-base font-semibold">
+
+            {/* Content */}
+            <div className="mt-4 flex flex-col justify-center text-center">
+              <span className="text-lg font-semibold text-gray-900 line-clamp-1">
                 {item?.title}
               </span>
-              <span className="text-sm text-gray-600">{item?.postBy}</span>
+              <span className="text-sm text-gray-600 line-clamp-1">
+                {item?.postBy}
+              </span>
               <time className="text-xs text-gray-500">
                 {formatDateToShort(item?.updatedAt)}
               </time>

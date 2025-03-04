@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
+  console.log(perfumeCategories, "perfumeCategories");
   return (
     <Swiper
       modules={[Navigation, Pagination]}
@@ -37,8 +38,12 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
       className=""
     >
       {perfumeCategories?.map((item, index) => {
-        if (!item?.mapOfLinks[timeZoneCountry]) return null;
-        const { link, price, quantity } = item?.mapOfLinks[timeZoneCountry];
+        const temp =
+          item?.mapOfLinks?.[timeZoneCountry] ??
+          item?.mapOfLinks?.["US"] ??
+          (item?.mapOfLinks[Object.keys(item?.mapOfLinks)?.[0]] || []);
+        if (Object.keys(item?.mapOfLinks)?.length == 0) return null;
+        const { link, price, quantity } = temp;
 
         return (
           <SwiperSlide className="!max-w-full p-10" key={index}>

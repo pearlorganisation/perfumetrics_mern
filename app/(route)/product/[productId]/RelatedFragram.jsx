@@ -56,10 +56,14 @@ const
             <div className="grid grid-cols-2 md:grid-cols-4  relative">
               {perfumeData?.filter((it, idx) => idx < 8)?.map((item, index) => {
 
-                if (!item.mapOfLinks[country])
+                const companiesList = item?.mapOfLinks?.[country] ?? item?.mapOfLinks?.['US'] ?? (item?.mapOfLinks[Object.keys(item?.mapOfLinks)?.[0]] || []);
+
+                if (Object.keys(item.mapOfLinks).length == 0) {
                   return;
+                }
+
                 return (
-                  <Link href={item?.mapOfLinks[country] || 'https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png'} target="_blank">
+                  <Link href={companiesList || 'https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png'} target="_blank">
                     <div className="shadowE cursor-pointer ml-5 p-1 w-[10rem]">
                       <div className="xl:w-[120px] xl:h-[120px] lg:w-[80px] lg:h-[80px] overflow-hidden mx-auto">
                         <img

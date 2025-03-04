@@ -114,10 +114,9 @@ const ProductPage = ({ productId }) => {
     // Set purchase links when data changes
     useEffect(() => {
         const mapOfLinks = data?.data?.mapOfLinks || {};
-        const companiesList = mapOfLinks[timeZoneCountry] || [];
+        const companiesList = mapOfLinks?.[timeZoneCountry] ?? mapOfLinks?.['US'] ?? (mapOfLinks[Object.keys(mapOfLinks)?.[0]] || []);
         setPurchaseLinks(companiesList);
-        // console.log("timeZoneCountry", timeZoneCountry)
-    }, [timeZoneCountry]);
+    }, [timeZoneCountry, data]);
 
     // Run effects only when dependencies change
     useEffect(() => {
@@ -166,7 +165,7 @@ const ProductPage = ({ productId }) => {
     return (
         <div ref={myRef}>
             {
-                loading ? <div className="min-h-screen max-w-7xl mx-auto rounded-md my-4 "></div> : <div className="min-h-screen container mx-auto  py-6 px-4">
+                loading ? <div className="min-h-screen max-w-7xl mx-auto rounded-md my-4 "></div> : <div className="min-h-screen mx-auto py-6 px-4 2xl:w-[1200px] xl:w-[1024px]">
                     <p className="text-4xl font-medium py-6  mb-0 text-center">
                         <h1 className={`text-2xl text-left md:w-[70%] md:text-left md:text-[40px] leading-[48px] font-medium ${lora.className}`}>{data?.data?.perfume?.split('for')[0]} <span className='text-pink-400 text-xl md:text-3xl font-normal'>
                             {data?.data?.perfume?.split('for').length > 1 ? `for` + data?.data?.perfume?.split('for')[1] : ''}
