@@ -41,7 +41,7 @@ const News = () => {
             <img
               className="w-full h-[30rem] object-cover"
 
-              src={newsMapData?.get(1)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+              src={newsMapData?.get(1)?.image}
               alt=""
             />
 
@@ -72,7 +72,7 @@ const News = () => {
             newsMapData ? <Link href={`/news/${newsMapData?.get(2)?.slug}`} className="space-y-1">
               <img
                 className="w-full rounded-md h-[13.5rem]"
-                src={newsMapData?.get(2)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+                src={newsMapData?.get(2)?.image}
                 alt=""
               />
               <div className="font-semibold pt-2 text-black text-xl">
@@ -95,7 +95,7 @@ const News = () => {
               <Link href={`/news/${newsMapData?.get(3)?.slug}`} className="mb-8 space-y-1">
                 <img
                   className="w-full rounded-md h-[13.5rem]"
-                  src={newsMapData?.get(3)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+                  src={newsMapData?.get(3)?.image}
                   alt=""
                 />
                 <div className="font-bold pt-2 text-black text-xl">
@@ -129,10 +129,10 @@ const News = () => {
 
         </div>
         {
-          newsMapData ? <Link href={`/news/${newsMapData?.get(4)?.slug}`} className=" space-y-1  mt-5 md:top-0 ">
+          newsMapData ? <Link href={`/news/${newsMapData?.get(4)?.slug}`} className=" space-y-1   md:top-0 ">
             <img
               className="w-full rounded-md h-[20rem]"
-              src={newsMapData?.get(4)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+              src={newsMapData?.get(4)?.image}
               alt=""
             />
             <div className="font-semibold text-xl"> {newsMapData?.get(4)?.title}</div>
@@ -169,7 +169,7 @@ const News = () => {
           </div>
           <img
             className="w-full h-[20rem] md:mt-0 mt-4 object-cover"
-            src={newsMapData?.get(5)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+            src={newsMapData?.get(5)?.image}
             alt=""
           />
         </Link> : <div class="animate-pulse">
@@ -191,7 +191,7 @@ const News = () => {
           newsMapData ? <Link href={`/news/${newsMapData?.get(6)?.slug}`} className="space-y-1 w-full">
             <img
               className="w-full h-[30rem] object-cover mb-3"
-              src={newsMapData?.get(6)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+              src={newsMapData?.get(6)?.image}
               alt=""
             />
 
@@ -229,7 +229,7 @@ const News = () => {
           newsMapData ? <Link href={`/news/${newsMapData?.get(7)?.slug}`} className="space-y-1 w-full">
             <img
               className="w-full h-[30rem] object-cover mb-3"
-              src={newsMapData?.get(7)?.image || 'https://plus.unsplash.com/premium_photo-1661490025820-ce090e391627?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkzfHxwZXJmdW1lfGVufDB8fDB8fHww'}
+              src={newsMapData?.get(7)?.image}
               alt=""
             />
 

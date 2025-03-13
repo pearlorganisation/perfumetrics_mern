@@ -31,11 +31,11 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
           spaceBetween: 30,
         },
         1024: {
-          slidesPerView: 3,
+          slidesPerView: 4,
           spaceBetween: 30,
         },
       }}
-      className=""
+      className="-translate-x-10"
     >
       {perfumeCategories?.map((item, index) => {
         const temp =
@@ -63,16 +63,14 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
                   />
                 </div>
                 <div className="text-center mt-3">
-                  <h3 className="text-sm md:text-base font-semibold text-blue-600 line-clamp-1">
+                  <h3 className="text-sm md:text-base font-semibold text-black-600 line-clamp-1">
                     {item?.perfumeName}
                   </h3>
                   <div className="mt-2">
                     <span className="text-sm md:text-lg font-bold text-gray-900">
                       {price || "0"}
                     </span>
-                    <span className="text-gray-600 ml-2">
-                      {quantity || "90ml"}
-                    </span>
+                    <span className="!text-gray-600 ml-2">{quantity}ml</span>
                   </div>
                 </div>
               </div>

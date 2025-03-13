@@ -43,7 +43,7 @@ function PerfumeSection() {
       }?Page=${p || 1}&Search=${
         q || ""
       }&Limit=10&Select=banner slug perfume updatedAt ${
-        brandId ? `&BrandId=${brandId}` : ""
+        brandId ? `&Slug=${brandId}` : ""
       }`
     );
     setGenderData(result?.data);
@@ -55,7 +55,7 @@ function PerfumeSection() {
 
   return true ? (
     <>
-      {["WOMEN'S STYLE", "MEN'S STYLE"].includes(
+      {["WOMEN'S-STYLE", "MEN'S-STYLE"].includes(
         categoryName.split("%20").join(" ")
       ) ? (
         <div className=" px-4 py-10 min-h-screen">

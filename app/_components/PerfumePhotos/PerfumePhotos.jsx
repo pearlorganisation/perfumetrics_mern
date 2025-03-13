@@ -36,7 +36,7 @@ const PerfumePhotos = ({ data }) => {
     >
       {data?.map((item, idx) => (
         <SwiperSlide key={idx} className="mb-8">
-          <div className="flex justify-center items-center h-[200px] border rounded-lg bg-neutral-100">
+          <div className="flex justify-center items-center h-[250px] w-full border rounded-lg bg-neutral-100">
             <img
               className="!object-cover w-full h-full"
               src={item?.path}

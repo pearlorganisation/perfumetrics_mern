@@ -1,21 +1,23 @@
 "use client"
 import Image from 'next/image';
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import CustomerFeedbackModal from '../Modals/FeedBackModal/CustomerFeedbackModal';
 import { userStore } from '@/store/userStore';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { createPortal } from 'react-dom';
 
 const Feedback = () => {
     const { isUserLoggedIn } = userStore();
     const router = useRouter()
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     function handleOpeningModal() {
         if (!isUserLoggedIn) {
             toast.info('Please Login First...')
             router.push(`/login?returnUrl=pd`);
         }
-        else modalRef.current.open();
+        else setIsModalOpen(true);
     }
 
     const modalRef = useRef();
@@ -154,7 +156,9 @@ const Feedback = () => {
     ]
     return (
         <>
-            <CustomerFeedbackModal ref={modalRef} />
+            {
+                isModalOpen && createPortal(<CustomerFeedbackModal onClose={() => { setIsModalOpen(false) }} />, document.body)
+            }
             <div className='font-medium text-[16px]'>  Perfume rating 3.96 out of 5 with 102 votes</div>
             <div className="grid grid-cols-2 md:grid-cols-2 gap-6 place-items-center">
 

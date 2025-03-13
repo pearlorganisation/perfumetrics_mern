@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 import { useDebouncedCallback } from "use-debounce";
 import { RiWindyFill } from 'react-icons/ri';
 import perfumeMetaData from '@/store/perfumeMetaData';
+import { CustomRangeSlider } from '../RangeSlider/RangeSlider';
 
 
 const RatingResult = ({ productId }) => {
@@ -18,6 +19,7 @@ const RatingResult = ({ productId }) => {
     const [perfumeRatings, setPerfumeRatings] = useState([])
     const [rateData, setRateData] = useState({});
     const [perfumeAnalytics, setPerfumeAnalytics] = useState(null);
+    const [brightness, setBrightness] = useState(75);
 
     console.log("Fetched User !!", user);
     async function getTotalRatings(perfumeId) {
@@ -485,7 +487,17 @@ const RatingResult = ({ productId }) => {
                     </div>
 
                     {/* Range Input */}
-                    <LongevitySlider calculateDefaultLongevity={calculateDefaultLongevity} item={item} updateRating={updateRating} setEmoji={setEmoji} />
+                    <CustomRangeSlider
+                        min={1}
+                        max={5}
+                        defaultValue={brightness}
+                        onChange={setBrightness}
+                        progressColor="bg-gradient-to-r from-yellow-400 to-orange-500"
+                        showTicks
+                        tickCount={5}
+                        valueSuffix="%"
+                        calculateDefaultLongevity={calculateDefaultLongevity} item={item} updateRating={updateRating} setEmoji={setEmoji} />
+                    {/* <LongevitySlider calculateDefaultLongevity={calculateDefaultLongevity} item={item} updateRating={updateRating} setEmoji={setEmoji} /> */}
                     {/* <RangeInput key={ } item={ } setEmoji={ } updateRating={ } /> */}
 
                     {/* Status Details Section */}

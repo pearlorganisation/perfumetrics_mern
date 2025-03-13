@@ -18,7 +18,7 @@ const ProductCards = ({ data }) => {
             >
               <img
                 src={e?.banner || e?.imgUrl}
-                alt="Product Image"
+                alt={e?.mainImageAltAttribute}
                 className="w-full h-[200px] sm:h-[150px] md:h-[20rem] object-contain max-w-xs mx-auto p-2"
               />
 

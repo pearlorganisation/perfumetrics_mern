@@ -199,9 +199,10 @@ const ProductPage = ({ productId }) => {
 
                                         {purchaseLinks?.length > 0 && <Buyfrom links={purchaseLinks} />}
                                     </div>
-                                    {
+                                    <iframe width="300" height="250" frameborder="0" scrolling="no" src="//runative-syndicate.com/iframes2/3528e43bb06d4d9c80fc686714971e38.html?"></iframe>
+                                    {/* {
                                         data?.data?.video && <VideoBox videoD={data?.data?.video} />
-                                    }
+                                    } */}
                                 </div>
                                 <Feedback />
                                 {/* detail start */}
@@ -411,7 +412,7 @@ const ProductPage = ({ productId }) => {
                     {/* Related Fragram ends */}
 
                     {/*Ya perfume categories starts */}
-                    <div className=" grid gap-4 lg:grid-cols-[auto_18rem]">
+                    <div className=" grid gap-4 lg:grid-cols-[auto_18re]">
                         <div className="space-y-8 md:space-y-6 md:px-6">
                             <h2
 

@@ -17,8 +17,8 @@ const EmojiComponent = ({ res, handleChanges }) => {
           >
             <div
               className={`absolute w-full h-full bg-transparent ${idx + 1 === Number(emoji)
-                  ? "backdrop-grayscale-0"
-                  : "backdrop-grayscale"
+                ? "backdrop-grayscale-0"
+                : "backdrop-grayscale"
                 }`}
             ></div>
             <div className="text-sm md:text-2xl text-center p-2">{item.icons}</div>

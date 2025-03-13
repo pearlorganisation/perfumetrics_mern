@@ -24,31 +24,7 @@ const Dummy = ({ data, gender, totalPages }) => {
           Fragrances for {gender}
         </h1>
 
-        {gender === `WOMEN'S STYLE` ? (
-          <picture>
-            <source
-              media="(max-width: 640px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
-            />
-            <source
-              media="(max-width: 1024px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
-            />
-            <source
-              media="(min-width: 1025px)"
-              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
-            />
-            <Image
-              className="object-cover mx-auto"
-              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
-              alt="Banner 2"
-              layout="responsive"
-              width={1920}
-              height={620}
-              priority
-            />
-          </picture>
-        ) : (
+        {gender === `WOMEN'S-STYLE` ? (
           <picture>
             <source
               media="(max-width: 640px)"
@@ -66,6 +42,30 @@ const Dummy = ({ data, gender, totalPages }) => {
               className="object-cover mx-auto"
               src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1741007117/Perf_1920_x_620_px_3_slvhme.png"
               alt="Banner"
+              layout="responsive"
+              width={1920}
+              height={620}
+              priority
+            />
+          </picture>
+        ) : (
+          <picture>
+            <source
+              media="(max-width: 640px)"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_320,w_640/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
+            />
+            <source
+              media="(max-width: 1024px)"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_480,w_1024/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
+            />
+            <source
+              media="(min-width: 1025px)"
+              srcSet="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
+            />
+            <Image
+              className="object-cover mx-auto"
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/h_620,w_1920/v1741007126/Perf_1920_x_620_px_2_hmzuvq.png"
+              alt="Banner 2"
               layout="responsive"
               width={1920}
               height={620}

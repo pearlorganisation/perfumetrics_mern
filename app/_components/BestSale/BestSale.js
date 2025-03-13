@@ -40,9 +40,15 @@ const BestSale = () => {
           <div className="w-full flex flex-col justify-between ">
             {salesData?.slice(0, 3).map((item) => {
               // console.log(item);
-              if (!item?.mapOfLinks[timeZoneCountry]) return;
-              const { link, price, quantity } =
-                item?.mapOfLinks[timeZoneCountry];
+              const temp =
+                item?.mapOfLinks?.[timeZoneCountry] ??
+                item?.mapOfLinks?.["US"] ??
+                (item?.mapOfLinks[Object.keys(item?.mapOfLinks)?.[0]] || []);
+              if (Object.keys(item?.mapOfLinks)?.length == 0) return null;
+              const { link, price, quantity } = temp;
+              // if (!item?.mapOfLinks[timeZoneCountry]) return;
+              // const { link, price, quantity } =
+              //   item?.mapOfLinks[timeZoneCountry];
               return (
                 <Link href={link}>
                   <div className=" flex bg-white shadow-lg rounded-lg overflow-hidden p-2">
@@ -91,10 +97,16 @@ const BestSale = () => {
           </div>
           <div className="w-full flex flex-col justify-between ">
             {salesData?.slice(3, 6).map((item) => {
+              const temp =
+                item?.mapOfLinks?.[timeZoneCountry] ??
+                item?.mapOfLinks?.["US"] ??
+                (item?.mapOfLinks[Object.keys(item?.mapOfLinks)?.[0]] || []);
+              if (Object.keys(item?.mapOfLinks)?.length == 0) return null;
+              const { link, price, quantity } = temp;
               // console.log(item);
-              if (!item?.mapOfLinks[timeZoneCountry]) return;
-              const { link, price, quantity } =
-                item?.mapOfLinks[timeZoneCountry];
+              // if (!item?.mapOfLinks[timeZoneCountry]) return;
+              // const { link, price, quantity } =
+              //   item?.mapOfLinks[timeZoneCountry];
               return (
                 <Link href={link}>
                   <div className=" flex bg-white shadow-lg rounded-lg overflow-hidden p-2">

@@ -113,7 +113,7 @@ export default function Example() {
                         className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
                       >
                         <Link
-                          href="/category/MEN'S STYLE"
+                          href="/category/MEN'S-STYLE"
                           className="block   text-gray-800"
                         >
                           MEN'S STYLE
@@ -126,7 +126,7 @@ export default function Example() {
                         className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
                       >
                         <Link
-                          href="/category/WOMEN'S STYLE"
+                          href="/category/WOMEN'S-STYLE"
                           className="block   text-gray-800"
                         >
                           WOMEN'S STYLE
@@ -237,13 +237,13 @@ export default function Example() {
 
 
             <Link
-              href="/category/MEN'S STYLE"
+              href="/category/MEN'S-STYLE"
               className="hover:text-pink-500 cursor-pointer transition duration-300 py-3 text-nowrap"
             >
               MEN'S STYLE
             </Link>
             <Link
-              href="/category/WOMEN'S STYLE"
+              href="/category/WOMEN'S-STYLE"
               className="hover:text-pink-500 cursor-pointer transition duration-300 py-3 text-nowrap"
             >
               WOMEN'S STYLE

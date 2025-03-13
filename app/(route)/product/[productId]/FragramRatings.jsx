@@ -19,6 +19,7 @@ const FragramRatings = ({ data, country }) => {
 
   const { productId } = useParams();
   const [fragramsData, setFragramsData] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const getFragrams = async (productId) => {
     const result = await axios.get(
@@ -39,15 +40,17 @@ const FragramRatings = ({ data, country }) => {
       toast.info('Please Login First...')
       router.push(`/login?returnUrl=pd`);
     }
-    else modalRef.current.open();
+    else setIsModalOpen(true);
   }
 
-  const modalRef = useRef();
+
 
   // console.log("Frgaram rating ", data);
   return (
     <>
-      <CustomerFeedbackModal ref={modalRef} />
+      {
+        isModalOpen && createPortal(<CustomerFeedbackModal onClose={() => { setIsModalOpen(false) }} />, document.body)
+      }
       <div>
         <div className="flex flex-col items-center  md:space-y-8">
           <div className="grid place-items-center relative w-full mt-20 mb-0 md:mb-8">

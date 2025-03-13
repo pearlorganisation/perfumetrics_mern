@@ -72,7 +72,7 @@ const BrandFilter = () => {
                   <button
                     onClick={() => {
                       setSelectedBrand(brand?._id);
-                      handleBrands(brand?._id);
+                      handleBrands(brand?.slug);
                     }}
                     className={`w-full text-left px-2 py-1 rounded-md ${
                       selectedBrand === brand?._id

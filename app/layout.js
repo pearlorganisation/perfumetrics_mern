@@ -56,6 +56,14 @@ export default function RootLayout({ children }) {
         })(window,document,'script','dataLayer','${GTM_ID}');
       `}
         </Script>
+        {/* <Script
+          src="//cdn.runative-syndicate.com/sdk/v1/bi.js"
+          data-ts-spot="3528e43bb06d4d9c80fc686714971e38"
+          data-ts-width="300"
+          data-ts-height="250"
+          async
+          defer
+        /> */}
       </head>
       {/* Google Tag Manager (noscript) */}
 

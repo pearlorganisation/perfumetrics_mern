@@ -40,12 +40,12 @@ const FragranceSlider = ({ fragramsData, country }) => {
               "https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png"
             }
             target="_blank"
-            className="flex flex-col p-5 shadow-lg rounded-xl bg-white hover:shadow-xl transition-all duration-200 transform hover:scale-[1.03]"
+            className="flex flex-col p-5  rounded-xl bg-white hover:shadow-xl transition-all duration-200 transform hover:scale-[1.03]"
           >
             {/* Image Container */}
             <div className="relative w-full h-32 bg-neutral-200 rounded-lg overflow-hidden">
               <img
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
                 src={item?.banner}
                 alt="Banner"
               />
