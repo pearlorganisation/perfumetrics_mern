@@ -13,6 +13,7 @@ import NewPerfumes from "../NewPerfumes/NewPerfumes";
 import style from "./style.module.css";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 const News = dynamic(
   () => import("./News"),
@@ -54,7 +55,9 @@ const Reviews = async ({ reviewSidebar, length }) => {
                     <div className="w-full  mx-auto bg-white p-4 border-2 border-pink-500  shadow-lg ">
                       <div className="grid place-items-center mb-6 relative">
                         <div className="absolute w-16 h-16 -translate-y-4 rounded-full overflow-hidden border-2 border-pink-500">
-                          <img
+                          <Image
+                            width={500}
+                            height={500}
                             src={_?.banner}
                             className="w-full h-full object-center"
                             alt="Perfume Bottle"

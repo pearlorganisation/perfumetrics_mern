@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import ct from "countries-and-timezones";
+import Image from "next/image";
 
 const BestSale = () => {
   const [salesData, setSalesData] = useState([]);
@@ -82,10 +83,12 @@ const BestSale = () => {
             })}
           </div>
           <div className="w-full relative  grid place-items-center border">
-            <img
+            <Image
+              width={500}
+              height={500}
               className="h-[100%] translate-y-0 w-full "
-              src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1734002362/DiscoverW_u0ifc6.jpg"
-              alt=""
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1734002362/DiscoverW_u0ifc6.jpg"
+              alt="Sales Section"
             />
           </div>
           <div className="w-full flex flex-col justify-between ">
@@ -98,7 +101,9 @@ const BestSale = () => {
                 <Link href={link}>
                   <div className=" flex bg-white shadow-lg rounded-lg overflow-hidden p-2">
                     <div className="grid place-items-center">
-                      <img
+                      <Image
+                        width={28}
+                        height={28}
                         className="size-28 object-cover"
                         src={item?.banner}
                         alt="Euphoria Eau De Parful"

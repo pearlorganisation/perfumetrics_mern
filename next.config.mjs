@@ -8,12 +8,25 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: [
-      "cdn-icons-png.flaticon.com",
-      "res.cloudinary.com",
-      "via.placeholder.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn-icons-png.flaticon.com",
+        pathname: "/**",
+      },
     ],
   },
 };
 
+// Wrap nextConfig with withBundleAnalyzer and export
 export default withBundleAnalyzer(nextConfig);

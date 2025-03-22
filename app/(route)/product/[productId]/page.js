@@ -4,7 +4,7 @@ async function getPerfumeById(perfumeId) {
       `${process.env.NEXT_PUBLIC_API_URL}/api/v1/perfume/slug/${perfumeId}`,
       {
         headers: {
-          "Cache-Control": "no-cache",
+          "Cache-Control": "no-store",
         },
       }
     );
@@ -18,13 +18,11 @@ import { lazy, Suspense } from "react";
 import "./style.css";
 
 // import ProductPage from "@/app/_components/ProductPage/ProductPage";
-import Loader from "@/app/_components/Loader/Loader";
 import axios from "axios";
 import ScrollToTop from "@/app/_components/ScrollToTop/ScrollToTop";
 import dynamic from "next/dynamic";
-
-// Client Components:
-
+import Head from "next/head";
+import { load } from "cheerio";
 const ProductPage = dynamic(
   () => import("@/app/_components/ProductPage/ProductPage"),
   {
@@ -59,13 +57,17 @@ export async function generateMetadata({ params }) {
         },
       },
       title: perfume || "Perfume Details",
-      description: details || "Explore our collection of exclusive perfumes.",
+      description:
+        load(details)?.text() ||
+        "Explore our collection of exclusive perfumes.",
       keywords:
         keywords?.toString()?.replace(/,/g, " ") ||
         "Something Went Wrong With Keywords !!",
       openGraph: {
         title: perfume || "Perfume Details",
-        description: details || "Explore our collection of exclusive perfumes.",
+        description:
+          load(details)?.text() ||
+          "Explore our collection of exclusive perfumes.",
         images: [banner, ...gallerImages] || [],
       },
     };
@@ -78,15 +80,35 @@ export async function generateMetadata({ params }) {
   }
 }
 
-const page = async ({ params }) => {
+const page = async ({ params, metadata }) => {
   const { productId } = params;
-  // const data = await getPerfumeById(productId);
+  const res = await getPerfumeById(params?.productId);
+  const { perfume, details, brand, banner } = res.data;
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: perfume,
+    image: banner,
+    description: load(details)?.text(),
+    brand: {
+      "@type": "Brand",
+      name: brand?.brand || "Brand Not Found",
+    },
+  };
+
   return (
-    <div className="">
+    <>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        />
+      </head>
+
       <Suspense fallback={<>Loading....</>}>
         <ProductPage productId={productId} />
       </Suspense>
-    </div>
+    </>
   );
 };
 

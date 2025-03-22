@@ -132,6 +132,19 @@ export default function Example() {
                           WOMEN'S STYLE
                         </Link>
                       </li>
+                      <li
+                        onClick={() => {
+                          setIsMenuOpen(!isMenuOpen);
+                        }}
+                        className="hover:bg-gray-200 p-2 rounded-lg cursor-pointer"
+                      >
+                        <Link
+                          href="https://blog.perfumetrics.com/"
+                          className="block   text-gray-800"
+                        >
+                          Blogs
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 )}
@@ -247,6 +260,12 @@ export default function Example() {
               className="hover:text-pink-500 cursor-pointer transition duration-300 py-3 text-nowrap"
             >
               WOMEN'S STYLE
+            </Link>
+            <Link
+              href="https://blog.perfumetrics.com"
+              className="hover:text-pink-500 cursor-pointer transition duration-300 py-3 text-nowrap"
+            >
+              BLOGS
             </Link>
           </div>
         </div>

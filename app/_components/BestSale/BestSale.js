@@ -4,6 +4,7 @@ import LogoGrid from "./LogoGrid";
 import Link from "next/link";
 import axios from "axios";
 import ct from "countries-and-timezones";
+import Image from "next/image";
 
 const BestSale = () => {
   const [salesData, setSalesData] = useState([]);
@@ -89,10 +90,12 @@ const BestSale = () => {
             })}
           </div>
           <div className="w-full relative  grid place-items-center border">
-            <img
+            <Image
+              width={500}
+              height={500}
               className="h-[100%] translate-y-0 w-full "
-              src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1734002362/DiscoverW_u0ifc6.jpg"
-              alt=""
+              src="https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1734002362/DiscoverW_u0ifc6.jpg"
+              alt="Best Sale"
             />
           </div>
           <div className="w-full flex flex-col justify-between ">
@@ -149,13 +152,16 @@ const BestSale = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-4 w-full py-6 px-5 md:px-0 mt md:mt-0">
           {[
-            "https://res.cloudinary.com/dznz3eqe8/image/upload/v1732796272/20241122_123618_0000_lchvdf.jpg",
-            `https://res.cloudinary.com/dznz3eqe8/image/upload/v1732796285/20241122_123618_0001_ypzx1b.jpg`,
+            "https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1732796272/20241122_123618_0000_lchvdf.jpg",
+            `https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1732796285/20241122_123618_0001_ypzx1b.jpg`,
           ].map((item) => {
             return (
               <div className="w-full">
                 <div className="relative">
-                  <img
+                  <Image
+                    width={500}
+                    height={500}
+                    loading="lazy"
                     className="w-full h-64 object-cover"
                     src={item}
                     alt="Best for Men's Style"

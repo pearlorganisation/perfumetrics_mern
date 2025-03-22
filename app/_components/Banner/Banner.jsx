@@ -1,4 +1,5 @@
 import { Poppins, Protest_Strike } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 // const protest_strike = Protest_Strike({
@@ -46,8 +47,12 @@ const HeroSection = () => {
         <div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center relative ">
           {/* Decorative Overlay */}
           <div className="absolute inset-0 w-full h-[30rem] bg-gradient-to-br from-purple-300 to-purple-100 rounded-full blur-3xl opacity-40"></div>
-          <img
-            src="https://res.cloudinary.com/dznz3eqe8/image/upload/v1733984224/static_hero_primary_Now_And_Then_2_aynsff.webp"
+          <Image
+            width={400}
+            height={400}
+            priority
+            fetchPriority="high"
+            src="https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1733984224/static_hero_primary_Now_And_Then_2_aynsff.webp"
             alt="Hero Perfume Bottle"
             className="relative z-0 rounded-lg shadow-2xl  md:w-full w-72 md:max-w-lg transition transform hover:scale-105"
           />

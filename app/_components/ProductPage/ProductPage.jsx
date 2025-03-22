@@ -36,6 +36,7 @@ import LoginSignUp from "../LoginSignUp/LoginSignUp";
 import dynamic from "next/dynamic";
 import { FaQuoteLeft } from "react-icons/fa6";
 import perfumeMetaData from "@/store/perfumeMetaData";
+import Head from "next/head";
 
 const lora = Roboto({
     subsets: ['latin'],
@@ -44,6 +45,7 @@ const lora = Roboto({
 
 
 const ProductPage = ({ productId }) => {
+
 
 
     const { id, setId, clearId } = perfumeMetaData();
@@ -163,185 +165,209 @@ const ProductPage = ({ productId }) => {
 
 
     return (
-        <div ref={myRef}>
-            {
-                loading ? <div className="min-h-screen max-w-7xl mx-auto rounded-md my-4 "></div> : <div className="min-h-screen mx-auto py-6 px-4 2xl:w-[1200px] xl:w-[1024px]">
-                    <p className="text-4xl font-medium py-6  mb-0 text-center">
-                        <h1 className={`text-2xl text-left md:w-[70%] md:text-left md:text-[40px] leading-[48px] font-medium ${lora.className}`}>{data?.data?.perfume?.split('for')[0]} <span className='text-pink-400 text-xl md:text-3xl font-normal'>
-                            {data?.data?.perfume?.split('for').length > 1 ? `for` + data?.data?.perfume?.split('for')[1] : ''}
-                        </span></h1>
-                    </p>
-                    <div className=" gap-x-10 gap-y-14 grid gap-4 lg:grid-cols-[auto_18rem] mt-8">
-                        <div className="space-y-6">
-                            <div className="grid md:grid-cols-[40%_60%]  ">
-                                <div className=" ">
-                                    <div className="w-full  grid place-items-left ">
-                                        <img className='h-[20rem] md:h-[28rem]  md:w-full mx-auto object-contain ' src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
-                                    </div>
-                                    {
-                                        <LikeDislikeComponent key={1} data={data} historyMap={historyMap} productId={id} likeDislike={likeDislike} />
-                                    }
-                                </div>
+        <>
 
-                                <div className="flex flex-col items-center gap-3 ">
-                                    <div className="  w-fit  md:mb-0  md:mt-0 md:py-0   px-12">
-                                        <img className="w-full  size-20  md:size-40 object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
+
+            <div ref={myRef}>
+                {
+                    loading ? <div className="min-h-screen max-w-7xl mx-auto rounded-md my-4 "></div> : <div className="min-h-screen mx-auto py-6 px-4 2xl:w-[1200px] xl:w-[1024px]">
+                        <p className="text-4xl font-medium py-6  mb-0 text-center">
+                            <h1 className={`text-2xl text-left md:w-[70%] md:text-left md:text-[40px] leading-[48px] font-medium ${lora.className}`}>{data?.data?.perfume?.split('for')[0]} <span className='text-pink-400 text-xl md:text-3xl font-normal'>
+                                {data?.data?.perfume?.split('for').length > 1 ? `for` + data?.data?.perfume?.split('for')[1] : ''}
+                            </span></h1>
+                        </p>
+                        <div className=" gap-x-10 gap-y-14 grid gap-4 lg:grid-cols-[auto_18rem] mt-8">
+                            <div className="space-y-6">
+                                <div className="grid md:grid-cols-[40%_60%]  ">
+                                    <div className=" ">
+                                        <div className="w-full  grid place-items-left ">
+                                            <img className='h-[20rem] md:h-[28rem]  md:w-full mx-auto object-contain ' src={data?.data?.banner} alt={`${data?.data?.mainImageAltAttribute}`} srcset="" />
+                                        </div>
+                                        {
+                                            <LikeDislikeComponent key={1} data={data} historyMap={historyMap} productId={id} likeDislike={likeDislike} />
+                                        }
                                     </div>
-                                    <div className="flex flex-wrap w-full justify-center overflow-visible pb-8">
-                                        {/* <PieChart mainAccords={data?.data?.mainAccords} /> */}
-                                        <PieChartComponent mainAccords={data?.data?.mainAccords} />
+
+                                    <div className="flex flex-col items-center gap-3 ">
+                                        <div className="  w-fit  md:mb-0  md:mt-0 md:py-0   px-12">
+                                            <img className="w-full  size-20  md:size-40 object-contain" src={data?.data?.logo} alt={data?.data?.brandAltAttribute} />
+                                        </div>
+                                        <div className="flex flex-wrap w-full justify-center overflow-visible pb-8">
+                                            {/* <PieChart mainAccords={data?.data?.mainAccords} /> */}
+                                            <PieChartComponent mainAccords={data?.data?.mainAccords} />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="space-y-8">
-                                <div className="grid md:grid-cols-[60%_40%] gap-y-4 md:gap-y-0">
-                                    <div className="space-y-12 w-full flex flex-col justify-center items-center ">
+                                <div className="space-y-8">
+                                    <div className="grid md:grid-cols-[60%_40%] gap-y-4 md:gap-y-0">
+                                        <div className="space-y-12 w-full flex flex-col justify-center items-center ">
 
-                                        {purchaseLinks?.length > 0 && <Buyfrom links={purchaseLinks} />}
-                                    </div>
-                                    <iframe width="300" height="250" frameborder="0" scrolling="no" src="//runative-syndicate.com/iframes2/3528e43bb06d4d9c80fc686714971e38.html?"></iframe>
-                                    {/* {
+                                            {purchaseLinks?.length > 0 && <Buyfrom links={purchaseLinks} />}
+                                        </div>
+                                        <iframe width="300" height="250" frameborder="0" scrolling="no" src="//runative-syndicate.com/iframes2/3528e43bb06d4d9c80fc686714971e38.html?"></iframe>
+                                        {/* {
                                         data?.data?.video && <VideoBox videoD={data?.data?.video} />
                                     } */}
-                                </div>
-                                <Feedback />
-                                {/* detail start */}
-                                <div className="space-y-7  pt-3 ">
-                                    <div className="!text-[16px] !leading-[25px] !font-normal text-justify md:text-left text-slate-700">
-                                        {isHTML(data?.data?.details) ? (
-                                            // Parse and render HTML content
-                                            <div>{parse(data?.data?.details)}</div>
-                                        ) : (
-                                            // Render plain text
-                                            <p>{data?.data?.details}</p>
-                                        )}
-                                        {/* {data?.data?.details} */}
-
                                     </div>
-
-                                    <div className="relative border-y-2 pt-7 py-6">
-                                        <div className="p-2 absolute -top-5 left-[50%] bg-white">
-                                            <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
-                                        </div>
-                                        <p className='text-justify md:text-left !text-[13px] !leading-[21px] !font-light italic text-slate-800'>
-                                            {isHTML(data?.data?.description) ? (
+                                    <Feedback />
+                                    {/* detail start */}
+                                    <div className="space-y-7  pt-3 ">
+                                        <div className="!text-[16px] !leading-[25px] !font-normal text-justify md:text-left text-slate-700">
+                                            {isHTML(data?.data?.details) ? (
                                                 // Parse and render HTML content
-                                                <div>{parse(data?.data?.description)}</div>
+                                                <div>{parse(data?.data?.details)}</div>
                                             ) : (
                                                 // Render plain text
-                                                <p>{data?.data?.description}</p>
+                                                <p>{data?.data?.details}</p>
                                             )}
-                                            {/* {data?.data?.description} */}
-                                        </p>
+                                            {/* {data?.data?.details} */}
+
+                                        </div>
+
+                                        <div className="relative border-y-2 pt-7 py-6">
+                                            <div className="p-2 absolute -top-5 left-[50%] bg-white">
+                                                <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
+                                            </div>
+                                            <p className='text-justify md:text-left !text-[13px] !leading-[21px] !font-light italic text-slate-800'>
+                                                {isHTML(data?.data?.description) ? (
+                                                    // Parse and render HTML content
+                                                    <div>{parse(data?.data?.description)}</div>
+                                                ) : (
+                                                    // Render plain text
+                                                    <p>{data?.data?.description}</p>
+                                                )}
+                                                {/* {data?.data?.description} */}
+                                            </p>
+                                        </div >
+
                                     </div >
+                                    {/* detail ends */}
 
+                                    {/* pros n cons */}
+                                    {<ProsCons />}
+                                    {/* pros n cons */}
                                 </div >
-                                {/* detail ends */}
-
-                                {/* pros n cons */}
-                                {<ProsCons />}
-                                {/* pros n cons */}
-                            </div >
-                        </div>
-
-                        <div className=" space-y-3">
-                            <div className=" space-y-8 hidden md:block">
-                                <LoginSignUp />
-                                {
-                                    globalBanner && <div className="h-[20rem] flex justify-start items-start  rounded-md overflow-hidden">
-
-                                        <img
-                                            className="h-full w-full object-contain"
-                                            // src="https://img.pikbest.com/origin/06/25/40/84bpIkbEsTgk3.jpg!sw800"
-                                            src={`${globalBanner?.item[0]?.path}`}
-                                            alt=""
-                                        />
-                                    </div>
-                                }
-
                             </div>
-                            <div className='hidden md:block'>
-                                <div className="w-full  flex flex-col gap-5   ">
-                                    <div className=" w-full text-left flex justify-between">
-                                        <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
-                                            Perfume Reviews
-                                        </h2>
-                                        <button className='font-medium text-[14px] text-[#EA92B6]' type="button">Write a Review</button>
+
+                            <div className=" space-y-3">
+                                <div className=" space-y-8 hidden md:block">
+                                    <LoginSignUp />
+                                    {
+                                        globalBanner && <div className="h-[20rem] flex justify-start items-start  rounded-md overflow-hidden">
+
+                                            <img
+                                                className="h-full w-full object-contain"
+                                                // src="https://img.pikbest.com/origin/06/25/40/84bpIkbEsTgk3.jpg!sw800"
+                                                src={`${globalBanner?.item[0]?.path}`}
+                                                alt=""
+                                            />
+                                        </div>
+                                    }
+
+                                </div>
+                                <div className='hidden md:block'>
+                                    <div className="w-full  flex flex-col gap-5   ">
+                                        <div className=" w-full text-left flex justify-between">
+                                            <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
+                                                Perfume Reviews
+                                            </h2>
+                                            <button className='font-medium text-[14px] text-[#EA92B6]' type="button">Write a Review</button>
+                                        </div>
+                                        <CardsList reviewData={sidebarReview} length={7} />
                                     </div>
-                                    <CardsList reviewData={sidebarReview} length={7} />
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {/* <div className=" gap-x-10 gap-y-14 grid gap-4  lg:grid-cols-[auto_18rem] py-8">
+                        {/* <div className=" gap-x-10 gap-y-14 grid gap-4  lg:grid-cols-[auto_18rem] py-8">
 
 
     </div> */}
-                    {/* Perfume Photos starts */}
-                    <div className="md:py-14 ">
-                        <div className="w-full relative grid place-items-center mb-10">
-                            <h2
-                                className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
-                                Perfume Photos
-                            </h2>
+                        {/* Perfume Photos starts */}
+                        <div className="md:py-14 ">
+                            <div className="w-full relative grid place-items-center mb-10">
+                                <h2
+                                    className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
+                                    Perfume Photos
+                                </h2>
+                            </div>
+                            <PerfumePhotos data={data?.data?.gallery} />
                         </div>
-                        <PerfumePhotos data={data?.data?.gallery} />
-                    </div>
-                    {/* Perfume Photos ends */}
+                        {/* Perfume Photos ends */}
 
-                    {/* Fragrance Notes starts */}
-                    <div className="mt-14">
-                        <div className="w-full relative grid place-items-center mb-6">
-                            <h2
-                                className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
-                                Fragrance Notes
-                            </h2>
-                        </div>
-                        <div className="grid lg:grid-cols-[auto_18rem]">
-                            <div className="flex items-start justify-center lg:translate-x-6   gap-10 ">
-                                <div className="flex items-center gap-1  ">
-                                    <div className="p-4 relative left-5 hidden md:block">
-                                        <p className="px-20 font-bold">High</p>
-                                        <div className="">
-                                            <svg
-                                                version="1.0"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="35.000000pt"
-                                                height="300.000000pt"
-                                                viewBox="0 0 35.000000 300.000000"
-                                                preserveAspectRatio="xMidYMid meet"
-                                            >
-                                                {" "}
-                                                <g
-                                                    transform="translate(0.000000,300.000000) scale(0.050000,-0.050000)"
-                                                    fill="#000000"
-                                                    stroke="none"
+                        {/* Fragrance Notes starts */}
+                        <div className="mt-14">
+                            <div className="w-full relative grid place-items-center mb-6">
+                                <h2
+                                    className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
+                                    Fragrance Notes
+                                </h2>
+                            </div>
+                            <div className="grid lg:grid-cols-[auto_18rem]">
+                                <div className="flex items-start justify-center lg:translate-x-6   gap-10 ">
+                                    <div className="flex items-center gap-1  ">
+                                        <div className="p-4 relative left-5 hidden md:block">
+                                            <p className="px-20 font-bold">High</p>
+                                            <div className="">
+                                                <svg
+                                                    version="1.0"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="35.000000pt"
+                                                    height="300.000000pt"
+                                                    viewBox="0 0 35.000000 300.000000"
+                                                    preserveAspectRatio="xMidYMid meet"
                                                 >
                                                     {" "}
-                                                    <path d="M327 5859 c-47 -117 -138 -288 -211 -394 -66 -97 -58 -101 89 -45 58 22 112 40 120 40 8 0 15 -1224 15 -2720 0 -2404 3 -2720 30 -2720 27 0 30 316 30 2721 l0 2722 45 -14 c25 -8 88 -30 140 -50 114 -42 113 -44 25 78 -38 54 -110 181 -158 284 l-89 187 -36 -89z" />{" "}
-                                                </g>{" "}
-                                            </svg>
+                                                    <g
+                                                        transform="translate(0.000000,300.000000) scale(0.050000,-0.050000)"
+                                                        fill="#000000"
+                                                        stroke="none"
+                                                    >
+                                                        {" "}
+                                                        <path d="M327 5859 c-47 -117 -138 -288 -211 -394 -66 -97 -58 -101 89 -45 58 22 112 40 120 40 8 0 15 -1224 15 -2720 0 -2404 3 -2720 30 -2720 27 0 30 316 30 2721 l0 2722 45 -14 c25 -8 88 -30 140 -50 114 -42 113 -44 25 78 -38 54 -110 181 -158 284 l-89 187 -36 -89z" />{" "}
+                                                    </g>{" "}
+                                                </svg>
+                                            </div>
+                                            <p className="px-20 font-bold">Low</p>
                                         </div>
-                                        <p className="px-20 font-bold">Low</p>
-                                    </div>
 
-                                    <div className="relative  grid place-items-center  w-fit">
-                                        <Image
-                                            src={"/PerfumeBottle.svg"}
-                                            height={400}
-                                            width={400}
-                                            alt=""
-                                        />
-                                        <div className="absolute   flex flex-col -translate-x-3 max-w-[20rem] md:max-w-[16rem] gap-4">
-                                            <div className="flex flex-col gap-3 justify-center items-center flex-wrap ">
-                                                <p className="text-center font-bold text-xs md:text-sm">Top Notes</p>
-                                                <div className="flex gap-3 flex-wrap justify-center">
-                                                    {data?.data?.topNote &&
-                                                        data?.data?.topNote.map((el) => {
+                                        <div className="relative  grid place-items-center  w-fit">
+                                            <Image
+                                                src={"/PerfumeBottle.svg"}
+                                                height={400}
+                                                width={400}
+                                                alt=""
+                                            />
+                                            <div className="absolute   flex flex-col -translate-x-3 max-w-[20rem] md:max-w-[16rem] gap-4">
+                                                <div className="flex flex-col gap-3 justify-center items-center flex-wrap ">
+                                                    <p className="text-center font-bold text-xs md:text-sm">Top Notes</p>
+                                                    <div className="flex gap-3 flex-wrap justify-center">
+                                                        {data?.data?.topNote &&
+                                                            data?.data?.topNote.map((el) => {
+                                                                return (
+                                                                    <div
+                                                                        key={el._id}
+                                                                        className=" flex flex-col justify-center items-center "
+                                                                    >
+                                                                        <img
+                                                                            src={el.image}
+                                                                            alt={el.name}
+                                                                            className="w-8 sm:w-12 md:h-12"
+                                                                        />
+                                                                        <p className='text-xs '>{el.name?.slice(0, 5)}...</p>
+                                                                    </div>
+                                                                );
+                                                            })}
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex flex-col gap-3 justify-center items-center flex-wrap">
+                                                    <p className="text-center font-bold text-xs md:text-base">Middle Notes</p>
+                                                    <div className="flex gap-3 flex-wrap justify-center">
+                                                        {data && data.data?.middleNote.map((el) => {
                                                             return (
                                                                 <div
                                                                     key={el._id}
-                                                                    className=" flex flex-col justify-center items-center "
+                                                                    className=" flex flex-col  justify-center items-center "
                                                                 >
                                                                     <img
                                                                         src={el.image}
@@ -352,109 +378,90 @@ const ProductPage = ({ productId }) => {
                                                                 </div>
                                                             );
                                                         })}
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div className="flex flex-col gap-3 justify-center items-center flex-wrap">
-                                                <p className="text-center font-bold text-xs md:text-base">Middle Notes</p>
-                                                <div className="flex gap-3 flex-wrap justify-center">
-                                                    {data && data.data?.middleNote.map((el) => {
-                                                        return (
-                                                            <div
-                                                                key={el._id}
-                                                                className=" flex flex-col  justify-center items-center "
-                                                            >
-                                                                <img
-                                                                    src={el.image}
-                                                                    alt={el.name}
-                                                                    className="w-8 sm:w-12 md:h-12"
-                                                                />
-                                                                <p className='text-xs '>{el.name?.slice(0, 5)}...</p>
-                                                            </div>
-                                                        );
-                                                    })}
-                                                </div>
-                                            </div>
-
-                                            <div className="flex flex-col gap-3 justify-center items-center flex-wrap">
-                                                <p className="text-center font-bold text-xs md:text-base">Base Notes</p>
-                                                <div className="flex gap-3 flex-wrap justify-center">
-                                                    {data?.data?.baseNote.map((el) => {
-                                                        return (
-                                                            <div
-                                                                key={el._id}
-                                                                className=" flex flex-col  justify-center items-center "
-                                                            >
-                                                                <img
-                                                                    src={el.image}
-                                                                    alt={el.name}
-                                                                    className="w-8 sm:w-12 md:h-12"
-                                                                />
-                                                                <p className='text-xs '>{el.name?.slice(0, 5)}...</p>
-                                                            </div>
-                                                        );
-                                                    })}
+                                                <div className="flex flex-col gap-3 justify-center items-center flex-wrap">
+                                                    <p className="text-center font-bold text-xs md:text-base">Base Notes</p>
+                                                    <div className="flex gap-3 flex-wrap justify-center">
+                                                        {data?.data?.baseNote.map((el) => {
+                                                            return (
+                                                                <div
+                                                                    key={el._id}
+                                                                    className=" flex flex-col  justify-center items-center "
+                                                                >
+                                                                    <img
+                                                                        src={el.image}
+                                                                        alt={el.name}
+                                                                        className="w-8 sm:w-12 md:h-12"
+                                                                    />
+                                                                    <p className='text-xs '>{el.name?.slice(0, 5)}...</p>
+                                                                </div>
+                                                            );
+                                                        })}
 
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div >
                                 </div >
+                                <div>{/* <CardsList data={perfumeReviews} /> */}</div>
                             </div >
-                            <div>{/* <CardsList data={perfumeReviews} /> */}</div>
                         </div >
-                    </div >
-                    {/* Fragrance Notes ends */}
+                        {/* Fragrance Notes ends */}
 
-                    {/* Releted Fragram starts */}
-                    <RelatedFragram country={timeZoneCountry} />
-                    {/* Related Fragram ends */}
+                        {/* Releted Fragram starts */}
+                        <RelatedFragram country={timeZoneCountry} />
+                        {/* Related Fragram ends */}
 
-                    {/*Ya perfume categories starts */}
-                    <div className=" grid gap-4 lg:grid-cols-[auto_18re]">
-                        <div className="space-y-8 md:space-y-6 md:px-6">
-                            <h2
+                        {/*Ya perfume categories starts */}
+                        <div className=" grid gap-4 lg:grid-cols-[auto_18re]">
+                            <div className="space-y-8 md:space-y-6 md:px-6">
+                                <h2
 
-                                className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
-                                Yeah Perfume Categories
-                            </h2>
-                            <div>
+                                    className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
+                                    Yeah Perfume Categories
+                                </h2>
+                                <div>
 
-                            </div>
-                            <div className="grid h-[18rem]">
-                                <PerfumeCategorySlider perfumeCategories={perfumeCategories} timeZoneCountry={timeZoneCountry} />
-
-                            </div >
-                            {data && <FragramRatings data={data.data?.ratingFragrams} country={timeZoneCountry} />}
-                            <div className="grid gap-5 container ">
-                                <div className="grid place-items-center relative mt-12">
-                                    <h2
-                                        className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
-                                        Rating Results{" "}
-                                    </h2>
                                 </div>
+                                <div className="grid h-[18rem]">
+                                    <PerfumeCategorySlider perfumeCategories={perfumeCategories} timeZoneCountry={timeZoneCountry} />
+
+                                </div >
+                                {data && <FragramRatings data={data.data?.ratingFragrams} country={timeZoneCountry} />}
+                                <div className="grid gap-5 container ">
+                                    <div className="grid place-items-center relative mt-12">
+                                        <h2
+                                            className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
+                                            Rating Results{" "}
+                                        </h2>
+                                    </div>
 
 
-                                <RatingResult productId={id} />
+                                    <RatingResult productId={id} />
 
-                            </div>
-                            <div className="">
-                                <AddReview />
+                                </div>
+                                <div className="">
+                                    <AddReview />
 
-                            </div>
-                        </div >
-                        {/* <div className='hidden md:block  '>
+                                </div>
+                            </div >
+                            {/* <div className='hidden md:block  '>
                             <CardsList reviewData={sidebarReview} length={7} />
                         </div> */}
-                    </div>
-                    {/*Ya perfume categories ends */}
-                </div >
-            }
-            <button className="hidden" ref={btnRef} onClick={() => myRef.current?.scrollIntoView()}>
-                Jump to My Section
-            </button>
-        </div>
+                        </div>
+                        {/*Ya perfume categories ends */}
+                    </div >
+                }
+                <button className="hidden" ref={btnRef} onClick={() => myRef.current?.scrollIntoView()}>
+                    Jump to My Section
+                </button>
+            </div>
+        </>
+
     )
 }
 

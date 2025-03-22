@@ -1,13 +1,15 @@
+# General Disallow rules for all user agents
 User-agent: *
-Disallow: /https://perfumetrics.com/login/          # Disallow access to login pages
-Disallow: /https://perfumetrics.com/signUp/       # Disallow access to signUp pages
-Disallow: /https://perfumetrics.com/celebrityPerfumeBlog/tom-holand/       # Disallow access to signUp pages
-Disallow: /https://perfumetrics.com/product/3243242/       # Disallow access to signUp pages
-Disallow: /https://perfumetrics.com/news/undefined/       # Disallow access to signUp pages
-Disallow: /https://admin.perfumetrics.com/       # Disallow access to signUp pages
+Disallow: /login/          # Disallow access to login pages
+Disallow: /signUp/         # Disallow access to signUp pages
+Disallow: /celebrityPerfumeBlog/tom-holand/  # Disallow access to specific pages
+Disallow: /product/3243242/  # Disallow access to product pages
+Disallow: /news/undefined/  # Disallow access to undefined news pages
+Disallow: /admin/           # Disallow access to admin section
 
-
+# Specific Allow rule for Googlebot
 User-agent: Googlebot
-Allow: /                   # Allow crawling of the entire site for Googlebot
+Allow: /  # Allow crawling of the entire site for Googlebot
 
+# Sitemap location
 Sitemap: https://perfumetrics.com/sitemap.xml

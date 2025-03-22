@@ -14,6 +14,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import CardsList from "../CardsList/CardsList";
 import axios from "axios";
 import Link from "next/link";
+import Image from "next/image";
 
 const popularPerfumeData = [
   {
@@ -169,8 +170,11 @@ const NewPerfumes = () => {
                       key={index}
                       className="bg-white rounded-lg shadow-md overflow-hidden"
                     >
-                      <img
+                      <Image
+                        width={400}
+                        height={400}
                         src={blog?.banner}
+                        loading="lazy"
                         // src="https://placehold.co/175x192"
                         alt={blog?.imageAttribute}
                         className="w-full h-48 object-cover border"

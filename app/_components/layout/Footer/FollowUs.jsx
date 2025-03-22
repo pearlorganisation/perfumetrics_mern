@@ -18,6 +18,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'sonner';
+import Image from 'next/image';
 
 const FollowUs = () => {
     const {
@@ -47,18 +48,18 @@ const FollowUs = () => {
 
                     {
                         [
-                            `https://png.pngtree.com/thumb_back/fh260/background/20210831/pngtree-perfume-hand-spraying-perfume-on-black-background-image_769461.jpg`,
-                            `https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
-                            `https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
-                            `https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
-                            `https://images.unsplash.com/photo-1595425959632-34f2822322ce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
-                            `https://png.pngtree.com/thumb_back/fh260/background/20240124/pngtree-several-pretty-perfume-bottles-with-reflections-on-a-black-background-image_2959612.png`,
-                            `https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D`,
-                            `https://png.pngtree.com/thumb_back/fh260/background/20241023/pngtree-blue-perfume-bottle-on-beach-image_16441274.jpg`,
+                            `https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1742364150/FOTTERIMAGE_gqw9hn.jpg`,
+                            `https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1742364150/footerimag2_pqgvnm.avif`,
+                            `https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1742364150/fotter3_v6bhg8.avif`,
+                            `https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1742364150/footer4_wlqqxe.avif`,
+                            `https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1742364150/fotter5_wlmm30.jpg`,
+                            `https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1742364257/footer6_vbyifg.png`,
+                            `https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1742364150/fotter3_v6bhg8.avif`,
+                            `https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1742364601/fotter7_xzpw4c.jpg`,
                         ].map((img, index, array) => {
                             const isLastTwoItems = index >= array.length - 2;
-                            return <div className={`h-[12rem] w-full ${isLastTwoItems ? 'hidden md:block' : ''}`}>
-                                <img className='w-full h-full object-cover' src={img} alt="" />
+                            return <div key={img} className={`h-[12rem] w-full ${isLastTwoItems ? 'hidden md:block' : ''}`}>
+                                <Image width={200} height={200} className='w-full h-full object-cover' src={img} alt="Footer Images" />
                             </div>
                         })
                     }

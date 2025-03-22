@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const LogoGrid = () => {
@@ -16,7 +17,14 @@ const LogoGrid = () => {
           {logos?.map((item) => {
             return (
               <a href="#" className="flex justify-center items-center">
-                <img className=" w-[91px] h-[63px]" src={item} alt="" />
+                <Image
+                  width={100}
+                  height={100}
+                  loading="lazy"
+                  className=" w-[91px] h-[63px]"
+                  src={item}
+                  alt={item}
+                />
               </a>
             );
           })}

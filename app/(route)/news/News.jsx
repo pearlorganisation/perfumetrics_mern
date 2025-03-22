@@ -89,6 +89,7 @@ export default function News() {
                 src={newsData?.data?.image}
                 width={400}
                 height={400}
+                loading="lazy"
                 alt="Blog Post"
                 className="w-fit lg:max-w-4xl  lg:h-[30rem] rounded-lg mb-6 object-contain"
               />
