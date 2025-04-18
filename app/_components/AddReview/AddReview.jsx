@@ -67,13 +67,14 @@ const AddReview = () => {
     const memoizedReview = useMemo(() => <Review commentsData={commentsData} />, [commentsData]);
 
     return (
-        <>
-            <form className="grid gap-2">
+        <div className=''>
+
+            <form className="grid gap-2 px-4">
                 <div className=" text-xl md:text-3xl font-medium pl-1 relative grid place-items-center mt-8 md:mt-4 mb-4 md:my-8">
-                    <div className="z-20 font-bold text-[32px] bg-white px-3 py-2">Add Your Review</div>
+                    <div className="z-20 font-bold text-[28px] bg-white px-3 py-2">Add Your Review</div>
                 </div>
                 <textarea
-                    className="resize-none border-2 px-3 py-2 outline-none rounded-md border-gray-400 h-[10rem]"
+                    className="resize-none border-2 py-2 outline-none rounded-md border-gray-400 h-[10rem] px-3"
                     name="comment"
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="Add Your Review..."
@@ -117,7 +118,7 @@ const AddReview = () => {
                 </div>
             </form>
             {memoizedReview}
-        </>
+        </div>
     );
 };
 

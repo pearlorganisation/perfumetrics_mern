@@ -458,70 +458,78 @@ const RatingResult = ({ productId }) => {
 
 
     return (
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-10 md:gap-16 w-full mx-auto md:mx-0 md:w-full px-4 sm:px-8 lg:px-12 ">
-            {ratingData?.map((item, ind) => (
-                <div key={ind} className="flex flex-col gap-4">
-                    {/* Header Section */}
-                    <div className="font-semibold grid place-items-center text-center text-sm sm:text-lg py-2 text-[#2071B2] capitalize">
-                        <span className="text-2xl sm:text-3xl">{item?.icon}</span>
-                        <h3 className="text-black text-sm sm:text-base">{item?.name}</h3>
-                    </div>
 
-                    {/* Status Section */}
-                    <div className="flex  justify-center gap-3 sm:gap-4 h-full">
-                        {item.status.map((stats, idx) => {
-                            console.log("item?.name", stats?.name, stats.isUserSelected)
-                            return <div
-                                key={idx}
-                                className="cursor-pointer grid place-items-center font-medium relative capitalize"
-                            >
-                                <div className="absolute w-full h-full bg-transparent"></div>
-                                <div
-                                    className={`${stats.isUserSelected ? "text-pink-400" : "backdrop-grayscale"
-                                        } text-xs sm:text-[12px] font-bold text-wrap text-center`}
-                                >
-                                    {stats?.name}
-                                </div>
-                            </div>
-                        })}
-                    </div>
 
-                    {/* Range Input */}
-                    <CustomRangeSlider
-                        min={1}
-                        max={5}
-                        defaultValue={brightness}
-                        onChange={setBrightness}
-                        progressColor="bg-gradient-to-r from-yellow-400 to-orange-500"
-                        showTicks
-                        tickCount={5}
-                        valueSuffix="%"
-                        calculateDefaultLongevity={calculateDefaultLongevity} item={item} updateRating={updateRating} setEmoji={setEmoji} />
-                    {/* <LongevitySlider calculateDefaultLongevity={calculateDefaultLongevity} item={item} updateRating={updateRating} setEmoji={setEmoji} /> */}
-                    {/* <RangeInput key={ } item={ } setEmoji={ } updateRating={ } /> */}
+        <div className='flex items-center justify-center'>
+            <div className="grid md:grid-cols-2 gap-6 sm:gap-10 md:gap-16 w-[100%]  md:mx-0 md:w-full   lg:px-12">
+                {ratingData?.map((item, ind) => (
+                    <div key={ind} className="flex flex-col gap-4">
+                        {/* Header Section */}
+                        <div className="font-semibold grid place-items-center text-center text-sm sm:text-lg py-2 text-[#2071B2] capitalize">
+                            <span className="text-2xl sm:text-3xl">{item?.icon}</span>
+                            <h3 className="text-black text-sm sm:text-base">{item?.name}</h3>
+                        </div>
 
-                    {/* Status Details Section */}
-                    <div className="space-y-3">
-                        {item?.status.map((sta, idx) => (
-                            <div key={idx} className="grid grid-cols-[9rem_auto]">
-                                <span className=" text-[#6B859E] capitalize text-wrap w-[8rem] text-xs sm:text-sm">
-                                    {sta.name}
-                                </span>
-                                <div className="w-full flex items-center gap-3">
-                                    <span className="text-sm sm:text-base">{sta.num}</span>
-                                    <div className="bg-slate-300 relative w-[80%] md:w-full rounded-3xl h-[6px] sm:h-[8px]">
+                        {/* Status Section */}
+                        <div className="flex justify-center gap-3 sm:gap-4 h-full px-4">
+                            {item.status.map((stats, idx) => {
+                                console.log("item?.name", stats?.name, stats.isUserSelected)
+                                return (
+                                    <div
+                                        key={idx}
+                                        className="cursor-pointer grid place-items-center font-medium relative capitalize"
+                                    >
+                                        <div className="absolute w-full h-full bg-transparent"></div>
                                         <div
-                                            style={{ width: `${sta.num}%` }}
-                                            className="bg-pink-300 absolute rounded-3xl h-[6px] sm:h-[8px]"
-                                        ></div>
+                                            className={`${stats.isUserSelected ? "text-pink-400" : "backdrop-grayscale"
+                                                } text-xs sm:text-[12px] font-bold text-wrap text-center transition-all ease-in-out duration-300`} // <-- Added transition here
+                                        >
+                                            {stats?.name}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Range Input */}
+                        <CustomRangeSlider
+                            min={1}
+                            max={5}
+                            defaultValue={brightness}
+                            onChange={setBrightness}
+                            progressColor="bg-gradient-to-r from-yellow-400 to-orange-500"
+                            showTicks
+                            tickCount={5}
+                            valueSuffix="%"
+                            calculateDefaultLongevity={calculateDefaultLongevity} item={item} updateRating={updateRating} setEmoji={setEmoji}
+                        />
+
+                        {/* Status Details Section */}
+                        <div className="space-y-3 px-6 ">
+                            {item?.status.map((sta, idx) => (
+                                <div key={idx} className="grid grid-cols-[9rem_auto]">
+                                    <span className=" text-[#6B859E] capitalize text-wrap w-[8rem] text-xs sm:text-sm">
+                                        {sta.name}
+                                    </span>
+                                    <div className="w-full flex items-center gap-3">
+                                        <span className="text-sm sm:text-base">{sta.num}</span>
+                                        <div className="bg-slate-300 relative w-[80%] md:w-full rounded-3xl h-[6px] sm:h-[8px]">
+                                            <div
+                                                style={{ width: `${sta.num}%` }}
+                                                className="bg-pink-300 absolute rounded-3xl h-[6px] sm:h-[8px]"
+                                            ></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
+
+
+
 
     )
 }
@@ -575,3 +583,7 @@ const LongevitySlider = ({ item, calculateDefaultLongevity, updateRating, setEmo
         </div>
     );
 };
+
+
+
+

@@ -34,12 +34,12 @@ const RelatedFragram = ({ country }) => {
   if (!perfumeData.length) return <p>No related fragrances found.</p>;
 
   return (
-    <div className="block mb-20 p-5">
-      <div className="text-left">
-        <h1 className="text-xl md:text-3xl font-extrabold bg-white px-4 pb-5">
+    <div className="block mb-20 mt-5 ">
+      <div className="text-center">
+        <h1 className="text-xl md:text-3xl font-extrabold bg-white  pb-5">
           Related Fragrances
         </h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4   ">
           {perfumeData.slice(0, 8).map((item, index) => {
             const companiesList =
               item?.mapOfLinks?.[country] ??
@@ -49,21 +49,24 @@ const RelatedFragram = ({ country }) => {
             if (!Object.keys(item?.mapOfLinks || {}).length) return null;
 
             return (
-              <Link key={index} href={companiesList} target="_blank">
-                <div className=" cursor-pointer p-1 w-[10rem] hover:shadow-lg transition-all">
-                  <div className="w-[120px] h-[120px] mx-auto overflow-hidden">
-                    <img
-                      src={item.banner || "/placeholder.png"}
-                      alt={item.perfumeName}
-                      className="w-full h-full object-contain"
-                    />
+              <div className="flex items-center justify-center">
+                <Link key={index} href={companiesList} target="_blank">
+                  <div className=" cursor-pointer p-1 w-[8rem] md:w-[10rem] hover:shadow-lg transition-all  flex flex-col items-center justify-around ">
+
+                    <div className="md:w-[160px] md:h-[160px] w-[120px] h-[120px]   overflow-hidden">
+                      <img
+                        src={item.banner || "/placeholder.png"}
+                        alt={item.perfumeName}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="text-center font-medium py-2">
+                      <p className="line-clamp-1">{item.perfumeName}</p>
+                      <p className="text-teal-500 line-clamp-1">{item?.brand?.brand}</p>
+                    </div>
                   </div>
-                  <div className="text-center font-medium py-2">
-                    <p className="line-clamp-1">{item.perfumeName}</p>
-                    <p className="text-teal-500 line-clamp-1">{item?.brand?.brand}</p>
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             );
           })}
         </div>

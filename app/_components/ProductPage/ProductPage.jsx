@@ -36,7 +36,7 @@ import LoginSignUp from "../LoginSignUp/LoginSignUp";
 import dynamic from "next/dynamic";
 import { FaQuoteLeft } from "react-icons/fa6";
 import perfumeMetaData from "@/store/perfumeMetaData";
-import Head from "next/head";
+
 
 const lora = Roboto({
     subsets: ['latin'],
@@ -52,6 +52,7 @@ const ProductPage = ({ productId }) => {
     const [purchaseLinks, setPurchaseLinks] = useState([]);
     const [sidebarReview, setSidebarReview] = useState(null);
     const [data, setData] = useState(null);
+    const [galleryData, setGalleryData] = useState(null);
     const router = useRouter();
 
     const tmz = useMemo(() => Intl.DateTimeFormat().resolvedOptions().timeZone, []);
@@ -63,7 +64,6 @@ const ProductPage = ({ productId }) => {
     const { user, isUserLoggedIn } = userStore();
     const [historyMap, setHistorMap] = useState(new Map()); // Initialize with an empty Map
     const [loading, setLoading] = useState(true)
-
     useEffect(() => {
         async function getPerfumeById(perfumeId) {
             try {
@@ -73,6 +73,8 @@ const ProductPage = ({ productId }) => {
                 );
                 setLoading(false)
                 setData(response.data)
+                const sortedGallery = (response.data.data.gallery).sort((a, b) => (a?.position || 0) - (b?.position || 0))
+                setGalleryData(sortedGallery);
 
             } catch (err) {
                 setLoading(false)
@@ -168,15 +170,15 @@ const ProductPage = ({ productId }) => {
         <>
 
 
-            <div ref={myRef}>
+            <div ref={myRef} className="">
                 {
-                    loading ? <div className="min-h-screen max-w-7xl mx-auto rounded-md my-4 "></div> : <div className="min-h-screen mx-auto py-6 px-4 2xl:w-[1200px] xl:w-[1024px]">
-                        <p className="text-4xl font-medium py-6  mb-0 text-center">
+                    loading ? <div className="min-h-screen max-w-7xl mx-auto rounded-md my-4 "></div> : <div className="min-h-screen mx-auto py-6  2xl:w-[1200px] xl:w-[1024px]">
+                        <p className="text-4xl font-medium py-6  mb-0 text-center px-6">
                             <h1 className={`text-2xl text-left md:w-[70%] md:text-left md:text-[40px] leading-[48px] font-medium ${lora.className}`}>{data?.data?.perfume?.split('for')[0]} <span className='text-pink-400 text-xl md:text-3xl font-normal'>
                                 {data?.data?.perfume?.split('for').length > 1 ? `for` + data?.data?.perfume?.split('for')[1] : ''}
                             </span></h1>
                         </p>
-                        <div className=" gap-x-10 gap-y-14 grid gap-4 lg:grid-cols-[auto_18rem] mt-8">
+                        <div className=" gap-x-10 gap-y-14 grid gap-4 lg:grid-cols-[auto_18rem] mt-8 px-6 ">
                             <div className="space-y-6">
                                 <div className="grid md:grid-cols-[40%_60%]  ">
                                     <div className=" ">
@@ -204,7 +206,18 @@ const ProductPage = ({ productId }) => {
 
                                             {purchaseLinks?.length > 0 && <Buyfrom links={purchaseLinks} />}
                                         </div>
-                                        <iframe width="300" height="250" frameborder="0" scrolling="no" src="//runative-syndicate.com/iframes2/3528e43bb06d4d9c80fc686714971e38.html?"></iframe>
+                                        {/* <iframe width="300" height="250" frameborder="0" scrolling="no" src="//www.highperformanceformat.com/df28eb1517c02c14a6a6190dbd9690a9/invoke.js"></iframe> */}
+                                        {/* 
+                                        <div dangerouslySetInnerHTML={<script
+                                            type="text/javascript"
+                                            src="//www.highperformanceformat.com/df28eb1517c02c14a6a6190dbd9690a9/invoke.js"
+                                            strategy="afterInteractive"
+                                            onError={(e) => console.error('Script error:', e)}
+                                            onLoad={() => console.log('Script loaded successfully')}
+                                        />}>
+
+                                        </div> */}
+
                                         {/* {
                                         data?.data?.video && <VideoBox videoD={data?.data?.video} />
                                     } */}
@@ -212,7 +225,7 @@ const ProductPage = ({ productId }) => {
                                     <Feedback />
                                     {/* detail start */}
                                     <div className="space-y-7  pt-3 ">
-                                        <div className="!text-[16px] !leading-[25px] !font-normal text-justify md:text-left text-slate-700">
+                                        <div className="!text-[16px] !leading-[25px] !font-normal text-justify md:text-left text-black">
                                             {isHTML(data?.data?.details) ? (
                                                 // Parse and render HTML content
                                                 <div>{parse(data?.data?.details)}</div>
@@ -226,9 +239,9 @@ const ProductPage = ({ productId }) => {
 
                                         <div className="relative border-y-2 pt-7 py-6">
                                             <div className="p-2 absolute -top-5 left-[50%] bg-white">
-                                                <FaQuoteLeft size={20} className=" text-[#83a6c4]" />
+                                                <FaQuoteLeft size={20} className=" text-[#83a6c4] " />
                                             </div>
-                                            <p className='text-justify md:text-left !text-[13px] !leading-[21px] !font-light italic text-slate-800'>
+                                            <p className='text-justify md:text-left !text-[16px] !leading-[25px] !font-normal  text-black'>
                                                 {isHTML(data?.data?.description) ? (
                                                     // Parse and render HTML content
                                                     <div>{parse(data?.data?.description)}</div>
@@ -283,14 +296,14 @@ const ProductPage = ({ productId }) => {
 
     </div> */}
                         {/* Perfume Photos starts */}
-                        <div className="md:py-14 ">
+                        <div className="md:py-14 px-6">
                             <div className="w-full relative grid place-items-center mb-10">
                                 <h2
                                     className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
                                     Perfume Photos
                                 </h2>
                             </div>
-                            <PerfumePhotos data={data?.data?.gallery} />
+                            {galleryData && <PerfumePhotos data={galleryData} />}
                         </div>
                         {/* Perfume Photos ends */}
 
@@ -330,12 +343,14 @@ const ProductPage = ({ productId }) => {
                                             <p className="px-20 font-bold">Low</p>
                                         </div>
 
-                                        <div className="relative  grid place-items-center  w-fit">
+                                        <div className="relative  grid place-items-center">
                                             <Image
-                                                src={"/PerfumeBottle.svg"}
-                                                height={400}
-                                                width={400}
+                                                src={"/PerfumeBottle3.svg"}
+                                                height={550}
+                                                width={650}
                                                 alt=""
+                                                className="object-cover"
+
                                             />
                                             <div className="absolute   flex flex-col -translate-x-3 max-w-[20rem] md:max-w-[16rem] gap-4">
                                                 <div className="flex flex-col gap-3 justify-center items-center flex-wrap ">
@@ -413,21 +428,26 @@ const ProductPage = ({ productId }) => {
                         {/* Fragrance Notes ends */}
 
                         {/* Releted Fragram starts */}
-                        <RelatedFragram country={timeZoneCountry} />
+                        <div className=" md:px-24">
+                            <RelatedFragram country={timeZoneCountry} />
+                        </div>
                         {/* Related Fragram ends */}
 
                         {/*Ya perfume categories starts */}
-                        <div className=" grid gap-4 lg:grid-cols-[auto_18re]">
-                            <div className="space-y-8 md:space-y-6 md:px-6">
-                                <h2
+                        <div className=" md:px-24 grid gap-4 lg:grid-cols-[auto_18re] ">
+                            <div className="space-y-8 md:space-y-6 md:px-2  items-center justify-center">
+                                <div className="flex items-center justify-center"
+                                >
+                                    <h2
 
-                                    className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
-                                    Yeah Perfume Categories
-                                </h2>
+                                        className="text-xl md:text-3xl font-extrabold bg-white ">
+                                        Yeah Perfume Categories
+                                    </h2>
+                                </div>
                                 <div>
 
                                 </div>
-                                <div className="grid h-[18rem]">
+                                <div className="grid h-[20rem]">
                                     <PerfumeCategorySlider perfumeCategories={perfumeCategories} timeZoneCountry={timeZoneCountry} />
 
                                 </div >
@@ -439,8 +459,6 @@ const ProductPage = ({ productId }) => {
                                             Rating Results{" "}
                                         </h2>
                                     </div>
-
-
                                     <RatingResult productId={id} />
 
                                 </div>
@@ -449,9 +467,7 @@ const ProductPage = ({ productId }) => {
 
                                 </div>
                             </div >
-                            {/* <div className='hidden md:block  '>
-                            <CardsList reviewData={sidebarReview} length={7} />
-                        </div> */}
+
                         </div>
                         {/*Ya perfume categories ends */}
                     </div >
@@ -460,6 +476,8 @@ const ProductPage = ({ productId }) => {
                     Jump to My Section
                 </button>
             </div>
+
+
         </>
 
     )

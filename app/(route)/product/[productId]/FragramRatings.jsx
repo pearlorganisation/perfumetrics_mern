@@ -47,7 +47,7 @@ const FragramRatings = ({ data, country }) => {
 
   // console.log("Frgaram rating ", data);
   return (
-    <>
+    <div className="">
       {
         isModalOpen && createPortal(<CustomerFeedbackModal onClose={() => { setIsModalOpen(false) }} />, document.body)
       }
@@ -59,9 +59,9 @@ const FragramRatings = ({ data, country }) => {
               Fragram Ratings
             </h2>
           </div>
-          <div className="grid grid-cols-3 gap-8">
-            <div className="flex flex-col items-center">
-              <div className="relative">
+          <div className="grid grid-cols-3 gap-8 px-2 mt-1">
+            <div className="flex flex-col items-center ">
+              <div className="relative ">
                 <svg
                   className="w-20 h-20 md:w-32 md:h-32"
                   viewBox="0 0 128 128"
@@ -292,12 +292,15 @@ const FragramRatings = ({ data, country }) => {
           </button>
         </div>
         {data && (
-          <div className=" mt-12 space-y-8">
-            <div className="grid place-items-start relative w-full">
-              <h2
-                className="text-xl md:text-3xl font-extrabold bg-white">
-                Fragrams
-              </h2>
+          <div className=" mt-16 space-y-8">
+            <div className="grid  relative w-full">
+
+              <div className="flex items-center justify-center text-center">
+                <h2
+                  className="text-xl md:text-3xl font-extrabold bg-white">
+                  Fragrams
+                </h2>
+              </div>
             </div>
 
             <div className="grid  gap-8">
@@ -307,7 +310,7 @@ const FragramRatings = ({ data, country }) => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

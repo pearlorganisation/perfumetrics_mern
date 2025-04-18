@@ -41,6 +41,43 @@ export default function RootLayout({ children }) {
         width="0"
         style="display: none; visibility: hidden;">
       </iframe>`;
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://perfumetrics.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Write Reviews",
+        item: "https://perfumetrics.com/reviews/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Men's Style",
+        item: "https://perfumetrics.com/category/MEN'S-STYLE",
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: "Women's Style",
+        item: "https://perfumetrics.com/category/WOMEN'S-STYLE",
+      },
+      {
+        "@type": "ListItem",
+        position: 5,
+        name: "Blogs",
+        item: "https://blog.perfumetrics.com",
+      },
+    ],
+  };
   return (
     <html lang="en">
       <head>
@@ -49,7 +86,10 @@ export default function RootLayout({ children }) {
           name="google-site-verification"
           content="_u9qGtjoK7YSxFD2seZpXmiQb39522RLaXBDvlMs4YI"
         />
-
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
         <Script
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{

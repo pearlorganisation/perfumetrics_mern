@@ -18,27 +18,39 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 py-16 lg:py-24 flex flex-col lg:flex-row items-center justify-center ">
         {/* Text Content */}
         <div className="lg:w-1/2 text-center lg:text-left ">
-          <h1 className="!font-normal leading-tight text-5xl lg:text-[80px] text-gray-800">
-            Awaken Your Senses
+          <h1 className="!font-normal leading-tight text-3xl lg:text-[60px] text-gray-800">
+            Awaken Your Senses with Luxury Perfumes
           </h1>
           <p className={`${poppins.className} mt-6 text-base sm:text-[20px] font-normal text-gray-600 max-w-lg mx-auto lg:mx-0`}>
-            Deep dive into the world of luxirious fragrances, where you explore expert reviews and find your perfect choice at the best price!.
+            Discover the world of luxurious fragrances with the Best Prices & explore the expert's Fragrance Reviews to find you perfect choice!.....  & Perfume News.
           </p>
           <div className="mt-8  hidden md:flex justify-center lg:justify-start space-x-4">
-            <Link
+            {/* <Link
               href={`/category/MEN'S STYLE`}
             >
-              <button className={`${poppins.className} px-8 py-2 bg-pink-500 text-white font-semibold rounded-lg shadow-lg hover:bg-pink-600 transition transform hover:scale-105`}>
+              <button className={`${poppins.className} px-8 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-lg hover:bg-pink-600 transition transform hover:scale-105`}>
                 Explore Men's
               </button>
             </Link>
             <Link
               href={`/category/WOMEN'S STYLE`}
             >
-              <button className={`${poppins.className}  px-8 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-lg hover:bg-gray-300 transition transform hover:scale-105`}>
+              <button className={`${poppins.className}  px-8 py-2 bg-pink-500 text-white font-semibold rounded-lg shadow-lg hover:bg-gray-300 transition transform hover:scale-105`}>
                 Explore Women's
               </button>
 
+            </Link> */}
+
+            <Link href={`/category/MEN'S-STYLE`}>
+              <button className={`${poppins.className} px-8 py-2 bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-lg hover:bg-pink-600 transition transform hover:scale-105`}>
+                Explore Men's
+              </button>
+            </Link>
+
+            <Link href={`category/WOMEN'S-STYLE`}>
+              <button className={`${poppins.className} px-8 py-2 bg-pink-500 text-white font-semibold rounded-lg shadow-lg hover:bg-gray-300 transition transform hover:scale-105`}>
+                Explore Women's
+              </button>
             </Link>
           </div>
         </div>
@@ -59,16 +71,16 @@ const HeroSection = () => {
         </div>
         <div className="mt-8 w-full  flex md:hidden justify-center lg:justify-start space-x-4 text-base font-light">
           <Link
-            href={`/category/MEN'S STYLE`}
+            href={`/category/MEN'S-STYLE`}
           >
-            <button className=" w-[10rem] px-3 py-3 text-sm bg-pink-500 text-white font-semibold rounded-lg shadow-lg hover:bg-pink-600 transition transform hover:scale-105">
+            <button className=" w-[8.5rem] px-3 py-3 text-[12px] bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-lg hover:bg-pink-600 transition transform hover:scale-105">
               Explore Men's
             </button>
           </Link>
           <Link
-            href={`/category/WOMEN'S STYLE`}
+            href={`/category/WOMEN'S-STYLE`}
           >
-            <button className=" w-[10rem]  px-3 py-3 text-sm bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-lg hover:bg-gray-300 transition transform hover:scale-105">
+            <button className=" w-[8.5rem] px-3 py-3 text-[12px] bg-pink-500 text-white font-semibold rounded-lg shadow-lg hover:bg-gray-300 transition transform hover:scale-105">
               Explore Women's
             </button>
 

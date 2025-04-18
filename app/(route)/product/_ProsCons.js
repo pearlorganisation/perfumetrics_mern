@@ -85,7 +85,24 @@ const ProsCons = () => {
           <div className=" lg:border-r border-gray-300 grid">
             <div className=" w-full  ">
               <div className="text-center mx-auto w-[70%] md:w-[15rem] text-xl mb-10 ">
-                <p className="border bg-[#1BBE98] border-black font-normal text-white flex justify-center items-center px-12 py-3 gap-3">
+                <div className="flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m4.5 12.75 6 6 9-13.5"
+                    />
+                  </svg>
+                </div>
+
+                <p className="border mt-1 bg-[#1BBE98] border-black font-normal text-white flex justify-center items-center px-12 py-3 gap-3">
                   PROS
                 </p>
               </div>
@@ -161,7 +178,23 @@ const ProsCons = () => {
           <div className=" grid ">
             <div className="">
               <div className="  text-center mx-auto w-[70%] md:w-[15rem]  text-xl mb-10">
-                <p className="border border-black bg-[#E96D6D] text-white font-normal text-[20px] flex justify-center items-center px-12 py-3 gap-3">
+                <div className="flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18 18 6M6 6l12 12"
+                    />
+                  </svg>
+                </div>
+                <p className="border mt-1 border-black bg-[#E96D6D] text-white font-normal text-[20px] flex justify-center items-center px-12 py-3 gap-3">
                   CONS
                 </p>
               </div>

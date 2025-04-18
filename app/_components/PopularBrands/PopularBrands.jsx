@@ -33,7 +33,7 @@ const PopularBrands = () => {
 
   return (
     <div className=" px-4  w-[98dvw] bg-white">
-      <h2 className="text-[#1F2937] text-base md:text-xl text-center font-semibold mb-4">
+      <h2 className="text-[#1F2937] text-base md:text-xl text-center font-semibold mb-8 mt-4">
         NEW AND UPCOMING FRAGRANCES
       </h2>
 

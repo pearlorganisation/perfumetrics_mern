@@ -128,6 +128,10 @@ html {
 
 } */
 
+.custom-pagination {
+  margin-top: 20px; /* Adjust this value to add more space between the slider and dots */
+}
+
 .swiper {
   width: 100%;
   height: 100%;
@@ -155,9 +159,36 @@ html {
 }
 
 /* .swiper-slide:nth-child(2n) {
-  width: 60%!important
+  width: 60% !important;
+}
+
+.swiper-slide:nth-child(3n) {
+  width: 40% !important;
 } */
 
-/* .swiper-slide:nth-child(3n) {
-  width: 40%!important
-} */
+.swiper-button-disabled {
+  display: none;
+}
+
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet {
+  background-color: #333; /* Customize the color of the dots */
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #f56; /* Active dot color */
+}
+
+.customSlider {
+  background-color: #f56; /* Active dot color */
+  top: -22px;
+  opacity: 0;
+}

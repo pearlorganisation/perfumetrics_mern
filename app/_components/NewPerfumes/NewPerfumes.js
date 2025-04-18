@@ -117,16 +117,16 @@ const NewPerfumes = () => {
 
   return (
     <>
-      <div className="pb-12  container grid gap-x-12 lg:grid-cols-1 w-full  ">
+      <div className="pb-12  container grid gap-x-12 lg:grid-cols-1 w-full px-2 ">
         <div className="block space-y-5">
           <div className="text-center space-y-6">
             <div className="grid place-items-center relative">
-              <h1 class="text-3xl md:text-[36px] font-bold px-6 md:px-8 pt-3 bg-white z-40">
+              <h1 class="text-3xl md:text-[36px] font-bold px-2 md:px-8 pt-3 bg-white z-40">
                 New Perfumes
               </h1>
               <div className="absolute w-[90%] h-[2px] bg-slate-500"></div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 pt-6  ">
+            <div className="grid grid-cols-2 md:grid-cols-4 pt-6 px-2 gap-2 ">
               {Array.isArray(newArrival) &&
                 newArrival.length > 0 &&
                 newArrival?.slice(0, 4)?.map((item, index) => {
@@ -151,12 +151,12 @@ const NewPerfumes = () => {
                 })}
             </div>
           </div>
-          <div className="space-y-6 px-3 !mt-12  md:mt-0">
-            <div class="grid place-items-center relative ">
-              <h1 class="text-3xl md:text-[36px] font-bold px-6 md:px-8 pt-3 bg-white z-40">
+          <div className="space-y-6 px-2 !mt-12  md:mt-0">
+            <div className="grid place-items-center relative">
+              <h1 class="text-xl md:text-[36px] font-bold px-2 md:px-8 pt-3 bg-white z-40">
                 Celebrity Perfumes
               </h1>
-              <div class="absolute w-full h-[2px] bg-slate-500"></div>
+              <div className="absolute w-[90%] h-[2px] bg-slate-500"></div>
             </div>
             <div className="text-3xl text-center md:text-left md:text-5xl font-bold"></div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6  pt-6">
@@ -168,17 +168,26 @@ const NewPerfumes = () => {
                   >
                     <div
                       key={index}
-                      className="bg-white rounded-lg shadow-md overflow-hidden"
+                      className=" rounded-lg shadow-md overflow-hidden "
                     >
                       <Image
-                        width={400}
-                        height={400}
+                        width={600}
+                        height={600}
                         src={blog?.banner}
+                        //  src={`https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1731992687/Design%20Destination/1_d6b8844f-c519-4e09-9d55-84696a702ce3%20%281%29.webp`}
+                        // src={`https://res.cloudinary.com/dznz3eqe8/image/upload/q_auto,f_auto/v1737555437/Design%20Destination/y5dspve6alo2pz749xht.jpg`}
                         loading="lazy"
-                        // src="https://placehold.co/175x192"
+                        // src="https://placehold.com/175x192"
                         alt={blog?.imageAttribute}
-                        className="w-full h-48 object-cover border"
+                        className="w-full h-36 md:h-44 md:object-center object-contain md:object-contain border"
                       />
+
+                      {/* <div className="w-full bg-yellow-700">
+                        <img
+                          src={blog?.banner}
+                          className=" min-w-40 h-24 object-contain "
+                        />
+                      </div> */}
                       <div className="p-4">
                         <h3 className="text-[16px] font-bold text-center mb-2 text-gray-800 line-clamp-1">
                           {blog?.title}

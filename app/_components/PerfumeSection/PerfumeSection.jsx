@@ -49,7 +49,7 @@ async function PerfumeSection({ reviewSidebar, length }) {
             <h1 className="text-lg md:text-[36px] text-nowrap font-bold px-8 py-3 bg-white z-40 relative   text-center ">
               Top Rated Fragrance
             </h1>
-            <div className="absolute w-full h-[2px] bg-slate-500"></div>
+            <div className="absolute w-full h-[2px] "></div>
           </div>
           {<ProductCards data={data} />}
         </div>

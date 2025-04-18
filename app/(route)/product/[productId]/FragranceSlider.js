@@ -21,7 +21,7 @@ const FragranceSlider = ({ fragramsData, country }) => {
     return `${day}-${month}-${year}`;
   }
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {fragramsData?.map((item, index) => {
         console.log(item, "travis thulla");
 
@@ -40,10 +40,10 @@ const FragranceSlider = ({ fragramsData, country }) => {
               "https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png"
             }
             target="_blank"
-            className="flex flex-col p-5  rounded-xl bg-white hover:shadow-xl transition-all duration-200 transform hover:scale-[1.03]"
+            className="flex flex-col p-2  rounded-xl  hover:shadow-xl transition-all duration-200 transform hover:scale-[1.03]"
           >
             {/* Image Container */}
-            <div className="relative w-full h-32 bg-neutral-200 rounded-lg overflow-hidden">
+            <div className="relative w-full h-32 rounded-lg overflow-hidden">
               <img
                 className="w-full h-full object-contain"
                 src={item?.banner}

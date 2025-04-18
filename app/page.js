@@ -36,10 +36,10 @@ export default async function Home() {
     <div className="py-1 px-0">
       <Banner />
       <div className="">
-        <div className="ml-4">
+        <div className="">
           <PopularBrands />
-          <div className="min-h-screen mx-auto py-6 px-4 2xl:w-[1200px] xl:w-[1024px]">
-            <div className="w-full grid lg:grid-cols-[auto_20rem]  gap-8 ">
+          <div className="min-h-screen md:mx-auto md:py-6 md:px-4 2xl:w-[1200px] xl:w-[1024px]">
+            <div className="w-full grid md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-[auto_20rem]  gap-8 ">
               <div>
                 <PerfumeSection length={7} reviewSidebar={sidebarReview} />
                 <Gallery />
@@ -53,7 +53,7 @@ export default async function Home() {
                     {gVideo?.item && (
                       <div className="grid place-items-center relative bg-slate-100  md:h-[12rem] md:w-[90%] border overflow-hidden">
                         <iframe
-                          src={gVideo?.item[0]?.path}
+                          src={gVideo?.item[0]?.path || "IMNVALID"}
                           width="100%"
                           height="100%"
                         ></iframe>

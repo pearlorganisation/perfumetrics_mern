@@ -21,7 +21,7 @@ const News = dynamic(
     ssr: false,
     loading: () => <div class="animate-pulse grid grid-cols-1 gap-6 py-6 pt-0">
       <div class="space-y-4 w-full">
-        <div class="w-full h-[30rem] bg-gray-200"></div>
+        <div class="w-full max-h-44 md:h-[30rem] bg-gray-200"></div>
         <div class="h-6 bg-gray-200 w-3/5"></div>
         <div class="h-4 bg-gray-200 w-1/2"></div>
         <div class="h-16 bg-gray-200"></div>

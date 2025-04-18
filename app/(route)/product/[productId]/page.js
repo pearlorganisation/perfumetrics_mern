@@ -14,14 +14,26 @@ async function getPerfumeById(perfumeId) {
   }
 }
 
+const getComments = async (perfumeId) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/comment/${perfumeId}`,
+    {
+      headers: {
+        "Cache-Control": "no-store",
+      },
+    }
+  );
+  const data = await response.json();
+
+  return data ? data : null;
+};
+
 import { lazy, Suspense } from "react";
 import "./style.css";
 
 // import ProductPage from "@/app/_components/ProductPage/ProductPage";
 import axios from "axios";
-import ScrollToTop from "@/app/_components/ScrollToTop/ScrollToTop";
 import dynamic from "next/dynamic";
-import Head from "next/head";
 import { load } from "cheerio";
 const ProductPage = dynamic(
   () => import("@/app/_components/ProductPage/ProductPage"),
@@ -83,7 +95,31 @@ export async function generateMetadata({ params }) {
 const page = async ({ params, metadata }) => {
   const { productId } = params;
   const res = await getPerfumeById(params?.productId);
-  const { perfume, details, brand, banner } = res.data;
+
+  const {
+    perfume,
+    details,
+    brand,
+    banner,
+    mapOfLinks,
+    ratingFragrams,
+    _id: perfumeId,
+  } = res.data;
+  const { data: commentsDataRes } = await getComments(perfumeId);
+  let offerToInclude = [];
+
+  if (mapOfLinks?.US && mapOfLinks.US?.length > 0) {
+    offerToInclude = mapOfLinks.US.map((curr) => {
+      return {
+        "@type": "Offer",
+        priceCurrency: "US",
+        price: curr?.price,
+        image: curr?.company?.imageUrl,
+        url: curr?.link,
+      };
+    });
+  }
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -94,6 +130,26 @@ const page = async ({ params, metadata }) => {
       "@type": "Brand",
       name: brand?.brand || "Brand Not Found",
     },
+    offers: offerToInclude,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: ratingFragrams?.overall || 4,
+    },
+  };
+
+  const commentsDataSchema = {
+    comments:
+      commentsDataRes?.map((el) => {
+        return {
+          "@type": "Comment",
+          author: {
+            "@type": "Person",
+            name: el?.userId?.userName || el?.title || "Anonymous", // Use dynamic name
+          },
+          datePublished: el?.datePublished || new Date().toISOString(), // Use actual date
+          text: el?.description || "No comment text provided.", // Use actual comment
+        };
+      }) || [],
   };
 
   return (
@@ -102,6 +158,12 @@ const page = async ({ params, metadata }) => {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(commentsDataSchema),
+          }}
         />
       </head>
 

@@ -41,7 +41,7 @@ async function Review({ commentsData, perfumeId }) {
         </div>
       </div>
 
-      <div className="w-full  mx-auto space-y-4 py-4  ">
+      <div className="w-full  mx-auto space-y-4 py-4 px-4  ">
         {commentsData && commentsData?.length > 0 ? (
           commentsData.map((item) => {
             return (

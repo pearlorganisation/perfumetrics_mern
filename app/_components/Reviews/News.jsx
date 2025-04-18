@@ -39,13 +39,13 @@ const News = () => {
 
           <div className="space-y-2 w-full ">
             <img
-              className="w-full h-[30rem] object-cover"
+              className="w-full h-[18rem] md:h-[30rem] object-fit md:object-cover mt-1 mb-1"
 
               src={newsMapData?.get(1)?.image}
               alt=""
             />
 
-            <div className="font-semibold text-3xl text-black">
+            <div className="font-semibold mt-2 text-2xl md:text-3xl text-black">
               {newsMapData?.get(1)?.title}
 
             </div>
@@ -58,7 +58,7 @@ const News = () => {
 
         </Link> : <div class="grid grid-cols-1 gap-6 py-6 pt-0 animate-pulse">
           <div class="space-y-4 w-full">
-            <div class="w-full h-[30rem] bg-gray-200"></div>
+            <div class="w-full h-[14rem] md:h-[30rem] bg-gray-200"></div>
             <div class="h-12 bg-gray-200 w-3/4"></div>
             <div class="h-6 bg-gray-200 w-1/2"></div>
             <div class="h-16 bg-gray-200 w-full"></div>
@@ -71,7 +71,7 @@ const News = () => {
           {
             newsMapData ? <Link href={`/news/${newsMapData?.get(2)?.slug}`} className="space-y-1">
               <img
-                className="w-full rounded-md h-[13.5rem]"
+                className="w-full rounded-md h-[14rem] mt-1 mb-1 md:h-[13.5rem] object-fit md:object-cover"
                 src={newsMapData?.get(2)?.image}
                 alt=""
               />
@@ -94,7 +94,7 @@ const News = () => {
             newsMapData ? <div className=" mt-8">
               <Link href={`/news/${newsMapData?.get(3)?.slug}`} className="mb-8 space-y-1">
                 <img
-                  className="w-full rounded-md h-[13.5rem]"
+                  className="w-full rounded-md h-[14rem] md:h-[13.5rem] mt-1 mb-1 object-fit md:object-cover"
                   src={newsMapData?.get(3)?.image}
                   alt=""
                 />
@@ -131,7 +131,7 @@ const News = () => {
         {
           newsMapData ? <Link href={`/news/${newsMapData?.get(4)?.slug}`} className=" space-y-1   md:top-0 ">
             <img
-              className="w-full rounded-md h-[20rem]"
+              className="w-full rounded-md h-[14rem] md:h-[20rem] mt-1 mb-1 object-fit  md:object-cover"
               src={newsMapData?.get(4)?.image}
               alt=""
             />
@@ -162,13 +162,11 @@ const News = () => {
             <span className="text-[14px] font-light text-[#1777F2]"> {newsMapData?.get(5)?.user}{" "}</span>
             <p className="line-clamp-4 text-[16px] font-normal">
               {newsMapData?.get(5)?.details}{" "}
-              {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
-              qui quis animi id nisi doloribus, quibusdam tenetur maiores sit
-              nihil assumenda sed{" "} */}
+
             </p>
           </div>
           <img
-            className="w-full h-[20rem] md:mt-0 mt-4 object-cover"
+            className="w-full  h-[14rem]  md:h-[20rem] md:mt-0 object-fit  md:object-cover "
             src={newsMapData?.get(5)?.image}
             alt=""
           />
@@ -190,7 +188,7 @@ const News = () => {
         {
           newsMapData ? <Link href={`/news/${newsMapData?.get(6)?.slug}`} className="space-y-1 w-full">
             <img
-              className="w-full h-[30rem] object-cover mb-3"
+              className="w-full h-[14rem] md:h-[30rem] mt-1 object-fit  md:object-cover mb-3"
               src={newsMapData?.get(6)?.image}
               alt=""
             />
@@ -228,7 +226,7 @@ const News = () => {
         {
           newsMapData ? <Link href={`/news/${newsMapData?.get(7)?.slug}`} className="space-y-1 w-full">
             <img
-              className="w-full h-[30rem] object-cover mb-3"
+              className="w-full h-[15rem]  md:h-[30rem] object-fit mt-1 md:object-cover mb-3"
               src={newsMapData?.get(7)?.image}
               alt=""
             />

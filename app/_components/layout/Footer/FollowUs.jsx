@@ -38,13 +38,13 @@ const FollowUs = () => {
 
     return (
 
-        <div className='space-y-8'>
-            <div className='px-3 space-y-5'>
-                <div className='text-black grid place-items-center relative mx-auto '>
-                    <div className='text-xl md:text-[36px] font-bold z-50 bg-white px-6 py-4'>FOLLOW US ON PINTEREST</div>
+        <div className='space-y-8 '>
+            <div className='px-8 space-y-5'>
+                <div className='text-black grid place-items-center relative mx-auto px-1 '>
+                    <div className='text-base md:text-[36px] font-bold z-50 bg-white md:px-6 px-1 py-4'>FOLLOW US ON PINTEREST</div>
                     <div className='absolute w-full h-[2px] bg-slate-400'></div>
                 </div>
-                <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-1'>
+                <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2'>
 
                     {
                         [
@@ -88,7 +88,7 @@ const FollowUs = () => {
                 </div>
             </div> */}
 
-            <div className='footerWarp waveBg'>
+            <div className='footerWarp waveBg '>
 
                 <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto text-black'>
                     <div className=' space-y-3 py-5 px-6 order-2 md:order-1'>
@@ -147,11 +147,15 @@ const FollowUs = () => {
                             <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaFacebookF size={26} /></div>
                             <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaXTwitter size={26} /></div>
                             <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaYoutube size={26} /></div>
-                            <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'><FaInstagram size={26} /></div>
+                            <div className='size-10 text-white rounded-full grid place-items-center bg-pink-500'>
+                                <a href='https://www.instagram.com/perfumetrics_live/' target='_blank' rel='no_opener' >
+                                    <FaInstagram size={26} />
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className='bg-pink-500 '>
+                <div className='bg-pink-500 px-4'>
                     <div className='container mx-auto items-center lg:flex justify-center py-3 '>
                         <p className='text-xs text-white text-center'>© 1999 - 2024 perfumetrics International Ltd | Privacy Policy | Terms of Use</p>
                     </div>

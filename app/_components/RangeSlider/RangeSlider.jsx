@@ -62,8 +62,12 @@ export function CustomRangeSlider({
     const thumbRef = useRef(null)
 
     // Calculate percentage for positioning
-    const percentage = Number((value - min) / (max - min)) * 100 || -2
-    console.log(percentage, "percentage")
+
+    let percentage = Number((value - min) / (max - min)) * 100 || -2
+
+    if (percentage == 100)
+        percentage = 95;
+    // console.log(percentage, "percentage")
 
     // Handle thumb size
     const thumbSizeMap = {
@@ -116,82 +120,86 @@ export function CustomRangeSlider({
     }
 
     return (
-        <div className={`relative w-full ${className} ${disabled ? "opacity-60" : ""}`}>
-            {/* Custom track */}
-            <div
-                ref={trackRef}
-                className={`relative h-2 rounded-full cursor-pointer ${trackColor} overflow-hidden`}
-                onClick={handleTrackClick}
-            >
-                {/* Progress bar */}
-                <div className={`absolute h-full bg-gradient-to-tr from-rose-500 via-pink-500 to-red-500`} style={{ width: `${percentage}%` }} />
-            </div>
+        <div className="flex items-center justify-center">
+            <div className={`relative w-[80%] ${className} ${disabled ? "opacity-60" : ""}`}>
 
-            {/* Tick marks */}
-            {showTicks && (
-                <div className="relative h-0">
-                    {ticks.map((tick, index) => (
-                        <div
-                            key={index}
-                            className="absolute size-2 rounded-full bg-gray-400 -translate-x-1/2 -top-2"
-                            style={{ left: `${tick.percentage}%` }}
-                        >
-                            {/* <span className="absolute text-xs text-gray-500 -translate-x-1/2 mt-3">{tick.value}</span> */}
-                        </div>
-                    ))}
+                {/* Actual range input (invisible but functional) */}
+                <input
+                    type="range"
+                    min={min}
+                    max={max}
+                    step={step}
+                    value={optimisticLongevity}
+                    onChange={handleSliderChange}
+                    disabled={disabled}
+                    className="absolute customSlider  inset-0 w-full h-full  cursor-pointer z-10"
+                    onMouseDown={() => setIsDragging(true)}
+                    onMouseUp={() => setIsDragging(false)}
+                    onMouseLeave={() => setIsDragging(false)}
+                    onTouchStart={() => setIsDragging(true)}
+                    onTouchEnd={() => setIsDragging(false)}
+                />
+                {/* Custom track */}
+                <div
+                    ref={trackRef}
+                    className={`relative h-2  rounded-full cursor-pointer ${trackColor} overflow-hidden`}
+                    onClick={handleTrackClick}
+                >
+                    {/* Progress bar */}
+                    <div className={`absolute h-full bg-gradient-to-tr from-rose-500 via-pink-500 to-red-500`} style={{ width: `${percentage}%` }} />
                 </div>
-            )}
 
-            {/* Actual range input (invisible but functional) */}
-            <input
-                type="range"
-                min={min}
-                max={max}
-                step={step}
-                value={optimisticLongevity}
-                onChange={handleSliderChange}
-                disabled={disabled}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                onMouseDown={() => setIsDragging(true)}
-                onMouseUp={() => setIsDragging(false)}
-                onMouseLeave={() => setIsDragging(false)}
-                onTouchStart={() => setIsDragging(true)}
-                onTouchEnd={() => setIsDragging(false)}
-            />
+                {/* Tick marks */}
+                {showTicks && (
+                    <div className="relative h-0">
+                        {ticks.map((tick, index) => (
+                            <div
+                                key={index}
+                                className="absolute size-2 rounded-full bg-gray-400 -translate-x-1/2 -top-2"
+                                style={{ left: `${tick.percentage}%` }}
+                            >
+                                {/* <span className="absolute text-xs text-gray-500 -translate-x-1/2 mt-3">{tick.value}</span> */}
+                            </div>
+                        ))}
+                    </div>
+                )}
 
-            {/* Custom thumb */}
-            <motion.div
-                ref={thumbRef}
-                className={`absolute -top-2  -translate-y-1/2 ${thumbSizeClass} rounded-full shadow-lg ${thumbColor} border-2 border-purple-500 flex items-center justify-center pointer-events-none`}
-                style={{ left: `${percentage}%`, transform: `translateX(-50%) translateY(-50%)` }}
-                animate={{
-                    scale: isDragging ? 1.2 : 1,
-                    boxShadow: isDragging ? "0px 0px 10px rgba(99, 102, 241, 0.6)" : "0px 0px 0px rgba(99, 102, 241, 0)",
-                }}
-                transition={{ duration: 0.2 }}
-            >
-                <div className={`${getThumbDotSize()} rounded-full bg-purple-500`}></div>
-            </motion.div>
 
-            {/* Value display */}
-            {showValue && (
+
+                {/* Custom thumb */}
                 <motion.div
-                    className="absolute mt-6 px-2 py-1 rounded-md bg-gray-800 text-white text-sm font-medium shadow-md"
-                    style={{ left: `${percentage}%`, transform: "translateX(-50%)" }}
+                    ref={thumbRef}
+                    className={`absolute -top-2  -translate-y-1/2 ${thumbSizeClass} rounded-full shadow-lg ${thumbColor} border-2 border-purple-500 flex items-center justify-center pointer-events-none`}
+                    style={{ left: `${percentage}%`, transform: `translateX(-50%) translateY(-50%)` }}
                     animate={{
-                        opacity: isDragging ? 1 : 0,
-                        y: isDragging ? 0 : 10,
+                        scale: isDragging ? 1.2 : 1,
+                        boxShadow: isDragging ? "0px 0px 10px rgba(99, 102, 241, 0.6)" : "0px 0px 0px rgba(99, 102, 241, 0)",
                     }}
                     transition={{ duration: 0.2 }}
                 >
-                    {valuePrefix}
-                    {value}
-                    {valueSuffix}
+                    <div className={`${getThumbDotSize()} rounded-full bg-purple-500`}></div>
                 </motion.div>
-            )}
+
+                {/* Value display */}
+                {showValue && (
+                    <motion.div
+                        className="absolute mt-6 px-2 py-1 rounded-md bg-gray-800 text-white text-sm font-medium shadow-md"
+                        style={{ left: `${percentage}%`, transform: "translateX(-50%)" }}
+                        animate={{
+                            opacity: isDragging ? 1 : 0,
+                            y: isDragging ? 0 : 10,
+                        }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        {valuePrefix}
+                        {value}
+                        {valueSuffix}
+                    </motion.div>
+                )}
+            </div>
         </div>
     )
-}
 
+}
 
 
