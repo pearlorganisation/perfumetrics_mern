@@ -44,7 +44,7 @@ const ProductPage = dynamic(
 
 export async function generateMetadata({ params }) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const baseUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
     const res = await getPerfumeById(params?.productId);
 
     if (!res || !res.data || Object.keys(res.data).length === 0) {
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }) {
     return {
       metadataBase: new URL(`${baseUrl}`),
       alternates: {
-        canonical: `${baseUrl}/api/v1/perfume/${slug}`,
+        canonical: `${baseUrl}/product/${slug}`,
         languages: {
           "en-US": "/en-US",
           "de-DE": "/de-DE",
