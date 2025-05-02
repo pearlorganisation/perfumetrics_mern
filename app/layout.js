@@ -90,6 +90,11 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8699763945279604"
+          crossorigin="anonymous"
+        ></script>
         <Script
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -106,6 +111,7 @@ export default function RootLayout({ children }) {
       {/* End Google Tag Manager (noscript) */}
       <body className={`${poppins.className} h-screen`}>
         <noscript dangerouslySetInnerHTML={{ __html: noscriptContent }} />
+
         <Header />
         {children}
         <Footer />
