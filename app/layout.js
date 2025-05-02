@@ -31,6 +31,8 @@ export const metadata = {
     description: "Perfumes World",
     images: [""],
   },
+
+ 
 };
 const GTM_ID = "GTM-5JSSKHQC";
 
@@ -79,7 +81,7 @@ export default function RootLayout({ children }) {
     ],
   };
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://cloudinary.com" />
         <meta

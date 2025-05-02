@@ -35,7 +35,7 @@ const RelatedFragram = ({ country }) => {
 
   return (
     <div className="block mb-20 mt-5 ">
-      <div className="text-center">
+      <div className="text-center w-full ">
         <h1 className="text-xl md:text-3xl font-extrabold bg-white  pb-5">
           Related Fragrances
         </h1>
@@ -49,7 +49,7 @@ const RelatedFragram = ({ country }) => {
             if (!Object.keys(item?.mapOfLinks || {}).length) return null;
 
             return (
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center ">
                 <Link key={index} href={companiesList} target="_blank">
                   <div className=" cursor-pointer p-1 w-[8rem] md:w-[10rem] hover:shadow-lg transition-all  flex flex-col items-center justify-around ">
 

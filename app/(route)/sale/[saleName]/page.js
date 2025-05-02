@@ -36,7 +36,7 @@ const BestSale = () => {
           </h1>
           <div class="absolute w-full h-[2px] bg-slate-500"></div>
         </div>
-        <div className="grid lg:grid-cols-3 place-items-center gap-3 py-5">
+        <div className="grid lg:grid-cols-3 place-items-center gap-3 py-5 ">
           <div className="w-full flex flex-col justify-between ">
             {salesData?.slice(0, 3).map((item) => {
               // console.log(item);

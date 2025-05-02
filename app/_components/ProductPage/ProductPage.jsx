@@ -428,29 +428,43 @@ const ProductPage = ({ productId }) => {
                         {/* Fragrance Notes ends */}
 
                         {/* Releted Fragram starts */}
-                        <div className=" md:px-24">
+                        <div className="flex justify-center md:w-fit px-10 py-2 ">
                             <RelatedFragram country={timeZoneCountry} />
                         </div>
                         {/* Related Fragram ends */}
 
                         {/*Ya perfume categories starts */}
+                        <div className="flex justify-start">
+                            <div className=" w-11/12 md:w-3/4 lg:w-2/3">
+                                <div className="flex items-center justify-center">
+                                <h2 className="text-xl md:text-3xl font-extrabold bg-white">Yeah Perfume Categories</h2>
+                                </div>
+                                {/* <div className="grid h-[18rem]"> */}
+                                <div className="flex flex-row h-[18rem]">
+                                <PerfumeCategorySlider perfumeCategories={perfumeCategories} timeZoneCountry={timeZoneCountry} />
+                                </div>
+                            </div>
+                        </div>
+                         {/*Ya perfume categories ends */}
+                        
+                        {/*Ya perfume categories starts */}
                         <div className=" md:px-24 grid gap-4 lg:grid-cols-[auto_18re] ">
                             <div className="space-y-8 md:space-y-6 md:px-2  items-center justify-center">
-                                <div className="flex items-center justify-center"
-                                >
-                                    <h2
+                                {/* <div className="bg-red-500">
+                                    <div className="flex items-center justify-center">
+                                        <h2
+                                            className="text-xl md:text-3xl font-extrabold bg-white ">
+                                            Yeah Perfume Categories
+                                        </h2>
+                                    </div>
+                                    <div>
 
-                                        className="text-xl md:text-3xl font-extrabold bg-white ">
-                                        Yeah Perfume Categories
-                                    </h2>
-                                </div>
-                                <div>
+                                    </div>
+                                    <div className="grid h-[20rem]">
+                                        <PerfumeCategorySlider perfumeCategories={perfumeCategories} timeZoneCountry={timeZoneCountry} />
 
-                                </div>
-                                <div className="grid h-[20rem]">
-                                    <PerfumeCategorySlider perfumeCategories={perfumeCategories} timeZoneCountry={timeZoneCountry} />
-
-                                </div >
+                                    </div >
+                                </div> */}
                                 {data && <FragramRatings data={data.data?.ratingFragrams} country={timeZoneCountry} />}
                                 <div className="grid gap-5 container ">
                                     <div className="grid place-items-center relative mt-12">

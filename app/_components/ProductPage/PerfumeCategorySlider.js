@@ -154,7 +154,8 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
 
         return (
           <SwiperSlide
-            className=" !max-w-full w-[300px] md:w-[300px]  sm:max-w-60 !h-[18rem] flex justify-center " // Center the items
+            // className=" !max-w-full w-[300px] md:w-[300px]  sm:max-w-60 !h-[18rem] flex justify-center " // Center the items
+            className=" !max-w-full w-[250px] md:w-[250px]  sm:max-w-52 !h-[16rem] flex justify-center " // Center the items
             key={index}
           >
             <Link
@@ -163,7 +164,8 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
                 "https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png"
               }
               target="_blank"
-              className="!w-full sm:max-w-60 !h-[18rem] block"
+              // className="!w-full sm:max-w-60 !h-[18rem] block"
+              className="!w-full sm:max-w-52 !h-[16rem] block"
             >
               <div className="!w-full !h-full sm:max-w-60 bg-white rounded-lg cursor-pointer p-4">
                 <div className="relative w-full h-full sm:max-w-52 sm:max-h-52 flex items-center justify-center p-1">
