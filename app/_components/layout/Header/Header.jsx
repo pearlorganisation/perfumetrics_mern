@@ -10,7 +10,7 @@ import { AiOutlineLogin } from "react-icons/ai";
 import { CiLogout } from "react-icons/ci";
 import Dropdown from "../../Dropdown/Dropdown";
 import ReviewDropdown from "../../Dropdown/ReviewDropdown";
-import { IoMenuSharp } from "react-icons/io5";
+import { IoMenuSharp, IoSearchOutline } from "react-icons/io5";
 import { Nunito } from "next/font/google";
 import axios from "axios";
 import GlobalSearchBar from "../../GlobalSearch/GlobalSearch";
@@ -23,7 +23,7 @@ export default function Example() {
 
   const { user, isUserLoggedIn, logout } = userStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setisSearchOpen] = useState(false);
+  const [isSearchOpen, setisSearchOpen] = useState(true);
   const [brands, setBrands] = useState([]);
   const [perfumeDropDown, setPerfumeDropDown] = useState(false);
   const [reveiwDropDown, setReviewDropDown] = useState(false);
@@ -194,7 +194,7 @@ export default function Example() {
 
         {/*  Medium and Large */}
         <div className="w-full hidden md:flex justify-center lg:justify-between items-center px-6">
-          <div className="flex justify-center mx-auto gap-3 md:gap-8 lg:gap-12 !font-extrabold !text-[20px] !italic">
+          <div className="flex  justify-center mx-auto gap-3 md:gap-8 lg:gap-12 !font-extrabold !text-[20px] !italic">
             <div
               onMouseEnter={() => { setReviewDropDown(true); }}
               onMouseLeave={() => setReviewDropDown(false)}
@@ -238,8 +238,41 @@ export default function Example() {
             </Link>
           </div>
 
-          <div>
-            <GlobalSearchBar />
+          {/* <div>
+          { isSearchOpen &&  (<div className="flex flex-row items-center justify-center">
+            <button
+              onClick={() => setisSearchOpen(!isSearchOpen)}
+              className="text-gray-700 hover:text-pink-500 transition-colors"
+            >
+              <IoSearchOutline size={24} />
+            </button>
+            <div
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                isSearchOpen ? "w-64 h-32 opacity-100 ml-2" : "w-0 h-0 opacity-0"
+              }`}
+            >
+              <GlobalSearchBar />
+              
+            </div>
+          </div>)}
+          </div> */}
+
+          <div className="relative min-w-72 max-w-72 flex items-center justify-end">
+           
+            <button
+              onClick={() => setisSearchOpen(!isSearchOpen)}
+              className="text-gray-700 hover:text-pink-500 transition-colors"
+            >
+              <IoSearchOutline size={24} />
+            </button>
+            <div
+              className={` transition-all duration-300 ease-in-out ${
+                isSearchOpen ? "w-64 z-100   opacity-100 ml-2" : "w-0 h-0 opacity-0"
+              }`}
+            >
+              {isSearchOpen && <GlobalSearchBar />}
+              
+            </div>
           </div>
         </div>
 

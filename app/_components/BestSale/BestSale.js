@@ -134,12 +134,12 @@ const BestSale = () => {
                       />
                     </div>
                     <div className="px-4">
-                      <h2 className="text-gray-800 text-[16px] lg:text-[16px] font-bold line-clamp-3">
+                      <h2 className="text-gray-800 text-[16px] lg:text-[12px] font-bold line-clamp-3">
                         {item?.title} {quantity}
                       </h2>
 
                       <div className="mt-3">
-                        <span className="text-gray-800 text-[24px] font-extrabold ">
+                        <span className="text-gray-800 text-[24px] lg:text-[12px] font-extrabold ">
                           {price}
                         </span>
                       </div>
