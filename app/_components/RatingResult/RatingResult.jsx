@@ -467,7 +467,7 @@ const RatingResult = ({ productId }) => {
                         {/* Header Section */}
                         <div className="font-semibold grid place-items-center text-center text-sm sm:text-lg py-2 text-[#2071B2] capitalize">
                             <span className="text-2xl sm:text-3xl">{item?.icon}</span>
-                            <h3 className="text-black text-sm sm:text-base">{item?.name}</h3>
+                            <h4 className="text-black text-sm sm:text-base">{item?.name}</h4>
                         </div>
 
                         {/* Status Section */}

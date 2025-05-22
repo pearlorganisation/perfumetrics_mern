@@ -24,9 +24,9 @@ export default async function Page({ params }) {
   }
   return (
     <div className="max-w-6xl mx-auto p-4 min-h-screen">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center py-3">
+      <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center py-3">
         Celebrity Perfume Blogs
-      </h1>
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {posts?.data?.map((blog, index) => {
           return (
@@ -41,9 +41,9 @@ export default async function Page({ params }) {
                   className="w-full h-48 object-contain"
                 />
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold mb-2 line-clamp-2 text-gray-800">
+                  <h4 className="text-lg font-semibold mb-2 line-clamp-2 text-gray-800">
                     {blog.title}
-                  </h3>
+                  </h4>
                   {/* <p className="text-sm text-gray-600 mb-4 line-clamp-2">
                     {blog.content}
                   </p> */}

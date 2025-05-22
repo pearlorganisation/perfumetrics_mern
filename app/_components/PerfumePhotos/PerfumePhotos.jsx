@@ -40,7 +40,8 @@ const PerfumePhotos = ({ data }) => {
             <img
               className="!object-cover w-full h-full"
               src={item?.path}
-              alt={`Perfume ${idx + 1}`}
+              // alt={`Perfume ${idx + 1}`}
+              alt={item?.alt?item?.alt:`Perfume ${idx + 1}`}
             />
           </div>
         </SwiperSlide>

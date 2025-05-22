@@ -41,7 +41,7 @@ const Login = () => {
                 <div className="text-center pb-8">
                     {/* <img src="https://floatui.com/logo.svg" width={150} className="mx-auto" /> */}
                     <div className="mt-5">
-                        <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">Log in to your account</h3>
+                        <h4 className="text-gray-800 text-2xl font-bold sm:text-3xl">Log in to your account</h4>
                     </div>
                 </div>
                 <form

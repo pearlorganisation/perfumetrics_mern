@@ -121,9 +121,9 @@ const NewPerfumes = () => {
         <div className="block space-y-5">
           <div className="text-center space-y-6">
             <div className="grid place-items-center relative">
-              <h1 class="text-3xl md:text-[36px] font-bold px-2 md:px-8 pt-3 bg-white z-40">
+              <h2 class="text-3xl md:text-[36px] font-bold px-2 md:px-8 pt-3 bg-white z-40">
                 New Perfumes
-              </h1>
+              </h2>
               <div className="absolute w-[90%] h-[2px] bg-slate-500"></div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 pt-6 px-2 gap-2 ">
@@ -153,9 +153,9 @@ const NewPerfumes = () => {
           </div>
           <div className="space-y-6 px-2 !mt-12  md:mt-0">
             <div className="grid place-items-center relative">
-              <h1 class="text-xl md:text-[36px] font-bold px-2 md:px-8 pt-3 bg-white z-40">
+              <h2 class="text-xl md:text-[36px] font-bold px-2 md:px-8 pt-3 bg-white z-40">
                 Celebrity Perfumes
-              </h1>
+              </h2>
               <div className="absolute w-[90%] h-[2px] bg-slate-500"></div>
             </div>
             <div className="text-3xl text-center md:text-left md:text-5xl font-bold"></div>
@@ -189,9 +189,9 @@ const NewPerfumes = () => {
                         />
                       </div> */}
                       <div className="p-4">
-                        <h3 className="text-[16px] font-bold text-center mb-2 text-gray-800 line-clamp-1">
+                        <h4 className="text-[16px] font-bold text-center mb-2 text-gray-800 line-clamp-1">
                           {blog?.title}
-                        </h3>
+                        </h4>
                         {/* <p className="text-sm text-gray-600 mb-4 line-clamp-3">
                           {parse(blog?.content || "")}
                           {blog?.content}

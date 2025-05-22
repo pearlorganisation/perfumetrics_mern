@@ -106,7 +106,7 @@ const CustomerFeedbackModal = ({
     <div className="fixed inset-0 bg-black/30 z-50 overflow-auto backdrop-blur-md grid place-items-center">
       <div className="max-w-4xl mx-auto px-4 py-6 bg-white">
         <div className="flex justify-between items-center border-b pb-4 mb-6">
-          <h1 className="text-2xl font-bold">Give Your FeedBack</h1>
+          <h2 className="text-2xl font-bold">Give Your FeedBack</h2>
           <button onClick={handleClose} className="text-gray-500 hover:text-gray-700">
             <X className="h-6 w-6" />
           </button>
@@ -419,7 +419,7 @@ const CustomerFeedbackModal = ({
           {/* Longevity Section */}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-4">
-              <h2 className="text-lg font-medium text-blue-600">Longevity</h2>
+              <h3 className="text-lg font-medium text-blue-600">Longevity</h3>
               <div className="grid grid-cols-5 gap-2 text-center">
                 {[0, 1, 2, 3, 4].map((value) => (
                   <button
@@ -458,7 +458,7 @@ const CustomerFeedbackModal = ({
 
             {/* Sillage Section */}
             <div className="space-y-4">
-              <h2 className="text-lg font-medium text-blue-600">Sillage</h2>
+              <h3 className="text-lg font-medium text-blue-600">Sillage</h3>
               <div className="grid grid-cols-5 gap-2 text-center">
                 {[0, 1, 2, 3, 4].map((value) => (
                   <button
@@ -499,7 +499,7 @@ const CustomerFeedbackModal = ({
           {/* Price Value Section */}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-4">
-              <h2 className="text-lg font-medium text-blue-600">PRICE VALUE</h2>
+              <h3 className="text-lg font-medium text-blue-600">PRICE VALUE</h3>
               <div className="grid grid-cols-5 gap-2 text-center">
                 {[0, 1, 2, 3, 4].map((value) => (
                   <button
@@ -538,7 +538,7 @@ const CustomerFeedbackModal = ({
 
             {/* Gender Section */}
             <div className="space-y-4">
-              <h2 className="text-lg font-medium text-blue-600">GENDER</h2>
+              <h3 className="text-lg font-medium text-blue-600">GENDER</h3>
               <div className="grid grid-cols-5 gap-2 text-center">
                 {[0, 1, 2, 3, 4].map((value) => (
                   <button

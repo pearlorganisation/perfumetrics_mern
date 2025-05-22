@@ -1,11 +1,20 @@
 import React from "react";
 import Image from "next/image";
-import { Description } from "@headlessui/react";
 
 export const metadata = {
   title: {
-    absolute: "About Us",
+    absolute: "About Us - Perfumetrics: Expert Perfume Reviews &amp; Fragrance Community",
+
   },
+  desciption:"Learn more about Perfumatrics! We are passionate about providing expert perfume reviews,fragrance recommendations, and building a vibrant community of fragrance enthusiasts.",
+        alternates: {
+        canonical: `https://www.perfumetrics.com/aboutUs`,
+        languages: {
+          "en-US": "/en-US",
+          "de-DE": "/de-DE",
+        },
+      },
+
 };
 const AboutUs = () => {
   return (
@@ -15,7 +24,7 @@ const AboutUs = () => {
         <div className="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-12">
           {/* Left Side (Text) */}
           <div className="flex flex-col justify-center">
-            <h2 className="text-3xl font-bold mb-4">About Us</h2>
+            <h3 className="text-3xl font-bold mb-4">About Us</h3>
             <p className="text-gray-700 mb-6">
               Welcome to Perfumetrics, your ultimate destination for discovering
               the perfect fragrance and lifestyle products tailored to your

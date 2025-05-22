@@ -38,9 +38,9 @@ const Reviews = async ({ reviewSidebar, length }) => {
       <div className="w-full gap-x-4 px-6 md:px-10 ">
         <div className="w-full">
           <div class="grid place-items-center relative mb-10">
-            <h1 class="text-2xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
+            <h2 class="text-2xl md:text-3xl font-medium px-8 py-3 bg-white z-40">
               Reviews
-            </h1>
+            </h2>
             <div class="absolute w-full h-[2px] bg-slate-500"></div>
           </div>
 

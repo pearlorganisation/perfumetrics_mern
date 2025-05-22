@@ -73,7 +73,7 @@ export async function generateMetadata({ params }) {
         load(details)?.text() ||
         "Explore our collection of exclusive perfumes.",
       keywords:
-        keywords?.toString()?.replace(/,/g, " ") ||
+        keywords?.toString() ||
         "Something Went Wrong With Keywords !!",
       openGraph: {
         title: perfume || "Perfume Details",

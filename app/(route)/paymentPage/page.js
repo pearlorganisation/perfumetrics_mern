@@ -76,9 +76,9 @@ export default function PaymentPage() {
 
             {/* Transaction Information Form */}
             <div className="space-y-3">
-              <h2 className="text-lg font-medium">
+              <h3 className="text-lg font-medium">
                 Your transaction information
-              </h2>
+              </h3>
               <form onSubmit={handleSubmit} className="space-y-3">
                 <div>
                   <label className="block mb-1 text-sm">

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import parse from "html-react-parser";
 import CardsList from "@/app/_components/CardsList/CardsList";
-import { RiFacebookBoxFill } from "react-icons/ri";
+import { RiFacebookBoxFill, RiH1 } from "react-icons/ri";
 import Link from "next/link";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
@@ -70,9 +70,9 @@ export default function CelebrityPerfume() {
     <div ref={myRef} className="min-h-screen py-4 px-2 lg:px-0">
       {/* Blog Post */}
       <div className="container mx-auto grid lg:grid-cols-[auto_20rem] gap-4">
-        <div className="font-bold text-3xl lg:text-4xl leading-[3rem] lg:leading-[4rem] mb-4 pl-4 lg:col-span-2">
+        <p className="font-bold text-3xl lg:text-4xl leading-[3rem] lg:leading-[4rem] mb-4 pl-4 lg:col-span-2">
           Celebrity Perfume Blog
-        </div>
+        </p>
         {newsLoading ? (
           <div class="animate-pulse grid grid-cols-1 gap-6 py-6 pt-0">
             <div class="space-y-4 w-full">
@@ -92,9 +92,9 @@ export default function CelebrityPerfume() {
                 alt={newsData?.data?.imageAttribute}
                 className="w-fit lg:max-w-4xl  lg:h-[30rem] rounded-lg mb-6 object-contain"
               />
-              <h2 className="text-2xl font-bold mb-4">
+              <h1 className="text-2xl font-bold mb-4">
                 {newsData?.data?.title}
-              </h2>
+              </h1>
               <p className="text-gray-600 mb-2">
                 By <span className="font-semibold">{newsData?.data?.user}</span>{" "}
                 on{" "}
@@ -102,7 +102,7 @@ export default function CelebrityPerfume() {
                   {formatDate(newsData?.data?.updatedAt)}
                 </span>
               </p>
-              <h1 className="text-gray-500">Description :</h1>
+              <h2 className="text-gray-500">Description :</h2>
               <p className="mb-4 font-medium">{newsData?.data?.details}</p>
             </article>
 
@@ -116,7 +116,7 @@ export default function CelebrityPerfume() {
 
         <aside className="lg:col-start-2">
           <div className="max-w-xs lg:max-w-full bg-white rounded-lg p-4 text-center mx-auto lg:mx-0 mb-4">
-            <h2 className="text-lg font-semibold mb-2">Perfume Encyclopedia</h2>
+            <h3 className="text-lg font-semibold mb-2">Perfume Encyclopedia</h3>
             <div className="border-t border-b py-2 text-left">
               <p className="text-sm">
                 Perfumes: <span className="font-bold">97,158</span>

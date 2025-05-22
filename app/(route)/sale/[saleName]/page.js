@@ -31,9 +31,9 @@ const BestSale = () => {
     <div className="container mx-auto h-screen grid place-items-start pt-16">
       <div className="">
         <div class="grid place-items-center relative w-full ">
-          <h1 class="text-xl md:text-[36px] -translate-y-1 font-bold px-6 md:px-8 pt-3 bg-white z-40">
+          <h2 class="text-xl md:text-[36px] -translate-y-1 font-bold px-6 md:px-8 pt-3 bg-white z-40">
             SALES OFF
-          </h1>
+          </h2>
           <div class="absolute w-full h-[2px] bg-slate-500"></div>
         </div>
         <div className="grid lg:grid-cols-3 place-items-center gap-3 py-5 ">
@@ -54,9 +54,9 @@ const BestSale = () => {
                       />
                     </div>
                     <div className="p-4">
-                      <h2 className="text-gray-800 text-sm lg:text-[16px] font-normal line-clamp-1">
+                      <h3 className="text-gray-800 text-sm lg:text-[16px] font-normal line-clamp-1">
                         {item?.title} {quantity}
-                      </h2>
+                      </h3>
                       <div className="flex items-center mt-2">
                         {Array.from({ length: Number(item?.rating) })?.map(
                           (item) => {
@@ -110,9 +110,9 @@ const BestSale = () => {
                       />
                     </div>
                     <div className="p-4">
-                      <h2 className="text-gray-800 text-sm lg:text-[16px] font-normal line-clamp-1 ">
+                      <h3 className="text-gray-800 text-sm lg:text-[16px] font-normal line-clamp-1 ">
                         {item?.title} {quantity}
-                      </h2>
+                      </h3>
                       <div className="flex items-center mt-2">
                         {Array.from({ length: Number(item?.rating) })?.map(
                           (item) => {

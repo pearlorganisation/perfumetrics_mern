@@ -20,10 +20,10 @@ export const metadata = {
   metadataBase: new URL("https://perfumetrics.com"),
   keywords: ["Perfume", "Perfumetrics", "India", "UK", "US"],
   title: {
-    default: "Perfumetrics",
+    default: "Perfumetrics | Expert Perfume Reviews, Fragrance Guides ! Top Cologne Picks",
     template: "%s | Perfumetrics",
   },
-  description: "Perfumetrics, a perfume Review Site",
+  description: "Find your perfect fragrance with Perfumatrics! Explore expert perfume reviews, personalized recommendations, and join a vibrant fragrance community for all your scent needs.",
   twitter: {
     card: "summary_large_image",
   },
@@ -31,7 +31,16 @@ export const metadata = {
     description: "Perfumes World",
     images: [""],
   },
-
+  alternates: {
+  canonical: `https://www.perfumetrics.com`,
+  authors: [{ name: "Rishabh Sharma", url: "https://www.perfumetrics.com" }],
+  publisher: "Rishabh Sharma",
+  languages: {
+  "en-US": "/en-US",
+  "de-DE": "/de-DE",
+  },
+  },
+  
  
 };
 const GTM_ID = "GTM-5JSSKHQC";
@@ -88,6 +97,7 @@ export default function RootLayout({ children }) {
           name="google-site-verification"
           content="_u9qGtjoK7YSxFD2seZpXmiQb39522RLaXBDvlMs4YI"
         />
+        <meta name="p:domain_verify" content="3246822ef950fc6b352b18efbd4de237"/>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}

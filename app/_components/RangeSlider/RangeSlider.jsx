@@ -155,7 +155,8 @@ export function CustomRangeSlider({
                         {ticks.map((tick, index) => (
                             <div
                                 key={index}
-                                className="absolute size-2 rounded-full bg-gray-400 -translate-x-1/2 -top-2"
+                                // className="absolute size-2 rounded-full bg-gray-400 -translate-x-1/2 -top-2"
+                                className="absolute size-2 rounded-full  -translate-x-1/2 -top-2"
                                 style={{ left: `${tick.percentage}%` }}
                             >
                                 {/* <span className="absolute text-xs text-gray-500 -translate-x-1/2 mt-3">{tick.value}</span> */}
@@ -169,7 +170,7 @@ export function CustomRangeSlider({
                 {/* Custom thumb */}
                 <motion.div
                     ref={thumbRef}
-                    className={`absolute -top-2  -translate-y-1/2 ${thumbSizeClass} rounded-full shadow-lg ${thumbColor} border-2 border-purple-500 flex items-center justify-center pointer-events-none`}
+                    className={`absolute -top-2  -translate-y-1/2 ${thumbSizeClass} rounded-full shadow-lg ${thumbColor} border-8 border-pink-400 flex items-center justify-center pointer-events-none`}
                     style={{ left: `${percentage}%`, transform: `translateX(-50%) translateY(-50%)` }}
                     animate={{
                         scale: isDragging ? 1.2 : 1,
@@ -177,7 +178,7 @@ export function CustomRangeSlider({
                     }}
                     transition={{ duration: 0.2 }}
                 >
-                    <div className={`${getThumbDotSize()} rounded-full bg-purple-500`}></div>
+                    <div className={`${getThumbDotSize()} rounded-full bg-white`}></div>
                 </motion.div>
 
                 {/* Value display */}

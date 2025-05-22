@@ -94,9 +94,9 @@ export default function InteractivePerfumePage() {
                       />
                     </div>
                     <div className="flex justify-center gap-3 items-center flex-col">
-                      <h2 className="text-base sm:text-lg mt-2 font-serif line-clamp-1 px-2">
+                      <h3 className="text-base sm:text-lg mt-2 font-serif line-clamp-1 px-2">
                         {perfume?.perfume}
-                      </h2>
+                      </h3>
                       <p className="text-gray-600 text-base sm:text-lg dark:text-gray-400 mb-2">
                         {perfume.brand?.brand}
                       </p>
@@ -117,9 +117,9 @@ export default function InteractivePerfumePage() {
                   width={300}
                   height={300}
                 />
-                <h1 className="text-xl md:text-3xl lg:text-4xl font-semibold">
+                <h2 className="text-xl md:text-3xl lg:text-4xl font-semibold">
                   No Perfume Found
-                </h1>
+                </h2>
               </div>
             )}
           </div>

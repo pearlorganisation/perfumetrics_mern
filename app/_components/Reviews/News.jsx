@@ -30,7 +30,7 @@ const News = () => {
   return (
     <div className={`space-y-4 ${poppins?.className}`}>
       <div class="grid place-items-center relative mb-6">
-        <h1 class="text-3xl font-medium px-8 py-3 bg-white z-40">News </h1>
+        <h2 class="text-3xl font-medium px-8 py-3 bg-white z-40">News </h2>
         <div class="absolute w-full h-[2px] bg-slate-500"></div>
       </div>
       <div className="flex justify-between  items-center text-lg md:text-4xl font-medium"></div>
@@ -71,7 +71,7 @@ const News = () => {
           {
             newsMapData ? <Link href={`/news/${newsMapData?.get(2)?.slug}`} className="space-y-1">
               <img
-                className="w-full rounded-md h-[14rem] mt-1 mb-1 md:h-[13.5rem] object-fit md:object-cover"
+                className="w-full  h-[14rem] mt-1 mb-1 md:h-[13.5rem] object-fit md:object-cover"
                 src={newsMapData?.get(2)?.image}
                 alt=""
               />

@@ -1,9 +1,11 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import BrandFilter from "../../brand/BrandFilter";
 import Pagination from "@/app/_components/Pagination/Pagination";
 import Image from "next/image";
 import BrandSlider from "../BrandSlider";
+import Head from "next/head";
 
 const Dummy = ({ data, gender, totalPages }) => {
   function isDataNew(updatedAt) {
@@ -17,6 +19,16 @@ const Dummy = ({ data, gender, totalPages }) => {
   }
 
   return (
+<> 
+
+      <Head>
+        <title>{gender}</title>
+        <meta name="description" content="This is a dynamic description from a client component." />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Open Graph Title" />
+        <meta property="og:description" content="Open Graph description." />
+      </Head>
+
     <div className="bg-white">
       {/* Top Banner Section */}
       <div className="w-full  relative">
@@ -92,9 +104,9 @@ const Dummy = ({ data, gender, totalPages }) => {
 
           {/* Right Section (Fragrance Grid) */}
           <div className="p-4 md:p-8 rounded-[16px] container mx-auto w-full min-h-screen shadow-[0px_0px_20.9px_1px_#00000040">
-            <h1 className="text-center hidden md:block uppercase text-lg md:text-2xl lg:text-4xl font-serif mb-6">
+            <h2 className="text-center hidden md:block uppercase text-lg md:text-2xl lg:text-4xl font-serif mb-6">
               Fragrances for {gender}
-            </h1>
+            </h2>
 
             {/* Responsive Grid Layout */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3  2xl:grid-cols-4 gap-6 md:gap-8">
@@ -115,9 +127,9 @@ const Dummy = ({ data, gender, totalPages }) => {
                           New
                         </span>
                       )} */}
-                        <h2 className="text-base md:text-lg mt-2 font-serif line-clamp-1 px-2">
+                        <h3 className="text-base md:text-lg mt-2 font-serif line-clamp-1 px-2">
                           {fragrance?.perfume}
-                        </h2>
+                        </h3>
                         <p className="text-gray-500 mt-1">{fragrance?.price}</p>
                       </div>
                       <div className="grid place-items-center">
@@ -148,6 +160,7 @@ const Dummy = ({ data, gender, totalPages }) => {
         </div>
       </div>
     </div>
+</>
   );
 };
 

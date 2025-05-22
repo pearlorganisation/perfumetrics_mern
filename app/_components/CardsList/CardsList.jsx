@@ -13,7 +13,7 @@ const CardsList = ({ reviewData, length, data }) => {
               <div className=" rounded size-[64px] "><img className="object-cover size-full" src={item?.banner || item?.imgUrl} alt="" /></div>
 
               <div className="w-[12rem] flex flex-col justify-center ">
-                <h3 className="!text-[16px] !font-semibold">{item?.title}</h3>
+                <h4 className="!text-[16px] !font-semibold">{item?.title}</h4>
                 <p className="!text-[13px] !font-normal line-clamp-3">{item?.description}</p>
               </div>
             </div>
