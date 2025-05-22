@@ -165,6 +165,11 @@ const page = async ({ params, metadata }) => {
             __html: JSON.stringify(commentsDataSchema),
           }}
         />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8699763945279604"
+          crossorigin="anonymous"
+        ></script>
       </head>
 
       <Suspense fallback={<>Loading....</>}>
