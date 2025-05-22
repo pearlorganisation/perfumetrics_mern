@@ -23,7 +23,7 @@ export default function Example() {
 
   const { user, isUserLoggedIn, logout } = userStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setisSearchOpen] = useState(true);
+  const [isSearchOpen, setisSearchOpen] = useState(false);
   const [brands, setBrands] = useState([]);
   const [perfumeDropDown, setPerfumeDropDown] = useState(false);
   const [reveiwDropDown, setReviewDropDown] = useState(false);
@@ -32,7 +32,9 @@ export default function Example() {
 
   const menuRef = useRef(null);
   const menuContainerRef = useRef(null); // Ref for the entire menu (both mobile and desktop)
+  const headerContainerRef = useRef(null); // Ref for the entire menu (both mobile and desktop)
 
+  
   const getInitials = (name) => {
     return name.slice(0, 2).toUpperCase();
   };
@@ -64,8 +66,17 @@ export default function Example() {
         menuContainerRef.current && !menuContainerRef?.current?.contains(event.target) &&
         !menuRef?.current?.contains(event.target)
       ) {
-        setIsMenuOpen(false);  // Close the menu
+        setIsMenuOpen(false); 
+
+         // Close the menu
       }
+      console.log(event.target)
+      if(headerContainerRef.current && !headerContainerRef?.current?.contains(event.target))
+      {
+         setisSearchOpen(false);
+      }
+      
+
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -76,7 +87,7 @@ export default function Example() {
   }, []);
 
   return (
-    <header className={`${nunito.className} block relative bg-white shadow-[0_1px_2px#d1d1d1]`}>
+    <header ref={headerContainerRef} className={`${nunito.className} block relative bg-white shadow-[0_1px_2px#d1d1d1]`}>
       <nav className="w-full relative flex sm:justify-center flex-col gap-0 pt-0">
 
         {/*  Mobile  */}
@@ -141,6 +152,14 @@ export default function Example() {
                   </div>
                 )}
               </div>
+
+                <button
+                onClick={() => setisSearchOpen(!isSearchOpen)}
+                className="text-gray-700 hover:text-pink-500 transition-colors ml-3 md:hidden"
+                >
+                  <IoSearchOutline size={24} />
+                </button>
+
             </div>
             <div className="flex items-center ">
               <Link href="/" className="">
@@ -278,6 +297,11 @@ export default function Example() {
 
 
       </nav>
+        {isSearchOpen && (
+          <div className="absolute top-full left-0 w-full z-50 bg-white shadow-md md:hidden">
+            <GlobalSearchBar />
+          </div>
+        )}
     </header>
   );
 }

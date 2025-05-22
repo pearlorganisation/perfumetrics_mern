@@ -63,9 +63,9 @@ export default async function Home() {
                   <div className="w-full  flex flex-col gap-4"></div>
                 </div>
                 <div className=" w-full text-left flex justify-between">
-                  <h2 className="text-xl md:text-[18px]  font-medium pl-1 ">
+                  <h3 className="text-xl md:text-[18px]  font-medium pl-1 ">
                     Perfume Reviews
-                  </h2>
+                  </h3>
                   <button
                     className="font-medium text-[14px] text-[#EA92B6]"
                     type="button"

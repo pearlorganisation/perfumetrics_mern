@@ -57,7 +57,7 @@ const GlobalSearch = () => {
             {globalSearchData && toggleGlobalSearch && globalSearchData.length > 0 && (
                 <div ref={boxRef} className="absolute rounded-b-md size-56 overflow-y-scroll  z-10 w-full bg-white border-2 ">
                     {globalSearchData.map((perfumeData, idx) => (
-                        <div onClick={() => { router.push(`product/${perfumeData.slug}`) }} key={idx} className='grid grid-cols-[30%_auto] mt-1  p-2 hover:text-pink-500 gap-2 border-b-2 border-slate-400'>
+                        <div onClick={() => { router.push(`/product/${perfumeData.slug}`) }} key={idx} className='grid grid-cols-[30%_auto] mt-1  p-2 hover:text-pink-500 gap-2 border-b-2 border-slate-400'>
                             <div className='h-12 w-12  flex justify-center items-center '>
                                 <img src={perfumeData.banner} alt={perfumeData.perfume} className='w-full h-full' />
 

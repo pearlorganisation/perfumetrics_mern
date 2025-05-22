@@ -33,9 +33,9 @@ const PopularBrands = () => {
 
   return (
     <div className=" px-4  w-[98dvw] bg-white">
-      <h2 className="text-[#1F2937] text-base md:text-xl text-center font-semibold mb-8 mt-4">
+      <h3 className="text-[#1F2937] text-base md:text-xl text-center font-semibold mb-8 mt-4">
         NEW AND UPCOMING FRAGRANCES
-      </h2>
+      </h3>
 
       <div className="relative ">
         <div className={`overflow-x-auto ${style.custom_scrollbar} pb-4 `}>
@@ -70,9 +70,9 @@ const PopularBrands = () => {
                     />
                   </div>
                 </div>
-                <h3 className="text-center font-medium text-gray-900 truncate">
+                <h4 className="text-center font-medium text-gray-900 truncate">
                   {fragrance?.brand?.brand}
-                </h3>
+                </h4>
                 <p className="text-center text-sm text-gray-600 truncate">
                   {fragrance.perfume}
                 </p>
@@ -124,9 +124,9 @@ export default PopularBrands;
 
 //   return (
 //     <div className="px-4 w-full bg-red-500">
-//       <h2 className="text-[#1F2937] text-base md:text-xl text-center font-semibold mb-4">
+//       <h3 className="text-[#1F2937] text-base md:text-xl text-center font-semibold mb-4">
 //         NEW AND UPCOMING FRAGRANCES
-//       </h2>
+//       </h3>
 
 //       <div className="relative">
 //         <div className={`overflow-x-auto ${style.custom_scrollbar} pb-4`}>
@@ -157,9 +157,9 @@ export default PopularBrands;
 //                     />
 //                   </div>
 //                 </div>
-//                 <h3 className="text-center font-medium text-gray-900 truncate text-xs sm:text-sm md:text-base">
+//                 <h4 className="text-center font-medium text-gray-900 truncate text-xs sm:text-sm md:text-base">
 //                   {fragrance?.brand?.brand}
-//                 </h3>
+//                 </h4>
 //                 <p className="text-center text-xs sm:text-sm text-gray-600 truncate">
 //                   {fragrance.perfume}
 //                 </p>

@@ -65,7 +65,7 @@ const BrandFilter = () => {
         {/* Sidebar for desktop */}
         <aside className="hidden lg:flex lg:flex-col bg-white border-r border-gray-200 h-[80vh] w-full overflow-y-auto">
           <div className="px-4 py-6 w-full">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Brands</h2>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Brands</h3>
             <ul className="space-y-2">
               {brandsData?.map((brand, idx) => (
                 <li key={brand?._id}>
@@ -111,9 +111,9 @@ const BrandFilter = () => {
               {/* Sidebar content */}
               <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
                 <div className="px-4">
-                  <h2 className="text-lg font-semibold text-gray-900 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
                     Brands
-                  </h2>
+                  </h3>
                   <ul className="space-y-2">
                     {brandsData?.map((brand) => (
                       <li key={brand?._id}>

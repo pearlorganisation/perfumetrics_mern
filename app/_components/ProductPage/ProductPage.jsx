@@ -224,7 +224,7 @@ const ProductPage = ({ productId }) => {
                                     </div>
                                     <Feedback />
                                     {/* detail start */}
-                                    <div className="space-y-7  pt-3 ">
+                                    <div className="  ">
                                         <div className="!text-[16px] !leading-[25px] !font-normal text-justify md:text-left text-black">
                                             {isHTML(data?.data?.details) ? (
                                                 // Parse and render HTML content
@@ -349,68 +349,98 @@ const ProductPage = ({ productId }) => {
                                                 height={550}
                                                 width={650}
                                                 alt=""
-                                                className="object-cover"
+                                                // className="object-cover"
+                                                className="object-contain w-full max-w-full" 
 
                                             />
-                                            <div className="absolute   flex flex-col -translate-x-3 max-w-[20rem] md:max-w-[16rem] gap-4">
-                                                <div className="flex flex-col gap-3 justify-center items-center flex-wrap ">
+                                            {/* <div className="absolute flex flex-col -translate-x-3 max-w-[20rem] md:max-w-[16rem] gap-4"> */}
+                                            <div className="absolute flex flex-col  ml-4 -translate-x-3 w-[65%] max-w-[16rem] gap-2 md:gap-4 px-2">
+                                                {/* <div className="flex flex-col gap-3 justify-center items-center flex-wrap "> */}
+                                                <div className="flex flex-col gap-2 md:gap-3 justify-center items-center">
+                                                    {/* <p className="text-center font-bold text-xs md:text-sm">Top Notes</p> */}
                                                     <p className="text-center font-bold text-xs md:text-sm">Top Notes</p>
-                                                    <div className="flex gap-3 flex-wrap justify-center">
+                                                    {/* <div className="flex gap-3 flex-wrap justify-center"> */}
+                                                    <div className="flex gap-2 flex-wrap justify-center max-w-full">
                                                         {data?.data?.topNote &&
                                                             data?.data?.topNote.map((el) => {
                                                                 return (
                                                                     <div
                                                                         key={el._id}
-                                                                        className=" flex flex-col justify-center items-center "
+                                                                        // className=" flex flex-col justify-center items-center "
+                                                                        className="flex flex-col justify-center items-center max-w-[25%] min-w-[40px]"
                                                                     >
                                                                         <img
                                                                             src={el.image}
                                                                             alt={el.name}
-                                                                            className="w-8 sm:w-12 md:h-12"
+                                                                            // className="w-8 sm:w-12 md:h-12"
+                                                                            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain"
                                                                         />
-                                                                        <p className='text-xs '>{el.name?.slice(0, 5)}...</p>
+                                                                        {/* <p className='text-xs '> */}
+                                                                        <p className='text-[10px] md:text-xs text-center'>
+                                                                            {el.name?.slice(0, 5)}...
+                                                                        </p>
                                                                     </div>
                                                                 );
                                                             })}
                                                     </div>
                                                 </div>
 
-                                                <div className="flex flex-col gap-3 justify-center items-center flex-wrap">
-                                                    <p className="text-center font-bold text-xs md:text-base">Middle Notes</p>
-                                                    <div className="flex gap-3 flex-wrap justify-center">
+                                                {/* <div className="flex flex-col gap-3 justify-center items-center flex-wrap"> */}
+                                                <div className="flex flex-col gap-2 md:gap-3 justify-center items-center">
+                                                    {/* <p className="text-center font-bold text-xs md:text-base">Middle Notes</p> */}
+                                                    <p className="text-center font-bold text-xs md:text-sm">Middle Notes</p>
+                                                    {/* <div className="flex gap-3 flex-wrap justify-center"> */}
+                                                    <div className="flex gap-2 flex-wrap justify-center max-w-full">
                                                         {data && data.data?.middleNote.map((el) => {
                                                             return (
                                                                 <div
                                                                     key={el._id}
-                                                                    className=" flex flex-col  justify-center items-center "
+                                                                    // className=" flex flex-col  justify-center items-center "
+                                                                    className="flex flex-col justify-center items-center max-w-[25%] min-w-[40px]"
                                                                 >
                                                                     <img
                                                                         src={el.image}
                                                                         alt={el.name}
-                                                                        className="w-8 sm:w-12 md:h-12"
+                                                                        // className="w-8 sm:w-12 md:h-12"
+                                                                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain"
                                                                     />
-                                                                    <p className='text-xs '>{el.name?.slice(0, 5)}...</p>
+                                                                    {/* <p className='text-xs '> */}
+                                                                    <p className='text-[10px] md:text-xs text-center'>
+                                                                        {el.name?.slice(0, 5)}...
+                                                                    </p>
                                                                 </div>
                                                             );
                                                         })}
                                                     </div>
                                                 </div>
 
-                                                <div className="flex flex-col gap-3 justify-center items-center flex-wrap">
-                                                    <p className="text-center font-bold text-xs md:text-base">Base Notes</p>
-                                                    <div className="flex gap-3 flex-wrap justify-center">
-                                                        {data?.data?.baseNote.map((el) => {
+                                                {/* <div className="flex flex-col gap-3 justify-center items-center flex-wrap"> */}
+                                                <div className="flex flex-col gap-2 md:gap-3 justify-center items-center">
+                                                    {/* <p className="text-center font-bold text-xs md:text-base">Base Notes</p> */}
+                                                    <p className="text-center font-bold text-xs md:text-sm">Base Notes</p>
+                                                    {/* <div className="flex gap-3 flex-wrap justify-center"> */}
+                                                    <div className="flex gap-2 flex-wrap justify-center max-w-full">
+                                                        {data?.data?.baseNote.map((el,idx) => {
+
+                                                               if(idx === 3)
+                                                                 return ;
+
                                                             return (
                                                                 <div
                                                                     key={el._id}
-                                                                    className=" flex flex-col  justify-center items-center "
+                                                                    // className=" flex flex-col  justify-center items-center "
+                                                                    className="flex flex-col justify-center items-center max-w-[25%] min-w-[40px]"
                                                                 >
                                                                     <img
                                                                         src={el.image}
                                                                         alt={el.name}
-                                                                        className="w-8 sm:w-12 md:h-12"
+                                                                        // className="w-8 sm:w-12 md:h-12"
+                                                                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain"
                                                                     />
-                                                                    <p className='text-xs '>{el.name?.slice(0, 5)}...</p>
+                                                                    {/* <p className='text-xs '> */}
+                                                                    <p className='text-[10px] md:text-xs text-center'>
+                                                                        {el.name?.slice(0, 5)}...
+                                                                    </p>
                                                                 </div>
                                                             );
                                                         })}
@@ -428,29 +458,32 @@ const ProductPage = ({ productId }) => {
                         {/* Fragrance Notes ends */}
 
                         {/* Releted Fragram starts */}
-                        <div className="flex justify-center md:w-fit px-10 py-2 ">
+                        {/* <div className="flex justify-center md:w-fit px-10 py-2 ">
+                            <RelatedFragram country={timeZoneCountry} />
+                        </div> */}
+                        <div className=" md:px-24">
                             <RelatedFragram country={timeZoneCountry} />
                         </div>
                         {/* Related Fragram ends */}
 
                         {/*Ya perfume categories starts */}
-                        <div className="flex justify-start">
+                        {/* <div className="flex justify-start">
                             <div className=" w-11/12 md:w-3/4 lg:w-2/3">
                                 <div className="flex items-center justify-center">
                                 <h2 className="text-xl md:text-3xl font-extrabold bg-white">Yeah Perfume Categories</h2>
                                 </div>
-                                {/* <div className="grid h-[18rem]"> */}
+                                
                                 <div className="flex flex-row h-[18rem]">
                                 <PerfumeCategorySlider perfumeCategories={perfumeCategories} timeZoneCountry={timeZoneCountry} />
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                          {/*Ya perfume categories ends */}
                         
                         {/*Ya perfume categories starts */}
                         <div className=" md:px-24 grid gap-4 lg:grid-cols-[auto_18re] ">
                             <div className="space-y-8 md:space-y-6 md:px-2  items-center justify-center">
-                                {/* <div className="bg-red-500">
+                                <div className="">
                                     <div className="flex items-center justify-center">
                                         <h2
                                             className="text-xl md:text-3xl font-extrabold bg-white ">
@@ -464,7 +497,7 @@ const ProductPage = ({ productId }) => {
                                         <PerfumeCategorySlider perfumeCategories={perfumeCategories} timeZoneCountry={timeZoneCountry} />
 
                                     </div >
-                                </div> */}
+                                </div>
                                 {data && <FragramRatings data={data.data?.ratingFragrams} country={timeZoneCountry} />}
                                 <div className="grid gap-5 container ">
                                     <div className="grid place-items-center relative mt-12">

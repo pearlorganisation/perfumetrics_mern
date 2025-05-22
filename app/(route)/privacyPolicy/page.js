@@ -17,7 +17,7 @@ export default function page() {
   return (
     <div className="bg-gray-100 min-h-screen py-10">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-8">Privacy Policy</h1>
+        <h2 className="text-4xl font-bold text-center mb-8">Privacy Policy</h2>
 
         <p className="text-gray-700 mb-4">
           At Perfumetrics.com, your privacy is of utmost importance to us, and
@@ -27,9 +27,9 @@ export default function page() {
           you agree to the practices described in this policy.
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4">
+        <h3 className="text-2xl font-semibold mb-4">
           1. Information We Collect
-        </h2>
+        </h3>
         <p className="text-gray-700 mb-4">
           We collect personal information when you create an account, interact
           with our content, or contact us. The types of data we collect include:
@@ -51,9 +51,9 @@ export default function page() {
           </li>
         </ul>
 
-        <h2 className="text-2xl font-semibold mb-4">
+        <h3 className="text-2xl font-semibold mb-4">
           2. How We Use Your Information
-        </h2>
+        </h3>
         <p className="text-gray-700 mb-4">
           Perfumetrics.com uses the information we collect for the following
           purposes:
@@ -80,9 +80,9 @@ export default function page() {
           </li>
         </ul>
 
-        <h2 className="text-2xl font-semibold mb-4">
+        <h3 className="text-2xl font-semibold mb-4">
           3. Data Protection and Security
-        </h2>
+        </h3>
         <p className="text-gray-700 mb-4">
           We take the security of your personal information seriously and
           implement robust security measures, such as encryption and secure
@@ -92,9 +92,9 @@ export default function page() {
           needed, we securely delete or anonymize it.
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4">
+        <h3 className="text-2xl font-semibold mb-4">
           4. Data Sharing and Third-Party Disclosure
-        </h2>
+        </h3>
         <p className="text-gray-700 mb-4">
           Perfumetrics.com does not share, sell, trade, or rent your personal
           information to third parties under any circumstances, except in cases
@@ -113,9 +113,9 @@ export default function page() {
           confidential and is not shared with any external parties.
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4">
+        <h3 className="text-2xl font-semibold mb-4">
           5. Cookies and Tracking Technologies
-        </h2>
+        </h3>
         <p className="text-gray-700 mb-4">
           We use cookies and similar technologies to improve your browsing
           experience. These help us understand user behavior, remember
@@ -124,9 +124,9 @@ export default function page() {
           ability to fully experience certain features on the website.
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4">
+        <h3 className="text-2xl font-semibold mb-4">
           6. User Accounts and Data Privacy
-        </h2>
+        </h3>
         <p className="text-gray-700 mb-4">
           When you create an account on Perfumetrics.com, you are responsible
           for keeping your login credentials secure. You can update or delete
@@ -135,7 +135,7 @@ export default function page() {
           that it is not shared with any third parties except as stated above.
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4">7. Your Rights</h2>
+        <h3 className="text-2xl font-semibold mb-4">7. Your Rights</h3>
         <p className="text-gray-700 mb-4">
           You have the following rights regarding your personal data:
         </p>
@@ -173,16 +173,16 @@ export default function page() {
           .
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4">8. Third-Party Links</h2>
+        <h3 className="text-2xl font-semibold mb-4">8. Third-Party Links</h3>
         <p className="text-gray-700 mb-4">
           Perfumetrics.com may contain links to third-party websites. These
           websites are not controlled by us, and we encourage you to review
           their privacy policies before providing any personal information.
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4">
+        <h3 className="text-2xl font-semibold mb-4">
           9. Changes to This Privacy Policy
-        </h2>
+        </h3>
         <p className="text-gray-700 mb-4">
           We reserve the right to update this Privacy Policy at any time. Any
           changes will be posted on this page, and it is your responsibility to
@@ -190,7 +190,7 @@ export default function page() {
           after any changes constitutes your acceptance of the revised terms.
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4">10. Contact Us</h2>
+        <h3 className="text-2xl font-semibold mb-4">10. Contact Us</h3>
         <p className="text-gray-700 mb-4">
           If you have any questions or concerns regarding this Privacy Policy or
           your personal data, please contact us at:

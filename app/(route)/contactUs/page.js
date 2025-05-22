@@ -55,7 +55,7 @@ const ContactUs = () => {
       <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
         <div className="max-w-lg mx-auto gap-12 justify-between lg:flex lg:max-w-none infoWrap">
           <div className="max-w-lg space-y-3">
-            <h3 className="text-pink-600 font-semibold">Contact</h3>
+            <h4 className="text-pink-600 font-semibold">Contact</h4>
             <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
               Let us know how we can help
             </p>

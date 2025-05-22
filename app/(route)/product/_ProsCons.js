@@ -85,8 +85,8 @@ const ProsCons = () => {
           <div className=" lg:border-r border-gray-300 grid">
             <div className=" w-full  ">
               <div className="text-center mx-auto w-[70%] md:w-[15rem] text-xl mb-10 ">
-                <div className="flex items-center justify-center">
-                  <svg
+                <div className="flex items-center  justify-center">
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -99,7 +99,14 @@ const ProsCons = () => {
                       strokeLinejoin="round"
                       d="m4.5 12.75 6 6 9-13.5"
                     />
-                  </svg>
+                  </svg> */}
+                  <Image
+                    src="/pros.jpeg"
+                    alt="Pros"
+                    width={500}
+                    height={500}
+                    className="w-16 h-16 object-contain" // similar to size-6 and maintains aspect ratio
+                  />
                 </div>
 
                 <p className="border mt-1 bg-[#1BBE98] border-black font-normal text-white flex justify-center items-center px-12 py-3 gap-3">
@@ -179,7 +186,7 @@ const ProsCons = () => {
             <div className="">
               <div className="  text-center mx-auto w-[70%] md:w-[15rem]  text-xl mb-10">
                 <div className="flex items-center justify-center">
-                  <svg
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -192,7 +199,14 @@ const ProsCons = () => {
                       strokeLinejoin="round"
                       d="M6 18 18 6M6 6l12 12"
                     />
-                  </svg>
+                  </svg> */}
+                  <Image
+                    src="/cons.jpeg"
+                    alt="Cons"
+                    width={500}
+                    height={500}
+                    className="w-16 h-16 object-contain" // similar to size-6 and maintains aspect ratio
+                  />
                 </div>
                 <p className="border mt-1 border-black bg-[#E96D6D] text-white font-normal text-[20px] flex justify-center items-center px-12 py-3 gap-3">
                   CONS
@@ -272,13 +286,13 @@ const ProsCons = () => {
 
       <p className="md:text-left  text-xs text-[#51799C] italic text-justify font-normal ">
         <span className="font-bold text-[14px] text-[#0A0A0A]"> Note:</span> The
-        pros and cons listed on this page have been generated using the
-        artificial intelligence system, which analyzes product reviews submitted
-        by our members. While we strive to provide accurate and helpful
-        information, we cannot guarantee the complete accuracy or reliability of
-        the AI-generated pros and cons. Please read the full reviews and
-        consider your own needs and preferences before making a purchasing
-        decision.
+        review presented on this page reflects our personal opinion with the
+        product. While we strive to provide honest and detailed insights, but we
+        do not guarantee the accuracy, completeness, or reliability. We
+        encourage you to read the full review and consider your individual
+        preferences, skin chemistry, and needs before making a purchase.
+        Perfumetrics.com is not liable for any decisions made based on our
+        reviews or for any outcomes that may result from your purchase.
       </p>
     </>
   );

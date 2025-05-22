@@ -40,9 +40,9 @@ const BestSale = () => {
     <div className="px-4">
       <div>
         <div class="grid place-items-center relative w-full ">
-          <h1 class="text-3xl md:text-[36px] -translate-y-1 font-bold px-6 md:px-8 pt-3 bg-white z-40">
+          <h2 class="text-3xl md:text-[36px] -translate-y-1 font-bold px-6 md:px-8 pt-3 bg-white z-40">
             SALES OFF
-          </h1>
+          </h2>
           <div class="absolute w-full h-[2px] bg-slate-500"></div>
         </div>
         <div className="grid lg:grid-cols-3 place-items-center gap-3 py-5 ">
@@ -69,12 +69,12 @@ const BestSale = () => {
                       />
                     </div>
                     <div className="px-4">
-                      <h2 className="text-gray-800 text-[16px] md:text-[12px] lg:text-[12px] font-bold line-clamp-2">
+                      <h3 className="text-gray-800 text-[14px] md:text-[12px] lg:text-[12px] font-bold line-clamp-2">
                         {item?.title} {quantity}
-                      </h2>
+                      </h3>
 
                       <div className="mt-3">
-                        <span className="text-gray-800 text-[24px] md:text-[16px] font-extrabold ">
+                        <span className="text-gray-800 text-[14px] md:text-[14px] font-extrabold ">
                           {price}
                         </span>
                       </div>
@@ -84,7 +84,7 @@ const BestSale = () => {
                           (item) => {
                             return (
                               <svg
-                                className="w-6 h-6  md:w-6 md:h-6 lg:h-4 lg:w-4 fill-current text-yellow-700"
+                                className="w-5 h-5  md:w-6 md:h-6 lg:h-4 lg:w-4 fill-current text-yellow-700"
                                 viewBox="0 0 24 24"
                               >
                                 <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
@@ -134,9 +134,9 @@ const BestSale = () => {
                       />
                     </div>
                     <div className="px-4">
-                      <h2 className="text-gray-800 text-[16px] lg:text-[12px] font-bold line-clamp-3">
+                      <h3 className="text-gray-800 text-[16px] lg:text-[12px] font-bold line-clamp-3">
                         {item?.title} {quantity}
-                      </h2>
+                      </h3>
 
                       <div className="mt-3">
                         <span className="text-gray-800 text-[24px] lg:text-[12px] font-extrabold ">
@@ -187,12 +187,12 @@ const BestSale = () => {
                       />
                     </div>
                     <div className="px-4">
-                      <h2 className="text-gray-800 text-[16px] md:text-[12px] lg:text-[12px] font-bold line-clamp-2">
+                      <h3 className="text-gray-800 text-[14px] md:text-[12px] lg:text-[12px] font-bold line-clamp-2">
                         {item?.title} {quantity}
-                      </h2>
+                      </h3>
 
                       <div className="mt-3">
-                        <span className="text-gray-800 text-[24px] md:text-[16px] font-extrabold ">
+                        <span className="text-gray-800 text-[14px] md:text-[14px] font-extrabold ">
                           {price}
                         </span>
                       </div>
@@ -202,7 +202,7 @@ const BestSale = () => {
                           (item) => {
                             return (
                               <svg
-                                className="w-6 h-6  md:w-6 md:h-6 lg:h-4 lg:w-4 fill-current text-yellow-700"
+                                className="w-5 h-5  md:w-6 md:h-6 lg:h-4 lg:w-4 fill-current text-yellow-700"
                                 viewBox="0 0 24 24"
                               >
                                 <path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.336 24 12 20.201 4.664 24 6 15.272 0 9.423l8.332-1.268z" />
@@ -243,9 +243,9 @@ const BestSale = () => {
                       />
                     </div>
                     <div className="px-4 ">
-                      <h2 className="text-gray-800 text-sm lg:text-[16px] font-bold line-clamp-1">
+                      <h3 className="text-gray-800 text-sm lg:text-[16px] font-bold line-clamp-1">
                         {item?.title} {quantity}
-                      </h2>
+                      </h3>
                       <div className="flex items-center mt-2">
                         {Array.from({ length: Number(item?.rating) })?.map(
                           (item) => {

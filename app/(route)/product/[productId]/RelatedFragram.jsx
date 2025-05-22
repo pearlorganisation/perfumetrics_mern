@@ -36,9 +36,9 @@ const RelatedFragram = ({ country }) => {
   return (
     <div className="block mb-20 mt-5 ">
       <div className="text-center w-full ">
-        <h1 className="text-xl md:text-3xl font-extrabold bg-white  pb-5">
+        <h2 className="text-xl md:text-3xl font-extrabold bg-white  pb-5">
           Related Fragrances
-        </h1>
+        </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4   ">
           {perfumeData.slice(0, 8).map((item, index) => {
             const companiesList =

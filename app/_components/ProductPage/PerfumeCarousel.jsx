@@ -50,9 +50,9 @@ const PerfumeCarousel = ({ perfumeCategories, timeZoneCountry }) => {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="text-sm font-semibold text-blue-600">
+                  <h4 className="text-sm font-semibold text-blue-600">
                     {item?.perfumeName}
-                  </h3>
+                  </h4>
                   <div className="mt-2 space-x-2">
                     <span className="text-xl font-bold text-gray-900">
                       {price || 0}

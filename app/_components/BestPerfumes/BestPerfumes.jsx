@@ -4,7 +4,7 @@ const BestPerfumes = () => {
     return (
         <div className="">
             <div className="max-w-7xl mx-auto p-14">
-                <h1 className="text-5xl font-medium text-center mb-8">Best Perfumes</h1>
+                <h2 className="text-5xl font-medium text-center mb-8">Best Perfumes</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 font-medium">
                     <div>
                         <ol className="list-decimal list-inside space-y-3">

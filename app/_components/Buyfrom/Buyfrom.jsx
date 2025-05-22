@@ -16,29 +16,35 @@ const Buyfrom = ({ links }) => {
 
   return (
 
-    <div className="flex flex-col items-left justify-left bg-white text-left w-full">
-      {
-        links?.map(item => {
-          return <div className="mt-4 flex items-center justify-start h-20  gap-3">
-            <a
-              href={`${item?.link}`}
-              className="text-blue-500   hover:underline underline text-sm md:text-xl"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {` Search on ${item?.company?.companyName}`}
-            </a>
-
-            <div className='pt-1'>
-
-              <img className="h-14" src={item?.company?.imageUrl} alt={item?.company?.companyName} />
+    <div className="flex flex-col w-full space-y-6">
+      {links?.map((item) => {
+        return (
+          <div key={item?.company?.companyName} className="flex flex-col pt-6 py-3 border-b border-gray-100">
+            {/* First row - Image */}
+            <div className="w-full flex justify-start mb-3">
+              <img
+                className="max-h-18 min-h-18 min-w-40 max-w-40 object-contain"
+                src={item?.company?.imageUrl || "/placeholder.svg"}
+                alt={item?.company?.companyName}
+              />
             </div>
-            {item?.price}
+
+            {/* Second row - Link and Price */}
+            <div className="flex  justify-start gap-6 items-start">
+              <a
+                href={`${item?.link}`}
+                className="text-blue-500 hover:underline underline text-sm md:text-lg"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {` Search on ${item?.company?.companyName}`}
+              </a>
+
+              <div className="text-sm md:text-base font-medium">{item?.price}</div>
+            </div>
           </div>
-
-        })}
-
-
+        )
+      })}
     </div>
   );
 };
