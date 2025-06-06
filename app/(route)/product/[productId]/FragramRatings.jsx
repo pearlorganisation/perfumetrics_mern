@@ -19,7 +19,7 @@ const FragramRatings = ({ data, country }) => {
 
   const { productId } = useParams();
   const [fragramsData, setFragramsData] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getFragrams = async (productId) => {
     const result = await axios.get(
@@ -31,31 +31,32 @@ const FragramRatings = ({ data, country }) => {
   useEffect(() => {
     if (id) {
       getFragrams(id);
-
     }
   }, [id]);
 
   function handleOpeningModal() {
     if (!isUserLoggedIn) {
-      toast.info('Please Login First...')
+      toast.info("Please Login First...");
       router.push(`/login?returnUrl=pd`);
-    }
-    else setIsModalOpen(true);
+    } else setIsModalOpen(true);
   }
-
-
 
   // console.log("Frgaram rating ", data);
   return (
     <div className="">
-      {
-        isModalOpen && createPortal(<CustomerFeedbackModal onClose={() => { setIsModalOpen(false) }} />, document.body)
-      }
+      {isModalOpen &&
+        createPortal(
+          <CustomerFeedbackModal
+            onClose={() => {
+              setIsModalOpen(false);
+            }}
+          />,
+          document.body
+        )}
       <div>
         <div className="flex flex-col items-center  md:space-y-8">
-          <div className="grid place-items-center relative w-full mt-20 mb-0 md:mb-8">
-            <h3
-              className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
+          <div className="grid place-items-center relative w-full mt-6 mb-0 md:mb-8">
+            <h3 className="text-xl md:text-3xl font-extrabold bg-white px-4 ">
               Fragram Ratings
             </h3>
           </div>
@@ -204,9 +205,7 @@ const FragramRatings = ({ data, country }) => {
                   {data?.gender === "F" && (
                     <IoMdFemale className="w-6 h-6 md:w-8 md:h-8" />
                   )}
-                  {data?.gender === "O" && (
-                    <IoMaleFemale />
-                  )}
+                  {data?.gender === "O" && <IoMaleFemale />}
                 </div>
               </div>
 
@@ -287,17 +286,16 @@ const FragramRatings = ({ data, country }) => {
           </div>
           <button
             onClick={handleOpeningModal}
-            className="px-6 py-2 mt-8 text-lg font-semibold text-white bg-pink-500 rounded-md">
+            className="px-6 py-2 mt-8 text-lg font-semibold text-white bg-pink-500 rounded-md"
+          >
             Rate Fragram
           </button>
         </div>
         {data && (
           <div className=" mt-16 space-y-8">
             <div className="grid  relative w-full">
-
               <div className="flex items-center justify-center text-center">
-                <h3
-                  className="text-xl md:text-3xl font-extrabold bg-white">
+                <h3 className="text-xl md:text-3xl font-extrabold bg-white">
                   Fragrams
                 </h3>
               </div>
@@ -305,7 +303,6 @@ const FragramRatings = ({ data, country }) => {
 
             <div className="grid  gap-8">
               <FragranceSlider fragramsData={fragramsData} country={country} />
-
             </div>
           </div>
         )}

@@ -102,7 +102,6 @@
 
 // export default PerfumeCategorySlider;
 
-
 import React from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -125,11 +124,11 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
       // pagination={{ clickable: true }}
       pagination={{ clickable: true, el: ".custom-pagination" }}
       breakpoints={{
-        320:{
-            slidesPerView: 1.5, // For small screens, 1 item per view
+        320: {
+          slidesPerView: 1.5, // For small screens, 1 item per view
           spaceBetween: 4,
-        }
-,        480: {
+        },
+        480: {
           slidesPerView: 2, // For small screens, 1 item per view
           spaceBetween: 4, // Space between slides
         },
@@ -159,9 +158,9 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
 
         return (
           // <SwiperSlide
-            
+
           //   className=" !max-w-full w-[250px] md:w-[250px]  sm:max-w-52 !h-[16rem] flex justify-center " // Center the items
-            
+
           //   key={index}
           // >
           //   <Link
@@ -170,7 +169,7 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
           //       "https://uploads-eu-west-1.insided.com/typeform-en/attachment/7a7796a3-da3b-4ee4-95a4-c53540b53b7a.png"
           //     }
           //     target="_blank"
-              
+
           //     className="!w-full sm:max-w-52 !h-[16rem] block"
           //   >
           //     <div className="!w-full !h-full mt-4 sm:max-w-60 bg-white rounded-lg cursor-pointer p-4">
@@ -195,37 +194,34 @@ const PerfumeCategorySlider = ({ perfumeCategories, timeZoneCountry }) => {
           //     </div>
           //   </Link>
           // </SwiperSlide>
-          <SwiperSlide
-  key={index}
-  className="!h-[16rem] flex justify-center"
->
-  <Link
-    href={link || "..."}
-    target="_blank"
-    className="w-full block h-full"
-  >
-    <div className="w-full h-full mt-4 bg-white rounded-lg cursor-pointer p-4">
-      <div className="relative w-full h-full flex items-center justify-center p-1">
-        <img
-          className="object-contain w-full h-full rounded-lg"
-          src={item?.banner}
-          alt={item?.perfumeName || "Perfume"}
-        />
-      </div>
-      <div className="text-center mt-3">
-        <h3 className="text-sm md:text-base font-semibold text-black-600 line-clamp-1">
-          {item?.perfumeName}
-        </h3>
-        <div className="mt-2">
-          <span className="text-sm md:text-lg font-bold text-gray-900">
-            {price || "0"}
-          </span>
-          <span className="text-gray-600 ml-2">{quantity}ml</span>
-        </div>
-      </div>
-    </div>
-  </Link>
-</SwiperSlide>
+          <SwiperSlide key={index} className="!h-[16rem] flex justify-center">
+            <Link
+              href={link || "..."}
+              target="_blank"
+              className="w-full block h-full"
+            >
+              <div className="w-full h-full mt-4 bg-white rounded-lg cursor-pointer p-4">
+                <div className="relative w-full h-full flex items-center justify-center p-1">
+                  <img
+                    className="!object-contain w-full h-full rounded-lg"
+                    src={item?.banner}
+                    alt={item?.perfumeName || "Perfume"}
+                  />
+                </div>
+                <div className="text-center mt-3">
+                  <h3 className="text-sm md:text-base font-semibold text-black-600 line-clamp-1">
+                    {item?.perfumeName}
+                  </h3>
+                  <div className="mt-2">
+                    <span className="text-sm md:text-lg font-bold text-gray-900">
+                      {price || "0"}
+                    </span>
+                    <span className="text-gray-600 ml-2">{quantity}ml</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </SwiperSlide>
         );
       })}
 
